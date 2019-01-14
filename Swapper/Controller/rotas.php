@@ -35,30 +35,29 @@ function getPagina()
             for ($i=0;$i<count($listaMsg);$i++) {
                 $class="mensagem";
                 $invisivel="true";
+                $align="left";
                 if($_SESSION==$listaMsg[$i]->getIdUsuario()){
                     $class+="1";
                 }else{
                     $class+="2";
+                    $align="right";
                     if($_SESSION!=$listaMsg[$i+1]->getIdUsuario()){
                         $invisivel="false";
                     }  
                 }
-                $html+="<p class='".$class."'>".$listaMsg[$i]->getConteudo()."</p>";
+                $html+="<div align='".$align."'><span class='".$class."'>".$listaMsg[$i]->getConteudo()."</span></div>";
             }
             //echo $html;
             echo
-            "<span class='mensagem1'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem1'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem2'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem1'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem2'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem1'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem2'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem1'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem2'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem2'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem1'>EU não SOU UMA MENSAGEM, 
-            sou um fuucking teste motherfucker</span>";//teste
+            "<div align='right'><span class='mensagem1'>EU SOU UMA MENSAGEM</span></div>
+            <div align='left'><span class='mensagem2'>EU SOU UMA MENSAGEM</span></div>
+            <div align='right'><span class='mensagem1'>EU SOU UMA MENSAGEM</span></div>
+            <div align='right'><span class='mensagem1'>EU SOU UMA MENSAGEM</span></div>
+            <div align='left'><span class='mensagem2'>EU SOU UMA MENSAGEM</span></div>
+            <div align='right'><span class='mensagem1'>EU SOU UMA MENSAGEM</span></div>
+            <div align='left'><span class='mensagem2'>EU SOU UMA MENSAGEM</span></div>
+            <div align='right'><span class='mensagem1'>EU não SOU UMA MENSAGEM, 
+            sou um fuucking teste motherfucker</span></div>";//teste
         break;
     }
 
