@@ -8,10 +8,13 @@ $(document).ready(function(){
         redimensionar();
     });
 
+    $("#explore_btn").addClass("active");
+    $("#match_btn").removeClass("active");
 });
 
 function redimensionar(){
     $(".tabs-content").css('height', ($(window).height()*0.90)+'px');
     $(".perfil_tab").css('height', ($(window).height()*0.90)+'px');
+    $(".combinacoes_tab").css('height', ($(window).height()*0.90)+'px');
     $(".card").css('height', ($(window).height()*0.75)+'px');
 }
