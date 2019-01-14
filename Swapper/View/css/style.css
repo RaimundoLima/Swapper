@@ -8,6 +8,7 @@ html, body {
     padding-left: 5%;
     padding-right: 5%;
     overflow-y: scroll;
+    background-color: #f0f0f0;
 }
 .l5{
     
@@ -36,7 +37,7 @@ html, body {
     border-radius: 50%;
     height: auto;
     position: relative;
-    left: -5%;
+    left: -6%;
     vertical-align: middle;
 }
 

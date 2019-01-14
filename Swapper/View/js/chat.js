@@ -24,7 +24,23 @@ $(document).ready(function () {
     });
 
     //atualizaChat()
+    $("#chat").scroll(function() {
+        if($("chat").scrollTop()==0){
+            $('#estado').text('Enviando');
+            $.ajax({
+                url: '/Ainda não criado',
+                type: 'post',
+                dataType: 'html',
+                data: {
+                    "ultimamsg":$("linkdela")
+                }
+            }).done(function (data) {
+                $('#chat').html(data+$('#chat').html)
+                $('#estado').text('parado');
+            });
 
+        }
+    })
 
 });
 
@@ -38,12 +54,13 @@ function atualizaChat() {
         type: 'post',
         dataType: 'html',
         data: {
-
         }
     }).done(function (data) {
         $('#chat').html(data)
         $('#estado').text('parado');
-        $("#chat").scrollTop(2000)
+        setTimeout(function(){
+            $("#chat").scrollTop(10000)
+        },100)
     });
     
     //clearInterval(intervalo);
@@ -61,7 +78,7 @@ function atualizaChat() {
                 "date":mili.valueOf()
             }
         }).done(function (data) {
-            $('#chat').html(data)
+            $('#chat').html(data)//$('#chat').html($('#chat').html+data)
             $('#estado').text('parado');
         });
     }, 1000);
