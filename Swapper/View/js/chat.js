@@ -52,12 +52,13 @@ function atualizaChat() {
             return (false);
         }
         $('#estado').text('Enviando');
+        var mili= new Date();
         $.ajax({
             url: '/chatUpdate',
             type: 'post',
             dataType: 'html',
             data: {
-
+                "date":mili.valueOf()
             }
         }).done(function (data) {
             $('#chat').html(data)
