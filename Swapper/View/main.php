@@ -55,8 +55,6 @@
                 <div class="combinacoes_tab col s12">
                 
                 <h4 class="titulo_tab" >Combinações</h4>
-                <br>
-
                 <div id="msgs">
 
                 <div class="combinacoes_msg_card">
@@ -65,17 +63,15 @@
                             <img src="/View/img/rai.jpg" alt="">
                         </div>
                         <div class="dados_msg col s9">
-                            <span class="nome_msg">Raimundo Nonato</span>
-                            <br>
+                            <h6 class="nome_msg">Raimundo Nonato</h6>
                             <span class="ultima_msg">Oi eu sou Raimundo Nonato</span>
                             <br>
-                            <span class="hora_msg">18:54</span>
+                            <span class="hora_msg">18:54 - 7Km</span>
                         </div>
                         
                     </div>                    
                 </div>
                 
-
                 </div>
 
                 </div>

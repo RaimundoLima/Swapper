@@ -155,7 +155,7 @@ html, body {
 }
 
 .combinacoes_msg_card .pic{
-    padding-top: 2.5%;
+    padding-top: 4%;
     padding-left:7%;
     margin-left: auto;
     margin-left: auto;
@@ -169,22 +169,6 @@ html, body {
     border-radius: 100%;
 }
 
-.dados_msg{
-    padding-top: 2em;
-}
-
-.dados_msg span{
-}
-
-
-.dados_msg .nome_msg{
-    
-}
-
 .dados_msg .ultima_msg{
-    color: grey;
-}
-
-.dados_msg .hora_msg{
-
+    width: 60%;
 }

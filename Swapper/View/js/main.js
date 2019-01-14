@@ -7,9 +7,6 @@ $(document).ready(function(){
     $(window).resize(function(){
         redimensionar();
     });
-
-    $("#explore_btn").addClass("active");
-    $("#match_btn").removeClass("active");
 });
 
 function redimensionar(){
