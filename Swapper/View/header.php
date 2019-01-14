@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="br">
 <head>
  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,3 +14,4 @@
   <meta name="keywords" content="">
   <meta name="author" content="Raimundo Lima, Luis Jacinto, Bruno Ribeiro">
 </head>
+<body>
