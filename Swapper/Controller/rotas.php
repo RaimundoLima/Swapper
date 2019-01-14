@@ -13,14 +13,14 @@ function getPagina()
             include('View/chat.php');
             include('View/footer.php');
         break;
-        case '/teste':
+        case '/enviamsg':
             $texto=trim($_POST['text']);
             if($texto!="" && $texto!=" "){
                 //criar msg
                 //salvar no bd
                 echo 'ok';
             }else{
-                echo "";
+                echo "deu ruim";
             }
         break;
         case '/chatupdate':
