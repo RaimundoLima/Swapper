@@ -33,6 +33,21 @@
 }
 
 .tabs{
+    width: 100%;
     bottom: 0;
+    left: 0;
     position: absolute;
+    height: 13%;
+
+
+    background-color: beige;
+}
+
+.tabs .tab{
+    height: 100%;
+    vertical-align: 50%;
+}
+
+.material-icons{
+    padding-top: 25%;
 }
