@@ -14,7 +14,9 @@ function getPagina()
             include('View/footer.php');
         break;
         case '/main':
+            include('View/header.php');
             include('View/main.php');
+            include('View/footer.php');
         break;
         case '/enviamsg':
             $texto=trim($_POST['text']);

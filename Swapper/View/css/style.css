@@ -31,3 +31,8 @@
     left: -5%;
     clear: both;
 }
+
+.tabs{
+    bottom: 0;
+    position: absolute;
+}
