@@ -1,4 +1,9 @@
-html, body { height: 100%; width: 100%; margin: 0; }
+html, body {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(#e66465, #9198e5);
+}
+
 #chat{
     padding-left: 5%;
     padding-right: 5%;
@@ -32,14 +37,26 @@ html, body { height: 100%; width: 100%; margin: 0; }
 }
 
 .tabs{
+    z-index: 10;
     width: 100%;
     bottom: 0;
     left: 0;
     position: absolute;
-    height: 13%;
+    height: 10%;
 
 
-    background-color: #fce6e7;
+    background-color: white;
+    box-shadow: 0px -2px 0px #f6b2b5;
+}
+
+.titulo_tab{
+    color: white;
+    font-weight: 600;
+}
+
+.perfil_tab .titulo_tab{
+        color: rgb(238, 110, 115);
+        font-weight: 600;
 }
 
 .tabs .tab{
@@ -48,9 +65,14 @@ html, body { height: 100%; width: 100%; margin: 0; }
 }
 
 .material-icons{
-    padding-top: 20%;
+    padding-top:8%;
 }
 
 .card{
      width: 100%;
+}
+
+.perfil_tab{
+    top: 0;
+    background-color: #f0f0f0;
 }

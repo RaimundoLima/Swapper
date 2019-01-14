@@ -7,10 +7,10 @@
         <div class="col s12">
             <ul class="tabs">
                 <li class="tab col s3"><a href="#test1">
-                    <i class="medium material-icons">face</i>
+                    <i class="medium material-icons">account_circle</i>
                 </a></li>
                 <li class="tab col s3"><a class="active" href="#test2">  
-                    <i class="medium material-icons">star</i>
+                    <i class="medium material-icons">explore</i>
                 </a></li>
                 <li class="tab col s3"><a href="#test3">  
                     <i class="medium material-icons">chat</i>
@@ -20,61 +20,50 @@
         <div id="test1" class="aba col s12">
 
              <div class="row">
-                <div class="cd col s12 m7">
-                <div class="card">
-                    <div class="card-image">
-                    <img src="/View/img/rai.jpg">
-                    <span class="card-title">Card Title</span>
-                    </div>
-                    <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                    <a href="#">This is a link</a>
-                    </div>
-                </div>
+                <div class="perfil_tab col s12">
+                
+                <h4 class="titulo_tab" >Perfil</h4>
+
                 </div>
             </div>
 
 
         </div>
+
         <div id="test2" class="aba col s12">
-            
-        <div class="row">
-                <div class="cd col s12 m7">
-                <div class="card">
-                    <div class="card-image">
-                    <span class="card-title">Card Title</span>
+
+            <h4 class="titulo_tab" >Explorar</h4>
+                
+                <div class="row">
+                    <div class=" col s12 m7">
+                    <div class="card">
+                        <div class="card-content">
+
+                        </div>
                     </div>
-                    <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
                     </div>
                 </div>
-                </div>
-            </div>
 
 
         </div>
+
         <div id="test3" class="aba col s12">
+
+            <h4 class="titulo_tab" >Combinações</h4>
             
-        <div class="row">
-                <div class="cd col s12 m7">
-                <div class="card">
-                    <div class="card-image">
-                    <span class="card-title">Card Title</span>
+                <div class="row">
+                    <div class=" col s12 m7">
+                    <div class="card">
+                        <div class="card-content">
+                        <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action">
+                        <a href="#">This is a link</a>
+                        </div>
                     </div>
-                    <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                    <a href="#">This is a link</a>
                     </div>
                 </div>
-                </div>
-            </div>
 
 
         </div>

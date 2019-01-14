@@ -11,6 +11,7 @@ $(document).ready(function(){
 });
 
 function redimensionar(){
-    $(".tabs-content").css('height', ($(window).height()*0.87)+'px');
-    $(".card").css('height', ($(window).height()*0.84)+'px');
+    $(".tabs-content").css('height', ($(window).height()*0.90)+'px');
+    $(".perfil_tab").css('height', ($(window).height()*0.90)+'px');
+    $(".card").css('height', ($(window).height()*0.75)+'px');
 }
