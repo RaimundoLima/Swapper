@@ -32,6 +32,25 @@ html, body { height: 100%; width: 100%; margin: 0; }
 }
 
 .tabs{
+    width: 100%;
     bottom: 0;
+    left: 0;
     position: absolute;
+    height: 13%;
+
+
+    background-color: #fce6e7;
+}
+
+.tabs .tab{
+    height: 100%;
+    vertical-align: 50%;
+}
+
+.material-icons{
+    padding-top: 20%;
+}
+
+.card{
+     width: 100%;
 }
