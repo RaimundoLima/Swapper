@@ -53,10 +53,5 @@
 }
 
 .card{
-    height: 620px;
-}
-
-.tabs .tab a.active {
-    background-color: transparent;
-    color: #e9232a;
+    width: 100%;
 }
