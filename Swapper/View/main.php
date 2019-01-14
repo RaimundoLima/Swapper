@@ -16,7 +16,7 @@
                 <div class="perfil_dados col s10">
                     
                     <div class="pic">
-                        <img src="" alt="">
+                        <img src="/View/img/rai.jpg" alt="">
                     </div>
 
                     
