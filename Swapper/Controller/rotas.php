@@ -8,7 +8,7 @@ function getPagina()
     //var_dump($url);
     $_SESSION['id']=1;//teste de sessaõ
     switch($url){
-        case '/':
+        case '/chat':
             include('View/header.php');
             include('View/chat.php');
             include('View/footer.php');
@@ -24,7 +24,7 @@ function getPagina()
             }
         break;
         case '/chatupdate':
-            //listamsgssdsdsddsdsdsd
+            //listamsgs
             array_reverse($listaMsg);
             $html = "";
             for ($i=0;$i<count($listaMsg);$i++) {
