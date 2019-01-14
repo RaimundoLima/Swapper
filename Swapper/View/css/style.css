@@ -9,6 +9,10 @@ html, body {
     padding-right: 5%;
     overflow-y: scroll;
 }
+.l5{
+    
+    margin-left: -1em !important;
+}
 .mensagem1{
     background-color: cornflowerblue;
     max-width: 80%;
@@ -33,7 +37,7 @@ html, body {
     height: auto;
     position: relative;
     left: -5%;
-    clear: both;
+    vertical-align: middle;
 }
 
 .card{

@@ -22,6 +22,7 @@ function getPagina()
             $texto=trim($_POST['text']);
             if($texto!="" && $texto!=" "){
                 //criar msg
+                //time();
                 //salvar no bd
                 echo 'ok';
             }else{
@@ -29,8 +30,9 @@ function getPagina()
             }
         break;
         case '/chatupdate':
-            //listamsgsaaaaaaaaaaaa
-            array_reverse($listaMsg);
+            //$listaMsg=mensagemDAO.listaMsgsPerMilliseconds($_POST["date"],$_SESSION["id"])
+            //
+            //array_reverse($listaMsg);
             $html = "";
             for ($i=0;$i<count($listaMsg);$i++) {
                 $class="mensagem";
@@ -45,7 +47,7 @@ function getPagina()
                         $invisivel="false";
                     }  
                 }
-                $html+="<div align='".$align."'><span class='".$class."'>".$listaMsg[$i]->getConteudo()."</span></div>";
+                $html+="<div align='".$align."'><img><span name='".$listaMsg[$i]->getHorario()."' class='".$class."'>".$listaMsg[$i]->getConteudo()."</span></div>";
             }
             //echo $html;
             echo
@@ -53,7 +55,7 @@ function getPagina()
             <div align='left'><span class='mensagem2'>EU SOU UMA MENSAGEM</span></div>
             <div align='right'><span class='mensagem1'>EU SOU UMA MENSAGEM</span></div>
             <div align='right'><span class='mensagem1'>EU SOU UMA MENSAGEM</span></div>
-            <div align='left'><span class='mensagem2'>EU SOU UMA MENSAGEM</span></div>
+            <div align='left'><img src='View/img/rai.jpg' class='imgRedonda'><span class='mensagem2 l5'>EU SOU UMA MENSAGEM</span></div>
             <div align='right'><span class='mensagem1'>EU SOU UMA MENSAGEM</span></div>
             <div align='left'><span class='mensagem2'>EU SOU UMA MENSAGEM</span></div>
             <div align='right'><span class='mensagem1'>EU não SOU UMA MENSAGEM, 
