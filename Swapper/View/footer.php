@@ -6,5 +6,3 @@
         <script src="View/js/chat.js"></script>
     </div>
 <footer>
-</body>
-</html>
