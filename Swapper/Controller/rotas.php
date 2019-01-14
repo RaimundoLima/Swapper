@@ -24,7 +24,7 @@ function getPagina()
             }
         break;
         case '/chatupdate':
-            //listamsgs
+            //listamsgsaaaaaaaaaaaa
             array_reverse($listaMsg);
             $html = "";
             for ($i=0;$i<count($listaMsg);$i++) {
