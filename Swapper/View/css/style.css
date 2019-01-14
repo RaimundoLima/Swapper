@@ -38,6 +38,7 @@ html, body {
 
 .card{
      width: 100%;
+     border-radius: 5%;
 }
 
 .tabs{
