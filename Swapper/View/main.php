@@ -16,11 +16,11 @@
                 <div class="perfil_dados col s10">
                     
                     <div class="pic">
-                        <img src="/View/img/rai.jpg" alt="">
+                        <img src="/View/img/luis.jpg" alt="">
                     </div>
 
                     
-                    <h5 class="nome">Rai Lima</h5>
+                    <h5 class="nome">Luis Henrique Jacinto</h5>
                     <h6 class="cidade">Rio Grande, RS</h6>
 
                 </div>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="dados_msg col s9">
                             <h6 class="nome_msg">Raimundo Nonato</h6>
-                            <span class="ultima_msg">Oi eu sou Raimundo Nonato</span>
+                            <span class="ultima_msg">Prazer sou o camisinha furada.</span>
                             <br>
                             <span class="hora_msg">18:54 - 7Km</span>
                         </div>
