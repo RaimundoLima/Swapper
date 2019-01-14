@@ -40,7 +40,7 @@
     height: 13%;
 
 
-    background-color: beige;
+    background-color: #fce6e7;
 }
 
 .tabs .tab{
@@ -52,3 +52,11 @@
     padding-top: 20%;
 }
 
+.card{
+    height: 620px;
+}
+
+.tabs .tab a.active {
+    background-color: transparent;
+    color: #e9232a;
+}
