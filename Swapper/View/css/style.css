@@ -1,3 +1,4 @@
+html, body { height: 100%; width: 100%; margin: 0; }
 #chat{
     padding-left: 5%;
     padding-right: 5%;
@@ -6,22 +7,20 @@
 .mensagem1{
     background-color: cornflowerblue;
     max-width: 80%;
-    float: right;
-    clear: both;
     padding: 0.6em;
     margin: 0.5em;
     margin-right: -0.5em;
     border-radius: 20px 20px 2px 20px;
+    display: inline-block;
 }
 .mensagem2{
     background-color: grey;
     max-width: 80%;
-    float: left;
-    clear: both;
     padding: 0.6em;
     margin: 0.5em;
     margin-left: 2em;
     border-radius: 6px 20px 20px 2px;
+    display: inline-block;
 }
 .imgRedonda{
     max-width: 3em;

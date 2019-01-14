@@ -1,5 +1,5 @@
 <div style="width:100%;height:90%">
-    <div id="chat" style="width:100%;height:100%;border: solid 1px black">
+    <div id="chat" style="width:80%;max-height:90%;border: solid 1px black">
 
     </div>
     <div>
