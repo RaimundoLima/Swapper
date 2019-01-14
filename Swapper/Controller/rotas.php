@@ -13,6 +13,9 @@ function getPagina()
             include('View/chat.php');
             include('View/footer.php');
         break;
+        case '/main':
+            include('View/main.php');
+        break;
         case '/enviamsg':
             $texto=trim($_POST['text']);
             if($texto!="" && $texto!=" "){
@@ -52,7 +55,8 @@ function getPagina()
             <span class='mensagem1'>EU SOU UMA MENSAGEM</span>
             <span class='mensagem2'>EU SOU UMA MENSAGEM</span>
             <span class='mensagem2'>EU SOU UMA MENSAGEM</span>
-            <span class='mensagem1'>EU não SOU UMA MENSAGEM, sou um fuucking teste motherfucker</span>";//teste
+            <span class='mensagem1'>EU não SOU UMA MENSAGEM, 
+            sou um fuucking teste motherfucker</span>";//teste
         break;
     }
 
