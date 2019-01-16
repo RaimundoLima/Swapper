@@ -9,7 +9,7 @@
              <div class="row">
                 <div class="perfil_tab col s12">
                 
-                    <h4 class="titulo_tab" >Perfil</h4>
+                    <h4 class="titulo_tab fixed" >Perfil</h4>
                     <br>
                     
                     <div class="col s1"></div>
@@ -108,7 +108,7 @@
             <div class="row">
                 <div class="combinacoes_tab col s12">
                 
-                <h4 class="titulo_tab" >Combinações</h4>
+                <h4 class="titulo_tab fixed" >Combinações</h4>
                 <div id="msgs">
                 
                     <div class="combinacoes_msg_card">
