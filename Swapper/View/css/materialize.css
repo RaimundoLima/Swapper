@@ -5304,7 +5304,7 @@ small {
     height: 40px;
     line-height: 40px;
     padding: 0;
-    background-color: #26a69a;
+    background-color: rgb(238, 110, 115);
     border-radius: 50%;
     -webkit-transition: background-color .3s;
     transition: background-color .3s;
