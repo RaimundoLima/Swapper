@@ -10,24 +10,23 @@
                 <div class="perfil_tab col s12">
                 
                     <h4 class="titulo_tab fixed" >Perfil</h4>
-                    <br>
-                    
-                    <div class="col s1"></div>
-                    <div class="perfil_dados col s10">
-                        
-                        <div class="pic">
-                            <img src="/View/img/luis.jpg" alt="">
+                    <br>                    
+                    <div class="perfil_dados col s12">
+                        <div class="row">
+                            <div class="col s3 pd-r0">
+                                <div class="pic">
+                                    <img src="/View/img/luis.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col s7">
+                                <h5 class="nome">Luis Henrique Jacinto</h5>
+                                <h6 class="cidade">Rio Grande, RS</h6>
+                            </div>
+                            <div class="editarBtn_perfil col s2">
+                                <a class=""><i class="font18em material-icons icons">create</i></a>  
+                            </div>
                         </div>
-
                         
-                        <h5 class="nome">Luis Henrique Jacinto</h5>
-                        <h6 class="cidade">Rio Grande, RS</h6>
-
-                        <div class="editarBtn_perfil">
-                            <a class="btn-floating btn-large"><i class="font18em material-icons">create</i></a>
-                            <br>
-                            <span>Editar Perfil</span>
-                        </div>
 
                         <div class="row" id="borda_perfil" >
                             <div class="col s12 borda_perfil">
@@ -57,9 +56,9 @@
                                         <div class="produto_info col s8">
                                             <span>Camisa Azul Manga Curta</span>
                                             <br>
-                                            <i class="material-icons">remove_red_eye</i>
+                                            <i class="material-icons icons">remove_red_eye</i>
                                             <span>0</span>
-                                            <i class="material-icons">favorite</i>
+                                            <i class="material-icons icons">favorite</i>
                                             <span>0</span>
                                         </div>
                                     </div>
@@ -67,11 +66,9 @@
                                 </div>
 
                             </div>
-                        
-                        <br>
-
+                            <br>
                             <div class="adicionarBtn_perfil">
-                                <a class="btn-floating btn-large "><i class="font18em material-icons">add</i></a>
+                                <a class="btn-floating btn-large "><i class="font18em material-icons icons">add</i></a>
                                 <br>
                                 <span>Adicionar Produto</span>
                             </div>
@@ -81,7 +78,6 @@
                         <br>
 
                     </div>
-                    <div class="col s1"></div>
 
                 </div>
             </div>
@@ -89,17 +85,18 @@
 
         <div id="test2" class="col s12">
 
-            <h4 class="titulo_tab" >Explorar</h4>
-                
             <div class="row">
-                <div class=" col s12 m7">
-                    <div class="card">
-                        <div class="card-content">
-                        </div>
-                    </div>
+                <div class="descobrir_tab col s12">
+
+                    <h4 class="titulo_tab" >Descobrir</h4>
+
+                    <a class="favoritos_btn">
+                        <i class="font18em material-icons">favorite</i>
+                    </a>
+
+
                 </div>
             </div>
-
 
         </div>
 
@@ -108,27 +105,27 @@
             <div class="row">
                 <div class="combinacoes_tab col s12">
                 
-                <h4 class="titulo_tab fixed" >Combinações</h4>
-                <div id="msgs">
+                    <h4 class="titulo_tab fixed" >Combinações</h4>
+                    <div id="msgs">
                 
-                    <div class="combinacoes_msg_card">
-                        <div class="row">
-                            <div class="col s3">
-                                <div class="pic_msgs"><img src="/View/img/rai.jpg" alt=""></div> 
-                            </div>
-                            <div class="dados_msgs col s8">
-                                <span class="nome_msg">Raimundo Nonato</span>
-                                <br>
-                                <div class="ultima_msg"><span class="msg_text">Para para paradise, uhhhhh uhhhh uhh aaaaaa</span></div>
-                                <span class="hora_msg">18:54 - 7Km</span>
-                            </div>
-                            <div class="col s1">
-                            <div class="msg_nãolida"></div>
-                            </div>
-                        </div>                    
-                    </div>
+                        <div class="combinacoes_msg_card">
+                            <div class="row">
+                                <div class="col s3">
+                                    <div class="pic_msgs"><img src="/View/img/rai.jpg" alt=""></div> 
+                                </div>
+                                <div class="dados_msgs col s8">
+                                    <span class="nome_msg">Raimundo Nonato</span>
+                                    <br>
+                                    <div class="ultima_msg"><span class="msg_text">Para para paradise, uhhhhh uhhhh uhh aaaaaa</span></div>
+                                    <span class="hora_msg">18:54 - 7Km</span>
+                                </div>
+                                <div class="col s1">
+                                <div class="msg_nãolida"></div>
+                                </div>
+                            </div>                    
+                        </div>
 
-                </div>
+                    </div>
 
                 </div>
             </div>
@@ -137,13 +134,13 @@
         <div class="col s12">
             <ul class="tabs">
                 <li class="tab col s4"><a id="perfil_tbn" href="#test1">
-                    <i class="medium material-icons">account_circle</i>
+                    <i class="medium material-icons icons">account_circle</i>
                 </a></li>
                 <li class=" tab col s4"><a id="explore_btn" class=" active" href="#test2">  
-                    <i class="medium material-icons">explore</i>
+                    <i class="medium material-icons icons">explore</i>
                 </a></li>
                 <li class=" tab col s4"><a id="match_btn" href="#test3">  
-                    <i class="medium material-icons">chat</i>
+                    <i class="medium material-icons icons">chat</i>
                 </a></li>
             </ul>
         </div>

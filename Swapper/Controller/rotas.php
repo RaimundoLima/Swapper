@@ -7,7 +7,7 @@ function getPagina()
 	$url = strtolower(explode("?",$url)[0]);
     //var_dump($url);
     $_Session["sou um teste pra não dar pau"]="não me deleta";
-    if(empty($_SESSION)){
+    if(!empty($_SESSION)){
         switch($url){
             case '/logar':
             include('View/header.php');
