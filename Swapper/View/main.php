@@ -90,9 +90,40 @@
 
                     <h4 class="titulo_tab" >Descobrir</h4>
 
+                    <div class="busca_tab">  
+                        
+                        <h4 class="titulo_tab" >Filtro de Busca</h4>
+
+                        <div class="">
+
+                                <div class="select-tipo">
+                                <input type="radio" name="m" id="masculino"/>
+                                <input type="radio" name="f" id="feminino" />
+
+
+                                <label for="masculino">MASCULINO</label>
+                                <label for="feminino">FEMININO</label>
+                            
+
+                                </div>
+
+
+                        </div>
+
+                    </div>
+                    
+
+                    <a class="set_btn">
+                        <i class="font18em material-icons">settings</i>
+                    </a>
+
                     <a class="favoritos_btn">
                         <i class="font18em material-icons">favorite</i>
                     </a>
+
+                    <div class="cards">
+
+                    </div>
 
 
                 </div>
