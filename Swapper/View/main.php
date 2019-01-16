@@ -18,8 +18,11 @@
                                     <img src="/View/img/luis.jpg" alt="">
                                 </div>
                             </div>
-                            <div class="col s7">
-                                <h5 class="nome">Luis Henrique Jacinto</h5>
+                            <div class="pd-r0 col s7">
+                                <h5 class="nome">
+                                    <div class="nome_tx"><span>Luis Henrique Jacinto</span></div><i class="tiny material-icons">check_circle</i>
+                                </h5>
+                                
                                 <h6 class="cidade">Rio Grande, RS</h6>
                             </div>
                             <div class="editarBtn_perfil col s2">
@@ -97,29 +100,31 @@
                         <div class="">
 
                                 <div class="select-tipo">
-                                <input type="radio" name="m" id="masculino"/>
-                                <input type="radio" name="f" id="feminino" />
+                                    <input type="radio" name="m" id="masculino"/>
+                                    <input type="radio" name="f" id="feminino" />
 
 
-                                <label for="masculino">MASCULINO</label>
-                                <label for="feminino">FEMININO</label>
+                                    <label for="masculino">MASCULINO</label>
+                                    <label for="feminino">FEMININO</label>
                             
 
                                 </div>
-
 
                         </div>
 
                     </div>
                     
+                    <div class="descobrir_btns">
+                        <a class="favoritos_btn">
+                            <i class="font18em material-icons">favorite</i>
+                        </a>
 
-                    <a class="set_btn">
-                        <i class="font18em material-icons">settings</i>
-                    </a>
+                        <a class="set_btn">
+                            <i class="font18em material-icons">settings</i>
+                        </a>
 
-                    <a class="favoritos_btn">
-                        <i class="font18em material-icons">favorite</i>
-                    </a>
+                        
+                    </div>
 
                     <div class="cards">
 
@@ -146,8 +151,9 @@
                                 </div>
                                 <div class="dados_msgs col s8">
                                     <span class="nome_msg">Raimundo Nonato</span>
+                                    <i class="tiny material-icons">check_circle</i>
                                     <br>
-                                    <div class="ultima_msg"><span class="msg_text">Para para paradise, uhhhhh uhhhh uhh aaaaaa</span></div>
+                                    <span class="ultima_msg">Para para paradise, uhhhhh uhhhh uhh aaaaaa</span>
                                     <span class="hora_msg">18:54 - 7Km</span>
                                 </div>
                                 <div class="col s1">
