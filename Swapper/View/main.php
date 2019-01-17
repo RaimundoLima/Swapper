@@ -57,7 +57,7 @@
                                             </div>
                                         </div>
                                         <div class="produto_info col s8">
-                                            <span>Camisa Azul Manga Curta</span>
+                                            <span class="nome_produto">Camisa Azul Manga Curta</span>
                                             <br>
                                             <i class="material-icons icons">remove_red_eye</i>
                                             <span>0</span>
@@ -92,27 +92,6 @@
                 <div class="descobrir_tab col s12">
 
                     <h4 class="titulo_tab" >Descobrir</h4>
-
-                    <div class="busca_tab">  
-                        
-                        <h4 class="titulo_tab" >Filtro de Busca</h4>
-
-                        <div class="">
-
-                                <div class="select-tipo">
-                                    <input type="radio" name="m" id="masculino"/>
-                                    <input type="radio" name="f" id="feminino" />
-
-
-                                    <label for="masculino">MASCULINO</label>
-                                    <label for="feminino">FEMININO</label>
-                            
-
-                                </div>
-
-                        </div>
-
-                    </div>
                     
                     <div class="descobrir_btns">
                         <a class="favoritos_btn">
@@ -122,7 +101,6 @@
                         <a class="set_btn">
                             <i class="font18em material-icons">settings</i>
                         </a>
-
                         
                     </div>
 
@@ -182,6 +160,70 @@
             </ul>
         </div>
     </div>
+
+
+
+                    <div class="busca_tab">  
+                        
+                        <h4 class="titulo_tab" >Filtro de Busca</h4>
+
+                        <div class="row">
+                            <div class="col s1 "></div>
+                            <div class="col s10 corpo">
+
+                                <h5 class="titulo_filtro">Sexo:</h5>
+                                <div class="select-sexo">
+                                    <input type="checkbox" name="m" id="masculino"/>
+                                    <input type="checkbox" name="f" id="feminino"/>
+                                    <input type="checkbox" name="t" id="todos1" checked/>
+
+                                    <label for="masculino">MASCULINO</label>
+                                    <label for="feminino">FEMININO</label>
+                                    <label for="todos1">TUDO</label>
+                                </div>
+                                
+                                <h5 class="titulo_filtro">Categoria:</h5>
+                                <div class="select-categoria">
+                                    <input type="checkbox" name="i" id="infantil"/>
+                                    <input type="checkbox" name="a" id="adulto" />
+                                    <input type="checkbox" name="t" id="todos2" checked/>
+
+                                    <label for="infantil">INFANTIL</label>
+                                    <label for="adulto">ADULTO</label>
+                                    <label for="todos2">TUDO</label>
+                                </div>
+
+                                <h5 class="titulo_filtro">Tipo:</h5>
+                                <div class="select-tipo">
+                                    <input type="checkbox" name="r" id="roupas"/>
+                                    <input type="checkbox" name="a" id="acessorios" />
+                                    <input type="checkbox" name="c" id="calcados"/>
+                                    <input type="checkbox" name="t" id="todos3" checked/>
+
+                                    <label for="roupas">ROUPAS</label>
+                                    <label for="acessorios">ACESSORIOS</label>
+                                    <label for="calcados">CALÇADOS</label>
+                                    <label for="todos3">TUDO</label>
+                                </div>
+
+                                <h5 class="titulo_filtro">Estado:</h5>
+                                <div class="select-estado">
+                                    <input type="checkbox" name="u" id="usada"/>
+                                    <input type="checkbox" name="n" id="nova" />
+                                    <input type="checkbox" name="t" id="todos4" checked/>
+
+                                    <label for="usada">USADA</label>
+                                    <label for="nova">NOVA</label>
+                                    <label for="todos4">TUDO</label>
+                                </div>
+
+
+                                <div class="divisoria"></div>
+                            </div>
+                            <div class="col s1 "></div>
+                        </div>
+
+                    </div>
 
 </body>
 <?php include("footer.php"); ?>
