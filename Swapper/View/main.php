@@ -164,14 +164,48 @@
 
 
                     <div class="busca_tab">  
+
+                        <div class="titulo_tab">
+                            <a class=""><i class=" material-icons">chevron_left</i></a>
+                            <h4 class="">Filtro de Busca</h4>
+                        </div>
                         
-                        <h4 class="titulo_tab" >Filtro de Busca</h4>
+                        
 
                         <div class="row">
                             <div class="col s1 "></div>
                             <div class="col s10 corpo">
 
+                                <h5 class="titulo_filtro mg17em">Distância:</h5>
+                                <div class="range-field range-values">
+                                    <input type="range" min="1" max="150" />
+                                    <div class="row">
+                                        <div class="col s6 tx-l">1km</div>
+                                        <div class="col s6 tx-r">150km</div>
+                                    </div>
+                                </div>
+                                
+
                                 <h5 class="titulo_filtro">Sexo:</h5>
+
+
+                               <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in op-sexo1"/>
+                                    <span>Filled in</span>
+                                </label>
+                                </p><p>
+                                <label>
+                                    <input type="checkbox" class="filled-in op-sexo1"/>
+                                    <span>Filled in</span>
+                                </label>
+                                </p><p>
+                                <label>
+                                    <input type="checkbox" class="filled-in op-sexo2" checked/>
+                                    <span>Filled in</span>
+                                </label>
+                                </p>
+
                                 <div class="select-sexo">
                                     <input type="checkbox" name="m" id="masculino"/>
                                     <input type="checkbox" name="f" id="feminino"/>

@@ -15,3 +15,15 @@ function redimensionar(){
     $(".combinacoes_tab").css('height', ($(window).height()*0.90)+'px');
     $(".card").css('height', ($(window).height()*0.75)+'px');
 }
+
+
+$('.op-sexo1').click(function(){
+    console.log("oi");
+    if($('.op-sexo1')[0].checked == true || $('.op-sexo1')[1].checked == true){
+        $('.op-sexo2').attr("checked", false);
+    }
+    
+    if($('.op-sexo1')[0].checked == false && $('.op-sexo1')[1].checked == true){
+        $('.op-sexo2').attr("checked", true);
+    }
+});

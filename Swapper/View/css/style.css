@@ -385,17 +385,33 @@ html, body {
     box-shadow: 0px 2px 0px #f6b2b5;
 }
 
+
 .busca_tab .titulo_tab{
+    display: inline-flex;
     position: sticky;
     color: rgb(238, 110, 115);    
     font-weight: 600;
     background-color: white;
-    height: 12%;
     width: 100%;
-    padding-left: 0.75em;
+    box-shadow: 0px 2px 0px #f6b2b5;
+}
+
+.busca_tab .titulo_tab > a{
+    color: rgb(238, 110, 115);    
+    padding-top: 1.52rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.busca_tab .titulo_tab > a > i{
+    font-size: 40px;
+}
+
+.busca_tab .titulo_tab > h4{
     margin: 0em;
     padding: 1.52rem;
-    box-shadow: 0px 2px 0px #f6b2b5;
+    padding-left: 0.6rem;
+    font-weight: 600;
 }
 
 .busca_tab .corpo{
@@ -429,12 +445,29 @@ html, body {
     text-align: left !important;
 }
 
+.tx-r{
+    text-align: right !important;
+}
+
 .tx-c{
     text-align: center !important;
 }
 
 .pd-0{
     padding: 0 !important;
+}
+
+.mg-0{
+    margin: 0;
+}
+
+.range-values{
+    color: #e66465;
+    font-weight: 700;
+}
+
+.mg17em{
+    margin-bottom: 1.7em;
 }
 
 .select-sexo input,
@@ -448,16 +481,15 @@ label {
     color: #e66465;
     display: inline-block;
     height: 40px;
-    width: 30%;
+    width: 32%;
     text-align: center;
     line-height: 40px;
-    border-radius: 10%;
-    background-color: white;
-    box-shadow: inset 0px 0px 1px 1px #f6b2b5;
+    background-color:#f8f8f8;
+    box-shadow: inset 0px 0px 1px 1px #e66465;
     font-weight: 800;
     font-size: 1em;
+    margin-bottom: 0.3em; 
 }
-
 
 #masculino:checked ~ label[for="masculino"],
 #feminino:checked ~ label[for="feminino"],
@@ -474,4 +506,5 @@ label {
 #todos4:checked ~ label[for="todos4"]{
     background: #e66465;
     color: #ffffff;
+    box-shadow: inset 0px 0px 2px 2px #f6b2b5;
 }
