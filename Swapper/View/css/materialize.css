@@ -7084,7 +7084,7 @@ textarea.materialize-textarea {
 }
 
 .switch label input[type=checkbox]:checked+.lever {
-    background-color: #84c7c1
+    background-color: #f6b2b5;
 }
 
 .switch label input[type=checkbox]:checked+.lever:before,
@@ -7093,7 +7093,7 @@ textarea.materialize-textarea {
 }
 
 .switch label input[type=checkbox]:checked+.lever:after {
-    background-color: #26a69a
+    background-color: #e66465;
 }
 
 .switch label .lever {
@@ -7128,7 +7128,7 @@ textarea.materialize-textarea {
 }
 
 .switch label .lever:before {
-    background-color: rgba(38, 166, 154, 0.15)
+    background-color: #f6b2b5;
 }
 
 .switch label .lever:after {
@@ -7141,7 +7141,7 @@ input[type=checkbox]:checked:not(:disabled)~.lever:active::before,
 input[type=checkbox]:checked:not(:disabled).tabbed:focus~.lever::before {
     -webkit-transform: scale(2.4);
     transform: scale(2.4);
-    background-color: rgba(38, 166, 154, 0.15)
+    background-color: #f6b2b5;
 }
 
 input[type=checkbox]:not(:disabled)~.lever:active:before,
