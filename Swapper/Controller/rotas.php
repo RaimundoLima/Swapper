@@ -34,16 +34,27 @@ function getPagina()
             header("Refresh: 0");
             break;
             case '/chat':
+                //$_SERVERidChat=$_POST["idChat"];
+                //$chat=new chatDAO()->buscar(idChat)
+                var_dump();
                 include('View/header.php');
                 include('View/chat.php');
                 include('View/footer.php');
             break;
             case '/main':
-                //listaChat=new chatDao()->listaChat();
-                //msgMaisRecenteDeCadaChat=new mensagemDao(listaChat)
+                //$listaProdutos=new produtosDao()->listaProdutos();
+                //$listaChat=new chatDao()->listaChat();
+                //$msgMaisRecenteDeCadaChat=new mensagemDao(listaChat)
                 include('View/header.php');
                 include('View/main.php');
                 include('View/footer.php');
+                
+            break;
+            case '/ediatrperfil':
+                //criar msg
+                //time();
+                //salvar no bd
+                echo 'ok';
             break;
             case '/enviamsg':
                 $texto=trim($_POST['text']);
@@ -51,9 +62,9 @@ function getPagina()
                     //criar msg
                     //time();
                     //salvar no bd
-                    echo 'ok';
+                    echo 'Msg enviada';
                 }else{
-                    echo "deu ruim";
+                    echo "erro ao enviar msg";
                 }
             break;
             case '/chatupdate':
