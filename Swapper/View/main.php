@@ -105,7 +105,22 @@
                     </div>
 
                     <div class="cards">
+                        
+                    </div>
 
+                    <div class="action-btns">
+                            <a class="btn-p">
+                                <i class="btn-rever material-icons">replay</i>
+                            </a>
+                            <a class="btn-g">
+                                <i class="btn-deslike material-icons">close</i>
+                            </a>
+                            <a class="btn-g">
+                                <i class="btn-like material-icons">favorite</i>
+                            </a>
+                            <a class="btn-p">
+                                <i class="btn-superlike material-icons">grade</i>
+                            </a>
                     </div>
 
 
@@ -160,7 +175,6 @@
             </ul>
         </div>
     </div>
-
 
 </body>
 <?php include("footer.php"); ?>
