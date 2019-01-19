@@ -143,6 +143,7 @@ html, body {
     width: auto;
     border-radius: 100%;
 }
+
 .perfil_dados .nome{
     text-align: left;
     font-weight: 600;
@@ -343,6 +344,118 @@ html, body {
     margin-top: 5px;
 }
 
+.action-btns{
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.action-btns > a{
+    background-color: white;
+    border-radius: 100%;
+    display: inline-block;
+    border: 2px rgba(170, 170, 170, 0.4);
+    border-style: solid;
+}
+
+.action-btns .btn-g{
+    color: #9198e5;
+    height: 90px;
+    width: 90px;
+    text-align: center;
+}
+
+.action-btns .btn-g > i{
+    font-size: 70px;    
+    line-height: 90px;
+}
+
+.action-btns .btn-p{
+    color: #9198e5;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    transform: translateY(-25%);
+}
+
+.action-btns .btn-p > i{
+    font-size: 40px;    
+    line-height: 60px;
+}
+
+.btn-rever{
+    background: linear-gradient(90deg,#fcbc47, #8d651c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-deslike{
+    background: #bbbbbb;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-like{
+    background: linear-gradient(#f6b2b5, #e66465);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-superlike{
+    background: linear-gradient(-90deg,#5ee665, #e7f8e8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.cards{
+    position: absolute;
+    background-color: #f0f0f0;
+    height: 77%;
+    width: 90%;
+    margin: 5%;
+    margin-top: 3%;
+    border-radius: 20px;
+}
+
+.cards .card-imgs{
+    height: 75%;
+}
+
+.cards .card-dados{
+    margin: 0;
+    top: 75%;
+    height: 25%;
+    background-color: white;
+    border-radius: 0px 0px 20px 20px; 
+}
+
+.card-dadosNome{
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.cards .dados > img{
+    position: absolute;
+    height: 15%;
+    width: auto;
+    left: 5%;
+    top: 66%;
+    border-radius: 100%;
+    box-shadow: 0px 2px 10px #f6b2b5;
+}
+.cards .dados > i{
+    color: #e66465;
+    position: absolute;
+    height: 15%;
+    width: auto;
+    top: 69.5%;
+    left: 27%;
+}
+
 .descobrir_btns{
     position: absolute;
     right: 0;
@@ -428,73 +541,6 @@ html, body {
 .switch .col{
     margin-bottom: 0.8em;
 }
-
-.action-btns{
-    position: absolute;
-    bottom: 20%;
-    left: 0;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-}
-
-.action-btns > a{
-    background-color: white;
-    border-radius: 100%;
-    display: inline-block;
-    border: 2px rgba(170, 170, 170, 1);
-    border-style: solid;
-}
-
-.action-btns .btn-g{
-    color: #9198e5;
-    height: 90px;
-    width: 90px;
-    text-align: center;
-}
-
-.action-btns .btn-g > i{
-    font-size: 70px;    
-    line-height: 90px;
-}
-
-.action-btns .btn-p{
-    color: #9198e5;
-    height: 60px;
-    width: 60px;
-    text-align: center;
-    transform: translateY(-25%);
-}
-
-.action-btns .btn-p > i{
-    font-size: 40px;    
-    line-height: 60px;
-}
-
-.btn-rever{
-    background: linear-gradient(90deg,#fcbc47, #8d651c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.btn-deslike{
-    background: #bbbbbb;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.btn-like{
-    background: linear-gradient(#f6b2b5, #e66465);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.btn-superlike{
-    background: linear-gradient(-90deg,#5ee665, #e7f8e8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-
-
-
 
 .font18em{
     font-size: 1.8em !important;

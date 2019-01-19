@@ -105,7 +105,20 @@
                     </div>
 
                     <div class="cards">
+
+                        <div class="card-imgs">
+                            
+                        </div>
                         
+                        <div class="card-dados row">
+                            <div class="col s3"></div>
+                            <div class="col s9"><span class="card-dadosNome">Luis Henrique 7Km</span></div>
+                            
+                        </div>
+                        <div class="dados">
+                            <img src="/View/img/luis.jpg" alt="">
+                            <i class="material-icons">check_circle</i>            
+                        </div>
                     </div>
 
                     <div class="action-btns">
