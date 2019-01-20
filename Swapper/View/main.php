@@ -5,7 +5,7 @@
 
     <div class="row swiper-container">
         <div class="swiper-wrapper">
-            <div id="test1" class="col s12 swiper-slide">
+            <div id="perfil" class="col s12 swiper-slide">
 
                 <div class="row">
                     <div class="perfil_tab col s12">
@@ -87,7 +87,7 @@
                 </div>
             </div>
 
-            <div id="test2" class="col s12 swiper-slide">
+            <div id="descobrir" class="col s12 swiper-slide">
 
                 <div class="row">
                     <div class="descobrir_tab col s12">
@@ -105,34 +105,34 @@
                             
                         </div>
 
-                        <div class="cards">
+                        <div class="cards swiper-no-swiping">
 
-                            <div class="card-imgs">
-                                
+                            <div class="card-imgs swiper-no-swiping">
+
                             </div>
                             
-                            <div class="card-dados row">
+                            <div class="card-dados row swiper-no-swiping">
                                 <div class="col s3"></div>
                                 <div class="col s9"><span class="card-dadosNome">Luis Henrique 7Km</span></div>
                                 
                             </div>
-                            <div class="dados">
+                            <div class="dados swiper-no-swiping">
                                 <img src="/View/img/luis.jpg" alt="">
                                 <i class="material-icons">check_circle</i>            
                             </div>
                         </div>
 
                         <div class="action-btns">
-                                <a class="btn-p">
+                                <a class="btn-p swiper-no-swiping">
                                     <i class="btn-rever material-icons">replay</i>
                                 </a>
-                                <a class="btn-g">
+                                <a class="btn-g swiper-no-swiping">
                                     <i class="btn-deslike material-icons">close</i>
                                 </a>
-                                <a class="btn-g">
+                                <a class="btn-g swiper-no-swiping">
                                     <i class="btn-like material-icons">favorite</i>
                                 </a>
-                                <a class="btn-p">
+                                <a class="btn-p swiper-no-swiping">
                                     <i class="btn-superlike material-icons">grade</i>
                                 </a>
                         </div>
@@ -143,7 +143,7 @@
 
             </div>
 
-            <div id="test3" class="col s12 swiper-slide">
+            <div id="mensagens" class="col s12 swiper-slide">
 
                 <div class="row">
                     <div class="combinacoes_tab col s12">
@@ -176,18 +176,7 @@
 
             </div>
         </div>
-        <div class="col s12">
-            <ul class="tabs swiper-pagination">
-                <li class="tab col s4"><a id="perfil_tbn" href="#test1">
-                    <i class="medium material-icons icons">account_circle</i>
-                </a></li>
-                <li class=" tab col s4"><a id="explore_btn" class=" active" href="#test2">  
-                    <i class="medium material-icons icons">explore</i>
-                </a></li>
-                <li class=" tab  col s4"><a id="match_btn" href="#test3">  
-                    <i class="medium material-icons icons">chat</i>
-                </a></li>
-            </ul>
+        <div class="col s12 tabs swiper-pagination swiper-no-swiping">
         </div>
     </div>
 

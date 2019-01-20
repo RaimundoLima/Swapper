@@ -1,15 +1,42 @@
 $(document).ready(function(){
-    //$('ul.tabs').tabs();
-    //$('ul.tabs').tabs({ swipeable: true });
-    
-    var mySwiper = new Swiper ('.swiper-container', {
-        // Optional parameters
+    mySwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal',
-        loop: false,,
+        loop: false,
         speed: 500,
         initialSlide: 1,
-        noSwipingClass: 'cards'
-      })
+        noSwipingClass: 'swiper-no-swiping',
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            bulletElement: 'span',
+            clickable: true,
+            renderBullet: function (index, className) {
+                var tabs = ['account_circle','explore','chat'];
+                var nav = ['perfil-nav','descobrir-nav','mensagens-nav'];
+                return '<span id="'+nav[index]+'" class="tab col s4 ' + className + '">'+ 
+                '<i class="medium material-icons icons">'+tabs[index]+'</i>'+'</span>';
+            }
+          },
+    });
+    mySwiper.on('slideChangeTransitionStart', function () {
+        if($('#perfil').hasClass('swiper-slide-active') == true){
+            $('#perfil-nav').addClass('swiper-pagination-bullet-active');
+            $('#descobrir-nav').removeClass('swiper-pagination-bullet-active');
+            $('#mensagens-nav').removeClass('swiper-pagination-bullet-active');
+        }
+        if($('#descobrir').hasClass('swiper-slide-active') == true){
+            $('#perfil-nav').removeClass('swiper-pagination-bullet-active');
+            $('#descobrir-nav').addClass('swiper-pagination-bullet-active');
+            $('#mensagens-nav').removeClass('swiper-pagination-bullet-active');
+        }
+        if($('#mensagens').hasClass('swiper-slide-active') == true){
+            $('#perfil-nav').removeClass('swiper-pagination-bullet-active');
+            $('#descobrir-nav').removeClass('swiper-pagination-bullet-active');
+            $('#mensagens-nav').addClass('swiper-pagination-bullet-active');
+        }
+    });
+
+    $('.carousel').carousel();
 
     redimensionar();
 
@@ -19,14 +46,13 @@ $(document).ready(function(){
     //checkSwitchs();
 });
 
+
+
 function redimensionar(){
     $(".tabs-content").css('height', ($(window).height()*0.90)+'px');
     $(".perfil_tab").css('height', ($(window).height()*0.90)+'px');
     $(".combinacoes_tab").css('height', ($(window).height()*0.90)+'px');
 }
-
-
-
 /*
 function checkSwitchs(){
     if(document.getElementById('switch-masculina').checked == false){
