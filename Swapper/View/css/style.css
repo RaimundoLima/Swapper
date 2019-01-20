@@ -587,3 +587,8 @@ html, body {
 .mg17em{
     margin-bottom: 1.7em;
 }
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
