@@ -1,13 +1,22 @@
 $(document).ready(function(){
-    $('ul.tabs').tabs();
-    $('ul.tabs').tabs({ swipeable: true });
+    //$('ul.tabs').tabs();
+    //$('ul.tabs').tabs({ swipeable: true });
     
+    var mySwiper = new Swiper ('.swiper-container', {
+        // Optional parameters
+        direction: 'horizontal',
+        loop: false,,
+        speed: 500,
+        initialSlide: 1,
+        noSwipingClass: 'cards'
+      })
+
     redimensionar();
 
     $(window).resize(function(){
         redimensionar();
     });
-    checkSwitchs();
+    //checkSwitchs();
 });
 
 function redimensionar(){
@@ -18,7 +27,7 @@ function redimensionar(){
 
 
 
-
+/*
 function checkSwitchs(){
     if(document.getElementById('switch-masculina').checked == false){
         document.getElementById('switch-feminina').disabled = true;
@@ -166,3 +175,4 @@ document.getElementById('switch-adulto').addEventListener('change', function(e) 
         document.getElementById('switch-infantil').disabled = false;
     }
 });
+*/
