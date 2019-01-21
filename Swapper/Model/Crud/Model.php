@@ -1,0 +1,10 @@
+<?php
+include_once("Chat.php");
+include_once("Usuario.php");
+include_once("Match.php");
+include_once("Config.php");
+include_once("Mensagem.php");
+include_once("Roupa.php");
+include_once("Troca.php");
+include_once("Visualizacao.php");
+?>

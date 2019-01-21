@@ -33,6 +33,9 @@ function getPagina()
             session_destroy();
             header("Refresh: 0");
             break;
+            case '/model':
+                include('Model/teste.php');
+            break;
             case '/chat':
                 //$_SERVERidChat=$_POST["idChat"];
                 //$chat=new chatDAO()->buscar(idChat)
