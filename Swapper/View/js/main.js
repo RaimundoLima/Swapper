@@ -43,7 +43,34 @@ $(document).ready(function(){
     $(window).resize(function(){
         redimensionar();
     });
-    //checkSwitchs();
+    checkSwitchs();
+    
+    $("#filtro-btn").click(function() {
+        $("#filtro").removeClass("down-up");
+        $("#filtro").addClass("up-down");
+      });
+    $("#filtro-btn-voltar").click(function() {
+        $("#filtro").removeClass("up-down");
+        $("#filtro").addClass("down-up");
+    });
+    /*
+    $("#filtro-btn").click(function() {
+        $("#filtro").removeClass("right-left-ltab");
+        $("#filtro").addClass("left-right-ltab");
+    });
+    $("#filtro-btn-voltar").click(function() {
+        $("#filtro").removeClass("left-right-ltab");
+        $("#filtro").addClass("right-left-ltab");
+    });
+
+    $("#filtro-btn").click(function() {
+        $("#filtro").removeClass("left-right-rtab");
+        $("#filtro").addClass("right-left-rtab");
+    });
+    $("#filtro-btn-voltar").click(function() {
+        $("#filtro").removeClass("right-left-rtab");
+        $("#filtro").addClass("left-right-rtab");
+    });*/
 });
 
 
@@ -53,7 +80,7 @@ function redimensionar(){
     $(".perfil_tab").css('height', ($(window).height()*0.90)+'px');
     $(".combinacoes_tab").css('height', ($(window).height()*0.90)+'px');
 }
-/*
+
 function checkSwitchs(){
     if(document.getElementById('switch-masculina').checked == false){
         document.getElementById('switch-feminina').disabled = true;
@@ -201,4 +228,3 @@ document.getElementById('switch-adulto').addEventListener('change', function(e) 
         document.getElementById('switch-infantil').disabled = false;
     }
 });
-*/

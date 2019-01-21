@@ -243,6 +243,12 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgb(238, 110, 115);
   }
+
+  .swiper-pagination-bullet-active:focus{
+    outline: none;
+    background-color: none;
+  }
+
   .swiper-container-vertical > .swiper-pagination-bullets {
     right: 10px;
     top: 50%;
@@ -297,7 +303,7 @@
     position: absolute;
   }
   .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-    background: #007aff;
+    background:#fff;
     position: absolute;
     left: 0;
     top: 0;

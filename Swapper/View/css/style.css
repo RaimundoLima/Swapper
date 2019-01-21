@@ -3,6 +3,19 @@ html, body {
     width: 100%;
     background: linear-gradient(#e66465, #9198e5);
 }
+body{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#perfil, #descobrir, #mensagens{
+    overflow: hidden;
+}
 
 #chat{
     padding-left: 5%;
@@ -83,7 +96,6 @@ html, body {
     font-weight: 600;
     width: 100%;
     padding-left: 0.75em;
-    height: 12%;
     margin: 0em;
     padding: 1.52rem;
 }
@@ -93,7 +105,6 @@ html, body {
         font-weight: 600;
         background-color: white;
         width: 100%;
-        height: 12%;
         padding-left: 0.75em;
         margin: 0em;
         padding: 1.52rem;
@@ -267,7 +278,6 @@ html, body {
     font-weight: 600;
     background-color: white;
     width: 100%;
-    height: 12%;
     margin: 0em;
     padding: 1.52rem;
     box-shadow: 0px 2px 0px #f6b2b5;
@@ -281,8 +291,8 @@ html, body {
     background-color: white;
     box-shadow: 0px 2px 0px #f6b2b5;
     width: 100%;
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;
+    padding-top: 1em;
+    padding-bottom: 0.6em;
     margin-top: 2px;
 }
 
@@ -326,7 +336,7 @@ html, body {
     font-size: 1em;
     max-width: 100%;
     white-space: nowrap;
-    overflow-y: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
 }
@@ -487,12 +497,12 @@ html, body {
 }
 
 .busca_tab{
-    display: none;
     z-index: 11;
     position: absolute;
     top: 0;
     width: 100%;
     background-color: #f0f0f0;
+    display: none;
 }
 
 .busca_tab .corpo .divisoria{
@@ -598,4 +608,89 @@ html, body {
 .swiper-container {
     width: 100%;
     height: 100%;
+}
+.up-down{
+    display: inline-block;
+    animation: up-down 0.3s ease-out forwards;
+}
+.down-up{
+    display: inline-block;
+    animation: down-up 0.3s ease-out forwards;
+}
+
+.left-right-ltab{
+    display: inline-block;
+    animation: left-right-ltab 0.2s ease-out forwards;
+}
+.right-left-ltab{
+    display: inline-block;
+    animation: right-left-ltab 0.2s ease-out forwards;
+}
+/* */
+.right-left-rtab{
+    display: inline-block;
+    animation: right-left-rtab 0.2s ease-out forwards;
+}
+.left-right-rtab{
+    display: inline-block;
+    animation: left-right-rtab 0.2s ease-out forwards;
+}
+
+/*animações*/
+
+@keyframes up-down{
+    0%{
+        transform:translateY(-100%);
+    }
+    100%{
+        transform:translateY(0%);
+    }
+}
+
+@keyframes down-up{
+    0%{
+        transform:translateY(0%);
+    }
+    100%{
+        transform:translateY(-100%);
+    }
+
+}
+
+
+@keyframes left-right-ltab{
+    0%{
+        transform:translateX(-100%);
+    }
+    100%{
+        transform:translateX(0%);
+    }
+}
+
+@keyframes right-left-ltab{
+    0%{
+        transform:translateX(0%);
+    }
+    100%{
+        transform:translateX(-100%);
+    }
+
+}
+@keyframes left-right-rtab{
+    
+    0%{
+        transform:translateX(0%);
+    }
+    100%{
+        transform:translateX(100%);
+    }
+}
+
+@keyframes right-left-rtab{
+    0%{
+        transform:translateX(100%);
+    }
+    100%{
+        transform:translateX(0%);
+    }
 }
