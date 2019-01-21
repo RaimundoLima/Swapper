@@ -1,0 +1,1 @@
+gource -c 2 --key -e 0.5 --bloom-multiplier 1.3 --bloom-intensity 1.5 --title "Swapper"
