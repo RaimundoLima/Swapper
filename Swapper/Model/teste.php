@@ -2,7 +2,7 @@
 include('Crud/Model.php');
 //usuarios
 
-/*
+
 $usuario1=
 [
     'sexo'=>"M",
@@ -31,6 +31,7 @@ $usuario2=
     "foto"=>'img2.png'
 ];
 echo inserirUsuario($usuario2)." id do usuario2<br>";
+/*
  /////////////////////////////////
 $roupaDoUsuario1=
 [
