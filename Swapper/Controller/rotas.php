@@ -14,7 +14,6 @@ function getPagina()
                 include('Model/teste.php');
             break;
             case '/logar':
-            include('Model/teste.php');
                 include('View/header.php');
                 include('View/logar.php');
                 include('View/footer.php');
