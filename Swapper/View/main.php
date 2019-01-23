@@ -206,7 +206,7 @@
                 </div>
                 <div class="col s3">
                     <label>
-                        <input id="switch-masculina" type="checkbox" checked>
+                        <input id="switch-masculina" type="checkbox"  >
                         <span class="lever"></span>
                     </label>
                 </div>
@@ -215,7 +215,7 @@
                 </div>
                 <div class="col s3">
                     <label>
-                        <input id="switch-feminina" type="checkbox" checked>
+                        <input id="switch-feminina" type="checkbox"  >
                         <span class="lever"></span>
                     </label>
                 </div>
@@ -238,7 +238,7 @@
                 </div>
                 <div class="col s3">
                     <label>
-                        <input id="switch-adulto" type="checkbox" checked>
+                        <input id="switch-adulto" type="checkbox"  >
                         <span class="lever"></span>
                     </label>
                 </div>
@@ -252,7 +252,7 @@
                 </div>
                 <div class="col s3">
                     <label>
-                        <input id="switch-roupa" type="checkbox" checked>
+                        <input id="switch-roupa" type="checkbox"  >
                         <span class="lever"></span>
                     </label>
                 </div>
@@ -261,7 +261,7 @@
                 </div>
                 <div class="col s3">
                     <label>
-                        <input id="switch-acessorio" type="checkbox" checked>
+                        <input id="switch-acessorio" type="checkbox"  >
                         <span class="lever"></span>
                     </label>
                 </div>
@@ -270,7 +270,7 @@
                 </div>
                 <div class="col s3">
                     <label>
-                        <input id="switch-calcado" type="checkbox" checked>
+                        <input id="switch-calcado" type="checkbox"  >
                         <span class="lever"></span>
                     </label>
                 </div>
@@ -293,7 +293,7 @@
                 </div>
                 <div class="col s3">
                     <label>
-                        <input id="switch-nova" type="checkbox" checked>
+                        <input id="switch-nova" type="checkbox"  >
                         <span class="lever"></span>
                     </label>
                 </div>

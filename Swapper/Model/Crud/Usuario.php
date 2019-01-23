@@ -5,11 +5,11 @@ function buscarUsuario($id){
     return R::load('usuario',$id);
 }
 function buscarUsuarioLogin($usuario){
-    return R::find('usuario','email=? AND senha=?',
+    return R::findOne('usuario','email=? AND senha=?',
     [$usuario['email'],$usuario['senha']]);
 }
 function buscarUsuarioEmail($usuario){
-    return R::find('usuario','email=?',
+    return R::findOne('usuario','email=?',
     [$usuario['email']]);
 }
 function inserirUsuario($usuario){

@@ -1,4 +1,5 @@
 <?php
+include("Model/Crud/Model.php");
 function getPagina()
 {
     session_start();
@@ -6,8 +7,8 @@ function getPagina()
 	$url = $_SERVER['REQUEST_URI'];
 	$url = strtolower(explode("?",$url)[0]);
     //var_dump($url);
-    $_Session["sou um teste pra não dar pau"]="não me deleta";
-    if(!empty($_SESSION)){
+    //$_SESSION["sou um teste pra não dar pau"]="não me deleta";
+    if(empty($_SESSION)){
         switch($url){
             case '/logar':
             include('View/header.php');
@@ -15,12 +16,17 @@ function getPagina()
             include('View/footer.php');
             break;
             case '/logando':
-            $usuario=$usuarioDAO->obter($_POST['email']);
-            $senha=$usuario->getSenha();
-            if(!empty($usuario) && $_POST['senha']==$senha){
+            $usuario=[
+                'email'=>$_POST['email'],
+                'senha'=>sha1($_POST['senha'])
+            ];
+            $usuario=buscarUsuarioLogin($usuario);
+            var_dump($usuario);
+            if($usuario!=null){
+                echo("foi");
                 $_SESSION['usuario']=$usuario;
             }
-            header("Refresh: 0");
+            header("Location: http://127.0.0.1:8000/main");
             break;
             default :
 			var_dump($url);
@@ -31,10 +37,36 @@ function getPagina()
         switch($url){
             case '/deslogar':
             session_destroy();
-            header("Refresh: 0");
+            header("Location: http://127.0.0.1:8000/logar");
             break;
             case '/model':
                 include('Model/teste.php');
+            break;
+            case '/buscarfiltro':
+                $filtro=buscarConfig($_SESSION['usuario']['id']);
+                echo $filtro;
+            break;
+            case '/atualizarfiltro':
+                $_POST["masculino"]= $_POST["masculino"] == 'true'? true: false;
+                $_POST["feminino"]= $_POST["feminino"] == 'true'? true: false;
+                $_POST["adulto"]= $_POST["adulto"] == 'true'? true: false;
+                $_POST["infantil"]= $_POST["infantil"] == 'true'? true: false;
+                $_POST["roupa"]= $_POST["roupa"] == 'true'? true: false;
+                $_POST["acessorio"]= $_POST["acessorio"] == 'true'? true: false;
+                $_POST["calcado"]= $_POST["calcado"] == 'true'? true: false;
+                $_POST["novo"]= $_POST["novo"] == 'true'? true: false;
+                $_POST["usado"]= $_POST["usado"] == 'true'? true: false;
+                var_dump($config);
+                if($_POST["distancia"]>=2 && $_POST["distancia"]<=150
+                //teste de checkeds
+                && (($_POST["masculino"] || $_POST["feminino"] ))
+                && (is_bool($_POST["adulto"] || $_POST["infantil"]))
+                && (is_bool($_POST["roupa"] || $_POST["acessorio"] || $_POST["calcado"]))
+                && (is_bool($_POST["novo"]) || $_POST["usado"])
+                ){
+                    $config=$_POST;
+                    atualizarConfig($config,$_SESSION['usuario']['id']);
+                }
             break;
             case '/chat':
                 //$_SERVERidChat=$_POST["idChat"];

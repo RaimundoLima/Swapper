@@ -2,14 +2,14 @@
 include('Crud/Model.php');
 //usuarios
 
-
+/*
 $usuario1=
 [
     'sexo'=>"M",
-    "email"=>'Malcon@gmail.com',
-    "senha"=>sha1('XXX'),
+    "email"=>'luis@gmail.com',
+    "senha"=>sha1('123'),
     "celular"=>7,//
-    "nome"=>'Malcon X',
+    "nome"=>'Luis',
     "nascimento"=>'01/01/1936',
     "localizacao"=>'-g344535382787-w01212133435353',
     "bio"=>'Um cara mais ou menos foda,mas é mais pro fodido',
@@ -21,17 +21,17 @@ echo inserirUsuario($usuario1)." id do usuario1<br>";
 $usuario2=
 [
     "sexo"=>'M',
-    "email"=>'Martinho@gmail.com',
-    "senha"=>sha1('yxyx'),
+    "email"=>'rai@gmail.com',
+    "senha"=>sha1('123'),
     "celular"=>'05399887766551',//
-    "nome"=>'Rei Martinho',
+    "nome"=>'Rai',
     "nascimento"=>'01/01/1933',
     "localizacao"=>'-g344535382787-w01212133435353',
     "bio"=>'Ele tem um sonho',
     "foto"=>'img2.png'
 ];
 echo inserirUsuario($usuario2)." id do usuario2<br>";
-//////////////////////////////////
+ /////////////////////////////////
 $roupaDoUsuario1=
 [
     "usuario"=>1,
@@ -119,24 +119,34 @@ echo inserirVisualizacao($usuario2FavoritaRoupa2)." visualização favoritando<b
 $usuario2LikeUsuario1=[
     'usuario1'=>2,
     'usuario2'=>1,
-    'likeStatus'=>0,//0 dislike,1 like,2 superlike,3 Match
+    'likeStatus'=>1,//0 dislike,1 like,2 superlike,3 Match
     'date'=>'01/01/2010'
 ];
 echo inserirMatch($usuario2LikeUsuario1);
 
-$usuario1LikeUsuario2;
+$usuario1LikeUsuario2=[
+    'usuario1'=>1,
+    'usuario2'=>2,
+    'likeStatus'=>1,//0 dislike,1 like,2 superlike,3 Match
+    'date'=>'01/01/2010'
+];
+echo inserirMatch($usuario1LikeUsuario2);
+
 
 //chat campo user1 e user2 listar por usuario&& disponibilidade
-$usuario1Mensagem1;
-$usuario2Mensagem1;
-$usuario1Mensagem2;//testar visualizacao
-
-//testar troca
-$usuario1EnviaTrocaRoupa2Roupa3PorRoupa1;
-//usuario2 confirma
-
-
-
-//echo "<br>".mysql_escape_string("SKRSKR")
-
+$usuario1Mensagem1=[
+    'horario'=>time(),
+    'conteudo'=>"fala meu mano das quebradas bora fazer uns negocios",
+    'chat'=>1,
+    'usuario'=>1
+];
+echo inserirMensagem($usuario1Mensagem1);
+$usuario2Mensagem1=[
+    'horario'=>time(),
+    'conteudo'=>"è oq ç funciona?",
+    'chat'=>1,
+    'usuario'=>2
+];
+echo inserirMensagem($usuario2Mensagem1);
+*/
 ?>

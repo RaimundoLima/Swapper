@@ -8,8 +8,9 @@ function buscarChat($id){
 }
 function inserirChat($chat){
     $chatT=R::dispense('chat');//rework
-    $chatT[""]=$chat[""];
-
+    $chatT["match"]=buscarMatch($chat["match"]);
+    $chatT["disponibilidade"]=1;
+    R::store($chatT);
 }
 function atualizarChat($disponibilidade,$id){
     //rework

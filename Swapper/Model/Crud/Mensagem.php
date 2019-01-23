@@ -9,9 +9,10 @@ function inserirMensagem($mensagem){
     $mensagemT=R::dispense("mensagem");
     $mensagemT["horario"]=$mensagem["horario"];
     $mensagemT["conteudo"]=$mensagem["conteudo"];
-    $mensagemT["visualizado"]=$mensagem["visualizado"];
-    $mensagemT["chat_id"]=R::load("chat",$mensagem["chat_id"]);
-    $mensagemT["usuario_id"]=R::load("usuario",$mensagem["usuario_id"]);
+    $mensagemT["visualizado"]=0;
+    $mensagemT["chat"]=R::load("chat",$mensagem["chat"]);
+    $mensagemT["usuario"]=R::load("usuario",$mensagem["usuario"]);
+    echo R::store($mensagemT);
 
 }
 

@@ -43,13 +43,15 @@ $(document).ready(function(){
     $(window).resize(function(){
         redimensionar();
     });
-    checkSwitchs();
+   // checkSwitchs();
     
     $("#filtro-btn").click(function() {
+        buscarFiltro();
         $("#filtro").removeClass("down-up");
         $("#filtro").addClass("up-down");
       });
     $("#filtro-btn-voltar").click(function() {
+        atualizarFiltro();
         $("#filtro").removeClass("up-down");
         $("#filtro").addClass("down-up");
     });
@@ -72,8 +74,45 @@ $(document).ready(function(){
         $("#filtro").addClass("left-right-rtab");
     });*/
 });
+function atualizarFiltro(){
+    $.ajax({
+        url: '/atualizarFiltro',
+        type: 'post',
+        dataType: 'json',
+        data: {
+          'distancia':$("#input-dist").val(),
+          'masculino':$("#switch-masculina").is(':checked'), 
+          'feminino':$("#switch-feminina").is(':checked'), 
+          'adulto':$("#switch-adulto").is(':checked'),
+          'infantil':$("#switch-infantil").is(':checked'),
+          'roupa':$("#switch-roupa").is(':checked'), 
+          'acessorio':$("#switch-acessorio").is(':checked'), 
+          'calcado':$("#switch-calcado").is(':checked'), 
+          'novo':$("#switch-nova").is(':checked'),
+          'usado':$("#switch-usada").is(':checked')  
+        }
+    })
 
-
+}
+function buscarFiltro(){
+    $.ajax({
+        url: '/buscarFiltro'
+    }).done(function(data){
+        var filtro=(JSON.parse(data));
+        $("#span-value").text(filtro.distancia+"KM");
+        $("#input-dist").val(filtro.distancia);
+        $("#switch-masculina").prop('checked',filtro.masculino*1)
+        $("#switch-feminina").prop('checked',filtro.feminino*1)
+        $("#switch-infantil").prop('checked',filtro.infantil*1)
+        $("#switch-adulto").prop('checked',filtro.adulto*1)
+        $("#switch-roupa").prop('checked',filtro.roupa*1)
+        $("#switch-acessorio").prop('checked',filtro.acessorio*1)
+        $("#switch-calcado").prop('checked',filtro.calcado*1)
+        $("#switch-usada").prop('checked',filtro.usado*1)
+        $("#switch-nova").prop('checked',filtro.novo*1)
+        checkSwitchs();
+    })
+}
 
 function redimensionar(){
     $(".tabs-content").css('height', ($(window).height()*0.90)+'px');
