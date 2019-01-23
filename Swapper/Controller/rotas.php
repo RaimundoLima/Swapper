@@ -10,10 +10,13 @@ function getPagina()
     //$_SESSION["sou um teste pra não dar pau"]="não me deleta";
     if(empty($_SESSION)){
         switch($url){
+            case '/model':
+                include('Model/teste.php');
+            break;
             case '/logar':
-            include('View/header.php');
-            include('View/logar.php');
-            include('View/footer.php');
+                include('View/header.php');
+                include('View/logar.php');
+                include('View/footer.php');
             break;
             case '/logando':
             $usuario=[
@@ -56,7 +59,6 @@ function getPagina()
                 $_POST["calcado"]= $_POST["calcado"] == 'true'? true: false;
                 $_POST["novo"]= $_POST["novo"] == 'true'? true: false;
                 $_POST["usado"]= $_POST["usado"] == 'true'? true: false;
-                var_dump($config);
                 if($_POST["distancia"]>=2 && $_POST["distancia"]<=150
                 //teste de checkeds
                 && (($_POST["masculino"] || $_POST["feminino"] ))
