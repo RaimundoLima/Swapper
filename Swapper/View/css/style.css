@@ -111,12 +111,6 @@ body{
         box-shadow: 0px 2px 0px #f6b2b5;
 }
 
-.titulo_produtos{
-    color: rgb(238, 110, 115);
-    font-weight: 600;
-    margin: 0em;
-}
-
 .row .col .perfil_tab{
     padding: 0em; 
 }
@@ -200,13 +194,21 @@ body{
     box-shadow: 0px 2px 0px #f6b2b5;
 }
 
+.perfil-btns > a{
+}
+
+
 .produtos{
     width: 100%;
     display: inline-block;
 }
 
 .produto{
-    margin-top: 1.2em;
+    background-color: white;
+    box-shadow: 0px 2px 0px #f6b2b5;
+    padding-top: 1.2em;
+    padding-bottom: 0.2em;
+    margin-bottom: 2px;
 }
 
 .produto_imagem{
@@ -259,13 +261,6 @@ body{
 
 .editarBtn_perfil > a{
     color: #000000;
-}
-
-.adicionarBtn_perfil{
-    text-align: center;
-    margin-top: 1.2em;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .combinacoes_tab{
@@ -555,6 +550,56 @@ body{
     margin-bottom: 1em;
 }
 
+
+.produtos-usuario-tab{
+    z-index: 11;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    display: none;
+    text-align: center;
+}
+
+.produtos-usuario-tab .titulo_tab{
+    display: inline-flex;
+    position: sticky;
+    top: 0;
+    color: rgb(238, 110, 115);    
+    font-weight: 600;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0px 2px 0px #f6b2b5;
+}
+
+.produtos-usuario-tab .titulo_tab > a{
+    color: rgb(238, 110, 115);    
+    padding-top: 1.52rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.produtos-usuario-tab .titulo_tab > a > i{
+    font-size: 40px;
+}
+
+.produtos-usuario-tab .titulo_tab > h4{
+    margin: 0em;
+    padding: 1.52rem;
+    padding-left: 0.6rem;
+    font-weight: 600;
+}
+
+.produtos-usuario-tab .divisoria{
+    width: 70%;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 2px 0px #f6b2b5;
+}
+
+
 .switch .col{
     margin-bottom: 0.8em;
 }
@@ -617,23 +662,23 @@ body{
     display: inline-block;
     animation: down-up 0.3s ease-out forwards;
 }
-
+/* */
 .left-right-ltab{
     display: inline-block;
-    animation: left-right-ltab 0.2s ease-out forwards;
+    animation: left-right-ltab 0.3s ease-out forwards;
 }
 .right-left-ltab{
     display: inline-block;
-    animation: right-left-ltab 0.2s ease-out forwards;
+    animation: right-left-ltab 0.3s ease-out forwards;
 }
 /* */
 .right-left-rtab{
     display: inline-block;
-    animation: right-left-rtab 0.2s ease-out forwards;
+    animation: right-left-rtab 0.3s ease-out forwards;
 }
 .left-right-rtab{
     display: inline-block;
-    animation: left-right-rtab 0.2s ease-out forwards;
+    animation: left-right-rtab 0.3s ease-out forwards;
 }
 
 /*animações*/
@@ -646,7 +691,6 @@ body{
         transform:translateY(0%);
     }
 }
-
 @keyframes down-up{
     0%{
         transform:translateY(0%);
@@ -657,7 +701,6 @@ body{
 
 }
 
-
 @keyframes left-right-ltab{
     0%{
         transform:translateX(-100%);
@@ -666,7 +709,6 @@ body{
         transform:translateX(0%);
     }
 }
-
 @keyframes right-left-ltab{
     0%{
         transform:translateX(0%);
@@ -676,6 +718,7 @@ body{
     }
 
 }
+
 @keyframes left-right-rtab{
     
     0%{
@@ -685,7 +728,6 @@ body{
         transform:translateX(100%);
     }
 }
-
 @keyframes right-left-rtab{
     0%{
         transform:translateX(100%);

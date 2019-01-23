@@ -43,7 +43,6 @@ $(document).ready(function(){
     $(window).resize(function(){
         redimensionar();
     });
-   // checkSwitchs();
     
     $("#filtro-btn").click(function() {
         buscarFiltro();
@@ -55,6 +54,17 @@ $(document).ready(function(){
         $("#filtro").removeClass("up-down");
         $("#filtro").addClass("down-up");
     });
+
+
+    $("#produtos-usuario-btn").click(function() {
+        $("#produtos-usuario").removeClass("right-left-ltab");
+        $("#produtos-usuario").addClass("left-right-ltab");
+    });
+    $("#produtos-usuario-btn-voltar").click(function() {
+        $("#produtos-usuario").removeClass("left-right-ltab");
+        $("#produtos-usuario").addClass("right-left-ltab");
+    });
+
     /*
     $("#filtro-btn").click(function() {
         $("#filtro").removeClass("right-left-ltab");
