@@ -1,3 +1,5 @@
+var buscaFiltro=0;
+var buscaRoupas=0
 $(document).ready(function(){
     mySwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal',
@@ -53,10 +55,12 @@ $(document).ready(function(){
         atualizarFiltro();
         $("#filtro").removeClass("up-down");
         $("#filtro").addClass("down-up");
+        preventDefault()
     });
 
 
     $("#produtos-usuario-btn").click(function() {
+        buscarRoupas();
         $("#produtos-usuario").removeClass("right-left-ltab");
         $("#produtos-usuario").addClass("left-right-ltab");
     });
@@ -102,26 +106,39 @@ function atualizarFiltro(){
           'usado':$("#switch-usada").is(':checked')  
         }
     })
-
 }
 function buscarFiltro(){
-    $.ajax({
-        url: '/buscarFiltro'
-    }).done(function(data){
-        var filtro=(JSON.parse(data));
-        $("#span-value").text(filtro.distancia+"KM");
-        $("#input-dist").val(filtro.distancia);
-        $("#switch-masculina").prop('checked',filtro.masculino*1)
-        $("#switch-feminina").prop('checked',filtro.feminino*1)
-        $("#switch-infantil").prop('checked',filtro.infantil*1)
-        $("#switch-adulto").prop('checked',filtro.adulto*1)
-        $("#switch-roupa").prop('checked',filtro.roupa*1)
-        $("#switch-acessorio").prop('checked',filtro.acessorio*1)
-        $("#switch-calcado").prop('checked',filtro.calcado*1)
-        $("#switch-usada").prop('checked',filtro.usado*1)
-        $("#switch-nova").prop('checked',filtro.novo*1)
-        checkSwitchs();
-    })
+    if(!buscaFiltro){
+        $.ajax({
+            url: '/buscarFiltro'
+        }).done(function(data){
+            var filtro=(JSON.parse(data));
+            $("#span-value").text(filtro.distancia+"KM");
+            $("#input-dist").val(filtro.distancia);
+            $("#switch-masculina").prop('checked',filtro.masculino*1)
+            $("#switch-feminina").prop('checked',filtro.feminino*1)
+            $("#switch-infantil").prop('checked',filtro.infantil*1)
+            $("#switch-adulto").prop('checked',filtro.adulto*1)
+            $("#switch-roupa").prop('checked',filtro.roupa*1)
+            $("#switch-acessorio").prop('checked',filtro.acessorio*1)
+            $("#switch-calcado").prop('checked',filtro.calcado*1)
+            $("#switch-usada").prop('checked',filtro.usado*1)
+            $("#switch-nova").prop('checked',filtro.novo*1)
+            checkSwitchs();
+        })
+        buscaFiltro=1;
+    }
+}
+function buscarRoupas(){
+    if(!buscaRoupas){
+        //console.log('éoq')
+        $.ajax({
+            url: '/buscarRoupas'
+        }).done(function(data){
+            console.log(data)
+        })
+        buscaRoupas=1;
+    }
 }
 
 function redimensionar(){

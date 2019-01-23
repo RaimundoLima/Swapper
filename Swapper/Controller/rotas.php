@@ -49,6 +49,10 @@ function getPagina()
                 $filtro=buscarConfig($_SESSION['usuario']['id']);
                 echo $filtro;
             break;
+            case '/buscarroupas':
+            $roupas=listarRoupa($_SESSION['usuario']['id']);
+            echo $roupa;
+        break;
             case '/atualizarfiltro':
                 $_POST["masculino"]= $_POST["masculino"] == 'true'? true: false;
                 $_POST["feminino"]= $_POST["feminino"] == 'true'? true: false;
