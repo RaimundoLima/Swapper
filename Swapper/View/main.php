@@ -117,7 +117,7 @@
                                         <div class="pic_msgs"><img src="/View/img/rai.jpg" alt=""></div>
                                     </div>
                                     <div class="dados_msgs col s8">
-                                        <span class="nome_msg">Raimundo Nonato<i class="tiny material-icons">check_circle</i></span>
+                                        <span class="nome_msg">Raimundo Nonato</span>
 
                                         <br>
                                         <span class="ultima_msg">Para para paradise, uhhhhh uhhhh uhh aaaaaa</span>
