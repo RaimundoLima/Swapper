@@ -15,6 +15,10 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
+h4{
+    font-size: 2rem;
+}
+
 #perfil,
 #descobrir,
 #mensagens {
@@ -527,7 +531,7 @@ body {
 }
 
 .out-tab .titulo_tab>a>i {
-    font-size: 40px;
+    font-size: 34px;
 }
 
 .out-tab .titulo_tab>h4 {
@@ -609,7 +613,7 @@ body {
 }
 
 .criar-produto-imgs{
-    height: 40%;
+    height: 37%;
     display: flex;
 }
 
@@ -619,6 +623,13 @@ body {
 
 .criar-produto-imgs .img-g{
     box-shadow: inset 0px 0px 4px #bbbbbb;
+}
+
+.btn-check{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-bottom: 0.85rem;
 }
 
 .img-g{

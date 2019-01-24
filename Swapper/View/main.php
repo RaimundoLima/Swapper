@@ -136,7 +136,8 @@
     <div id="adicionar-produto" class="adicionar-produto-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="adicionar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
-            <h4 class="">Adicionar Produto</h4>
+            <h4 class="pd-r0">Adicionar Produto</h4>
+            <a class="btn-check"><i class="material-icons">check</i></a>
         </div>
         <div class="row">
             <div class="criar-produto-imgs">
