@@ -45,14 +45,30 @@ function getPagina()
             case '/model':
                 include('Model/teste.php');
             break;
+            case '/adicionarroupas':
+                $roupa;
+                //nome e desc
+                $roupa["sexo"]= $_POST["sexo"] == 1 ? 1: 2;
+                $roupa["categoria"]= $_POST["categoria"] == 1 ? 1: 2;
+                if($_POST["tipo"]==1){
+                    $roupa["tipo"]=1;
+                }else{
+                    if($_POST["tipo"]==2){
+                        $roupa["tipo"]=2; 
+                    }else{
+                        $roupa["tipo"]=3;
+                    }
+                }
+                $roupa["estado"]= $_POST["estado"] == 1? 1: 2;
+            break;
             case '/buscarfiltro':
                 $filtro=buscarConfig($_SESSION['usuario']['id']);
                 echo $filtro;
             break;
             case '/buscarroupas':
-            $roupas=listarRoupa($_SESSION['usuario']['id']);
-            echo $roupa;
-        break;
+                $roupas=listarRoupa($_SESSION['usuario']['id']);
+                echo json_encode($roupas);
+            break;
             case '/atualizarfiltro':
                 $_POST["masculino"]= $_POST["masculino"] == 'true'? true: false;
                 $_POST["feminino"]= $_POST["feminino"] == 'true'? true: false;
@@ -147,5 +163,27 @@ function getPagina()
         }
     }
    
+}
+function emailCadastro($usuario){
+    $to = $usuario['email'];
+    $subject = 'dominio';
+    $body = "<div> YOYO<br>".$usuario['nome']." esta cadastrado e agora consegue ler em <i><b style='color:#f88'>HTML</b></i></div>";
+       $headers = 'From: Swapper email@email.com' . "\r\n" ;
+       $headers .='Reply-To: '. $to . "\r\n" ;
+       $headers .='X-Mailer: PHP/' . phpversion();
+       $headers .= "MIME-Version: 1.0\r\n";
+       $headers .= "Content-type: text/html; charset=utf-8\r\n";   
+   echo(mail($to, $subject, $body,$headers));
+}
+function emailRecuperarSenha(){
+    $to = $usuario['email'];
+    $subject = 'dominio';
+    $body = "<div> YOYO<br>".$usuario['nome']." essa é sua senha de recuperação ".$usuario["senha"]."";
+       $headers = 'From: Swapper email@email.com' . "\r\n" ;
+       $headers .='Reply-To: '. $to . "\r\n" ;
+       $headers .='X-Mailer: PHP/' . phpversion();
+       $headers .= "MIME-Version: 1.0\r\n";
+       $headers .= "Content-type: text/html; charset=utf-8\r\n";   
+   echo(mail($to, $subject, $body,$headers));
 }
 ?>

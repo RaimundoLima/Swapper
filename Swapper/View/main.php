@@ -207,7 +207,7 @@
             </div>
 
             <div class="produtos">
-
+                <!--
                 <div class="produto">
                     <div class="row">
                         <div class="col s4">
@@ -225,7 +225,7 @@
                         </div>
                     </div>
                 </div>
-
+                -->
             </div>
 
         </div>

@@ -71,7 +71,7 @@ $(document).ready(function(){
     });
 
     $("#addProduto_btn").click(function() {
-        buscarRoupas();
+        inserirRoupas();
         $("#adicionar-produto").removeClass("right-left-ltab");
         $("#adicionar-produto").addClass("left-right-ltab");
     });
@@ -100,6 +100,19 @@ $(document).ready(function(){
         $("#filtro").addClass("left-right-rtab");
     });*/
 });
+function inserirRoupas(){
+    $.ajax({
+        url: '/atualizarFiltro',
+        type: 'post',
+        dataType: 'json',
+        data: {
+        }
+    }).done(function(){
+        //zerar campus tbm
+        $("#adicionar-produto").removeClass("left-right-ltab");
+        $("#adicionar-produto").addClass("right-left-ltab");
+    })
+}
 function atualizarFiltro(){
     $.ajax({
         url: '/atualizarFiltro',
@@ -143,7 +156,6 @@ function buscarFiltro(){
 }
 function buscarRoupas(){
     if(!buscaRoupas){
-        //console.log('éoq')
         $.ajax({
             url: '/buscarRoupas'
         }).done(function(data){
