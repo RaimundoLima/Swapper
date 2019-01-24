@@ -140,7 +140,64 @@
         </div>
     </div>
 
-    <div id="produtos-usuario" class="produtos-usuario-tab">
+    <div id="adicionar-produto" class="adicionar-produto-tab out-tab">
+        <div class="titulo_tab fixed">
+            <a id="adicionar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+            <h4 class="">Adicionar Produto</h4>
+        </div>
+        <div class="row">
+            <div class="criar-produto-imgs">
+                <div class="img-g">
+                    <img src="/View/img/camiseta.jpg" alt="">
+                </div>
+                <div class="img-p">
+                    <img src="/View/img/camiseta.jpg" alt="">
+                    <img src="/View/img/camiseta.jpg" alt="">
+                </div>
+            </div>
+            <div>           
+                <div class="input-field col s12">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">Nome do Produto</label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Descrição</label>
+                </div>  
+                <div class="input-field col s6">
+                    <select>
+                    <option value="1">Masculino</option>
+                    <option value="2">Feminino</option>
+                    </select>
+                    <label>Sexo</label>
+                </div>
+                <div class="input-field col s6">
+                    <select>
+                    <option value="1">Infantil</option>
+                    <option value="2">Adulto</option>
+                    </select>
+                    <label>Categoria</label>
+                </div>
+                <div class="input-field col s6">
+                    <select>
+                    <option value="1">Roupas</option>
+                    <option value="2">Acessórios</option>
+                    <option value="3">Calçados</option>
+                    </select>
+                    <label>Tipo</label>
+                </div>
+                <div class="input-field col s6">
+                    <select>
+                    <option value="1">Usado</option>
+                    <option value="2">Novo</option>
+                    </select>
+                    <label>Estado</label>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <div id="produtos-usuario" class="produtos-usuario-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="produtos-usuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
             <h4 class="">Produtos</h4>
@@ -174,11 +231,12 @@
             </div>
 
         </div>
+        <a id="addProduto_btn" class="addProduto_btn">
+            <i class="material-icons">add</i>
+        </a>
     </div>
 
-
-
-    <div id="filtro" class="busca_tab">
+    <div id="filtro" class="busca_tab out-tab">
         <div class="titulo_tab">
             <a id="filtro-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
             <h4 class="">Filtro de Busca</h4>
@@ -188,9 +246,9 @@
             <div class="col s1 "></div>
             <div class="col s10 corpo">
 
-                <h5 class="titulo_filtro">Distância: <span id="span-value">20Km</span></h5>
+                <h5 class="titulo_filtro">Distância: <span id="span-value"></span></h5>
 
-                <input id="input-dist" value="20" type="range" name="dist" min="0" max="150">
+                <input id="input-dist" type="range" name="dist" min="0" max="150">
 
                 <div class="divisoria"></div>
 
@@ -300,7 +358,7 @@
             <div class="col s1 "></div>
         </div>
     </div>
+
 </body>
 <?php include("footer.php"); ?>
-
 </html>

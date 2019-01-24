@@ -39,6 +39,7 @@ $(document).ready(function(){
     });
 
     $('.carousel').carousel();
+    $('select').formSelect();
 
     redimensionar();
 
@@ -68,6 +69,37 @@ $(document).ready(function(){
         $("#produtos-usuario").removeClass("left-right-ltab");
         $("#produtos-usuario").addClass("right-left-ltab");
     });
+
+    $("#produtos-usuario-btn").click(function() {
+        buscarRoupas();
+        $("#produtos-usuario").removeClass("right-left-ltab");
+        $("#produtos-usuario").addClass("left-right-ltab");
+    });
+    $("#produtos-usuario-btn-voltar").click(function() {
+        $("#produtos-usuario").removeClass("left-right-ltab");
+        $("#produtos-usuario").addClass("right-left-ltab");
+    });
+
+    $("#produtos-usuario-btn").click(function() {
+        buscarRoupas();
+        $("#produtos-usuario").removeClass("right-left-ltab");
+        $("#produtos-usuario").addClass("left-right-ltab");
+    });
+    $("#produtos-usuario-btn-voltar").click(function() {
+        $("#produtos-usuario").removeClass("left-right-ltab");
+        $("#produtos-usuario").addClass("right-left-ltab");
+    });
+
+    $("#addProduto_btn").click(function() {
+        buscarRoupas();
+        $("#adicionar-produto").removeClass("right-left-ltab");
+        $("#adicionar-produto").addClass("left-right-ltab");
+    });
+    $("#adicionar-produto-btn-voltar").click(function() {
+        $("#adicionar-produto").removeClass("left-right-ltab");
+        $("#adicionar-produto").addClass("right-left-ltab");
+    });
+
 
     /*
     $("#filtro-btn").click(function() {
@@ -148,6 +180,13 @@ function redimensionar(){
 }
 
 function checkSwitchs(){
+    checkSwitchs_Sexo();
+    checkSwitchs_Categoria();
+    checkSwitchs_Tipo();
+    checkSwitchs_Estado();
+}
+
+function checkSwitchs_Sexo(){
     if(document.getElementById('switch-masculina').checked == false){
         document.getElementById('switch-feminina').disabled = true;
     }else{
@@ -158,7 +197,8 @@ function checkSwitchs(){
     }else{
         document.getElementById('switch-masculina').disabled = false;
     }
-
+}
+function checkSwitchs_Categoria(){
     if(document.getElementById('switch-infantil').checked == false){
         document.getElementById('switch-adulto').disabled = true;
     }else{
@@ -169,7 +209,8 @@ function checkSwitchs(){
     }else{
         document.getElementById('switch-infantil').disabled = false;
     }
-
+}
+function checkSwitchs_Tipo(){
     if(document.getElementById('switch-roupa').checked == true){
         if((document.getElementById('switch-acessorio').checked == false)&&(document.getElementById('switch-calcado').checked == false)){
             document.getElementById('switch-roupa').disabled = true;
@@ -177,7 +218,7 @@ function checkSwitchs(){
     }
     if(document.getElementById('switch-acessorio').checked == true){
         if((document.getElementById('switch-roupa').checked == false)&&(document.getElementById('switch-calcado').checked == false)){
-           document.getElementById('switch-acessorio').disabled = true;
+        document.getElementById('switch-acessorio').disabled = true;
         }else{document.getElementById('switch-acessorio').disabled = false;}
     }
     if(document.getElementById('switch-calcado').checked == true){
@@ -185,7 +226,8 @@ function checkSwitchs(){
             document.getElementById('switch-calcado').disabled = true;
         }else{ document.getElementById('switch-calcado').disabled = false;}
     }
-
+}
+function checkSwitchs_Estado(){
     if(document.getElementById('switch-usada').checked == false){
         document.getElementById('switch-nova').disabled = true;
     }else{
@@ -197,100 +239,15 @@ function checkSwitchs(){
         document.getElementById('switch-usada').disabled = false;
     }
 }
-
-
-//Input de distancia
-document.getElementById('input-dist').addEventListener('input', function(e) {
+$('#input-dist').on('input', function(e) {
     document.getElementById('span-value').textContent = this.value+"Km";
 })
-
-//Input de sexo
-document.getElementById('switch-masculina').addEventListener('change', function(e) {
-    if(document.getElementById('switch-masculina').checked == false){
-        document.getElementById('switch-feminina').disabled = true;
-    }else{
-        document.getElementById('switch-feminina').disabled = false;
-    }
-});
-
-document.getElementById('switch-feminina').addEventListener('change', function(e) {
-    if(document.getElementById('switch-feminina').checked == false){
-        document.getElementById('switch-masculina').disabled = true;
-    }else{
-        document.getElementById('switch-masculina').disabled = false;
-    }
-});
-
-//Input de Categoria
-document.getElementById('switch-usada').addEventListener('change', function(e) {
-    if(document.getElementById('switch-usada').checked == false){
-        document.getElementById('switch-nova').disabled = true;
-    }else{
-        document.getElementById('switch-nova').disabled = false;
-    }
-});
-
-document.getElementById('switch-nova').addEventListener('change', function(e) {
-    if(document.getElementById('switch-nova').checked == false){
-        document.getElementById('switch-usada').disabled = true;
-    }else{
-        document.getElementById('switch-usada').disabled = false;
-    }
-});
-
-//Input de Tipo 
-document.getElementById('switch-roupa').addEventListener('change', function(e) {
-    if(document.getElementById('switch-acessorio').checked == true){
-        if((document.getElementById('switch-roupa').checked == false)&&(document.getElementById('switch-calcado').checked == false)){
-            document.getElementById('switch-acessorio').disabled = true;
-        }else{document.getElementById('switch-acessorio').disabled = false;}
-    }
-    if(document.getElementById('switch-calcado').checked == true){
-        if((document.getElementById('switch-roupa').checked == false)&&(document.getElementById('switch-acessorio').checked == false)){
-            document.getElementById('switch-calcado').disabled = true;
-        }else{ document.getElementById('switch-calcado').disabled = false;}
-    }
-});
-
-document.getElementById('switch-acessorio').addEventListener('change', function(e) {
-    if(document.getElementById('switch-roupa').checked == true){
-        if((document.getElementById('switch-acessorio').checked == false)&&(document.getElementById('switch-calcado').checked == false)){
-            document.getElementById('switch-roupa').disabled = true;
-        }else{document.getElementById('switch-roupa').disabled = false;}
-        }
-        if(document.getElementById('switch-calcado').checked == true){
-            if((document.getElementById('switch-roupa').checked == false)&&(document.getElementById('switch-acessorio').checked == false)){
-                document.getElementById('switch-calcado').disabled = true;
-            }else{ document.getElementById('switch-calcado').disabled = false;}
-        }
-});
-
-document.getElementById('switch-calcado').addEventListener('change', function(e) {
-    if(document.getElementById('switch-roupa').checked == true){
-        if((document.getElementById('switch-acessorio').checked == false)&&(document.getElementById('switch-calcado').checked == false)){
-            document.getElementById('switch-roupa').disabled = true;
-        }else{document.getElementById('switch-roupa').disabled = false;}
-        }
-        if(document.getElementById('switch-acessorio').checked == true){
-            if((document.getElementById('switch-roupa').checked == false)&&(document.getElementById('switch-calcado').checked == false)){
-                document.getElementById('switch-acessorio').disabled = true;
-            }else{document.getElementById('switch-acessorio').disabled = false;}
-        }
-});
-
-//Input de estado
-document.getElementById('switch-infantil').addEventListener('change', function(e) {
-    if(document.getElementById('switch-infantil').checked == false){
-        document.getElementById('switch-adulto').disabled = true;
-    }else{
-        document.getElementById('switch-adulto').disabled = false;
-    }
-});
-
-document.getElementById('switch-adulto').addEventListener('change', function(e) {
-    if(document.getElementById('switch-adulto').checked == false){
-        document.getElementById('switch-infantil').disabled = true;
-    }else{
-        document.getElementById('switch-infantil').disabled = false;
-    }
-});
+$('#switch-masculina').on('change', checkSwitchs_Sexo);
+$('#switch-feminina').on('change', checkSwitchs_Sexo);
+$('#switch-infantil').on('change', checkSwitchs_Categoria);
+$('#switch-adulto').on('change', checkSwitchs_Categoria);
+$('#switch-roupa').on('change', checkSwitchs_Tipo);
+$('#switch-acessorio').on('change', checkSwitchs_Tipo);
+$('#switch-calcado').on('change', checkSwitchs_Tipo);
+$('#switch-usada').on('change', checkSwitchs_Estado);
+$('#switch-nova').on('change', checkSwitchs_Estado);
