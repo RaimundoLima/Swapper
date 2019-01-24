@@ -70,26 +70,6 @@ $(document).ready(function(){
         $("#produtos-usuario").addClass("right-left-ltab");
     });
 
-    $("#produtos-usuario-btn").click(function() {
-        buscarRoupas();
-        $("#produtos-usuario").removeClass("right-left-ltab");
-        $("#produtos-usuario").addClass("left-right-ltab");
-    });
-    $("#produtos-usuario-btn-voltar").click(function() {
-        $("#produtos-usuario").removeClass("left-right-ltab");
-        $("#produtos-usuario").addClass("right-left-ltab");
-    });
-
-    $("#produtos-usuario-btn").click(function() {
-        buscarRoupas();
-        $("#produtos-usuario").removeClass("right-left-ltab");
-        $("#produtos-usuario").addClass("left-right-ltab");
-    });
-    $("#produtos-usuario-btn-voltar").click(function() {
-        $("#produtos-usuario").removeClass("left-right-ltab");
-        $("#produtos-usuario").addClass("right-left-ltab");
-    });
-
     $("#addProduto_btn").click(function() {
         buscarRoupas();
         $("#adicionar-produto").removeClass("right-left-ltab");
