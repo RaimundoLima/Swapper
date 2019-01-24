@@ -54,16 +54,9 @@
 
                         <h4 class="titulo_tab">Descobrir</h4>
 
-                        <div class="descobrir_btns">
-                            <a class="favoritos_btn">
-                                <i class="font18em material-icons">favorite</i>
-                            </a>
-
-                            <a id="filtro-btn" class="set_btn">
-                                <i class="font18em material-icons">settings</i>
-                            </a>
-
-                        </div>
+                        <a id="filtro-btn" class="set_btn">
+                            <i class="font18em material-icons">settings</i>
+                        </a>
 
                         <div class="cards swiper-no-swiping">
 
@@ -148,11 +141,15 @@
         <div class="row">
             <div class="criar-produto-imgs">
                 <div class="img-g">
-                    <img src="/View/img/camiseta.jpg" alt="">
+                    <img src="" alt="">
                 </div>
                 <div class="img-p">
-                    <img src="/View/img/camiseta.jpg" alt="">
-                    <img src="/View/img/camiseta.jpg" alt="">
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <div>
+                        <img src="" alt="">
+                    </div>
                 </div>
             </div>
             <div>           

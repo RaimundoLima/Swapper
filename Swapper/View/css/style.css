@@ -477,27 +477,17 @@ body {
     left: 27%;
 }
 
-.descobrir_btns {
+.set_btn {
+    top: 1.52rem;
+    right: 1.52rem;
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 36%;
-    height: 12%;
-    padding-top: 1.4em;
-    padding-left: 4%;
-
-}
-
-.descobrir_btns>a {
     color: #e66465;
-    display: inline-block;
     background-color: white;
     border-radius: 100%;
     height: 40px;
     width: 40px;
     text-align: center;
     line-height: 40px;
-    margin-right: 10%;
 }
 
 .busca_tab {
@@ -623,16 +613,21 @@ body {
     display: flex;
 }
 
+.criar-produto-imgs > div{
+    background-color: #e0e0e0;
+}
+
+.criar-produto-imgs .img-g{
+    box-shadow: inset 0px 0px 4px #bbbbbb;
+}
+
 .img-g{
-    background-color: #e66465;
-    width: 70%;
+    width: 65%;
     height: 100%;
 } 
 
 .img-p{
-    display: inline-flezx;
-    background-color: #606060;
-    width: 30%;
+    width: 35%;
     height: 100%;
 }
 
@@ -641,10 +636,15 @@ body {
     height: 100%;
 }
 
-.img-p > img{
-    background-color:#e66465;
-    width: auto;
+.img-p > div{
+    width: 100%;
     height: 50%;
+    box-shadow: inset 0px 0px 4px #bbbbbb;
+}
+
+.img-p > div >  img{
+    width: auto;
+    height: 100%;
 }
 
 .switch .col {
