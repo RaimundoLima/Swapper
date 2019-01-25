@@ -142,14 +142,14 @@
         <div class="row">
             <div class="criar-produto-imgs">
                 <div class="img-g">
-                    <img src="" alt="">
+                    <input type="image" id="image" alt="Login" src="/View/img/camiseta.jpg">
                 </div>
                 <div class="img-p">
                     <div>
-                        <img src="" alt="">
+                        <input type="image" id="image" alt="Login" src="/View/img/camiseta.jpg">                    
                     </div>
                     <div>
-                        <img src="" alt="">
+                        <input type="image" id="image" alt="Login" src="/View/img/camiseta.jpg">                    
                     </div>
                 </div>
             </div>
@@ -195,6 +195,33 @@
         </div>
     </div>
 
+    <div id="vizualizar-produtoUsuario" class="vizualizar-produtoUsuario-tab produto-view-tab">
+        <div class="titulo_tab">
+            <a id="vizualizar-produtoUsuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+        </div>
+        <div class="info mg-0 row">
+            <div class="col s12">
+                <h4>Camiseta Azul Manga Curta</h4>
+            </div>
+            <div class="tx-l col s12">
+                <span>Camiseta XXXXXX, tamanho M, cor Azul, produzida em poliester.</span>
+            </div>
+            <div class="tx-l col s12">
+                <span>TAGS:</span>
+                <span class="tag">MASCULINA</span>
+                <span class="tag">FEMININA</span>
+                <span class="tag">INFANTIL</span>
+                <span class="tag">ADULTA</span>
+                <span class="tag">ROUPA</span>
+                <span class="tag">ACESSÓRIO</span>
+                <span class="tag">CALÇADO</span>
+                <span class="tag">USADA</span>
+                <span class="tag">NOVA</span>
+            </div>
+        </div>
+    </div>
+
+
     <div id="produtos-usuario" class="produtos-usuario-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="produtos-usuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -208,20 +235,23 @@
 
             <div class="produtos">
 
-                <div class="produto">
+                <div id="produto" class="produto">
                     <div class="row">
                         <div class="col s4">
                             <div class="produto_imagem">
                                 <img class="" src="/View/img/camiseta.jpg">
                             </div>
                         </div>
-                        <div class="produto_info col s8">
+                        <div class="produto_info col s6">
                             <span class="nome_produto">Camisa Azul Manga Curta</span>
                             <br>
                             <i class="material-icons icons">remove_red_eye</i>
                             <span>0</span>
                             <i class="material-icons icons">favorite</i>
                             <span>0</span>
+                        </div>
+                        <div class="col s2">
+                            <a class="editar-produto-btn"><i class="material-icons">create</i></a>
                         </div>
                     </div>
                 </div>

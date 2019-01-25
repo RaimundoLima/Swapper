@@ -100,6 +100,16 @@ $(document).ready(function(){
         $("#adicionar-produto").addClass("right-left-ltab");
     });
 
+    $("#produto").click(function() {
+        buscarRoupas();
+        $(".vizualizar-produtoUsuario-tab").removeClass("right-left-ltab");
+        $(".vizualizar-produtoUsuario-tab").addClass("left-right-ltab");
+    });
+    $("#vizualizar-produtoUsuario-btn-voltar").click(function() {
+        $(".vizualizar-produtoUsuario-tab").removeClass("left-right-ltab");
+        $(".vizualizar-produtoUsuario-tab").addClass("right-left-ltab");
+    });
+
 
     /*
     $("#filtro-btn").click(function() {
@@ -177,6 +187,8 @@ function redimensionar(){
     $(".tabs-content").css('height', ($(window).height()*0.90)+'px');
     $(".perfil_tab").css('height', ($(window).height()*0.90)+'px');
     $(".combinacoes_tab").css('height', ($(window).height()*0.90)+'px');
+    $(".produto-imagens").css('width', $(window).width()+'px');
+    $(".produto-imagens").css('height', $(window).width()+'px');
 }
 
 function checkSwitchs(){

@@ -223,6 +223,15 @@ h4{
     margin: 0;
 }
 
+.produto .s2{
+    padding-top: 16px;
+    padding-bottom: 11px;
+}
+
+.editar-produto-btn{
+    color: #e66465
+}
+
 .produto_imagem {
     margin-left: auto;
     margin-right: auto;
@@ -244,7 +253,7 @@ h4{
 }
 
 .produto_info .nome_produto {
-    max-width: 85%;
+    max-width: 100%;
     height: 28px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -642,7 +651,7 @@ h4{
     height: 100%;
 }
 
-.img-g > img{
+.img-g > input{
     width: auto;
     height: 100%;
 }
@@ -653,9 +662,57 @@ h4{
     box-shadow: inset 0px 0px 4px #bbbbbb;
 }
 
-.img-p > div >  img{
+.img-p > div >  input{
     width: auto;
     height: 100%;
+}
+
+.vizualizar-produtoUsuario-tab{
+    z-index: 12;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#e66465, #9198e5);
+    display: none;
+    text-align: center;
+}
+
+.produto-view-tab .titulo_tab{
+    display: inline-flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 600;
+    width: 100%;
+}
+
+.produto-view-tab .titulo_tab>a {
+    color: white;
+    padding-top: 1.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1.2rem;
+}
+
+.produto-view-tab .titulo_tab>a>i {
+    font-size: 34px;
+    vertical-align: middle;
+}
+
+.vizualizar-produtoUsuario-tab .info{
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+}
+
+.tag{
+    background: linear-gradient(90deg,#e66465, #9198e5);
+    padding: 0.4em;
+    color: white;
+    font-weight: 800;
+    border-radius: 10px;
+    line-height: 2.4em;
 }
 
 .switch .col {
