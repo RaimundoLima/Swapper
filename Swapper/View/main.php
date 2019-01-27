@@ -4,7 +4,7 @@
 
 <body>
 
-    <div class="row swiper-container">
+    <div class="row swiper-container main-container">
         <div class="swiper-wrapper">
             <div id="perfil" class="col s12 swiper-slide">
 
@@ -133,7 +133,8 @@
         </div>
     </div>
 
-    <div id="adicionar-produto" class="adicionar-produto-tab out-tab">
+    <!-- Abas acessadas pelo Perfil -->
+    <div id="adicionar-produto" class="produto-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="adicionar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
             <h4 class="pd-r0">Adicionar Produto</h4>
@@ -142,14 +143,76 @@
         <div class="row">
             <div class="criar-produto-imgs">
                 <div class="img-g">
-                    <input type="image" id="image" alt="Login" src="/View/img/camiseta.jpg">
+                    <input type="image" id="" src="/View/img/camiseta.jpg">
                 </div>
                 <div class="img-p">
                     <div>
-                        <input type="image" id="image" alt="Login" src="/View/img/camiseta.jpg">                    
+                        <input type="image" id="" src="/View/img/camiseta.jpg">                    
                     </div>
                     <div>
-                        <input type="image" id="image" alt="Login" src="/View/img/camiseta.jpg">                    
+                        <input type="image" id="" src="/View/img/camiseta.jpg">                    
+                    </div>
+                </div>
+            </div>
+            <div>           
+                <div class="input-field col s12">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">Nome do Produto</label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Descrição</label>
+                </div>  
+                <div class="input-field col s6">
+                    <select>
+                    <option value="1">Masculino</option>
+                    <option value="2">Feminino</option>
+                    </select>
+                    <label>Sexo</label>
+                </div>
+                <div class="input-field col s6">
+                    <select>
+                    <option value="1">Infantil</option>
+                    <option value="2">Adulto</option>
+                    </select>
+                    <label>Categoria</label>
+                </div>
+                <div class="input-field col s6">
+                    <select>
+                    <option value="1">Roupas</option>
+                    <option value="2">Acessórios</option>
+                    <option value="3">Calçados</option>
+                    </select>
+                    <label>Tipo</label>
+                </div>
+                <div class="input-field col s6">
+                    <select>
+                    <option value="1">Usado</option>
+                    <option value="2">Novo</option>
+                    </select>
+                    <label>Estado</label>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <div id="editar-produto" class="produto-tab out-tab">
+        <div class="titulo_tab fixed">
+            <a id="editar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+            <h4 class="pd-r0">Editar Produto</h4>
+            <a class="btn-check"><i class="material-icons">check</i></a>
+        </div>
+        <div class="row">
+            <div class="criar-produto-imgs">
+                <div class="img-g">
+                    <input type="image" id="" alt="" src="">
+                </div>
+                <div class="img-p">
+                    <div>
+                        <input type="image" id="" alt="" src="">                    
+                    </div>
+                    <div>
+                        <input type="image" id="" alt="" src="">                    
                     </div>
                 </div>
             </div>
@@ -199,13 +262,20 @@
         <div class="titulo_tab">
             <a id="vizualizar-produtoUsuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
         </div>
+        <div class="produto-imagens">
+       
+        </div>
         <div class="info mg-0 row">
             <div class="col s12">
                 <h4>Camiseta Azul Manga Curta</h4>
+                <div class="divisoria"></div>
             </div>
+            
             <div class="tx-l col s12">
                 <span>Camiseta XXXXXX, tamanho M, cor Azul, produzida em poliester.</span>
+                <div class="divisoria"></div>
             </div>
+            
             <div class="tx-l col s12">
                 <span>TAGS:</span>
                 <span class="tag">MASCULINA</span>
@@ -217,10 +287,11 @@
                 <span class="tag">CALÇADO</span>
                 <span class="tag">USADA</span>
                 <span class="tag">NOVA</span>
+                <div class="divisoria"></div>
             </div>
+            
         </div>
     </div>
-
 
     <div id="produtos-usuario" class="produtos-usuario-tab out-tab">
         <div class="titulo_tab fixed">
@@ -237,12 +308,12 @@
 
                 <div id="produto" class="produto">
                     <div class="row">
-                        <div class="col s4">
+                        <div class="col s4 vizualizar-produto">
                             <div class="produto_imagem">
                                 <img class="" src="/View/img/camiseta.jpg">
                             </div>
                         </div>
-                        <div class="produto_info col s6">
+                        <div class="produto_info col s6 vizualizar-produto">
                             <span class="nome_produto">Camisa Azul Manga Curta</span>
                             <br>
                             <i class="material-icons icons">remove_red_eye</i>
@@ -250,8 +321,8 @@
                             <i class="material-icons icons">favorite</i>
                             <span>0</span>
                         </div>
-                        <div class="col s2">
-                            <a class="editar-produto-btn"><i class="material-icons">create</i></a>
+                        <div id="editarProduto_btn" class="col s2">
+                            <a  class="editar-produto-btn"><i class="material-icons">create</i></a>
                         </div>
                     </div>
                 </div>
@@ -263,7 +334,8 @@
             <i class="material-icons">add</i>
         </a>
     </div>
-
+    <!-- ///////////////////////// -->
+    <!-- Abas acessadas pelo Descobir -->
     <div id="filtro" class="busca_tab out-tab">
         <div class="titulo_tab">
             <a id="filtro-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -279,7 +351,6 @@
                 <input id="input-dist" type="range" name="dist" min="0" max="150">
 
                 <div class="divisoria"></div>
-
 
                 <h5 class="titulo_filtro">Sexo:</h5>
                 <div class="row switch">
@@ -386,6 +457,10 @@
             <div class="col s1 "></div>
         </div>
     </div>
+    <!-- ///////////////////////// -->
+    <!-- Abas acessadas pelo Mensagens -->
+    <!-- ///////////////////////// -->
+
 
 </body>
 <?php include("footer.php"); ?>
