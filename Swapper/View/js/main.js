@@ -1,7 +1,7 @@
 var buscaFiltro=0;
 var buscaRoupas=0
 $(document).ready(function(){
-    mySwiper = new Swiper ('.swiper-container', {
+    mySwiper = new Swiper ('.main-container', {
         direction: 'horizontal',
         loop: false,
         speed: 500,
@@ -38,7 +38,6 @@ $(document).ready(function(){
         }
     });
 
-    $('.carousel').carousel();
     $('select').formSelect();
 
     redimensionar();
@@ -78,6 +77,24 @@ $(document).ready(function(){
     $("#adicionar-produto-btn-voltar").click(function() {
         $("#adicionar-produto").removeClass("left-right-ltab");
         $("#adicionar-produto").addClass("right-left-ltab");
+    });
+
+    $(".vizualizar-produto").click(function() {
+        $(".vizualizar-produtoUsuario-tab").removeClass("right-left-ltab");
+        $(".vizualizar-produtoUsuario-tab").addClass("left-right-ltab");
+    });
+    $("#vizualizar-produtoUsuario-btn-voltar").click(function() {
+        $(".vizualizar-produtoUsuario-tab").removeClass("left-right-ltab");
+        $(".vizualizar-produtoUsuario-tab").addClass("right-left-ltab");
+    });
+
+    $("#editarProduto_btn").click(function() {
+        $("#editar-produto").removeClass("right-left-ltab");
+        $("#editar-produto").addClass("left-right-ltab");
+    });
+    $("#editar-produto-btn-voltar").click(function() {
+        $("#editar-produto").removeClass("left-right-ltab");
+        $("#editar-produto").addClass("right-left-ltab");
     });
 
 
@@ -169,6 +186,8 @@ function redimensionar(){
     $(".tabs-content").css('height', ($(window).height()*0.90)+'px');
     $(".perfil_tab").css('height', ($(window).height()*0.90)+'px');
     $(".combinacoes_tab").css('height', ($(window).height()*0.90)+'px');
+    $(".produto-imagens").css('width', $(window).width()+'px');
+    $(".produto-imagens").css('height', $(window).width()+'px');
 }
 
 function checkSwitchs(){
@@ -243,3 +262,5 @@ $('#switch-acessorio').on('change', checkSwitchs_Tipo);
 $('#switch-calcado').on('change', checkSwitchs_Tipo);
 $('#switch-usada').on('change', checkSwitchs_Estado);
 $('#switch-nova').on('change', checkSwitchs_Estado);
+
+

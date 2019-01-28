@@ -225,6 +225,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: rgb(194, 194, 194);
   }
+
+  .swiper-pagination-bullet:focus{
+    outline:none;
+  }
+
   button.swiper-pagination-bullet {
     border: none;
     margin: 0;
