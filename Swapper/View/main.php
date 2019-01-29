@@ -20,26 +20,32 @@
                                         <img src="/View/img/luis.jpg" alt="">
                                     </div>
                                 </div>
-                                <div class="pd-r0 col s7">
+                                <div class="pd-r0 tx-l col s7">
                                     <h5 class="nome">
-                                        <div class="nome_tx"><span>Luis Henrique Jacinto</span></div><i class="tiny material-icons">check_circle</i>
+                                        <div class="nome_tx"><span>Luis Henrique Jacinto</span></div>
                                     </h5>
-
-                                    <h6 class="cidade">Rio Grande, RS</h6>
+                                    <i class="tiny material-icons">star_half</i><i class="tiny material-icons">check_circle</i>
                                 </div>
                                 <div class="editarBtn_perfil col s2">
                                     <a class=""><i class="font18em material-icons icons">create</i></a>
                                 </div>
                             </div>
-
-
                             <div class="row" id="borda_perfil">
                                 <div class="col s12 borda_perfil">
                                 </div>
                             </div>
 
-                            <div class="perfil-btns">
-                                <a id="produtos-usuario-btn" class="produtos-usuario-btn">Produtos</a>
+                            <div class="row perfil-btns">
+                                <div class="col s6">
+                                    <a id="" class=""><i class="material-icons">star_half</i></a>
+                                    <br>
+                                    <span>Credibilidade</span>
+                                </div>
+                                <div class="col s6">
+                                    <a id="produtos-usuario-btn" class="produtos-usuario-btn"><i class="material-icons">shopping_basket</i></a>
+                                    <br>
+                                    <span>Produtos</span>
+                                </div>
                             </div>
                         </div>
 
