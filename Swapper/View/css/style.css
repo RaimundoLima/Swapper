@@ -174,9 +174,6 @@ h4{
     display: inline-block;
     white-space: nowrap;
 }
-.perfil-btns > div > span{
-    color:;
-}
 
 .perfil-btns > div > a {
     color: rgb(194, 194, 194);
@@ -389,7 +386,7 @@ h4{
     text-align: center;
 }
 
-.action-btns>a {
+.action-btns>button {
     background-color: white;
     border-radius: 100%;
     display: inline-block;
@@ -425,24 +422,28 @@ h4{
 .btn-rever {
     background: linear-gradient(90deg, #fcbc47, #8d651c);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .btn-deslike {
     background: #bbbbbb;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .btn-like {
     background: linear-gradient(#f6b2b5, #e66465);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .btn-superlike {
     background: linear-gradient(-90deg, #5ee665, #e7f8e8);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -495,8 +496,7 @@ h4{
     box-shadow: 0px 2px 10px #f6b2b5;
 }
 
-.cards .dados>i {
-    color: #e66465;
+.cards .dados>span {
     position: absolute;
     height: 15%;
     width: auto;
@@ -561,7 +561,7 @@ h4{
 .produto-usuario .shadow{
     height: 6px;
     background-color: rgba(0,0,0,0.1);
-    width: 80%;
+    width: 70%;
     border-radius: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -574,6 +574,39 @@ h4{
     position: absolute;
     bottom: 0;
     border-top: 2px #f6b2b5 solid;
+}
+
+.meritos-perfil{
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.usuario-dados .lvCredibilidade{
+    margin-top: 6px;
+}
+
+.usuario-dados .contaVerificada{
+    margin-top: 6px;
+    font-size: 1.4em;
+    color: #e66465;
+}
+
+.usuario-dados #usuario-nome{
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: 800;
+    font-size: 1.4em;
+}
+
+.usuario-dados #usuario-distancia{
+    font-size: 1em;
 }
 
 .usuario-img{
@@ -592,6 +625,8 @@ h4{
     border-radius: 100%;
     border: 2px #f6b2b5 solid;
 }
+
+
 
 .busca_tab {
     z-index: 11;

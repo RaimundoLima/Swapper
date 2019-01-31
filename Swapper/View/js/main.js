@@ -61,10 +61,14 @@ $(document).ready(function(){
     // TESTEEEEE ////////////////////////////////////////
 
     $("#perfis-btn").click(function() {
+        botoesAcaoPrincipal(1);
+        botoesAcaoSecundario(0);
         $("#perfis").removeClass("down-up");
         $("#perfis").addClass("up-down");
       });
     $("#perfis-btn-voltar").click(function() {
+        botoesAcaoPrincipal(0);
+        botoesAcaoSecundario(1);
         $("#perfis").removeClass("up-down");
         $("#perfis").addClass("down-up");
         preventDefault()
@@ -278,4 +282,15 @@ $('#switch-calcado').on('change', checkSwitchs_Tipo);
 $('#switch-usada').on('change', checkSwitchs_Estado);
 $('#switch-nova').on('change', checkSwitchs_Estado);
 
+function botoesAcaoPrincipal(estado){
+    $('#btn-rever').prop('disabled', estado*1);
+    $('#btn-deslike').prop('disabled', estado*1);
+    $('#btn-like').prop('disabled', estado*1);
+    $('#btn-superlike').prop('disabled', estado*1);
+}
 
+function botoesAcaoSecundario(estado){
+    $('#btn-deslike2').prop('disabled', estado*1);
+    $('#btn-like2').prop('disabled', estado*1);
+    $('#btn-superlike2').prop('disabled', estado*1);
+}

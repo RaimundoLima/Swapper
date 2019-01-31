@@ -24,7 +24,7 @@
                                     <h5 class="nome">
                                         <div class="nome_tx"><span>Luis Henrique Jacinto</span></div>
                                     </h5>
-                                    <i class="material-icons">star_half</i><i class="material-icons">check_circle</i>
+                                    <i class="material-icons meritos-perfil">star_half</i><i class="material-icons meritos-perfil">check_circle</i>
                                 </div>
                                 <div class="editarBtn_perfil col s2">
                                     <a id=""><i class="font18em material-icons icons">create</i></a>
@@ -54,7 +54,6 @@
             </div>
 
             <div id="descobrir" class="col s12 swiper-slide">
-
                 <div class="row">
                     <div class="descobrir_tab col s12">
 
@@ -77,29 +76,31 @@
                             </div>
                             <div class="dados swiper-no-swiping">
                                 <img id="perfis-btn" src="/View/img/luis.jpg" alt="">
-                                <i class="material-icons">check_circle</i>
+                                <span>
+                                    <i  class="meritos-perfil material-icons">star_half</i>
+                                    <i class="meritos-perfil material-icons">check_circle</i>
+                                </span>
                             </div>
                         </div>
 
                         <div class="action-btns bt-8">
-                            <a class="btn-p swiper-no-swiping">
+                            <button id="btn-rever" class="btn-p swiper-no-swiping">
                                 <i class="btn-rever material-icons">replay</i>
-                            </a>
-                            <a class="btn-g swiper-no-swiping">
+                            </button>
+                            <button id="btn-deslike" class="btn-g swiper-no-swiping">
                                 <i class="btn-deslike material-icons">close</i>
-                            </a>
-                            <a class="btn-g swiper-no-swiping">
+                            </button>
+                            <button id="btn-like" class="btn-g swiper-no-swiping">
                                 <i class="btn-like material-icons">favorite</i>
-                            </a>
-                            <a class="btn-p swiper-no-swiping">
+                            </button>
+                            <button id="btn-superlike" class="btn-p swiper-no-swiping">
                                 <i class="btn-superlike material-icons">grade</i>
-                            </a>
+                            </button>
                         </div>
 
 
                     </div>
                 </div>
-
             </div>
 
             <div id="mensagens" class="col s12 swiper-slide">
@@ -140,53 +141,6 @@
     </div>
 
     <!-- Abas acessadas pelo Perfil -->
-
-    <div id="perfis" class="perfis-tab view-tab">
-        <div class="titulo_tab fixed">
-            <a id="perfis-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
-            <h4 class=""></h4>
-        </div>
-        <div class="row mg-0 usuario-produtos">
-                <div class="produto-usuario col s6">
-                    <div class="img"><img src="View/img/camiseta.jpg" alt=""></div>
-                    <i class="tiny material-icons">remove_red_eye</i>
-                    <span>0</span>
-                    <i class="tiny material-icons">favorite</i>
-                    <span>0</span>
-                    <br>
-                    <span>Camiseta NANAN ANANAN</span>
-                    <br>
-                    <div class="shadow"></div>
-                </div>
-        </div>
-        <div class="usuario-img"> <img class="" src="View/img/rai.jpg" alt=""></div>
-        <div class="usuario-dados">
-            <div class="row">
-                <div class="col s3">    
-                </div>
-                <div class="col s8">
-                    <i class="material-icons">star_half</i><i class="material-icons">check_circle</i>
-                    <br>
-                    <span>Raimundo Nonato Magaldi Lima</span>
-                    <br>
-                    <span>40km</span>
-                </div>
-            </div>
-            <div class="action-btns bt-3">
-                <a class="btn-g swiper-no-swiping">
-                    <i class="btn-deslike material-icons">close</i>
-                </a>
-                <a class="btn-p swiper-no-swiping">
-                    <i class="btn-superlike material-icons">grade</i>
-                </a>
-                <a class="btn-g swiper-no-swiping">
-                    <i class="btn-like material-icons">favorite</i>
-                </a>
-            </div>
-        </div>
-
-    </div>
-
     <div id="adicionar-produto" class="produto-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="adicionar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -509,10 +463,57 @@
             <div class="col s1 "></div>
         </div>
     </div>
+    
+    <div id="perfis" class="perfis-tab view-tab">
+        <div class="titulo_tab fixed">
+            <a id="perfis-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+            <h4 class=""></h4>
+        </div>
+        <div class="row mg-0 usuario-produtos">
+                <div class="produto-usuario col s6">
+                    <div class="img"><img src="View/img/camiseta.jpg" alt=""></div>
+                    <i class="tiny material-icons">remove_red_eye</i>
+                    <span>0</span>
+                    <i class="tiny material-icons">favorite</i>
+                    <span>0</span>
+                    <br>
+                    <span>Camiseta NANAN ANANAN</span>
+                    <br>
+                    <div class="shadow"></div>
+                </div>
+        </div>
+        <div class="usuario-img"> <img class="" src="View/img/rai.jpg" alt=""></div>
+        <div class="usuario-dados">
+            <div class="row">
+                <div class="col s3">    
+                </div>
+                <div class="col s8">
+                    <span id="usuario-nome" >Raimundo Nonato Magaldi Lima</span>
+                    <br>
+                    <span id="usuario-distancia" >40km</span>
+                    <br>
+                    <i  class="lvCredibilidade meritos-perfil material-icons">star_half</i><i id="usuario-contaVerificada" class="meritos-perfil contaVerificada material-icons">check_circle</i>
+                    
+                    
+                </div>
+            </div>
+            <div class="action-btns bt-3">
+                <button id="btn-deslike2" class="btn-g swiper-no-swiping" disabled>
+                    <i class="btn-deslike material-icons">close</i>
+                </button>
+                <button id="btn-superlike2" class="btn-p swiper-no-swiping" disabled>
+                    <i class="btn-superlike material-icons">grade</i>
+                </button>
+                <button id="btn-like2" class="btn-g swiper-no-swiping" disabled>
+                    <i class="btn-like material-icons">favorite</i>
+                </button>
+            </div>
+        </div>
+
+    </div>
     <!-- ///////////////////////// -->
     <!-- Abas acessadas pelo Mensagens -->
     <!-- ///////////////////////// -->
-
 
 </body>
 <?php include("footer.php"); ?>
