@@ -24,10 +24,10 @@
                                     <h5 class="nome">
                                         <div class="nome_tx"><span>Luis Henrique Jacinto</span></div>
                                     </h5>
-                                    <i class="tiny material-icons">star_half</i><i class="tiny material-icons">check_circle</i>
+                                    <i class="material-icons">star_half</i><i class="material-icons">check_circle</i>
                                 </div>
                                 <div class="editarBtn_perfil col s2">
-                                    <a class=""><i class="font18em material-icons icons">create</i></a>
+                                    <a id=""><i class="font18em material-icons icons">create</i></a>
                                 </div>
                             </div>
                             <div class="row" id="borda_perfil">
@@ -76,12 +76,12 @@
 
                             </div>
                             <div class="dados swiper-no-swiping">
-                                <img src="/View/img/luis.jpg" alt="">
+                                <img id="perfis-btn" src="/View/img/luis.jpg" alt="">
                                 <i class="material-icons">check_circle</i>
                             </div>
                         </div>
 
-                        <div class="action-btns">
+                        <div class="action-btns bt-8">
                             <a class="btn-p swiper-no-swiping">
                                 <i class="btn-rever material-icons">replay</i>
                             </a>
@@ -140,6 +140,53 @@
     </div>
 
     <!-- Abas acessadas pelo Perfil -->
+
+    <div id="perfis" class="perfis-tab view-tab">
+        <div class="titulo_tab fixed">
+            <a id="perfis-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+            <h4 class=""></h4>
+        </div>
+        <div class="row mg-0 usuario-produtos">
+                <div class="produto-usuario col s6">
+                    <div class="img"><img src="View/img/camiseta.jpg" alt=""></div>
+                    <i class="tiny material-icons">remove_red_eye</i>
+                    <span>0</span>
+                    <i class="tiny material-icons">favorite</i>
+                    <span>0</span>
+                    <br>
+                    <span>Camiseta NANAN ANANAN</span>
+                    <br>
+                    <div class="shadow"></div>
+                </div>
+        </div>
+        <div class="usuario-img"> <img class="" src="View/img/rai.jpg" alt=""></div>
+        <div class="usuario-dados">
+            <div class="row">
+                <div class="col s3">    
+                </div>
+                <div class="col s8">
+                    <i class="material-icons">star_half</i><i class="material-icons">check_circle</i>
+                    <br>
+                    <span>Raimundo Nonato Magaldi Lima</span>
+                    <br>
+                    <span>40km</span>
+                </div>
+            </div>
+            <div class="action-btns bt-3">
+                <a class="btn-g swiper-no-swiping">
+                    <i class="btn-deslike material-icons">close</i>
+                </a>
+                <a class="btn-p swiper-no-swiping">
+                    <i class="btn-superlike material-icons">grade</i>
+                </a>
+                <a class="btn-g swiper-no-swiping">
+                    <i class="btn-like material-icons">favorite</i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
     <div id="adicionar-produto" class="produto-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="adicionar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -153,14 +200,14 @@
                 </div>
                 <div class="img-p">
                     <div>
-                        <input type="image" id="" src="/View/img/camiseta.jpg">                    
+                        <input type="image" id="" src="/View/img/camiseta.jpg">
                     </div>
                     <div>
-                        <input type="image" id="" src="/View/img/camiseta.jpg">                    
+                        <input type="image" id="" src="/View/img/camiseta.jpg">
                     </div>
                 </div>
             </div>
-            <div>           
+            <div>
                 <div class="input-field col s12">
                     <input id="first_name" type="text" class="validate">
                     <label for="first_name">Nome do Produto</label>
@@ -168,37 +215,37 @@
                 <div class="input-field col s12">
                     <textarea id="textarea1" class="materialize-textarea"></textarea>
                     <label for="textarea1">Descrição</label>
-                </div>  
+                </div>
                 <div class="input-field col s6">
                     <select>
-                    <option value="1">Masculino</option>
-                    <option value="2">Feminino</option>
+                        <option value="1">Masculino</option>
+                        <option value="2">Feminino</option>
                     </select>
                     <label>Sexo</label>
                 </div>
                 <div class="input-field col s6">
                     <select>
-                    <option value="1">Infantil</option>
-                    <option value="2">Adulto</option>
+                        <option value="1">Infantil</option>
+                        <option value="2">Adulto</option>
                     </select>
                     <label>Categoria</label>
                 </div>
                 <div class="input-field col s6">
                     <select>
-                    <option value="1">Roupas</option>
-                    <option value="2">Acessórios</option>
-                    <option value="3">Calçados</option>
+                        <option value="1">Roupas</option>
+                        <option value="2">Acessórios</option>
+                        <option value="3">Calçados</option>
                     </select>
                     <label>Tipo</label>
                 </div>
                 <div class="input-field col s6">
                     <select>
-                    <option value="1">Usado</option>
-                    <option value="2">Novo</option>
+                        <option value="1">Usado</option>
+                        <option value="2">Novo</option>
                     </select>
                     <label>Estado</label>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 
@@ -215,14 +262,14 @@
                 </div>
                 <div class="img-p">
                     <div>
-                        <input type="image" id="" alt="" src="">                    
+                        <input type="image" id="" alt="" src="">
                     </div>
                     <div>
-                        <input type="image" id="" alt="" src="">                    
+                        <input type="image" id="" alt="" src="">
                     </div>
                 </div>
             </div>
-            <div>           
+            <div>
                 <div class="input-field col s12">
                     <input id="first_name" type="text" class="validate">
                     <label for="first_name">Nome do Produto</label>
@@ -230,58 +277,58 @@
                 <div class="input-field col s12">
                     <textarea id="textarea1" class="materialize-textarea"></textarea>
                     <label for="textarea1">Descrição</label>
-                </div>  
+                </div>
                 <div class="input-field col s6">
                     <select>
-                    <option value="1">Masculino</option>
-                    <option value="2">Feminino</option>
+                        <option value="1">Masculino</option>
+                        <option value="2">Feminino</option>
                     </select>
                     <label>Sexo</label>
                 </div>
                 <div class="input-field col s6">
                     <select>
-                    <option value="1">Infantil</option>
-                    <option value="2">Adulto</option>
+                        <option value="1">Infantil</option>
+                        <option value="2">Adulto</option>
                     </select>
                     <label>Categoria</label>
                 </div>
                 <div class="input-field col s6">
                     <select>
-                    <option value="1">Roupas</option>
-                    <option value="2">Acessórios</option>
-                    <option value="3">Calçados</option>
+                        <option value="1">Roupas</option>
+                        <option value="2">Acessórios</option>
+                        <option value="3">Calçados</option>
                     </select>
                     <label>Tipo</label>
                 </div>
                 <div class="input-field col s6">
                     <select>
-                    <option value="1">Usado</option>
-                    <option value="2">Novo</option>
+                        <option value="1">Usado</option>
+                        <option value="2">Novo</option>
                     </select>
                     <label>Estado</label>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 
-    <div id="vizualizar-produtoUsuario" class="vizualizar-produtoUsuario-tab produto-view-tab">
+    <div id="vizualizar-produtoUsuario" class="vizualizar-produtoUsuario-tab view-tab">
         <div class="titulo_tab">
             <a id="vizualizar-produtoUsuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
         </div>
         <div class="produto-imagens">
-       
+
         </div>
         <div class="info mg-0 row">
             <div class="col s12">
                 <h4>Camiseta Azul Manga Curta</h4>
                 <div class="divisoria"></div>
             </div>
-            
+
             <div class="tx-l col s12">
                 <span>Camiseta XXXXXX, tamanho M, cor Azul, produzida em poliester.</span>
                 <div class="divisoria"></div>
             </div>
-            
+
             <div class="tx-l col s12">
                 <span>TAGS:</span>
                 <span class="tag">MASCULINA</span>
@@ -295,14 +342,14 @@
                 <span class="tag">NOVA</span>
                 <div class="divisoria"></div>
             </div>
-            
+
         </div>
     </div>
 
     <div id="produtos-usuario" class="produtos-usuario-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="produtos-usuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
-            <h4 class="">Produtos</h4>
+            <h4 class="">Meus Produtos</h4>
         </div>
         <div class="div_produtos">
             <div class="no_produtos">
@@ -328,11 +375,10 @@
                             <span>0</span>
                         </div>
                         <div id="editarProduto_btn" class="col s2">
-                            <a  class="editar-produto-btn"><i class="material-icons">create</i></a>
+                            <a class="editar-produto-btn"><i class="material-icons">create</i></a>
                         </div>
                     </div>
                 </div>
-                -->
             </div>
 
         </div>
@@ -470,4 +516,5 @@
 
 </body>
 <?php include("footer.php"); ?>
+
 </html>

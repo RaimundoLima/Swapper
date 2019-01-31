@@ -58,6 +58,21 @@ $(document).ready(function(){
         preventDefault()
     });
 
+    // TESTEEEEE ////////////////////////////////////////
+
+    $("#perfis-btn").click(function() {
+        $("#perfis").removeClass("down-up");
+        $("#perfis").addClass("up-down");
+      });
+    $("#perfis-btn-voltar").click(function() {
+        $("#perfis").removeClass("up-down");
+        $("#perfis").addClass("down-up");
+        preventDefault()
+    });
+
+
+
+    ////////////////////////////////////////////////////
 
     $("#produtos-usuario-btn").click(function() {
         buscarRoupas();

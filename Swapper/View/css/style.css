@@ -76,7 +76,7 @@ h4{
 
 
     background-color: white;
-    box-shadow: 0px -2px 0px #f6b2b5;
+    border-top: 2px #f6b2b5 solid;
 }
 
 .tabs .tab {
@@ -120,7 +120,7 @@ h4{
     padding-left: 0.75em;
     margin: 0em;
     padding: 1.52rem;
-    box-shadow: 0px 2px 0px #f6b2b5;
+    border-bottom: 2px #f6b2b5 solid;
 }
 
 .row .col .perfil_tab {
@@ -137,8 +137,10 @@ h4{
 .perfil_dados {
     text-align: center;
     background-color: white;
-    box-shadow: 0px 0px 10px #f6b2b5;
-    padding-top: 0.8em !important
+    /*box-shadow: 0px 0px 10px #f6b2b5;*/
+    padding-top: 0.8em !important;
+    border-top: 2px #f6b2b5 solid;
+    border-bottom: 2px #f6b2b5 solid;
 }
 
 .perfil_dados .pic {
@@ -172,11 +174,13 @@ h4{
     display: inline-block;
     white-space: nowrap;
 }
+.perfil-btns > div > span{
+    color:;
+}
 
 .perfil-btns > div > a {
-    color: white;
+    color: rgb(194, 194, 194);
     display: inline-block;
-    background-color: #e66465;
     border-radius: 100%;
     height: 55px;
     width: 55px;
@@ -184,6 +188,7 @@ h4{
     line-height: 55px;
     bottom: 2%;
     right: 5%;
+    border: 2px #f0f0f0 solid;
 }
 
 .perfil-btns > div > a >i {
@@ -196,7 +201,7 @@ h4{
     width: 100%;
     height: 2px;
     border-radius: 0%;
-    box-shadow: 0px 1.5px 0px #f6b2b5;
+    border-bottom: 2px #f6b2b5 solid;
 }
 
 .produtos {
@@ -206,7 +211,7 @@ h4{
 
 .produto {
     background-color: white;
-    box-shadow: 0px 2px 0px #f6b2b5;
+    border-bottom: 2px #f6b2b5 solid;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     margin-bottom: 2px;
@@ -273,8 +278,25 @@ h4{
     margin-top: 0.8em;
 }
 
-.editarBtn_perfil>a {
-    color: #000000;
+.editarBtn_perfil > a {
+    color: #e66465
+    /*color: white;
+    display: inline-block;
+    background-color: #e66465;
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    bottom: 2%;
+    right: 5%;
+    */
+}
+
+.editarBtn_perfil > a > i {
+    font-size: 21px !important;
+    vertical-align: middle;
+    margin-bottom: 4px;
 }
 
 .combinacoes_tab {
@@ -289,7 +311,7 @@ h4{
     width: 100%;
     margin: 0em;
     padding: 1.52rem;
-    box-shadow: 0px 2px 0px #f6b2b5;
+    border-bottom: 2px #f6b2b5 solid;
 }
 
 .row .col .combinacoes_tab {
@@ -298,11 +320,11 @@ h4{
 
 .combinacoes_msg_card {
     background-color: white;
-    box-shadow: 0px 2px 0px #f6b2b5;
+    box-shadow: 0px -2px 0px #f6b2b5;
+    border-bottom: 2px #f6b2b5 solid;
     width: 100%;
     padding-top: 1em;
     padding-bottom: 0.6em;
-    margin-top: 2px;
 }
 
 .combinacoes_msg_card .row {
@@ -361,7 +383,6 @@ h4{
 
 .action-btns {
     position: absolute;
-    bottom: 8%;
     left: 0;
     display: inline-block;
     width: 100%;
@@ -496,6 +517,82 @@ h4{
     line-height: 40px;
 }
 
+.perfis-tab{
+    z-index: 11;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(#e66465, #9198e5);
+    display: none;
+}
+
+.perfis-tab .titulo_tab{
+    box-shadow: 0px 0px 0.3px white;
+}
+
+.usuario-produtos{
+    height: 100%;
+    height: 70%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-top: 15%;
+}
+
+.usuario-produtos .produto-usuario{
+    height: 50%;
+    text-align: -webkit-center;
+}
+
+.produto-usuario .img{
+    height: 100px;
+    width: 100px;
+    background-color: #f0f0f0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+}
+
+.produto-usuario .img > img{
+    height: 100%;
+    width: auto;
+}
+
+.produto-usuario .shadow{
+    height: 6px;
+    background-color: rgba(0,0,0,0.1);
+    width: 80%;
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.usuario-dados{
+    width: 100%;
+    background-color: white;
+    height: 30%;
+    position: absolute;
+    bottom: 0;
+    border-top: 2px #f6b2b5 solid;
+}
+
+.usuario-img{
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    left: 1em;
+    z-index: 15;
+    top: 68%;
+    position: absolute;
+}
+
+.usuario-img > img{
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    border: 2px #f6b2b5 solid;
+}
+
 .busca_tab {
     z-index: 11;
     position: absolute;
@@ -522,7 +619,7 @@ h4{
     font-weight: 600;
     background-color: white;
     width: 100%;
-    box-shadow: 0px 2px 0px #f6b2b5;
+    border-bottom: 2px #f6b2b5 solid;
 }
 
 .out-tab .titulo_tab>a {
@@ -663,7 +760,7 @@ h4{
     text-align: center;
 }
 
-.produto-view-tab .titulo_tab{
+.view-tab .titulo_tab{
     display: inline-flex;
     position: absolute;
     top: 0;
@@ -672,7 +769,7 @@ h4{
     width: 100%;
 }
 
-.produto-view-tab .titulo_tab>a {
+.view-tab .titulo_tab>a {
     color: white;
     padding-top: 1.2rem;
     padding-left: 1rem;
@@ -680,7 +777,7 @@ h4{
     padding-bottom: 1.2rem;
 }
 
-.produto-view-tab .titulo_tab>a>i {
+.view-tab .titulo_tab>a>i {
     font-size: 34px;
     vertical-align: middle;
 }
@@ -763,6 +860,14 @@ h4{
 
 .mg-0 {
     margin: 0;
+} 
+
+.bt-3{
+    bottom: 3%;
+}
+
+.bt-8{
+    bottom: 8%;
 }
 
 .range-values {
