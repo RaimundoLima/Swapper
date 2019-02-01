@@ -77,6 +77,16 @@ $(document).ready(function(){
 
 
     ////////////////////////////////////////////////////
+    
+    $("#credibilidade-usuario-btn").click(function() {
+        buscarRoupas();
+        $("#credibilidade-usuario").removeClass("right-left-ltab");
+        $("#credibilidade-usuario").addClass("left-right-ltab");
+    });
+    $("#credibilidade-usuario-btn-voltar").click(function() {
+        $("#credibilidade-usuario").removeClass("left-right-ltab");
+        $("#credibilidade-usuario").addClass("right-left-ltab");
+    });
 
     $("#produtos-usuario-btn").click(function() {
         buscarRoupas();

@@ -15,8 +15,16 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
-h4{
+h4 {
     font-size: 2rem;
+}
+
+.btn-check, [type="submit"] {
+    -webkit-appearance: caret;
+}
+
+.dropdown-content li>a, .dropdown-content li>span{
+    color: #e66465
 }
 
 #perfil,
@@ -110,6 +118,7 @@ h4{
     padding-left: 0.75em;
     margin: 0em;
     padding: 1.52rem;
+
 }
 
 .perfil_tab .titulo_tab {
@@ -137,7 +146,7 @@ h4{
 .perfil_dados {
     text-align: center;
     background-color: white;
-    /*box-shadow: 0px 0px 10px #f6b2b5;*/
+    margin-top: 1.5em;
     padding-top: 0.8em !important;
     border-top: 2px #f6b2b5 solid;
     border-bottom: 2px #f6b2b5 solid;
@@ -175,7 +184,7 @@ h4{
     white-space: nowrap;
 }
 
-.perfil-btns > div > a {
+.perfil-btns>div>a {
     color: rgb(194, 194, 194);
     display: inline-block;
     border-radius: 100%;
@@ -188,7 +197,7 @@ h4{
     border: 2px #f0f0f0 solid;
 }
 
-.perfil-btns > div > a >i {
+.perfil-btns>div>a>i {
     font-size: 2.8em !important;
     vertical-align: middle;
     margin-bottom: 0.1em;
@@ -199,6 +208,49 @@ h4{
     height: 2px;
     border-radius: 0%;
     border-bottom: 2px #f6b2b5 solid;
+}
+
+.dados-credibilidade{
+    background-color: white;
+    text-align: center;
+    margin-top: 1.5em;
+    padding-top: 0.8em !important;
+    border-top: 2px #f6b2b5 solid;
+    border-bottom: 2px #f6b2b5 solid;
+}
+
+.dados-credibilidade > div > i{
+    border: 2px #f0f0f0 solid;
+    border-radius: 100%;
+    height: 70px;
+    width: 70px;
+    line-height: 68px;
+    font-size: 3.4em;
+    text-align: center;
+}
+
+.dados-credibilidade .credibilidade-atual{
+    height: 70px;
+}
+
+.dados-credibilidade .credibilidade-atual > span{
+    display: -webkit-box;
+}
+
+.barraDeXP{
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.xp-atual{
+    background-color: #e66465;
+    height: 100%;
+    width: 20%;
+    border-radius: 5px;
 }
 
 .produtos {
@@ -218,12 +270,12 @@ h4{
     margin: 0;
 }
 
-.produto .s2{
+.produto .s2 {
     padding-top: 16px;
     padding-bottom: 11px;
 }
 
-.editar-produto-btn{
+.editar-produto-btn {
     color: #e66465
 }
 
@@ -275,9 +327,9 @@ h4{
     margin-top: 0.8em;
 }
 
-.editarBtn_perfil > a {
+.editarBtn_perfil>a {
     color: #e66465
-    /*color: white;
+        /*color: white;
     display: inline-block;
     background-color: #e66465;
     border-radius: 100%;
@@ -290,7 +342,7 @@ h4{
     */
 }
 
-.editarBtn_perfil > a > i {
+.editarBtn_perfil>a>i {
     font-size: 21px !important;
     vertical-align: middle;
     margin-bottom: 4px;
@@ -516,8 +568,29 @@ h4{
     text-align: center;
     line-height: 40px;
 }
+/*
+.match_false .usuario-img{
+    top: 68%;
+}
 
-.perfis-tab{
+.match_false .usuario-dados{
+    height: 30%;
+}
+*/
+.match_true .usuario-img{
+    top: 83%;
+}
+
+.match_true .usuario-dados{
+    height: 15%;
+}
+
+.match_true .action-btns{
+    display: none;
+}
+
+
+.perfis-tab {
     z-index: 11;
     position: absolute;
     top: 0;
@@ -527,11 +600,11 @@ h4{
     display: none;
 }
 
-.perfis-tab .titulo_tab{
+.perfis-tab .titulo_tab {
     box-shadow: 0px 0px 0.3px white;
 }
 
-.usuario-produtos{
+.usuario-produtos {
     height: 100%;
     height: 70%;
     overflow-x: hidden;
@@ -539,12 +612,12 @@ h4{
     padding-top: 15%;
 }
 
-.usuario-produtos .produto-usuario{
+.usuario-produtos .produto-usuario {
     height: 50%;
     text-align: -webkit-center;
 }
 
-.produto-usuario .img{
+.produto-usuario .img {
     height: 100px;
     width: 100px;
     background-color: #f0f0f0;
@@ -553,21 +626,21 @@ h4{
     margin-top: 1em;
 }
 
-.produto-usuario .img > img{
+.produto-usuario .img>img {
     height: 100%;
     width: auto;
 }
 
-.produto-usuario .shadow{
+.produto-usuario .shadow {
     height: 6px;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     width: 70%;
     border-radius: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.usuario-dados{
+.usuario-dados {
     width: 100%;
     background-color: white;
     height: 30%;
@@ -576,7 +649,7 @@ h4{
     border-top: 2px #f6b2b5 solid;
 }
 
-.meritos-perfil{
+.meritos-perfil {
     border-radius: 100%;
     height: 25px;
     width: 25px;
@@ -585,17 +658,17 @@ h4{
     text-align: center;
 }
 
-.usuario-dados .lvCredibilidade{
+.usuario-dados .lvCredibilidade {
     margin-top: 6px;
 }
 
-.usuario-dados .contaVerificada{
+.usuario-dados .contaVerificada {
     margin-top: 6px;
     font-size: 1.4em;
     color: #e66465;
 }
 
-.usuario-dados #usuario-nome{
+.usuario-dados #usuario-nome {
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -605,11 +678,11 @@ h4{
     font-size: 1.4em;
 }
 
-.usuario-dados #usuario-distancia{
+.usuario-dados #usuario-distancia {
     font-size: 1em;
 }
 
-.usuario-img{
+.usuario-img {
     height: 80px;
     width: 80px;
     border-radius: 100%;
@@ -619,7 +692,7 @@ h4{
     position: absolute;
 }
 
-.usuario-img > img{
+.usuario-img>img {
     height: 100%;
     width: 100%;
     border-radius: 100%;
@@ -662,6 +735,17 @@ h4{
     padding-top: 1.52rem;
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+.out-tab .titulo_tab > button {
+    color: rgb(238, 110, 115);
+    padding-top: 1.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.out-tab .titulo_tab > button > i {
+    font-size: 34px;
 }
 
 .out-tab .titulo_tab>a>i {
@@ -734,57 +818,59 @@ h4{
     overflow-x: hidden;
     overflow-y: scroll;
 }
-.produto-tab .row{
+
+.produto-tab .row {
     display: contents;
 }
 
-.criar-produto-imgs{
+.criar-produto-imgs {
     height: 37%;
     display: flex;
 }
 
-.criar-produto-imgs > div{
+.criar-produto-imgs>div {
     background-color: #e0e0e0;
 }
 
-.criar-produto-imgs .img-g{
+.criar-produto-imgs .img-g {
     box-shadow: inset 0px 0px 4px #bbbbbb;
 }
 
-.btn-check{
+.btn-check {
     position: absolute;
     top: 0;
     right: 0;
     padding-bottom: 0.85rem;
+    background-color: white;
 }
 
-.img-g{
+.img-g {
     width: 65%;
     height: 100%;
-} 
+}
 
-.img-p{
+.img-p {
     width: 35%;
     height: 100%;
 }
 
-.img-g > input{
+.img-g>input {
     width: auto;
     height: 100%;
 }
 
-.img-p > div{
+.img-p>div {
     width: 100%;
     height: 50%;
     box-shadow: inset 0px 0px 4px #bbbbbb;
 }
 
-.img-p > div >  input{
+.img-p>div>input {
     width: auto;
     height: 100%;
 }
 
-.vizualizar-produtoUsuario-tab{
+.vizualizar-produtoUsuario-tab {
     z-index: 12;
     position: absolute;
     top: 0;
@@ -795,7 +881,7 @@ h4{
     text-align: center;
 }
 
-.view-tab .titulo_tab{
+.view-tab .titulo_tab {
     display: inline-flex;
     position: absolute;
     top: 0;
@@ -817,22 +903,22 @@ h4{
     vertical-align: middle;
 }
 
-.vizualizar-produtoUsuario-tab .info{
+.vizualizar-produtoUsuario-tab .info {
     background-color: white;
     height: fit-content;
 }
 
-.vizualizar-produtoUsuario-tab .produto-imagens{
+.vizualizar-produtoUsuario-tab .produto-imagens {
     background: linear-gradient(#e66465, #9198e5);
 }
 
-.vizualizar-produtoUsuario-tab .info > div .divisoria {
+.vizualizar-produtoUsuario-tab .info>div .divisoria {
     margin-top: 1.2em;
     margin-bottom: 1.2em;
 }
 
-.tag{
-    background: linear-gradient(90deg,#e66465, #9198e5);
+.tag {
+    background: linear-gradient(90deg, #e66465, #9198e5);
     padding: 0.4em;
     color: white;
     font-weight: 800;
@@ -852,7 +938,8 @@ h4{
     overflow-x: hidden;
     overflow-y: scroll;
 }
-.produto-tab .row{
+
+.produto-tab .row {
     display: contents;
 }
 
@@ -895,13 +982,13 @@ h4{
 
 .mg-0 {
     margin: 0;
-} 
+}
 
-.bt-3{
+.bt-3 {
     bottom: 3%;
 }
 
-.bt-8{
+.bt-8 {
     bottom: 8%;
 }
 

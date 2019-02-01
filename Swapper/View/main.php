@@ -12,7 +12,6 @@
                     <div class="perfil_tab col s12">
 
                         <h4 class="titulo_tab fixed">Perfil</h4>
-                        <br>
                         <div class="perfil_dados col s12">
                             <div class="row">
                                 <div class="col s3 pd-r0">
@@ -37,7 +36,7 @@
 
                             <div class="row perfil-btns">
                                 <div class="col s6">
-                                    <a id="" class=""><i class="material-icons">star_half</i></a>
+                                    <a id="credibilidade-usuario-btn" class=""><i class="material-icons">star_half</i></a>
                                     <br>
                                     <span>Credibilidade</span>
                                 </div>
@@ -140,73 +139,73 @@
         </div>
     </div>
 
-    <!-- Abas acessadas pelo Perfil -->
-    <div id="adicionar-produto" class="produto-tab out-tab">
-        <div class="titulo_tab fixed">
-            <a id="adicionar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
-            <h4 class="pd-r0">Adicionar Produto</h4>
-            <a class="btn-check"><i class="material-icons">check</i></a>
-        </div>
-        <div class="row">
-            <div class="criar-produto-imgs">
-                <div class="img-g">
-                    <form action="View/upload.php" method="post" enctype="multipart/form-data">
+    <!-- Abas acessadas pelo Perfil --> 
+    <form id="adicionar-produtoForm" action="View/upload.php" method="post" enctype="multipart/form-data">
+        <div id="adicionar-produto" class="produto-tab out-tab">
+            <div class="titulo_tab fixed">
+                <a id="adicionar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+                <h4 class="pd-r0">Adicionar Produto</h4>
+                <button type="submit" value="Upload Image" name="submit" class="btn-check"><i class="material-icons">check</i></button>
+            </div>
+            <div class="row">
+                
+                <div class="criar-produto-imgs">
+                    <div class="img-g">
                         <input  type="file" accept="image/*" name="fileToUpload" id="fileToUpload">
-                        <input type="submit" value="Upload Image" name="submit">
-                    </form>
-                    <!--<input type="image" id="" src="/View/img/camiseta.jpg">-->
-                </div>
-                <div class="img-p">
-                    <div>
-                        <input type="image" id="" src="/View/img/camiseta.jpg">
                     </div>
-                    <div>
-                        <input type="image" id="" src="/View/img/camiseta.jpg">
+                    <div class="img-p">
+                        <div>
+                            <input  type="file" accept="image/*" name="fileToUpload" id="fileToUpload1">
+                        </div>
+                        <div>
+                            <input  type="file" accept="image/*" name="fileToUpload" id="fileToUpload2">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="input-field col s12">
-                    <input id="first_name" type="text" class="validate">
-                    <label for="first_name">Nome do Produto</label>
-                </div>
-                <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label for="textarea1">Descrição</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
-                        <option value="1">Masculino</option>
-                        <option value="2">Feminino</option>
-                    </select>
-                    <label>Sexo</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
-                        <option value="1">Infantil</option>
-                        <option value="2">Adulto</option>
-                    </select>
-                    <label>Categoria</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
-                        <option value="1">Roupas</option>
-                        <option value="2">Acessórios</option>
-                        <option value="3">Calçados</option>
-                    </select>
-                    <label>Tipo</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
-                        <option value="1">Usado</option>
-                        <option value="2">Novo</option>
-                    </select>
-                    <label>Estado</label>
+                <div>
+                    <div class="input-field col s12">
+                        <input id="first_name" type="text" class="validate">
+                        <label for="first_name">Nome do Produto</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Descrição</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select form="adicionar-produtoForm">
+                            <option value="1">Masculino</option>
+                            <option value="2">Feminino</option>
+                        </select>
+                        <label>Sexo</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select form="adicionar-produtoForm">
+                            <option value="1">Infantil</option>
+                            <option value="2">Adulto</option>
+                        </select>
+                        <label>Categoria</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select form="adicionar-produtoForm">
+                            <option value="1">Roupas</option>
+                            <option value="2">Acessórios</option>
+                            <option value="3">Calçados</option>
+                        </select>
+                        <label>Tipo</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select form="adicionar-produtoForm">
+                            <option value="1">Usado</option>
+                            <option value="2">Novo</option>
+                        </select>
+                        <label>Estado</label>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </form>
+    
+    <!-- EDITAR
     <div id="editar-produto" class="produto-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="editar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -268,7 +267,7 @@
             </div>
         </div>
     </div>
-
+    -->
     <div id="vizualizar-produtoUsuario" class="vizualizar-produtoUsuario-tab view-tab">
         <div class="titulo_tab">
             <a id="vizualizar-produtoUsuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -343,6 +342,33 @@
         <a id="addProduto_btn" class="addProduto_btn">
             <i class="material-icons">add</i>
         </a>
+    </div>
+
+    <div id="credibilidade-usuario" class="produtos-usuario-tab out-tab">
+        <div class="titulo_tab fixed">
+            <a id="credibilidade-usuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+            <h4 class="">Crediblidade</h4>
+        </div>
+        <br>
+        <div class="row">
+            <div class="dados-credibilidade pd-l0 pd-r0 col s12">
+                <div class="col s4">
+                    <i class="material-icons">star_half</i>
+                </div>
+                <div class="credibilidade-atual tx-l pd-l0 col s8">
+                    <span>NIVEL PRATA</span>
+                    <br>
+                    <span>200/1000XP</span>
+                </div>
+                <div class="col s1"></div>
+                <div class="col pd-0 s10">
+                    <div class="barraDeXP">
+                        <div class="xp-atual"></div>
+                    </div>
+                </div>
+                <div class="col s1"></div>
+            </div>
+        </div>
     </div>
     <!-- ///////////////////////// -->
     <!-- Abas acessadas pelo Descobir -->
@@ -468,7 +494,7 @@
         </div>
     </div>
     
-    <div id="perfis" class="perfis-tab view-tab">
+    <div id="perfis" class="perfis-tab match_true view-tab">
         <div class="titulo_tab fixed">
             <a id="perfis-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
             <h4 class=""></h4>
