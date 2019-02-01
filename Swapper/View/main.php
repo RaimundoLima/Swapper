@@ -147,6 +147,7 @@
             <h4 class="pd-r0">Adicionar Produto</h4>
             <a class="btn-check"><i class="material-icons">check</i></a>
         </div>
+        <form>
         <div class="row">
             <div class="criar-produto-imgs">
                 <div class="img-g">
@@ -156,55 +157,52 @@
                     </form>
                     <!--<input type="image" id="" src="/View/img/camiseta.jpg">-->
                 </div>
+                <div>           
+                    <div class="input-field col s12">
+                        <input id="nomeProduto" type="text" class="validate">
+                        <label for="nomeProduto">Nome do Produto</label>
                 <div class="img-p">
                     <div>
                         <input type="image" id="" src="/View/img/camiseta.jpg">
                     </div>
+                    <div class="input-field col s12">
+                        <textarea id="descricao" class="materialize-textarea"></textarea>
+                        <label for="descricao">Descrição</label>
+                    </div>  
+                    <div class="input-field col s6">
+                        <select id="sexo">
+                        <option value="1">Masculino</option>
+                        <option value="2">Feminino</option>
+                        </select>
+                        <label>Sexo</label>
                     <div>
                         <input type="image" id="" src="/View/img/camiseta.jpg">
                     </div>
-                </div>
-            </div>
-            <div>
-                <div class="input-field col s12">
-                    <input id="first_name" type="text" class="validate">
-                    <label for="first_name">Nome do Produto</label>
-                </div>
-                <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label for="textarea1">Descrição</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
-                        <option value="1">Masculino</option>
-                        <option value="2">Feminino</option>
-                    </select>
-                    <label>Sexo</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
+                    <div class="input-field col s6">
+                        <select id="categoria">
                         <option value="1">Infantil</option>
                         <option value="2">Adulto</option>
-                    </select>
-                    <label>Categoria</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
+                        </select>
+                        <label>Categoria</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select id="tipo">
                         <option value="1">Roupas</option>
                         <option value="2">Acessórios</option>
                         <option value="3">Calçados</option>
-                    </select>
-                    <label>Tipo</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
+                        </select>
+                        <label>Tipo</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select id="estado">
                         <option value="1">Usado</option>
                         <option value="2">Novo</option>
-                    </select>
-                    <label>Estado</label>
-                </div>
+                        </select>
+                        <label>Estado</label>
+                    </div>
+                </div> 
             </div>
-        </div>
+        </form>
     </div>
 
     <div id="editar-produto" class="produto-tab out-tab">

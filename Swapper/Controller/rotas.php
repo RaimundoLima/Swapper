@@ -6,6 +6,7 @@ function getPagina()
  	//error_reporting(0);
 	$url = $_SERVER['REQUEST_URI'];
 	$url = strtolower(explode("?",$url)[0]);
+
     //var_dump($url);
     //$_SESSION["sou um teste pra não dar pau"]="não me deleta";
     if(empty($_SESSION)){
@@ -47,19 +48,29 @@ function getPagina()
             break;
             case '/adicionarroupas':
                 $roupa;
-                //nome e desc
-                $roupa["sexo"]= $_POST["sexo"] == 1 ? 1: 2;
-                $roupa["categoria"]= $_POST["categoria"] == 1 ? 1: 2;
-                if($_POST["tipo"]==1){
-                    $roupa["tipo"]=1;
-                }else{
-                    if($_POST["tipo"]==2){
-                        $roupa["tipo"]=2; 
+                $img1=$_FILE["img1"];
+                $img2=$_FILE["img2"];
+                $img3=$_FILE["img3"];
+                $roupa["nome"]=trim($_POST["nome"]);
+                $roupa["desc"]=trim($_POST["desc"]);
+                if(count($roupa["nome"])<=30 && count($roupa["desc"])<=200 && 
+                    !is_null(($roupa["nome"]))<=30 && !is_null($roupa["desc"])<=200){
+                    $roupa["sexo"]= $_POST["sexo"] == 1 ? 1: 2;
+                    $roupa["categoria"]= $_POST["categoria"] == 1 ? 1: 2;
+                    if($_POST["tipo"]==1){
+                        $roupa["tipo"]=1;
                     }else{
-                        $roupa["tipo"]=3;
+                        if($_POST["tipo"]==2){
+                            $roupa["tipo"]=2; 
+                        }else{
+                            $roupa["tipo"]=3;
+                        }
                     }
-                }
-                $roupa["estado"]= $_POST["estado"] == 1? 1: 2;
+                    $roupa["estado"]= $_POST["estado"] == 1? 1: 2;
+                    insrirRoupa($roupa);
+            }else{
+                //error
+            }
             break;
             case '/buscarfiltro':
                 $filtro=buscarConfig($_SESSION['usuario']['id']);

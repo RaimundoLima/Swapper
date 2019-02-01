@@ -21,7 +21,18 @@ function inserirRoupa($roupa){
     $roupaT["sexo"]=$roupa["sexo"];
     return R::store($roupaT);
 }
-function atualizarRoupa($roupa){
+function atualizarRoupa($roupa,$id){
+    $roupaT=R::load("roupa",$id);
+    $roupaT["tipo"]=$roupa["tipo"];
+    $roupaT["estado"]=$roupa["estado"];
+    $roupaT["descricao"]=$roupa["descricao"];
+    $roupaT["categoria"]=$roupa["categoria"];
+    $roupaT["nome"]=$roupa["nome"];
+    $roupaT["tamanho"]=$roupa["tamanho"];
+    $roupaT["foto1"]=$roupa["foto1"];
+    $roupaT["foto2"]=$roupa["foto2"];
+    $roupaT["foto3"]=$roupa["foto3"];
+    $roupaT["sexo"]=$roupa["sexo"];
 
 }
 function deletarRoupa($id){
