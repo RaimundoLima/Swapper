@@ -175,8 +175,7 @@ h4 {
 }
 
 .perfil_dados .nome_tx {
-    max-width: 17.5ch;
-    height: 1.8ch;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-right: 0.2ch;
@@ -210,7 +209,35 @@ h4 {
     border-bottom: 2px #f6b2b5 solid;
 }
 
+.tituloProdutos{
+    margin-top: 1.4em;
+    margin-bottom: 0.8em;
+}
+
+.tituloProdutos > div{
+    margin-bottom: 0.8em;
+}
+
+.tituloProdutos > span{
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: rgb(238, 110, 115);
+}
+
+.perfis-produtos{
+    height:
+}
+
 .dados-credibilidade{
+    background-color: white;
+    text-align: center;
+    margin-top: 1.5em;
+    padding-top: 0.8em !important;
+    border-top: 2px #f6b2b5 solid;
+    border-bottom: 2px #f6b2b5 solid;
+}
+
+.dados-usuario{
     background-color: white;
     text-align: center;
     margin-top: 1.5em;
@@ -430,6 +457,10 @@ h4 {
     margin-top: 5px;
 }
 
+#perfis .action-btns{
+
+}
+
 .action-btns {
     position: absolute;
     left: 0;
@@ -455,7 +486,7 @@ h4 {
 
 .action-btns .btn-g>i {
     font-size: 70px;
-    line-height: 90px;
+    line-height: 86px;
 }
 
 .action-btns .btn-p {
@@ -468,7 +499,7 @@ h4 {
 
 .action-btns .btn-p>i {
     font-size: 40px;
-    line-height: 60px;
+    line-height: 56px;
 }
 
 .btn-rever {
@@ -568,87 +599,6 @@ h4 {
     text-align: center;
     line-height: 40px;
 }
-/*
-.match_false .usuario-img{
-    top: 68%;
-}
-
-.match_false .usuario-dados{
-    height: 30%;
-}
-*/
-.match_true .usuario-img{
-    top: 83%;
-}
-
-.match_true .usuario-dados{
-    height: 15%;
-}
-
-.match_true .action-btns{
-    display: none;
-}
-
-
-.perfis-tab {
-    z-index: 11;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(#e66465, #9198e5);
-    display: none;
-}
-
-.perfis-tab .titulo_tab {
-    box-shadow: 0px 0px 0.3px white;
-}
-
-.usuario-produtos {
-    height: 100%;
-    height: 70%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding-top: 15%;
-}
-
-.usuario-produtos .produto-usuario {
-    height: 50%;
-    text-align: -webkit-center;
-}
-
-.produto-usuario .img {
-    height: 100px;
-    width: 100px;
-    background-color: #f0f0f0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1em;
-}
-
-.produto-usuario .img>img {
-    height: 100%;
-    width: auto;
-}
-
-.produto-usuario .shadow {
-    height: 6px;
-    background-color: rgba(0, 0, 0, 0.1);
-    width: 70%;
-    border-radius: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.usuario-dados {
-    width: 100%;
-    background-color: white;
-    height: 30%;
-    position: absolute;
-    bottom: 0;
-    border-top: 2px #f6b2b5 solid;
-}
-
 .meritos-perfil {
     border-radius: 100%;
     height: 25px;
@@ -657,49 +607,6 @@ h4 {
     font-size: 1.4em;
     text-align: center;
 }
-
-.usuario-dados .lvCredibilidade {
-    margin-top: 6px;
-}
-
-.usuario-dados .contaVerificada {
-    margin-top: 6px;
-    font-size: 1.4em;
-    color: #e66465;
-}
-
-.usuario-dados #usuario-nome {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-    white-space: nowrap;
-    font-weight: 800;
-    font-size: 1.4em;
-}
-
-.usuario-dados #usuario-distancia {
-    font-size: 1em;
-}
-
-.usuario-img {
-    height: 80px;
-    width: 80px;
-    border-radius: 100%;
-    left: 1em;
-    z-index: 15;
-    top: 68%;
-    position: absolute;
-}
-
-.usuario-img>img {
-    height: 100%;
-    width: 100%;
-    border-radius: 100%;
-    border: 2px #f6b2b5 solid;
-}
-
-
 
 .busca_tab {
     z-index: 11;
@@ -780,7 +687,7 @@ h4 {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     background-color: #f0f0f0;
     display: none;
     text-align: center;
@@ -1101,4 +1008,14 @@ h4 {
     100% {
         transform: translateX(0%);
     }
+}
+
+
+input[type=file] {
+    float: left;
+    display: block;
+}
+.hide {
+    display: none;
+    float: left;
 }
