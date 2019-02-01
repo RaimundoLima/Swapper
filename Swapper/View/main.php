@@ -150,7 +150,11 @@
         <div class="row">
             <div class="criar-produto-imgs">
                 <div class="img-g">
-                    <input type="image" id="" src="/View/img/camiseta.jpg">
+                    <form action="View/upload.php" method="post" enctype="multipart/form-data">
+                        <input  type="file" accept="image/*" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" value="Upload Image" name="submit">
+                    </form>
+                    <!--<input type="image" id="" src="/View/img/camiseta.jpg">-->
                 </div>
                 <div class="img-p">
                     <div>

@@ -294,3 +294,7 @@ function botoesAcaoSecundario(estado){
     $('#btn-like2').prop('disabled', estado*1);
     $('#btn-superlike2').prop('disabled', estado*1);
 }
+
+
+
+//$("#imagem2").attr('src', $("#fileToUpload").val());
