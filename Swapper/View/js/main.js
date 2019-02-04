@@ -22,17 +22,38 @@ $("#produtos-usuario-btn").click(function() {
 });
 
 $("#addProduto_btn").click(function() {
-    inserirRoupas();
+    
 });
+$("#adicionar-produtoForm").submit(function(e){
+    e.preventDefault();
+    inserirRoupas();
+})
 
 function inserirRoupas(){
+    data = new FormData();
+    jQuery.each(jQuery('#fileToUpload')[0].files, function(i, file) {
+        data.append('img1', file);
+    });
+    jQuery.each(jQuery('#fileToUpload1')[0].files, function(i, file) {
+        data.append('img2', file);
+    });
+    jQuery.each(jQuery('#fileToUpload2')[0].files, function(i, file) {
+        data.append('img3', file);
+    });
+    data.append("nome",$("#nomeProduto").val());
+    data.append("descricao",$("#descricao").val());
+    data.append("sexo",$("#sexo").val());
+    data.append("categoria",$("#categoria").val());
+    data.append("tipo",$("#tipo").val());
+    data.append("estado",$("#estado").val());
     $.ajax({
-        url: '/atualizarFiltro',
+        url: '/adicionarRoupas',
+        contentType: false,
+        processData: false,
         type: 'post',
-        dataType: 'json',
-        data: {
-        }
-    }).done(function(){
+        data:data
+    }).done(function(result){
+        console.log(result)
         //zerar campus tbm
         $("#adicionar-produto").removeClass("left-right-ltab");
         $("#adicionar-produto").addClass("right-left-ltab");

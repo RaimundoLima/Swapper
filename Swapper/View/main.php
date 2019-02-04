@@ -177,29 +177,29 @@
                 </div>
                 <div>
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate">
-                        <label for="first_name">Nome do Produto</label>
+                        <input id="nomeProduto" type="text" class="validate">
+                        <label for="nomeProduto">Nome do Produto</label>
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Descrição</label>
+                        <textarea id="descricao" class="materialize-textarea"></textarea>
+                        <label for="descricao">Descrição</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
+                        <select id="sexo">
                             <option value="1">Masculino</option>
                             <option value="2">Feminino</option>
                         </select>
                         <label>Sexo</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
+                        <select id="categoria">
                             <option value="1">Infantil</option>
                             <option value="2">Adulto</option>
                         </select>
                         <label>Categoria</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
+                        <select id="tipo">
                             <option value="1">Roupas</option>
                             <option value="2">Acessórios</option>
                             <option value="3">Calçados</option>
@@ -207,7 +207,7 @@
                         <label>Tipo</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
+                        <select id="estado">
                             <option value="1">Usado</option>
                             <option value="2">Novo</option>
                         </select>

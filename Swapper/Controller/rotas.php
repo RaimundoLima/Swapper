@@ -48,29 +48,51 @@ function getPagina()
             break;
             case '/adicionarroupas':
                 $roupa;
-                $img1=$_FILE["img1"];
-                $img2=$_FILE["img2"];
-                $img3=$_FILE["img3"];
+                //var_dump($_FILES);
+                $img1="";
+                $img2="";
+                $img3="";
+                for($i=1;$i<=3;$i++){
+                    if(!empty($_FILES["img".$i])){
+                        if($_FILES["img".$i]["size"] <= 2500000){
+                            if($_FILES["img".$i]["type"]=="image/jpg" || $_FILES["img".$i]["type"]=="image/png"|| $_FILES["img".$i]["type"]=="image/jpeg"){
+                                if($img1==""){
+                                    $img1=mb_convert_encoding(file_get_contents($_FILES["img".$i]["tmp_name"]),"base64","UTF-8");
+                                }else if($img2==""){
+                                    $img2=mb_convert_encoding(file_get_contents($_FILES["img".$i]["tmp_name"]),"base64","UTF-8");
+                                }else if($img3==""){
+                                    $img3=mb_convert_encoding(file_get_contents($_FILES["img".$i]["tmp_name"]),"base64","UTF-8");
+                                }
+                            }
+                        }
+                    }
+                }
                 $roupa["nome"]=trim($_POST["nome"]);
-                $roupa["desc"]=trim($_POST["desc"]);
-                if(count($roupa["nome"])<=30 && count($roupa["desc"])<=200 && 
-                    !is_null(($roupa["nome"]))<=30 && !is_null($roupa["desc"])<=200){
-                    $roupa["sexo"]= $_POST["sexo"] == 1 ? 1: 2;
-                    $roupa["categoria"]= $_POST["categoria"] == 1 ? 1: 2;
-                    if($_POST["tipo"]==1){
+                $roupa["descricao"]=trim($_POST["descricao"]);
+                if(count($roupa["nome"])<=30 && count($roupa["descricao"])<=200 && 
+                    !is_null(($roupa["nome"]))<=30 && !is_null($roupa["descricao"])<=200){
+                    $roupa["sexo"]= $_POST["sexo"] == "1" ? 1: 2;
+                    $roupa["categoria"]= $_POST["categoria"] == "1" ? 1: 2;
+                    if($_POST["tipo"]=="1"){
                         $roupa["tipo"]=1;
                     }else{
-                        if($_POST["tipo"]==2){
+                        if($_POST["tipo"]=="2"){
                             $roupa["tipo"]=2; 
                         }else{
                             $roupa["tipo"]=3;
                         }
                     }
-                    $roupa["estado"]= $_POST["estado"] == 1? 1: 2;
-                    insrirRoupa($roupa);
-            }else{
-                //error
-            }
+                    $roupa["estado"]= $_POST["estado"] == "1" ? 1: 2;
+                    $roupa["usuario"]=$_SESSION["usuario"]["id"];
+                    if(!empty($img1)){
+                        $roupa["foto1"]=$img1;
+                        $roupa["foto2"]=$img2;
+                        $roupa["foto3"]=$img3;
+                        inserirRoupa($roupa);
+                    }
+                }else{
+                    //error
+                }
             break;
             case '/buscarfiltro':
                 $filtro=buscarConfig($_SESSION['usuario']['id']);

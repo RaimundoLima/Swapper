@@ -8,13 +8,12 @@ function buscarRoupa($id){
 function inserirRoupa($roupa){
     $roupaT=R::dispense("roupa");
     $roupaT["usuario"]=R::load("usuario",$roupa["usuario"]);
-    $roupaT["disponibilidade"]=$roupa["disponibilidade"];
+    $roupaT["disponibilidade"]=1;
     $roupaT["tipo"]=$roupa["tipo"];
     $roupaT["estado"]=$roupa["estado"];
     $roupaT["descricao"]=$roupa["descricao"];
     $roupaT["categoria"]=$roupa["categoria"];
     $roupaT["nome"]=$roupa["nome"];
-    $roupaT["tamanho"]=$roupa["tamanho"];
     $roupaT["foto1"]=$roupa["foto1"];
     $roupaT["foto2"]=$roupa["foto2"];
     $roupaT["foto3"]=$roupa["foto3"];
@@ -28,7 +27,6 @@ function atualizarRoupa($roupa,$id){
     $roupaT["descricao"]=$roupa["descricao"];
     $roupaT["categoria"]=$roupa["categoria"];
     $roupaT["nome"]=$roupa["nome"];
-    $roupaT["tamanho"]=$roupa["tamanho"];
     $roupaT["foto1"]=$roupa["foto1"];
     $roupaT["foto2"]=$roupa["foto2"];
     $roupaT["foto3"]=$roupa["foto3"];
