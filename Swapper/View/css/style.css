@@ -225,7 +225,9 @@ h4 {
 }
 
 .perfis-produtos{
-    height:
+    height: 285px;
+    overflow-y: scroll;
+    border-bottom: 2px #f6b2b5 solid;
 }
 
 .dados-credibilidade{
@@ -457,8 +459,9 @@ h4 {
     margin-top: 5px;
 }
 
-#perfis .action-btns{
-
+#perfis{
+    overflow-y: hidden;
+    height: 100%;
 }
 
 .action-btns {
@@ -761,7 +764,11 @@ h4 {
     height: 100%;
 }
 
-.img-g>input {
+.img-g>input{
+    display: none !important;
+}
+
+.img-g>label>img {
     width: auto;
     height: 100%;
 }
@@ -772,7 +779,11 @@ h4 {
     box-shadow: inset 0px 0px 4px #bbbbbb;
 }
 
-.img-p>div>input {
+.img-p>div>input{
+    display: none;
+}
+
+.img-p>div>label>img {
     width: auto;
     height: 100%;
 }
@@ -891,8 +902,8 @@ h4 {
     margin: 0;
 }
 
-.bt-3 {
-    bottom: 3%;
+.bt-2 {
+    bottom: 2%;
 }
 
 .bt-8 {

@@ -151,14 +151,23 @@
 
                 <div class="criar-produto-imgs">
                     <div class="img-g">
-                        <input type="file" accept="image/*" name="fileToUpload" id="fileToUpload">
+                        <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fileToUpload">
+                        <label for="fileToUpload">
+                            <img id="previewUpload" src="View/img/camiseta.jpg" alt="">
+                        </label>
                     </div>
                     <div class="img-p">
                         <div>
-                            <input type="file" accept="image/*" name="fileToUpload" id="fileToUpload1">
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload1" id="fileToUpload1">
+                            <label for="fileToUpload1">
+                                <img id="previewUpload1" src="View/img/camiseta.jpg" alt="">
+                            </label>
                         </div>
                         <div>
-                            <input type="file" accept="image/*" name="fileToUpload" id="fileToUpload2">
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload2" id="fileToUpload2">
+                            <label for="fileToUpload2">
+                                <img id="previewUpload2" src="View/img/camiseta.jpg" alt="">
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -205,69 +214,79 @@
         </div>
     </form>
 
-    <!-- EDITAR
-    <div id="editar-produto" class="produto-tab out-tab">
-        <div class="titulo_tab fixed">
-            <a id="editar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
-            <h4 class="pd-r0">Editar Produto</h4>
-            <a class="btn-check"><i class="material-icons">check</i></a>
-        </div>
-        <div class="row">
-            <div class="criar-produto-imgs">
+    <form id="adicionar-produtoForm" action="View/upload.php" method="post" enctype="multipart/form-data">
+        <div id="editar-produto" class="produto-tab out-tab">
+            <div class="titulo_tab fixed">
+                <a id="editar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+                <h4 class="pd-r0">Editar Produto</h4>
+                <button type="submit" value="Upload Image" name="submit" class="btn-check"><i class="material-icons">check</i></button>
+            </div>
+            <div class="row">
+                <div class="criar-produto-imgs">
                 <div class="img-g">
-                    <input type="image" id="" alt="" src="">
-                </div>
-                <div class="img-p">
-                    <div>
-                        <input type="image" id="" alt="" src="">
+                        <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fileToUpload3">
+                        <label for="fileToUpload3">
+                            <img id="previewUpload3" src="View/img/camiseta.jpg" alt="">
+                        </label>
                     </div>
-                    <div>
-                        <input type="image" id="" alt="" src="">
+                    <div class="img-p">
+                        <div>
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload1" id="fileToUpload4">
+                            <label for="fileToUpload4">
+                                <img id="previewUpload4" src="View/img/camiseta.jpg" alt="">
+                            </label>
+                        </div>
+                        <div>
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload2" id="fileToUpload5">
+                            <label for="fileToUpload5">
+                                <img id="previewUpload5" src="View/img/camiseta.jpg" alt="">
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="input-field col s12">
-                    <input id="first_name" type="text" class="validate">
-                    <label for="first_name">Nome do Produto</label>
-                </div>
-                <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                    <label for="textarea1">Descrição</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
-                        <option value="1">Masculino</option>
-                        <option value="2">Feminino</option>
-                    </select>
-                    <label>Sexo</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
-                        <option value="1">Infantil</option>
-                        <option value="2">Adulto</option>
-                    </select>
-                    <label>Categoria</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
-                        <option value="1">Roupas</option>
-                        <option value="2">Acessórios</option>
-                        <option value="3">Calçados</option>
-                    </select>
-                    <label>Tipo</label>
-                </div>
-                <div class="input-field col s6">
-                    <select>
-                        <option value="1">Usado</option>
-                        <option value="2">Novo</option>
-                    </select>
-                    <label>Estado</label>
+                <div>
+                    <div class="input-field col s12">
+                        <input id="first_name" type="text" class="validate">
+                        <label for="first_name">Nome do Produto</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Descrição</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="1">Masculino</option>
+                            <option value="2">Feminino</option>
+                        </select>
+                        <label>Sexo</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="1">Infantil</option>
+                            <option value="2">Adulto</option>
+                        </select>
+                        <label>Categoria</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="1">Roupas</option>
+                            <option value="2">Acessórios</option>
+                            <option value="3">Calçados</option>
+                        </select>
+                        <label>Tipo</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="1">Usado</option>
+                            <option value="2">Novo</option>
+                        </select>
+                        <label>Estado</label>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    -->
+    </form>
+
     <div id="vizualizar-produtoUsuario" class="vizualizar-produtoUsuario-tab view-tab">
         <div class="titulo_tab">
             <a id="vizualizar-produtoUsuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -548,7 +567,7 @@
                     </div>
                 </div>
             </div>
-            <div class="action-btns bt-3">
+            <div class="action-btns bt-2">
                 <button id="btn-deslike2" class="btn-g swiper-no-swiping">
                     <i class="btn-deslike material-icons">close</i>
                 </button>                
