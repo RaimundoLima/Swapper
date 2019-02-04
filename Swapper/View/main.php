@@ -138,9 +138,8 @@
         <div class="col s12 tabs swiper-pagination swiper-no-swiping">
         </div>
     </div>
-
     <!-- Abas acessadas pelo Perfil -->
-    <form id="adicionar-produtoForm" action="View/upload.php" method="post" enctype="multipart/form-data">
+    <form id="adicionar-produtoForm" action="" method="post" enctype="multipart/form-data">
         <div id="adicionar-produto" class="produto-tab out-tab">
             <div class="titulo_tab fixed">
                 <a id="adicionar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -148,9 +147,8 @@
                 <button type="submit" value="Upload Image" name="submit" class="btn-check"><i class="material-icons">check</i></button>
             </div>
             <div class="row">
-
                 <div class="criar-produto-imgs">
-                    <div class="img-g">
+                <div class="img-g">
                         <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fileToUpload">
                         <label for="fileToUpload">
                             <img id="previewUpload" src="View/img/camiseta.jpg" alt="">
@@ -171,55 +169,50 @@
                         </div>
                     </div>
                 </div>
-                <div>           
+                <div>
                     <div class="input-field col s12">
-                        <input id="nomeProduto" type="text" class="validate">
-                        <label for="nomeProduto">Nome do Produto</label>
-                <div class="img-p">
-                    <div>
-                        <input type="image" id="" src="/View/img/camiseta.jpg">
+                        <input id="first_name" type="text" class="validate">
+                        <label for="first_name">Nome do Produto</label>
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="descricao" class="materialize-textarea"></textarea>
-                        <label for="descricao">Descrição</label>
-                    </div>  
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Descrição</label>
+                    </div>
                     <div class="input-field col s6">
-                        <select id="sexo">
-                        <option value="1">Masculino</option>
-                        <option value="2">Feminino</option>
+                        <select>
+                            <option value="1">Masculino</option>
+                            <option value="2">Feminino</option>
                         </select>
                         <label>Sexo</label>
-                    <div>
-                        <input type="image" id="" src="/View/img/camiseta.jpg">
                     </div>
                     <div class="input-field col s6">
-                        <select id="categoria">
-                        <option value="1">Infantil</option>
-                        <option value="2">Adulto</option>
+                        <select>
+                            <option value="1">Infantil</option>
+                            <option value="2">Adulto</option>
                         </select>
                         <label>Categoria</label>
                     </div>
                     <div class="input-field col s6">
-                        <select id="tipo">
-                        <option value="1">Roupas</option>
-                        <option value="2">Acessórios</option>
-                        <option value="3">Calçados</option>
+                        <select>
+                            <option value="1">Roupas</option>
+                            <option value="2">Acessórios</option>
+                            <option value="3">Calçados</option>
                         </select>
                         <label>Tipo</label>
                     </div>
                     <div class="input-field col s6">
-                        <select id="estado">
-                        <option value="1">Usado</option>
-                        <option value="2">Novo</option>
+                        <select>
+                            <option value="1">Usado</option>
+                            <option value="2">Novo</option>
                         </select>
                         <label>Estado</label>
                     </div>
-                </div> 
+                </div>
             </div>
-        </form>
-    </div>
-
-    <form id="adicionar-produtoForm" action="View/upload.php" method="post" enctype="multipart/form-data">
+        </div>
+    </form>
+    <!--
+    <form id="editar-produtoForm" action="" method="post" enctype="multipart/form-data">
         <div id="editar-produto" class="produto-tab out-tab">
             <div class="titulo_tab fixed">
                 <a id="editar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -291,7 +284,7 @@
             </div>
         </div>
     </form>
-
+-->
     <div id="vizualizar-produtoUsuario" class="vizualizar-produtoUsuario-tab view-tab">
         <div class="titulo_tab">
             <a id="vizualizar-produtoUsuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
@@ -575,7 +568,7 @@
             <div class="action-btns bt-2">
                 <button id="btn-deslike2" class="btn-g swiper-no-swiping">
                     <i class="btn-deslike material-icons">close</i>
-                </button>                
+                </button>
                 <button id="btn-superlike2" class="btn-p swiper-no-swiping">
                     <i class="btn-superlike material-icons">grade</i>
                 </button>
@@ -588,7 +581,6 @@
     <!-- ///////////////////////// -->
     <!-- Abas acessadas pelo Mensagens -->
     <!-- ///////////////////////// -->
-
 </body>
 <?php include("footer.php"); ?>
 
