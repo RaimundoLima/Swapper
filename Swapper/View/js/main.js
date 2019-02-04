@@ -114,16 +114,19 @@ function readURL(input) {
         if(input.id == "fileToUpload"){
             reader.onload = function (e) {
                 $("#previewUpload").attr('src', e.target.result);
+                resizeImg($("#img-preview"),$("#previewUpload"));
             }
         }
         if(input.id == "fileToUpload1"){
             reader.onload = function (e) {
                 $("#previewUpload1").attr('src', e.target.result);
+                resizeImg($("#img-preview1"),$("#previewUpload1"));
             }
         }
         if(input.id == "fileToUpload2"){
             reader.onload = function (e) {
                 $("#previewUpload2").attr('src', e.target.result);
+                resizeImg($("#img-preview2"),$("#previewUpload2"));
             }
         }
         //////    /////////     ////////////
@@ -153,73 +156,46 @@ $('body').on("change", "input[type=file]", function() {
 });
 
 //INPUTS DE IMAGEM DO ADICIONAR PRODUTO
-document.getElementById("fileToUpload").addEventListener("change", function(e) {
+$("#fileToUpload").on("change", function(e) {
     var size = this.files[0].size;
-    if(size < 1048576) { //1MB         
-      alert('Permitido'); //Abaixo do permitido
+    if(size < 1048576) {       
     } else {           
-      alert('Não permitido'); //Acima do limite
-      this.value = ""; //Limpa o campo          
+        M.toast({html: 'Imagem muito grande!'}) 
+        this.value = "";        
     }
-    e.preventDefault();
 });
 
-document.getElementById("fileToUpload1").addEventListener("change", function(e) {
+$("#fileToUpload1").on("change", function(e) {
     var size = this.files[0].size;
-    if(size < 1048576) { //1MB         
-      alert('Permitido'); //Abaixo do permitido
+    if(size < 1048576) {       
     } else {           
-      alert('Não permitido'); //Acima do limite
-      this.value = ""; //Limpa o campo          
+        M.toast({html: 'Imagem muito grande!'}) 
+        this.value = "";        
     }
-    e.preventDefault();
 });
 
-document.getElementById("fileToUpload2").addEventListener("change", function(e) {
+$("#fileToUpload2").on("change", function(e) {
     var size = this.files[0].size;
-    if(size < 1048576) { //1MB         
-      alert('Permitido'); //Abaixo do permitido
+    if(size < 1048576) {       
     } else {           
-      alert('Não permitido'); //Acima do limite
-      this.value = ""; //Limpa o campo          
+        M.toast({html: 'Imagem muito grande!'}) 
+        this.value = "";        
     }
-    e.preventDefault();
 });
-
 //INPUTS DE IMAGEM DO eDITAR PRODUTO
 
-document.getElementById("fileToUpload3").addEventListener("change", function(e) {
-    var size = this.files[0].size;
-    if(size < 1048576) { //1MB         
-      alert('Permitido'); //Abaixo do permitido
-    } else {           
-      alert('Não permitido'); //Acima do limite
-      this.value = ""; //Limpa o campo          
-    }
-    e.preventDefault();
-});
 
-document.getElementById("fileToUpload4").addEventListener("change", function(e) {
-    var size = this.files[0].size;
-    if(size < 1048576) { //1MB         
-      alert('Permitido'); //Abaixo do permitido
-    } else {           
-      alert('Não permitido'); //Acima do limite
-      this.value = ""; //Limpa o campo          
-    }
-    e.preventDefault();
-});
+/////////////////////////////////////////
 
-document.getElementById("fileToUpload5").addEventListener("change", function(e) {
-    var size = this.files[0].size;
-    if(size < 1048576) { //1MB         
-      alert('Permitido'); //Abaixo do permitido
-    } else {           
-      alert('Não permitido'); //Acima do limite
-      this.value = ""; //Limpa o campo          
-    }
-    e.preventDefault();
-});
+function resizeImg(ref, img){
+    ref.css("padding-top", "0px");
+    img.css("height","auto");
+    img.css("width","auto");
+    if(img.height() < img.width()){
+        img.css("width","100%");
+        ref.css("padding-top",((ref.height()/2)-(img.height()/2))+"px");
+    }else img.css("height","100%");
+}
 
 /*
 $("fileToUpload").on("change", verificarTamanhoImagem(this), true);

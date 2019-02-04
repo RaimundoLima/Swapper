@@ -773,8 +773,14 @@ h4 {
     display: none !important;
 }
 
-.img-g>label>img {
+.img-g>label>div>img {
     width: auto;
+    height: 100%;
+    background-color: white;
+}
+
+.img-g>label>div {
+    width: 100%;
     height: 100%;
 }
 
@@ -788,8 +794,14 @@ h4 {
     display: none;
 }
 
-.img-p>div>label>img {
+.img-p>div>label>div>img {
     width: auto;
+    height: 100%;
+    background-color: white;
+}
+
+.img-p>div>label>div {
+    width: 100%;
     height: 100%;
 }
 

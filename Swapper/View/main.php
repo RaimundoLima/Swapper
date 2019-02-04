@@ -151,20 +151,26 @@
                 <div class="img-g">
                         <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fileToUpload">
                         <label for="fileToUpload">
-                            <img id="previewUpload" src="View/img/camiseta.jpg" alt="">
+                            <div id="img-preview">
+                                <img id="previewUpload" src="View/img/camiseta.jpg" alt="">
+                            </div>
                         </label>
                     </div>
                     <div class="img-p">
                         <div>
                             <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload1" id="fileToUpload1">
                             <label for="fileToUpload1">
-                                <img id="previewUpload1" src="View/img/camiseta.jpg" alt="">
+                                <div id="img-preview1">
+                                    <img id="previewUpload1" src="View/img/camiseta.jpg" alt="">
+                                </div>
                             </label>
                         </div>
-                        <div>
+                        <div >
                             <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload2" id="fileToUpload2">
                             <label for="fileToUpload2">
-                                <img id="previewUpload2" src="View/img/camiseta.jpg" alt="">
+                                <div id="img-preview2">
+                                    <img id="previewUpload2" src="View/img/camiseta.jpg" alt="">
+                                </div>
                             </label>
                         </div>
                     </div>
@@ -550,16 +556,13 @@
                                     <img class="" src="/View/img/camiseta.jpg">
                                 </div>
                             </div>
-                            <div class="produto_info col s6 vizualizar-produto">
+                            <div class="produto_info col s7 vizualizar-produto">
                                 <span class="nome_produto">Camisa Azul Manga Curta</span>
                                 <br>
                                 <i class="material-icons icons">remove_red_eye</i>
                                 <span>0</span>
                                 <i class="material-icons icons">favorite</i>
                                 <span>0</span>
-                            </div>
-                            <div id="editarProduto_btn" class="col s2">
-                                <a class="editar-produto-btn"><i class="material-icons">create</i></a>
                             </div>
                         </div>
                     </div>
