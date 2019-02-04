@@ -28,8 +28,7 @@ function inserirUsuario($usuario){
     return inserirConfig($config);
 }
 function atualizarUsuario($usuario,$id){
-    R::load('usuario',$id);
-    $usuarioT=R::dispense('usuario');
+    $usuarioT=R::load('usuario',$id);
     $usuarioT['sexo']=$usuario['sexo'];
     $usuarioT['email']=$usuario['email'];
     $usuarioT['senha']=$usuario['senha'];

@@ -171,48 +171,53 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div>           
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate">
-                        <label for="first_name">Nome do Produto</label>
+                        <input id="nomeProduto" type="text" class="validate">
+                        <label for="nomeProduto">Nome do Produto</label>
+                <div class="img-p">
+                    <div>
+                        <input type="image" id="" src="/View/img/camiseta.jpg">
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Descrição</label>
-                    </div>
+                        <textarea id="descricao" class="materialize-textarea"></textarea>
+                        <label for="descricao">Descrição</label>
+                    </div>  
                     <div class="input-field col s6">
-                        <select form="adicionar-produtoForm">
-                            <option value="1">Masculino</option>
-                            <option value="2">Feminino</option>
+                        <select id="sexo">
+                        <option value="1">Masculino</option>
+                        <option value="2">Feminino</option>
                         </select>
                         <label>Sexo</label>
+                    <div>
+                        <input type="image" id="" src="/View/img/camiseta.jpg">
                     </div>
                     <div class="input-field col s6">
-                        <select form="adicionar-produtoForm">
-                            <option value="1">Infantil</option>
-                            <option value="2">Adulto</option>
+                        <select id="categoria">
+                        <option value="1">Infantil</option>
+                        <option value="2">Adulto</option>
                         </select>
                         <label>Categoria</label>
                     </div>
                     <div class="input-field col s6">
-                        <select form="adicionar-produtoForm">
-                            <option value="1">Roupas</option>
-                            <option value="2">Acessórios</option>
-                            <option value="3">Calçados</option>
+                        <select id="tipo">
+                        <option value="1">Roupas</option>
+                        <option value="2">Acessórios</option>
+                        <option value="3">Calçados</option>
                         </select>
                         <label>Tipo</label>
                     </div>
                     <div class="input-field col s6">
-                        <select form="adicionar-produtoForm">
-                            <option value="1">Usado</option>
-                            <option value="2">Novo</option>
+                        <select id="estado">
+                        <option value="1">Usado</option>
+                        <option value="2">Novo</option>
                         </select>
                         <label>Estado</label>
                     </div>
-                </div>
+                </div> 
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 
     <form id="adicionar-produtoForm" action="View/upload.php" method="post" enctype="multipart/form-data">
         <div id="editar-produto" class="produto-tab out-tab">
