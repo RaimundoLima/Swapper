@@ -21,9 +21,10 @@ $("#produtos-usuario-btn").click(function() {
     buscarRoupas();
 });
 
-$("#addProduto_btn").click(function() {
-    
+$("#adicionar-produto-btn-voltar").click(function() {
+    resetAddForm();
 });
+
 $("#adicionar-produtoForm").submit(function(e){
     e.preventDefault();
     inserirRoupas();
@@ -55,6 +56,7 @@ function inserirRoupas(){
     }).done(function(result){
         console.log(result)
         //zerar campus tbm
+        resetAddForm();
         $("#adicionar-produto").removeClass("left-right-ltab");
         $("#adicionar-produto").addClass("right-left-ltab");
     })
@@ -111,7 +113,7 @@ function buscarRoupas(){
     }
 }
 
-
+//Desabilitar e habilitar botoes de ação
 function botoesAcaoPrincipal(estado){
     $('#btn-rever').prop('disabled', estado*1);
     $('#btn-deslike').prop('disabled', estado*1);
@@ -125,15 +127,13 @@ function botoesAcaoSecundario(estado){
     $('#btn-superlike2').prop('disabled', estado*1);
 }
 
-//////////////////////////////// TESTE DOS INPUT //////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// Input preview e UX
 function readURL(input) {
     var size = input.files[0].size;
     if(size < 1048576) {       
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-            
             //INPUTS DE IMAGEM DO ADICIONAR PRODUTO
             if(input.id == "fileToUpload"){
                 reader.onload = function (e) {
@@ -143,14 +143,13 @@ function readURL(input) {
                     $("#fileToUpload1").prop('disabled', false);
                     $("#img-preview1").addClass('able');
                     $("#img-preview1").removeClass('label-disabled');
-                    
                 }
             }
             if(input.id == "fileToUpload1"){
                 reader.onload = function (e) {
                     $("#previewUpload1").attr('src', e.target.result);
                     resizeImg($("#img-preview1"),$("#previewUpload1"));
-                    
+
                     $("#fileToUpload2").prop('disabled', false);
                     $("#img-preview2").addClass('able');
                     $("#img-preview2").removeClass('label-disabled');
@@ -177,8 +176,7 @@ $('body').on("change", "input[type=file]", function() {
     readURL(this);
 });
 
-/////////////////////////////////////////
-
+//ajustar imagem
 function resizeImg(ref, img){
     ref.css("padding-top", "0px");
     img.css("height","auto");
@@ -187,4 +185,19 @@ function resizeImg(ref, img){
         img.css("width","100%");
         ref.css("padding-top",((ref.height()/2)-(img.height()/2))+"px");
     }else img.css("height","100%");
+}
+
+//resetar formulario
+function resetAddForm(){
+    $("#previewUpload").attr('src','');
+    $("#previewUpload1").attr('src','');
+    $("#previewUpload2").attr('src', '');
+    $("#img-preview1").addClass('label-disabled');
+    $("#img-preview1").removeClass('able');
+    $("#img-preview2").addClass('label-disabled');
+    $("#img-preview2").removeClass('able');
+    document.getElementById("fileToUpload").value = "";
+    document.getElementById("fileToUpload1").value = "";
+    document.getElementById("fileToUpload2").value = "";
+    document.getElementById("adicionar-produtoForm").reset();
 }

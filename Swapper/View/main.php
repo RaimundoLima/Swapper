@@ -186,7 +186,7 @@
                     </div>
                     <div class="input-field col s6">
                         <select id="sexo">
-                            <option value="1">Masculino</option>
+                            <option value="1" selected="selected">Masculino</option>
                             <option value="2">Feminino</option>
                         </select>
                         <label>Sexo</label>
@@ -194,13 +194,13 @@
                     <div class="input-field col s6">
                         <select id="categoria">
                             <option value="1">Infantil</option>
-                            <option value="2">Adulto</option>
+                            <option value="2" selected="selected">Adulto</option>
                         </select>
                         <label>Categoria</label>
                     </div>
                     <div class="input-field col s6">
                         <select id="tipo">
-                            <option value="1">Roupas</option>
+                            <option value="1" selected="selected">Roupas</option>
                             <option value="2">Acessórios</option>
                             <option value="3">Calçados</option>
                         </select>
@@ -209,7 +209,7 @@
                     <div class="input-field col s6">
                         <select id="estado">
                             <option value="1">Usado</option>
-                            <option value="2">Novo</option>
+                            <option value="2" selected="selected">Novo</option>
                         </select>
                         <label>Estado</label>
                     </div>

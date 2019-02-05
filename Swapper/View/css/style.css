@@ -779,8 +779,8 @@ h4 {
 }
 
 .img-g>label>div>img {
-    width: auto;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     background-color: white;
 }
 
@@ -800,8 +800,8 @@ h4 {
 }
 
 .img-p>div>label>div>img {
-    width: auto;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     background-color: white;
 }
 
