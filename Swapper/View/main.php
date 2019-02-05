@@ -152,24 +152,24 @@
                         <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fileToUpload">
                         <label for="fileToUpload">
                             <div id="img-preview">
-                                <img id="previewUpload" src="View/img/camiseta.jpg" alt="">
+                                <img id="previewUpload" src="" alt="">
                             </div>
                         </label>
                     </div>
                     <div class="img-p">
                         <div>
-                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload1" id="fileToUpload1">
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload1" id="fileToUpload1" disabled>
                             <label for="fileToUpload1">
-                                <div id="img-preview1">
-                                    <img id="previewUpload1" src="View/img/camiseta.jpg" alt="">
+                                <div id="img-preview1" class="label-disabled">
+                                    <img id="previewUpload1" src="" alt="" >
                                 </div>
                             </label>
                         </div>
                         <div >
-                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload2" id="fileToUpload2">
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload2" id="fileToUpload2" disabled>
                             <label for="fileToUpload2">
-                                <div id="img-preview2">
-                                    <img id="previewUpload2" src="View/img/camiseta.jpg" alt="">
+                                <div id="img-preview2" class="label-disabled">
+                                    <img id="previewUpload2" src="" alt="" >
                                 </div>
                             </label>
                         </div>

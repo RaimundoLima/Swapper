@@ -45,6 +45,7 @@ $("#addProduto_btn").click(function() {
 $("#adicionar-produto-btn-voltar").click(function() {
     $("#adicionar-produto").removeClass("left-right-ltab");
     $("#adicionar-produto").addClass("right-left-ltab");
+    $("adicionar-produtoForm").reset();
 });
 
 $(".vizualizar-produto").click(function() {

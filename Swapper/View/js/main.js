@@ -115,12 +115,19 @@ function readURL(input) {
             reader.onload = function (e) {
                 $("#previewUpload").attr('src', e.target.result);
                 resizeImg($("#img-preview"),$("#previewUpload"));
+                $("#fileToUpload1").prop('disabled', false);
+                $("#img-preview1").addClass('able');
+                $("#img-preview1").removeClass('label-disabled');
+                
             }
         }
         if(input.id == "fileToUpload1"){
             reader.onload = function (e) {
                 $("#previewUpload1").attr('src', e.target.result);
                 resizeImg($("#img-preview1"),$("#previewUpload1"));
+                $("#fileToUpload2").prop('disabled', false);
+                $("#img-preview2").addClass('able');
+                $("#img-preview2").removeClass('label-disabled');
             }
         }
         if(input.id == "fileToUpload2"){
@@ -131,22 +138,7 @@ function readURL(input) {
         }
         //////    /////////     ////////////
         //INPUTS DE IMAGEM DO EDITAR PRODUTO
-        if(input.id == "fileToUpload3"){
-            reader.onload = function (e) {
-                $("#previewUpload3").attr('src', e.target.result);
-            }
-        }
-        if(input.id == "fileToUpload4"){
-            reader.onload = function (e) {
-                $("#previewUpload4").attr('src', e.target.result);
-            }
-        }
-        if(input.id == "fileToUpload5"){
-            reader.onload = function (e) {
-                $("#previewUpload5").attr('src', e.target.result);
-            }
-        }
-        
+        //////    /////////     ////////////
         reader.readAsDataURL(input.files[0]);
     }
 }
@@ -196,19 +188,3 @@ function resizeImg(ref, img){
         ref.css("padding-top",((ref.height()/2)-(img.height()/2))+"px");
     }else img.css("height","100%");
 }
-
-/*
-$("fileToUpload").on("change", verificarTamanhoImagem(this), true);
-$("fileToUpload1").on("change", verificarTamanhoImagem(this));
-$("fileToUpload2").on("change", verificarTamanhoImagem(this));
-
-
-function verificarTamanhoImagem(upload) {
-    var size = upload.files[0].size;
-    if(size < 1048576) { //1MB         
-      alert('Permitido'); //Abaixo do permitido
-    } else {           
-      alert('Não permitido'); //Acima do limite
-      upload.value = ""; //Limpa o campo          
-    }
-}*/
