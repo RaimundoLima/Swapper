@@ -105,7 +105,7 @@ function buscarRoupas(){
         $.ajax({
             url: '/buscarRoupas'
         }).done(function(data){
-            console.log(data)
+            //console.log(data)
         })
         buscaRoupas=1;
     }
@@ -129,74 +129,53 @@ function botoesAcaoSecundario(estado){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        //INPUTS DE IMAGEM DO ADICIONAR PRODUTO
-        if(input.id == "fileToUpload"){
-            reader.onload = function (e) {
-                $("#previewUpload").attr('src', e.target.result);
-                resizeImg($("#img-preview"),$("#previewUpload"));
-                $("#fileToUpload1").prop('disabled', false);
-                $("#img-preview1").addClass('able');
-                $("#img-preview1").removeClass('label-disabled');
-                
+    var size = input.files[0].size;
+    if(size < 1048576) {       
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            //INPUTS DE IMAGEM DO ADICIONAR PRODUTO
+            if(input.id == "fileToUpload"){
+                reader.onload = function (e) {
+                    $("#previewUpload").attr('src', e.target.result);
+                    resizeImg($("#img-preview"),$("#previewUpload"));
+
+                    $("#fileToUpload1").prop('disabled', false);
+                    $("#img-preview1").addClass('able');
+                    $("#img-preview1").removeClass('label-disabled');
+                    
+                }
             }
-        }
-        if(input.id == "fileToUpload1"){
-            reader.onload = function (e) {
-                $("#previewUpload1").attr('src', e.target.result);
-                resizeImg($("#img-preview1"),$("#previewUpload1"));
-                $("#fileToUpload2").prop('disabled', false);
-                $("#img-preview2").addClass('able');
-                $("#img-preview2").removeClass('label-disabled');
+            if(input.id == "fileToUpload1"){
+                reader.onload = function (e) {
+                    $("#previewUpload1").attr('src', e.target.result);
+                    resizeImg($("#img-preview1"),$("#previewUpload1"));
+                    
+                    $("#fileToUpload2").prop('disabled', false);
+                    $("#img-preview2").addClass('able');
+                    $("#img-preview2").removeClass('label-disabled');
+                }
             }
-        }
-        if(input.id == "fileToUpload2"){
-            reader.onload = function (e) {
-                $("#previewUpload2").attr('src', e.target.result);
-                resizeImg($("#img-preview2"),$("#previewUpload2"));
+            if(input.id == "fileToUpload2"){
+                reader.onload = function (e) {
+                    $("#previewUpload2").attr('src', e.target.result);
+                    resizeImg($("#img-preview2"),$("#previewUpload2"));
+                }
             }
+            //////    /////////     ////////////
+            //INPUTS DE IMAGEM DO EDITAR PRODUTO
+            //////    /////////     ////////////
+            reader.readAsDataURL(input.files[0]);
         }
-        //////    /////////     ////////////
-        //INPUTS DE IMAGEM DO EDITAR PRODUTO
-        //////    /////////     ////////////
-        reader.readAsDataURL(input.files[0]);
+    }else{           
+        M.toast({html: 'Imagem muito grande!'}) 
+        input.value = "";        
     }
 }
 
 $('body').on("change", "input[type=file]", function() {
     readURL(this);
 });
-
-//INPUTS DE IMAGEM DO ADICIONAR PRODUTO
-$("#fileToUpload").on("change", function(e) {
-    var size = this.files[0].size;
-    if(size < 1048576) {       
-    } else {           
-        M.toast({html: 'Imagem muito grande!'}) 
-        this.value = "";        
-    }
-});
-
-$("#fileToUpload1").on("change", function(e) {
-    var size = this.files[0].size;
-    if(size < 1048576) {       
-    } else {           
-        M.toast({html: 'Imagem muito grande!'}) 
-        this.value = "";        
-    }
-});
-
-$("#fileToUpload2").on("change", function(e) {
-    var size = this.files[0].size;
-    if(size < 1048576) {       
-    } else {           
-        M.toast({html: 'Imagem muito grande!'}) 
-        this.value = "";        
-    }
-});
-//INPUTS DE IMAGEM DO eDITAR PRODUTO
-
 
 /////////////////////////////////////////
 

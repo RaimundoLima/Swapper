@@ -775,6 +775,7 @@ h4 {
 
 .label-disabled{
     background-color: #bbbbbb;
+    box-shadow: inset 0px 0px 4px rgba(170, 170, 170, 1);
 }
 
 .img-g>label>div>img {
