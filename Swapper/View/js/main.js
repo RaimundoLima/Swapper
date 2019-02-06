@@ -31,7 +31,7 @@ $("#adicionar-produtoForm").submit(function(e){
 })
 
 function inserirRoupas(){
-    data = new FormData();
+    var data = new FormData();
     jQuery.each(jQuery('#fileToUpload')[0].files, function(i, file) {
         data.append('img1', file);
     });
@@ -53,9 +53,7 @@ function inserirRoupas(){
         processData: false,
         type: 'post',
         data:data
-    }).done(function(result){
-        console.log(result)
-        //zerar campus tbm
+    }).done(function(){
         resetAddForm();
         $("#adicionar-produto").removeClass("left-right-ltab");
         $("#adicionar-produto").addClass("right-left-ltab");
