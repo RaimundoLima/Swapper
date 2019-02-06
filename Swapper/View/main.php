@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include("header.php"); ?>
-
 <body>
 
     <div class="row swiper-container main-container">
@@ -13,21 +12,25 @@
 
                         <h4 class="titulo_tab fixed">Perfil</h4>
                         <div class="perfil_dados col s12">
-                            <div class="row">
+                            <div class="row mg-0">
                                 <div class="col s3 pd-r0">
                                     <div class="pic">
-                                        <img src="/View/img/luis.jpg" alt="">
+                                        <img src="/View/img/random.jpg" alt="">
+                                    </div>
+                                    <div class="editarBtn_perfil tx-r">
+                                        <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fotoPerfilUpload">
+                                        <label for="fotoPerfilUpload">
+                                            <a id=""><i class="font18em material-icons">create</i></a>
+                                        </label>
                                     </div>
                                 </div>
-                                <div class="pd-r0 tx-l col s7">
+                                <div class="pd-r0 tx-l col s7 pd-l14">
                                     <h5 class="nome">
                                         <div class="nome_tx"><span>Luis Henrique Jacinto</span></div>
                                     </h5>
                                     <i class="material-icons meritos-perfil">star_half</i><i class="material-icons meritos-perfil">check_circle</i>
                                 </div>
-                                <div class="editarBtn_perfil col s2">
-                                    <a id=""><i class="font18em material-icons icons">create</i></a>
-                                </div>
+                               
                             </div>
                             <div class="row" id="borda_perfil">
                                 <div class="col s12 borda_perfil">
@@ -138,6 +141,29 @@
         <div class="col s12 tabs swiper-pagination swiper-no-swiping">
         </div>
     </div>
+
+    <!-- Abas de confirmação -->
+    <div id="confirmarFotoPerfil">
+        <div class="row tx-c">
+            <div class="col s12">
+                <div class="pic-preview"><img id="fotoPerfilPreview" src="" alt=""></div>
+            </div>
+            <div class="btns">
+                <div class="col s5 tx-r">
+                    <a id="rejeitarFoto" class=""><i class="material-icons">close</i></a>
+                </div>
+                <div class="col s2"></div>
+                <div class="col s5 tx-l">
+                    <a id="confirmarFoto" class=""><i class="material-icons">check</i></a>
+                </div>
+            </div>
+            
+
+        </div>
+
+    </div>
+
+    <!-- ///////////////////////// -->
     <!-- Abas acessadas pelo Perfil -->
     <form id="adicionar-produtoForm" action="" method="post" enctype="multipart/form-data">
         <div id="adicionar-produto" class="produto-tab out-tab">

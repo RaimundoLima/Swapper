@@ -135,6 +135,15 @@ function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             //INPUTS DE IMAGEM DO ADICIONAR PRODUTO
+            if(input.id == "fotoPerfilUpload"){
+                reader.onload = function (e) {
+                    $("#confirmarFotoPerfil").removeClass("right-left-ltab");
+                    $("#confirmarFotoPerfil").addClass("left-right-ltab");
+                    $("#confirmarFotoPerfil").css('display', 'inline-block');
+                    $("#fotoPerfilPreview").attr('src', e.target.result);
+                    //resizeImg($(".pic-preview"),$("#fotoPerfilPreview"));
+                }
+            }
             if(input.id == "fileToUpload"){
                 reader.onload = function (e) {
                     $("#previewUpload").attr('src', e.target.result);

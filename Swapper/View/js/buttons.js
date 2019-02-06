@@ -83,3 +83,12 @@ $("#filtro-btn-voltar").click(function() {
     $("#filtro").removeClass("right-left-rtab");
     $("#filtro").addClass("left-right-rtab");
 });*/
+
+$("#rejeitarFoto").click(function() {
+    if($("#confirmarFotoPerfil").hasClass("left-right-ltab") == true){
+        $("#confirmarFotoPerfil").removeClass("left-right-ltab");
+        $("#confirmarFotoPerfil").addClass("right-left-ltab");
+        setTimeout(function(){$("#fotoPerfilPreview").attr('src', ''); }, 300);
+        document.getElementById("fotoPerfilUpload").value = "";
+    }
+});
