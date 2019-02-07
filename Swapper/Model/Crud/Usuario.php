@@ -29,14 +29,6 @@ function inserirUsuario($usuario){
 }
 function atualizarUsuario($usuario,$id){
     $usuarioT=R::load('usuario',$id);
-    $usuarioT['sexo']=$usuario['sexo'];
-    $usuarioT['email']=$usuario['email'];
-    $usuarioT['senha']=$usuario['senha'];
-    $usuarioT['celular']=$usuario['celular'];
-    $usuarioT['nome']=$usuario['nome'];
-    $usuarioT['nascimento']=$usuario['nascimento'];
-    $usuarioT['localizacao']=$usuario['localizacao'];
-    $usuarioT['bio']=$usuario['bio'];
     $usuarioT['foto']=$usuario['foto'];
     return R::store($usuarioT);
 }

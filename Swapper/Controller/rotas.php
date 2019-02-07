@@ -140,10 +140,17 @@ function getPagina()
                 include('View/footer.php');
                 
             break;
-            case '/ediatrperfil':
-                //criar msg
-                //time();
-                //salvar no bd
+            case '/atualizarperfil':
+                $img="";
+                 if(!empty($_FILES["img"])){
+                        if($_FILES["img"]["size"] <= 2500000){
+                            if($_FILES["img"]["type"]=="image/jpg" || $_FILES["img"]["type"]=="image/png"|| $_FILES["img"]["type"]=="image/jpeg"){
+                                $img=mb_convert_encoding(file_get_contents($_FILES["img"]["tmp_name"]),"base64","UTF-8");
+                            }
+                        }
+                    }
+                $usuario["foto"]=$img;
+                atualizarUsuario($usuario,$_SESSION["usuario"]["id"]);
                 echo 'ok';
             break;
             case '/enviamsg':

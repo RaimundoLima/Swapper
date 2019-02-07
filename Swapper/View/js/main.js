@@ -36,7 +36,25 @@ $("#adicionar-produtoForm").submit(function(e){
     e.preventDefault();
     inputRequired();
 })
+$("#confirmarFoto").click(function(){
+    atualizarPerfil()
+})
+function atualizarPerfil(){
+    var data = new FormData();
+    jQuery.each(jQuery('#fotoPerfilUpload')[0].files, function(i, file) {
+        data.append('img', file);
+    });
+        $.ajax({
+        url: '/atualizarPerfil',
+        contentType: false,
+        processData: false,
+        type: 'post',
+        data:data
+    }).done(function(){
+        console.log("yeah foto de perfil no bd");
+    })
 
+}
 function inserirRoupas(){
     var data = new FormData();
     jQuery.each(jQuery('#fileToUpload')[0].files, function(i, file) {
