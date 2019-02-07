@@ -36,6 +36,32 @@ $(document).ready(function(){
         }
     });
 
+    card_img = new Swiper ('.card-imagens', {
+        initialSlide: 0,
+        loop: false,
+        direction: 'horizontal',
+        centeredSlides: true,
+        observer: true,
+        observeParents: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+    });
+
+    produto = new Swiper ('.produto-imagens', {
+        initialSlide: 0,
+        loop: false,
+        direction: 'horizontal',
+        centeredSlides: true,
+        observer: true,
+        observeParents: true,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'progressbar',
+        },
+    });
+
     $('select').formSelect();
 
     redimensionar();

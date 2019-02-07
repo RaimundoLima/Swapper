@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include("header.php"); ?>
+
 <body>
 
     <div class="row swiper-container main-container">
         <div class="swiper-wrapper">
             <div id="perfil" class="col s12 swiper-slide">
-
                 <div class="row">
-                    <div class="perfil_tab col s12">
-
-                        <h4 class="titulo_tab fixed">Perfil</h4>
+                    <div class="perfil_tab col s12 out-tab">
+                        <div class="titulo_tab  pd-0">
+                            <a id="burguerBtn" class=""><i class=" material-icons">dehaze</i></a>
+                            <h4 class="pd-r0">Perfil</h4>
+                        </div>
                         <div class="perfil_dados col s12">
                             <div class="row mg-0">
                                 <div class="col s3 pd-r0">
                                     <div class="pic">
                                         <img src="/View/img/luis.jpg" alt="">
-                                    </div>
-                                    <div class="editarBtn_perfil tx-r">
-                                        <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fotoPerfilUpload">
-                                        <label for="fotoPerfilUpload">
-                                            <a id=""><i class="font18em material-icons">create</i></a>
-                                        </label>
                                     </div>
                                 </div>
                                 <div class="pd-r0 tx-l col s7 pd-l14">
@@ -30,7 +26,7 @@
                                     </h5>
                                     <i class="material-icons meritos-perfil">star_half</i><i class="material-icons meritos-perfil">check_circle</i>
                                 </div>
-                               
+
                             </div>
                             <div class="row" id="borda_perfil">
                                 <div class="col s12 borda_perfil">
@@ -67,7 +63,14 @@
 
                         <div class="cards swiper-no-swiping">
 
-                            <div class="card-imgs swiper-no-swiping">
+                            <div class="card-imgs tx-c card-imagens swiper-no-swiping">
+                                <div class="swiper-wrapper">
+                                    <div id="card-view-img1" class="swiper-slide"><img id="card-imagem1" src="View/img/camiseta.jpg" alt=""></div>
+                                    <div id="card-view-img2" class="swiper-slide"><img id="card-imagem2" src="View/img/camiseta.jpg" alt=""></div>
+                                    <div id="card-view-img3" class="swiper-slide"><img id="card-imagem3" src="View/img/camiseta.jpg" alt=""></div>
+                                </div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
 
                             </div>
 
@@ -142,7 +145,7 @@
         </div>
     </div>
 
-    <!-- Abas de confirmação -->
+    <!-- Abas de confirmação // Menu -->
     <div id="confirmarFotoPerfil">
         <div class="row tx-c">
             <div class="col s12">
@@ -157,12 +160,29 @@
                     <a id="confirmarFoto" class=""><i class="material-icons">check</i></a>
                 </div>
             </div>
-            
+
 
         </div>
 
     </div>
 
+    <div id="menu-burguer" class="out-tab">
+        <div class="main">
+            <div class="titulo_tab fixed">
+                <a id="burguerBtn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+                <h4 class="">Opções</h4>
+            </div>
+            <div class="btn-burguer">
+                <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fotoPerfilUpload">
+                <label for="fotoPerfilUpload">
+                    <a id="" class="burguer-option">Alterar foto de perfil</a>
+                </label>
+            </div>
+            <a id="" class="burguer-option">Verificar conta</a>
+            <a id="" class="burguer-option">Deslogar</a>
+        </div>
+        <div id="menu-burguer-side" class="side"></div>
+    </div>
     <!-- ///////////////////////// -->
     <!-- Abas acessadas pelo Perfil -->
     <form id="adicionar-produtoForm" action="" method="post" enctype="multipart/form-data">
@@ -179,9 +199,9 @@
                 <div class="removerImagem">
                     <a id="remover2"><i class="font18em material-icons">close</i></a>
                 </div>
-                
+
                 <div class="criar-produto-imgs">
-                <div class="img-g">
+                    <div class="img-g">
                         <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fileToUpload">
                         <label for="fileToUpload">
                             <div id="img-preview">
@@ -191,18 +211,20 @@
                     </div>
                     <div class="img-p">
                         <div>
-                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload1" id="fileToUpload1" disabled>
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload1" id="fileToUpload1"
+                                disabled>
                             <label for="fileToUpload1">
                                 <div id="img-preview1" class="label-disabled">
-                                    <img id="previewUpload1" src="" alt="" >
+                                    <img id="previewUpload1" src="" alt="">
                                 </div>
                             </label>
                         </div>
-                        <div >
-                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload2" id="fileToUpload2" disabled>
+                        <div>
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload2" id="fileToUpload2"
+                                disabled>
                             <label for="fileToUpload2">
                                 <div id="img-preview2" class="label-disabled">
-                                    <img id="previewUpload2" src="" alt="" >
+                                    <img id="previewUpload2" src="" alt="">
                                 </div>
                             </label>
                         </div>
@@ -250,7 +272,7 @@
             </div>
         </div>
     </form>
-    <!--
+    
     <form id="editar-produtoForm" action="" method="post" enctype="multipart/form-data">
         <div id="editar-produto" class="produto-tab out-tab">
             <div class="titulo_tab fixed">
@@ -259,6 +281,12 @@
                 <button type="submit" value="Upload Image" name="submit" class="btn-check"><i class="material-icons">check</i></button>
             </div>
             <div class="row">
+                <div class="removerImagem">
+                    <a id="remover3"><i class="font18em material-icons">close</i></a>
+                </div>
+                <div class="removerImagem">
+                    <a id="remover4"><i class="font18em material-icons">close</i></a>
+                </div>
                 <div class="criar-produto-imgs">
                 <div class="img-g">
                         <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fileToUpload3">
@@ -323,17 +351,23 @@
             </div>
         </div>
     </form>
--->
-    <div id="vizualizar-produtoUsuario" class="vizualizar-produtoUsuario-tab view-tab">
+
+    <div id="visualizar-produtoUsuario" class="visualizar-produtoUsuario-tab view-tab">
         <div class="titulo_tab">
-            <a id="vizualizar-produtoUsuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+            <a id="visualizar-produtoUsuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
         </div>
         <div class="produto-imagens">
-
+            <div class="swiper-wrapper">
+                <div id="produto-view-img1" class="swiper-slide"><img id="produto-imagem1" src="View/img/camiseta.jpg" alt=""></div>
+                <div id="produto-view-img2" class="swiper-slide"><img id="produto-imagem2" src="View/img/camiseta.jpg" alt=""></div>
+                <div id="produto-view-img3" class="swiper-slide"><img id="produto-imagem3" src="View/img/camiseta.jpg" alt=""></div>
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="info mg-0 row">
+            <a id="" class="dono"><i class=" material-icons">person</i><span>Luis Henrique Jacinto</span></a>
             <div class="col s12">
-                <h4>Camiseta Azul Manga Curta</h4>
+                <h4 class="nome-p">Camiseta Azul Manga Curta</h4>
                 <div class="divisoria"></div>
             </div>
 
@@ -374,12 +408,12 @@
 
                 <div id="produto" class="produto">
                     <div class="row">
-                        <div class="col s4 vizualizar-produto">
+                        <div class="col s4 visualizar-produto">
                             <div class="produto_imagem">
                                 <img class="" src="/View/img/camiseta.jpg">
                             </div>
                         </div>
-                        <div class="produto_info col s6 vizualizar-produto">
+                        <div class="produto_info col s6 visualizar-produto">
                             <span class="nome_produto">Camisa Azul Manga Curta</span>
                             <br>
                             <i class="material-icons icons">remove_red_eye</i>
@@ -584,12 +618,12 @@
 
                     <div id="produto" class="produto">
                         <div class="row">
-                            <div class="col s4 vizualizar-produto">
+                            <div class="col s4 visualizar-produto">
                                 <div class="produto_imagem">
                                     <img class="" src="/View/img/camiseta.jpg">
                                 </div>
                             </div>
-                            <div class="produto_info col s7 vizualizar-produto">
+                            <div class="produto_info col s7 visualizar-produto">
                                 <span class="nome_produto">Camisa Azul Manga Curta</span>
                                 <br>
                                 <i class="material-icons icons">remove_red_eye</i>

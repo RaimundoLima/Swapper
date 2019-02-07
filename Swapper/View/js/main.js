@@ -223,3 +223,14 @@ function inputRequired(){
         inserirRoupas();
     }
 }
+
+//teste
+
+resizeImg($("#produto-view-img1"),$("#produto-imagem1"));
+resizeImg($("#produto-view-img2"),$("#produto-imagem2"));
+resizeImg($("#produto-view-img3"),$("#produto-imagem3"));
+
+
+resizeImg($("#card-view-img1"),$("#card-imagem1"));
+resizeImg($("#card-view-img2"),$("#card-imagem2"));
+resizeImg($("#card-view-img3"),$("#card-imagem3"));

@@ -46,13 +46,13 @@ $("#adicionar-produto-btn-voltar").click(function() {
     $("#adicionar-produto").removeClass("left-right-ltab");
     $("#adicionar-produto").addClass("right-left-ltab");
 });
-$(".vizualizar-produto").click(function() {
-    $(".vizualizar-produtoUsuario-tab").removeClass("right-left-ltab");
-    $(".vizualizar-produtoUsuario-tab").addClass("left-right-ltab");
+$(".visualizar-produto").click(function() {
+    $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
+    $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
 });
-$("#vizualizar-produtoUsuario-btn-voltar").click(function() {
-    $(".vizualizar-produtoUsuario-tab").removeClass("left-right-ltab");
-    $(".vizualizar-produtoUsuario-tab").addClass("right-left-ltab");
+$("#visualizar-produtoUsuario-btn-voltar").click(function() {
+    $(".visualizar-produtoUsuario-tab").removeClass("left-right-ltab");
+    $(".visualizar-produtoUsuario-tab").addClass("right-left-ltab");
 });
 
 $("#editarProduto_btn").click(function() {
@@ -64,7 +64,22 @@ $("#editar-produto-btn-voltar").click(function() {
     $("#editar-produto").addClass("right-left-ltab");
 });
 
+var bgcount = 0
 
+$("#burguerBtn").click(function() {
+    $("#menu-burguer").removeClass("right-left-ltab");
+    $("#menu-burguer").css('display', 'flex');
+    $("#menu-burguer").addClass("left-right-ltab");
+});   
+$("#burguerBtn-voltar").click(function() {
+    $("#menu-burguer").removeClass("left-right-ltab");
+    $("#menu-burguer").addClass("right-left-ltab");
+});
+
+$("#menu-burguer-side").click(function() {
+    $("#menu-burguer").removeClass("left-right-ltab");
+    $("#menu-burguer").addClass("right-left-ltab");
+});
 /*
 $("#filtro-btn").click(function() {
     $("#filtro").removeClass("right-left-ltab");
@@ -88,7 +103,7 @@ $("#rejeitarFoto").click(function() {
     if($("#confirmarFotoPerfil").hasClass("show-tab") == true){
         $("#confirmarFotoPerfil").removeClass("show-tab");
         $("#confirmarFotoPerfil").addClass("un-show-tab");
-        setTimeout(function(){$("#fotoPerfilPreview").attr('src', ''); }, 300);
+        setTimeout(function(){$("#fotoPerfilPreview").attr('src', ''); $("#confirmarFotoPerfil").css('display', 'none');}, 300);
         document.getElementById("fotoPerfilUpload").value = "";
     }
 });

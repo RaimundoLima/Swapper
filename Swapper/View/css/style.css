@@ -178,18 +178,6 @@ h4 {
     border-radius:50%;
 }
 
-.perfil_dados .pic>img::after{
-    border-radius: 50%;
-    box-shadow: inset 0 0 1px rgba(0, 0, 0, .2);
-    content: '';
-    display: inline-block;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-}
-
 .perfil_dados .nome {
     text-align: left;
     font-weight: 600;
@@ -227,8 +215,8 @@ h4 {
 .perfil_dados .borda_perfil {
     width: 100%;
     height: 2px;
-    border-radius: 0%;
     border-bottom: 2px #f6b2b5 solid;
+    margin-top: 1.2em;
 }
 
 .tituloProdutos{
@@ -374,26 +362,25 @@ h4 {
     margin-top: 1.2em;
 }
 
-.editarBtn_perfil > input{
+.btn-burguer > input{
     display: none !important;
 }
 
-.editarBtn_perfil> label > a {
+.burguer-option {
+    color: rgb(194, 194, 194);
     display: inline-block;
-    color: white;
-    border-radius: 100%;
-    height: 25px;
-    width: 25px;
-    text-align: center;
-    line-height: 25px;
-    background-color:#e66465;
-    transform: translateY(-15px);
+    text-align: left;
+    padding-left: 1.2em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    width:100%;
+    font-size: 1.3rem;
+    border-bottom: 2px #f0f0f0 solid;
 }
 
-.editarBtn_perfil> label>a>i {
-    font-size: 18px !important;
-    vertical-align: middle;
-    margin-bottom: 2px;
+.burguer-option:active{
+    font-weight: 600;
+    border-bottom: 2px rgb(194, 194, 194) solid;
 }
 
 .combinacoes_tab {
@@ -566,14 +553,13 @@ h4 {
 
 .cards .card-imgs {
     height: 75%;
-    padding-bottom: 10%;
     padding-top: 10%;
     padding-right: 5%;
     padding-left: 5%;
+    overflow: hidden;
 }
 
-.cards .card-imgs>div {
-    background-color: #9198e5;
+.cards .card-imgs> .wrapper{
     height: 100%;
     width: 100%;
 }
@@ -599,8 +585,9 @@ h4 {
     left: 5%;
     top: 66%;
     border-radius: 100%;
-    box-shadow: 0px 2px 10px #f6b2b5;
+    box-shadow: 0px 0px 7px 2px #f6b2b5;
     object-fit: cover;
+    z-index: 10;
 }
 
 .cards .dados>span {
@@ -621,7 +608,7 @@ h4 {
     height: 40px;
     width: 40px;
     text-align: center;
-    line-height: 40px;
+    line-height: 38px;
 }
 .meritos-perfil {
     border-radius: 100%;
@@ -791,7 +778,7 @@ h4 {
 
 .label-disabled{
     background-color: #bbbbbb;
-    box-shadow: inset 0px 0px 4px rgba(170, 170, 170, 1);
+    box-shadow: inset 0px 0px 4px 2px rgba(170, 170, 170, 1);
 }
 
 .img-g>label>div>img {
@@ -808,7 +795,7 @@ h4 {
 .img-p>div {
     width: 100%;
     height: 50%;
-    box-shadow: inset 0px 0px 4px #bbbbbb;
+    box-shadow: inset 0px 0px 4px 2px #bbbbbb;
 }
 
 .img-p>div>input{
@@ -826,7 +813,7 @@ h4 {
     height: 100%;
 }
 
-.vizualizar-produtoUsuario-tab {
+.visualizar-produtoUsuario-tab {
     z-index: 12;
     position: absolute;
     top: 0;
@@ -844,14 +831,15 @@ h4 {
     left: 0;
     font-weight: 600;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.04);
 }
 
 .view-tab .titulo_tab>a {
     color: white;
-    padding-top: 1.2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1.2rem;
+    padding-top: 1rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    padding-bottom: 1rem;
 }
 
 .view-tab .titulo_tab>a>i {
@@ -859,19 +847,44 @@ h4 {
     vertical-align: middle;
 }
 
-.vizualizar-produtoUsuario-tab .info {
+.visualizar-produtoUsuario-tab .info {
     background-color: white;
     height: fit-content;
 }
 
-.vizualizar-produtoUsuario-tab .produto-imagens {
+.visualizar-produtoUsuario-tab .produto-imagens {
     background: linear-gradient(#e66465, #9198e5);
+    overflow: hidden;
+}
+.produto-imagens > div > .swiper-slide{
+    height: 100%;
 }
 
-.vizualizar-produtoUsuario-tab .info>div .divisoria {
+.visualizar-produtoUsuario-tab .info{
+    border-top: 2px #f6b2b5 solid;
+}
+
+.visualizar-produtoUsuario-tab .info .dono{
+    float: left;
+    margin-top: 0.9em;
+    margin-left: 1.2em;
+    color: #e66465;
+}
+
+.visualizar-produtoUsuario-tab .info .dono > i{
+    transform: translateY(5px);
+}
+
+.visualizar-produtoUsuario-tab .info .nome-p{
+    margin-top: 0.2em;
+}
+
+
+.visualizar-produtoUsuario-tab .info>div .divisoria {
     margin-top: 1.2em;
     margin-bottom: 1.2em;
 }
+
 
 .tag {
     background: linear-gradient(90deg, #e66465, #9198e5);
@@ -902,7 +915,7 @@ h4 {
 
 #confirmarFotoPerfil{
     background: rgba(0, 0, 0, 0.7);
-    z-index: 11;
+    z-index: 15;
     position: absolute;
     top: 0;
     width: 100%;
@@ -967,6 +980,15 @@ h4 {
     display: none;
 }
 
+.removerImagem #remover3{
+    margin-top: 7em;
+    display:none;
+}
+.removerImagem #remover4{
+    margin-top: 15.8em;
+    display: none;
+}
+
 .removerImagem>a {
     display: block;
     color: white;
@@ -982,6 +1004,37 @@ h4 {
     font-size: 18px !important;
     vertical-align: middle;
     margin-bottom: 2px;
+}
+
+#menu-burguer{
+    display: none;
+    z-index: 11;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    
+    width: 100%;
+}
+
+#menu-burguer .main{
+    height: 100%;
+    width: 70%;
+    background-color: white;
+    border-right: 2px #f6b2b5 solid;
+    box-shadow: 0px 0px 50px 2px grey;
+}
+
+#menu-burguer .side{
+    height: 100%;
+    width: 30%;
+}
+
+#menu-burguer > h4{
+    color: #e66465;
+    border-bottom: 2px #f6b2b5 solid;
+    padding-left: 0.75em;
+    padding-top: 1.52rem;
+    padding-bottom: 1.52rem;
 }
 
 .switch .col {
@@ -1084,13 +1137,11 @@ h4 {
 }
 /* */
 .show-tab {
-    display: inline-block;
-    animation: show-tab 0.2s  forwards;
+    animation: show-tab 0.2s ease-out forwards;
 }
 
 .un-show-tab {
-    display: inline-block;
-    animation: un-show-tab 0.2s  forwards;
+    animation: un-show-tab 0.2s ease-out forwards;
 }
 /* */
 .able {
@@ -1100,7 +1151,6 @@ h4 {
 .dis-able {
     animation: dis-able 0.3s ease-out forwards;
 }
-
 /*animações*/
 
 @keyframes up-down {
@@ -1189,7 +1239,7 @@ h4 {
 
 @keyframes able {
     0% {
-        background-color: #bbbbbb
+        background-color: #bbbbbb;
     }
 
     100% {
@@ -1203,9 +1253,10 @@ h4 {
     }
 
     100% {
-        background-color: #bbbbbb
+        background-color: #bbbbbb;
     }
 }
+
 
 input[type=file] {
     float: left;
