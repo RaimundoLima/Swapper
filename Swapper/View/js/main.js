@@ -23,11 +23,13 @@ $("#produtos-usuario-btn").click(function() {
 
 $("#adicionar-produto-btn-voltar").click(function() {
     resetAddForm();
+    $("#remover1").css('display', 'none');
+    $("#remover2").css('display', 'none');
 });
 
 $("#adicionar-produtoForm").submit(function(e){
     e.preventDefault();
-    inserirRoupas();
+    inputRequired();
 })
 
 function inserirRoupas(){
@@ -55,6 +57,8 @@ function inserirRoupas(){
         data:data
     }).done(function(){
         resetAddForm();
+        $("#remover1").css('display', 'none');
+        $("#remover2").css('display', 'none');
         $("#adicionar-produto").removeClass("left-right-ltab");
         $("#adicionar-produto").addClass("right-left-ltab");
     })
@@ -132,36 +136,46 @@ function readURL(input) {
     if(size < 1048576) {       
         if (input.files && input.files[0]) {
             var reader = new FileReader();
+            //INPUT FOTO DE PERFIL
+            if(input.id == "fotoPerfilUpload"){
+                reader.onload = function (e) {
+                    $("#confirmarFotoPerfil").removeClass("un-show-tab");
+                    $("#confirmarFotoPerfil").addClass("show-tab");
+                    $("#confirmarFotoPerfil").css('display', 'inline-block');
+                    $("#fotoPerfilPreview").attr('src', e.target.result);
+                }
+            }
             //INPUTS DE IMAGEM DO ADICIONAR PRODUTO
             if(input.id == "fileToUpload"){
                 reader.onload = function (e) {
                     $("#previewUpload").attr('src', e.target.result);
                     resizeImg($("#img-preview"),$("#previewUpload"));
-
                     $("#fileToUpload1").prop('disabled', false);
                     $("#img-preview1").addClass('able');
-                    $("#img-preview1").removeClass('label-disabled');
+                    $("#img-preview1").removeClass('label-disabled');  
                 }
             }
             if(input.id == "fileToUpload1"){
                 reader.onload = function (e) {
                     $("#previewUpload1").attr('src', e.target.result);
                     resizeImg($("#img-preview1"),$("#previewUpload1"));
-
                     $("#fileToUpload2").prop('disabled', false);
+                    $("#img-preview2").removeClass('dis-able');
                     $("#img-preview2").addClass('able');
                     $("#img-preview2").removeClass('label-disabled');
+                    if($("#remover2").css('display') == 'none') $("#remover1").css('display', 'block');
                 }
             }
             if(input.id == "fileToUpload2"){
                 reader.onload = function (e) {
                     $("#previewUpload2").attr('src', e.target.result);
                     resizeImg($("#img-preview2"),$("#previewUpload2"));
+                    $("#remover1").css('display', 'none');
+                    $("#remover2").css('display', 'block');
                 }
             }
-            //////    /////////     ////////////
-            //INPUTS DE IMAGEM DO EDITAR PRODUTO
-            //////    /////////     ////////////
+
+
             reader.readAsDataURL(input.files[0]);
         }
     }else{           
@@ -198,4 +212,14 @@ function resetAddForm(){
     document.getElementById("fileToUpload1").value = "";
     document.getElementById("fileToUpload2").value = "";
     document.getElementById("adicionar-produtoForm").reset();
+}
+
+function inputRequired(){
+    if(document.getElementById("fileToUpload").value == "" || $("#nomeProduto").val() == "" || $("#descricao").val() == ""){
+        if(document.getElementById("fileToUpload").value == "") M.toast({html: 'Foto necessária!'})
+        if($("#nomeProduto").val() == "") M.toast({html: 'Nome necessário!'}) 
+        if($("#descricao").val() == "") M.toast({html: 'Descrição necessária!'}) 
+    }else{
+        inserirRoupas();
+    }
 }
