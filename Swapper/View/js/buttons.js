@@ -85,10 +85,28 @@ $("#filtro-btn-voltar").click(function() {
 });*/
 
 $("#rejeitarFoto").click(function() {
-    if($("#confirmarFotoPerfil").hasClass("left-right-ltab") == true){
-        $("#confirmarFotoPerfil").removeClass("left-right-ltab");
-        $("#confirmarFotoPerfil").addClass("right-left-ltab");
+    if($("#confirmarFotoPerfil").hasClass("show-tab") == true){
+        $("#confirmarFotoPerfil").removeClass("show-tab");
+        $("#confirmarFotoPerfil").addClass("un-show-tab");
         setTimeout(function(){$("#fotoPerfilPreview").attr('src', ''); }, 300);
         document.getElementById("fotoPerfilUpload").value = "";
     }
+});
+
+$("#remover1").click(function() {
+    document.getElementById("fileToUpload1").value = "";
+    $("#previewUpload1").attr('src','');
+    $("#remover1").css('display', 'none');
+    $("#fileToUpload2").prop('disabled', );
+    $("#img-preview2").removeClass('able');
+    $("#img-preview2").addClass('dis-able');
+    $("#fileToUpload2").prop('disabled', true);
+});
+
+
+$("#remover2").click(function() {
+    document.getElementById("fileToUpload2").value = "";
+    $("#previewUpload2").attr('src','');
+    $("#remover2").css('display', 'none');
+    $("#remover1").css('display', 'block');
 });

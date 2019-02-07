@@ -15,7 +15,7 @@
                             <div class="row mg-0">
                                 <div class="col s3 pd-r0">
                                     <div class="pic">
-                                        <img src="/View/img/random.jpg" alt="">
+                                        <img src="/View/img/luis.jpg" alt="">
                                     </div>
                                     <div class="editarBtn_perfil tx-r">
                                         <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fotoPerfilUpload">
@@ -73,11 +73,11 @@
 
                             <div class="card-dados row swiper-no-swiping">
                                 <div class="col s3"></div>
-                                <div class="col s9"><span class="card-dadosNome">Luis Henrique 7Km</span></div>
+                                <div class="col s9"><span class="card-dadosNome">Jonh Connor<span>-7KM</span></span></div>
 
                             </div>
                             <div class="dados swiper-no-swiping">
-                                <img id="perfis-btn" src="/View/img/luis.jpg" alt="">
+                                <img id="perfis-btn" src="/View/img/random.jpg" alt="">
                                 <span>
                                     <i class="meritos-perfil material-icons">star_half</i>
                                     <i class="meritos-perfil material-icons">check_circle</i>
@@ -173,6 +173,13 @@
                 <button type="submit" value="Upload Image" name="submit" class="btn-check"><i class="material-icons">check</i></button>
             </div>
             <div class="row">
+                <div class="removerImagem">
+                    <a id="remover1"><i class="font18em material-icons">close</i></a>
+                </div>
+                <div class="removerImagem">
+                    <a id="remover2"><i class="font18em material-icons">close</i></a>
+                </div>
+                
                 <div class="criar-produto-imgs">
                 <div class="img-g">
                         <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fileToUpload">
@@ -234,8 +241,8 @@
                     </div>
                     <div class="input-field col s6">
                         <select id="estado">
-                            <option value="1">Usado</option>
-                            <option value="2" selected="selected">Novo</option>
+                            <option value="1" selected="selected">Novo</option>
+                            <option value="2">Usado</option>
                         </select>
                         <label>Estado</label>
                     </div>
@@ -553,12 +560,12 @@
             <div class="perfil_dados col s12">
                 <div class="col s3 pd-r0">
                     <div class="pic">
-                        <img src="/View/img/rai.jpg" alt="">
+                        <img src="/View/img/random.jpg" alt="">
                     </div>
                 </div>
                 <div class="pd-r0 tx-l col s8">
                     <h5 class="nome">
-                        <div class="nome_tx"><span>Raimundo Magaldi Lima</span></div>
+                        <div class="nome_tx"><span>John Connor</span></div>
                     </h5>
                     <i class="material-icons meritos-perfil">star_half</i><i class="material-icons meritos-perfil">check_circle</i>
                 </div>

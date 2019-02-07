@@ -952,6 +952,38 @@ h4 {
     margin-bottom: 0.1em;
 }
 
+.removerImagem{
+    height: 37%;
+    position: absolute;
+    right: 0;
+}
+
+.removerImagem #remover1{
+    margin-top: 7em;
+    display:none;
+}
+.removerImagem #remover2{
+    margin-top: 15.8em;
+    display: none;
+}
+
+.removerImagem>a {
+    display: block;
+    color: white;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    line-height: 25px;
+    background-color:#e66465;
+}
+
+.removerImagem>a>i {
+    font-size: 18px !important;
+    vertical-align: middle;
+    margin-bottom: 2px;
+}
+
 .switch .col {
     margin-bottom: 0.8em;
 }
@@ -1050,9 +1082,23 @@ h4 {
     display: inline-block;
     animation: left-right-rtab 0.3s ease-out forwards;
 }
+/* */
+.show-tab {
+    display: inline-block;
+    animation: show-tab 0.2s  forwards;
+}
 
+.un-show-tab {
+    display: inline-block;
+    animation: un-show-tab 0.2s  forwards;
+}
+/* */
 .able {
     animation: able 0.3s ease-out forwards;
+}
+
+.dis-able {
+    animation: dis-able 0.3s ease-out forwards;
 }
 
 /*animações*/
@@ -1120,6 +1166,27 @@ h4 {
     }
 }
 
+@keyframes show-tab {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes un-show-tab {
+    0% {
+        transform: translateY(0%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+
+}
+
 @keyframes able {
     0% {
         background-color: #bbbbbb
@@ -1127,6 +1194,16 @@ h4 {
 
     100% {
         background-color: transparent;
+    }
+}
+
+@keyframes dis-able {
+    0% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: #bbbbbb
     }
 }
 
