@@ -1,7 +1,8 @@
 <?php
 include("Model/Crud/Model.php");
 function getPagina()
-{
+{   
+    session_set_cookie_params(2592000);
     session_start();
  	//error_reporting(0);
 	$url = $_SERVER['REQUEST_URI'];
@@ -25,7 +26,6 @@ function getPagina()
                 'senha'=>sha1($_POST['senha'])
             ];
             $usuario=buscarUsuarioLogin($usuario);
-            var_dump($usuario);
             if($usuario!=null){
                 echo("foi");
                 $_SESSION['usuario']=$usuario;
@@ -149,9 +149,12 @@ function getPagina()
                             }
                         }
                     }
-                $usuario["foto"]=$img;
-                atualizarUsuario($usuario,$_SESSION["usuario"]["id"]);
-                echo 'ok';
+                if($img!=""){
+                    $usuario["foto"]=$img;
+                    atualizarUsuario($usuario,$_SESSION["usuario"]["id"]);
+                    $_SESSION["usuario"]=buscarUsuario($_SESSION["usuario"]["id"]);
+                    echo $img;
+                }
             break;
             case '/enviamsg':
                 $texto=trim($_POST['text']);

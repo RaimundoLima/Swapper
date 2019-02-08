@@ -17,12 +17,12 @@
                             <div class="row mg-0">
                                 <div class="col s3 pd-r0">
                                     <div class="pic">
-                                        <img src="/View/img/luis.jpg" alt="">
+                                        <img id="fotoPerfil" <?php echo "src='data:image/jpeg;base64,".$_SESSION["usuario"]["foto"]."'";?> alt="">
                                     </div>
                                 </div>
                                 <div class="pd-r0 tx-l col s7 pd-l14">
                                     <h5 class="nome">
-                                        <div class="nome_tx"><span>Luis Henrique Jacinto</span></div>
+                                        <div class="nome_tx"><span><?php echo $_SESSION["usuario"]["nome"];?></span></div>
                                     </h5>
                                     <i class="material-icons meritos-perfil">star_half</i><i class="material-icons meritos-perfil">check_circle</i>
                                 </div>
@@ -179,7 +179,7 @@
                 </label>
             </div>
             <a id="" class="burguer-option">Verificar conta</a>
-            <a id="" class="burguer-option">Deslogar</a>
+            <a href="/deslogar" class="burguer-option">Deslogar</a>
         </div>
         <div id="menu-burguer-side" class="side"></div>
     </div>
@@ -410,8 +410,8 @@
                 <div class="divisoria"></div>
             </div>
 
-            <div class="produtos">
-
+            <div id="produtos" class="produtos">
+                <!--
                 <div id="produto" class="produto">
                     <div class="row">
                         <div class="col s4 visualizar-produto">
@@ -432,6 +432,7 @@
                         </div>
                     </div>
                 </div>
+            -->
             </div>
 
         </div>

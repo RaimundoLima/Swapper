@@ -50,8 +50,9 @@ function atualizarPerfil(){
         processData: false,
         type: 'post',
         data:data
-    }).done(function(){
+    }).done(function(foto){
         console.log("yeah foto de perfil no bd");
+        $("#fotoPerfil").attr("src","data:image/jpeg;base64,"+foto)
     })
 
 }
@@ -76,6 +77,7 @@ function inserirRoupas(){
         url: '/adicionarRoupas',
         contentType: false,
         processData: false,
+        async: false ,
         type: 'post',
         data:data
     }).done(function(){
@@ -132,12 +134,19 @@ function buscarRoupas(){
         $.ajax({
             url: '/buscarRoupas'
         }).done(function(data){
-            //console.log(data)
+            gerarRoupas(data)
         })
         buscaRoupas=1;
     }
 }
-
+function gerarRoupas(data){
+    var html=""
+    roupas=JSON.parse(data)
+    for(var i=1;i<=Object.keys(roupas).length;i++){
+       html+='<div id="produto'+i+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div class="produto_imagem"><img class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div id="editarProduto_btn'+i+'" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
+    }
+    $("#produtos").html(html)
+}
 //Desabilitar e habilitar botoes de ação
 function botoesAcaoPrincipal(estado){
     $('#btn-rever').prop('disabled', estado*1);
@@ -275,6 +284,8 @@ function inputRequired(){
         if($("#descricao").val() == "") M.toast({html: 'Descrição necessária!'}) 
     }else{
         inserirRoupas();
+        buscaRoupas=0;
+        buscarRoupas();
     }
 }
 
