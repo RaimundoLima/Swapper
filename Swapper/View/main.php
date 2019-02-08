@@ -35,12 +35,12 @@
 
                             <div class="row perfil-btns">
                                 <div class="col s6">
-                                    <a id="credibilidade-usuario-btn" class=""><i class="material-icons">star_half</i></a>
+                                    <a id="credibilidade-usuario-btn" class="btn-generic"><i class="material-icons">star_half</i></a>
                                     <br>
                                     <span>Credibilidade</span>
                                 </div>
                                 <div class="col s6">
-                                    <a id="produtos-usuario-btn" class="produtos-usuario-btn"><i class="material-icons">shopping_basket</i></a>
+                                    <a id="produtos-usuario-btn" class="produtos-usuario-btn btn-generic"><i class="material-icons">shopping_basket</i></a>
                                     <br>
                                     <span>Produtos</span>
                                 </div>
@@ -57,7 +57,7 @@
 
                         <h4 class="titulo_tab">Descobrir</h4>
 
-                        <a id="filtro-btn" class="set_btn">
+                        <a id="filtro-btn" class="btn-generic set_btn">
                             <i class="font18em material-icons">settings</i>
                         </a>
 
@@ -289,22 +289,28 @@
                 </div>
                 <div class="criar-produto-imgs">
                 <div class="img-g">
-                        <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload" id="fileToUpload3">
+                        <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload3" id="fileToUpload3">
                         <label for="fileToUpload3">
-                            <img id="previewUpload3" src="View/img/camiseta.jpg" alt="">
+                            <div id="img-preview3">
+                                <img id="previewUpload3" src="" alt="">
+                            </div>
                         </label>
                     </div>
                     <div class="img-p">
                         <div>
-                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload1" id="fileToUpload4">
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload4" id="fileToUpload4" disabled>
                             <label for="fileToUpload4">
-                                <img id="previewUpload4" src="View/img/camiseta.jpg" alt="">
+                                <div id="img-preview4" class="label-disabled">
+                                    <img id="previewUpload4" src="" alt="">
+                                </div>
                             </label>
                         </div>
                         <div>
-                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload2" id="fileToUpload5">
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload5" id="fileToUpload5" disabled>
                             <label for="fileToUpload5">
-                                <img id="previewUpload5" src="View/img/camiseta.jpg" alt="">
+                                <div id="img-preview5" class="label-disabled">
+                                    <img id="previewUpload5" src="" alt="">
+                                </div>
                             </label>
                         </div>
                     </div>
@@ -421,7 +427,7 @@
                             <i class="material-icons icons">favorite</i>
                             <span>0</span>
                         </div>
-                        <div id="editarProduto_btn" class="col s2">
+                        <div id="editarProduto_btn" class="btn-generic col s2">
                             <a class="editar-produto-btn"><i class="material-icons">create</i></a>
                         </div>
                     </div>

@@ -26,7 +26,12 @@ $("#adicionar-produto-btn-voltar").click(function() {
     $("#remover1").css('display', 'none');
     $("#remover2").css('display', 'none');
 });
-
+///////
+$("#editar-produto-btn-voltar").click(function() {
+    $("#remover3").css('display', 'none');
+    $("#remover4").css('display', 'none');
+});
+//////////
 $("#adicionar-produtoForm").submit(function(e){
     e.preventDefault();
     inputRequired();
@@ -175,6 +180,37 @@ function readURL(input) {
                 }
             }
 
+            //////////////// teste //////////////////////////////
+            if(input.id == "fileToUpload3"){
+                reader.onload = function (e) {
+                    $("#previewUpload3").attr('src', e.target.result);
+                    resizeImg($("#img-preview3"),$("#previewUpload3"));
+                    $("#fileToUpload4").prop('disabled', false);
+                    $("#img-preview4").addClass('able');
+                    $("#img-preview4").removeClass('label-disabled');  
+                }
+            }
+            if(input.id == "fileToUpload4"){
+                reader.onload = function (e) {
+                    $("#previewUpload4").attr('src', e.target.result);
+                    resizeImg($("#img-preview4"),$("#previewUpload4"));
+                    $("#fileToUpload5").prop('disabled', false);
+                    $("#img-preview5").removeClass('dis-able');
+                    $("#img-preview5").addClass('able');
+                    $("#img-preview5").removeClass('label-disabled');
+                    if($("#remover4").css('display') == 'none') $("#remover3").css('display', 'block');
+                }
+            }
+            if(input.id == "fileToUpload5"){
+                reader.onload = function (e) {
+                    $("#previewUpload5").attr('src', e.target.result);
+                    resizeImg($("#img-preview4"),$("#previewUpload4"));
+                    $("#remover3").css('display', 'none');
+                    $("#remover4").css('display', 'block');
+                }
+            }
+
+            /////////////////////////////////////////////////
 
             reader.readAsDataURL(input.files[0]);
         }

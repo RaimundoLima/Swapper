@@ -10,6 +10,7 @@ $("#filtro-btn-voltar").click(function() {
 // TESTEEEEE ////////////////////////////////////////
 
 $("#perfis-btn").click(function() {
+    console.log("oi")
     $("#perfis").removeClass("down-up");
     $("#perfis").addClass("up-down");
   });
@@ -64,8 +65,6 @@ $("#editar-produto-btn-voltar").click(function() {
     $("#editar-produto").addClass("right-left-ltab");
 });
 
-var bgcount = 0
-
 $("#burguerBtn").click(function() {
     $("#menu-burguer").removeClass("right-left-ltab");
     $("#menu-burguer").css('display', 'flex');
@@ -118,10 +117,29 @@ $("#remover1").click(function() {
     $("#fileToUpload2").prop('disabled', true);
 });
 
-
+/////////////////////////// teste //////////////////////////////////
 $("#remover2").click(function() {
     document.getElementById("fileToUpload2").value = "";
     $("#previewUpload2").attr('src','');
     $("#remover2").css('display', 'none');
     $("#remover1").css('display', 'block');
+});
+
+
+$("#remover3").click(function() {
+    document.getElementById("fileToUpload4").value = "";
+    $("#previewUpload4").attr('src','');
+    $("#remover3").css('display', 'none');
+    $("#fileToUpload5").prop('disabled', );
+    $("#img-preview5").removeClass('able');
+    $("#img-preview5").addClass('dis-able');
+    $("#fileToUpload5").prop('disabled', true);
+});
+
+
+$("#remover4").click(function() {
+    document.getElementById("fileToUpload5").value = "";
+    $("#previewUpload5").attr('src','');
+    $("#remover4").css('display', 'none');
+    $("#remover3").css('display', 'block');
 });
