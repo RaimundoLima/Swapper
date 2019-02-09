@@ -6,8 +6,8 @@ function getPagina()
     session_start();
  	//error_reporting(0);
 	$url = $_SERVER['REQUEST_URI'];
+    $var=explode("?",$url)[1];
 	$url = strtolower(explode("?",$url)[0]);
-
     //var_dump($url);
     //$_SESSION["sou um teste pra não dar pau"]="não me deleta";
     if(empty($_SESSION)){
@@ -102,6 +102,11 @@ function getPagina()
                 $roupas=listarRoupa($_SESSION['usuario']['id']);
                 echo json_encode($roupas);
             break;
+            case '/atualizarroupas':
+                $roupa=buscarRoupa($var);
+                echo json_encode($roupa);
+            break;
+
             case '/atualizarfiltro':
                 $_POST["masculino"]= $_POST["masculino"] == 'true'? true: false;
                 $_POST["feminino"]= $_POST["feminino"] == 'true'? true: false;
