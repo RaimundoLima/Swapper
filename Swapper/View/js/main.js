@@ -147,12 +147,15 @@ function gerarRoupas(data){
     roupas=JSON.parse(data)
     for(var i=Object.keys(roupas).length;i>=1;i--){
     //for(var i=1;i<=Object.keys(roupas).length;i++){
-       html+='<div id="produto'+i+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+i+'" class="produto_imagem"><img id="produto-img'+i+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div id="editarProduto_btn'+i+'" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
+       html+='<div id="produto'+i+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+i+'" class="produto_imagem"><img id="produto-img'+i+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div id="editarProduto_btn'/*+i+*/+'" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
     }
     $("#produtos").html(html);
     for(var i=1;i<=Object.keys(roupas).length;i++){
         resizeImg($("#produto-img-ref"+i),$("#produto-img"+i));
     }
+    $("#produtos-user-preloader").css('display', 'none');
+    $("#produtos-user").css('display', 'block');
+    $(".addProduto_btn").css('display', 'inline-block');
     
 }
 //Desabilitar e habilitar botoes de ação

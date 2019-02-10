@@ -401,7 +401,20 @@
             <a id="produtos-usuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
             <h4 class="">Meus Produtos</h4>
         </div>
-        <div class="div_produtos">
+        <div id="produtos-user-preloader">
+            <div  class="preloader-wrapper active">
+                <div class="spinner-layer">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div id="produtos-user" class="div_produtos">
             <div class="no_produtos">
                 <span>Você não possui produtos!</span>
                 <div class="divisoria"></div>
