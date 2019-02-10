@@ -6,7 +6,7 @@ function getPagina()
     session_start();
  	//error_reporting(0);
 	$url = $_SERVER['REQUEST_URI'];
-    $var=explode("?",$url)[1];
+    //$var=explode("?",$url)[1];
 	$url = strtolower(explode("?",$url)[0]);
     //var_dump($url);
     //$_SESSION["sou um teste pra não dar pau"]="não me deleta";

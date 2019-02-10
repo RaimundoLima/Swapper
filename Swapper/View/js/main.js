@@ -37,7 +37,10 @@ $("#adicionar-produtoForm").submit(function(e){
     inputRequired();
 })
 $("#confirmarFoto").click(function(){
-    atualizarPerfil()
+    atualizarPerfil();
+    $("#confirmarFotoPerfil").removeClass("show-tab");
+    $("#confirmarFotoPerfil").addClass("un-show-tab");
+    setTimeout(function(){$("#fotoPerfilPreview").attr('src', ''); $("#confirmarFotoPerfil").css('display', 'none');}, 300);
 })
 function atualizarPerfil(){
     var data = new FormData();
@@ -142,10 +145,15 @@ function buscarRoupas(){
 function gerarRoupas(data){
     var html=""
     roupas=JSON.parse(data)
-    for(var i=1;i<=Object.keys(roupas).length;i++){
-       html+='<div id="produto'+i+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div class="produto_imagem"><img class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div id="editarProduto_btn'+i+'" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
+    for(var i=Object.keys(roupas).length;i>=1;i--){
+    //for(var i=1;i<=Object.keys(roupas).length;i++){
+       html+='<div id="produto'+i+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+i+'" class="produto_imagem"><img id="produto-img'+i+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div id="editarProduto_btn'+i+'" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
     }
-    $("#produtos").html(html)
+    $("#produtos").html(html);
+    for(var i=1;i<=Object.keys(roupas).length;i++){
+        resizeImg($("#produto-img-ref"+i),$("#produto-img"+i));
+    }
+    
 }
 //Desabilitar e habilitar botoes de ação
 function botoesAcaoPrincipal(estado){

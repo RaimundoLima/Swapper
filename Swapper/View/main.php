@@ -160,10 +160,7 @@
                     <a id="confirmarFoto" class=""><i class="material-icons">check</i></a>
                 </div>
             </div>
-
-
         </div>
-
     </div>
 
     <div id="menu-burguer" class="out-tab">
@@ -436,7 +433,7 @@
             </div>
 
         </div>
-        <a id="addProduto_btn" class="addProduto_btn">
+        <a id="addProduto_btn" class="addProduto_btn btn-generic">
             <i class="material-icons">add</i>
         </a>
     </div>
@@ -627,7 +624,7 @@
                         <div class="row">
                             <div class="col s4 visualizar-produto">
                                 <div class="produto_imagem">
-                                    <img class="" src="/View/img/camiseta.jpg">
+                                    <img class="" src="">
                                 </div>
                             </div>
                             <div class="produto_info col s7 visualizar-produto">
