@@ -60,34 +60,36 @@
                         <a id="filtro-btn" class="btn-generic set_btn">
                             <i class="font18em material-icons">settings</i>
                         </a>
+                        
+                        <div id="cards">
+                            <div class="cards swiper-no-swiping">
 
-                        <div class="cards swiper-no-swiping">
+                                <div class="card-imgs tx-c card-imagens swiper-no-swiping">
+                                    <div class="swiper-wrapper">
+                                        <div id="card-view-img1" class="swiper-slide"><img id="card-imagem1" src="View/img/camiseta.jpg" alt=""></div>
+                                        <div id="card-view-img2" class="swiper-slide"><img id="card-imagem2" src="View/img/camiseta.jpg" alt=""></div>
+                                        <div id="card-view-img3" class="swiper-slide"><img id="card-imagem3" src="View/img/camiseta.jpg" alt=""></div>
+                                    </div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
 
-                            <div class="card-imgs tx-c card-imagens swiper-no-swiping">
-                                <div class="swiper-wrapper">
-                                    <div id="card-view-img1" class="swiper-slide"><img id="card-imagem1" src="View/img/camiseta.jpg" alt=""></div>
-                                    <div id="card-view-img2" class="swiper-slide"><img id="card-imagem2" src="View/img/camiseta.jpg" alt=""></div>
-                                    <div id="card-view-img3" class="swiper-slide"><img id="card-imagem3" src="View/img/camiseta.jpg" alt=""></div>
                                 </div>
-                                <div class="swiper-button-prev"></div>
-                                <div class="swiper-button-next"></div>
 
+                                <div class="card-dados row swiper-no-swiping">
+                                    <div class="col s3"></div>
+                                    <div class="col s9"><span class="card-dadosNome">Jonh Connor<span>-7KM</span></span></div>
+
+                                </div>
+                                <div class="dados swiper-no-swiping">
+                                    <img id="perfis-btn" src="/View/img/random.jpg" alt="">
+                                    <span>
+                                        <i class="meritos-perfil material-icons">star_half</i>
+                                        <i class="meritos-perfil material-icons">check_circle</i>
+                                    </span>
+                                </div>
                             </div>
 
-                            <div class="card-dados row swiper-no-swiping">
-                                <div class="col s3"></div>
-                                <div class="col s9"><span class="card-dadosNome">Jonh Connor<span>-7KM</span></span></div>
-
-                            </div>
-                            <div class="dados swiper-no-swiping">
-                                <img id="perfis-btn" src="/View/img/random.jpg" alt="">
-                                <span>
-                                    <i class="meritos-perfil material-icons">star_half</i>
-                                    <i class="meritos-perfil material-icons">check_circle</i>
-                                </span>
-                            </div>
                         </div>
-
                         <div class="action-btns bt-8">
                             <button id="btn-rever" class="btn-p swiper-no-swiping">
                                 <i class="btn-rever material-icons">replay</i>

@@ -54,8 +54,8 @@ function atualizarPerfil(){
         type: 'post',
         data:data
     }).done(function(foto){
-        console.log("yeah foto de perfil no bd");
         $("#fotoPerfil").attr("src","data:image/jpeg;base64,"+foto)
+        M.toast({html: 'Foto de perfil alterada'}) 
     })
 
 }
@@ -147,15 +147,16 @@ function gerarRoupas(data){
     roupas=JSON.parse(data)
     for(var i=Object.keys(roupas).length;i>=1;i--){
     //for(var i=1;i<=Object.keys(roupas).length;i++){
-       html+='<div id="produto'+i+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+i+'" class="produto_imagem"><img id="produto-img'+i+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div id="editarProduto_btn'/*+i+*/+'" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
+       html+='<div id="produto'+i+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+i+'" class="produto_imagem"><img id="produto-img'+i+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div id="editarProduto_btn'+i+'" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
     }
     $("#produtos").html(html);
-    for(var i=1;i<=Object.keys(roupas).length;i++){
-        resizeImg($("#produto-img-ref"+i),$("#produto-img"+i));
-    }
+    
     $("#produtos-user-preloader").css('display', 'none');
     $("#produtos-user").css('display', 'block');
     $(".addProduto_btn").css('display', 'inline-block');
+    for(var i=1;i<=Object.keys(roupas).length;i++){
+        resizeImg($("#produto-img-ref"+i),$("#produto-img"+i));
+    }
     
 }
 //Desabilitar e habilitar botoes de ação
@@ -171,7 +172,6 @@ function botoesAcaoSecundario(estado){
     $('#btn-like2').prop('disabled', estado*1);
     $('#btn-superlike2').prop('disabled', estado*1);
 }
-
 
 // Input preview e UX
 function readURL(input) {
@@ -306,7 +306,83 @@ resizeImg($("#produto-view-img1"),$("#produto-imagem1"));
 resizeImg($("#produto-view-img2"),$("#produto-imagem2"));
 resizeImg($("#produto-view-img3"),$("#produto-imagem3"));
 
-
 resizeImg($("#card-view-img1"),$("#card-imagem1"));
 resizeImg($("#card-view-img2"),$("#card-imagem2"));
 resizeImg($("#card-view-img3"),$("#card-imagem3"));
+
+
+/// SWIPEABLE CARDS
+var X, Y, T, S, moveX, moveY = 0
+
+$("#cards").on('touchstart', function(event) {
+    X = event.originalEvent.touches[0].pageX;
+    Y = event.originalEvent.touches[0].pageY;
+    T = ($("#cards").width());
+    S = ($("#cards").children().last().height());
+});
+
+$("#cards").on('touchmove', function(event) {
+    $("#cards").children().last().css('transform', 'translateX('+130*((event.changedTouches[event.changedTouches.length-1].pageX-X)/T)+'%) rotate('+12*((event.changedTouches[event.changedTouches.length-1].pageX-X)/T)+'deg) translateY('+(100*(event.changedTouches[event.changedTouches.length-1].pageY-Y)/S)+'%)');
+    moveX = (event.changedTouches[event.changedTouches.length-1].pageX-X)/T;
+    moveY = (100*(event.changedTouches[event.changedTouches.length-1].pageY-Y)/S);
+    console.log(moveY);
+});
+
+$("#cards").on('touchend', function(event) {    
+    if(moveY <= -65){
+        $("#cards").children().last().css({
+            transition: "transform 0.3s",
+            transform: 'scale(0.01) translateY(-500%)',
+        });
+    }else{
+        if((130*moveX) >= 70 && (130*moveX) > 0){
+            $("#cards").children().last().css({
+                transition: "transform 0.3s",
+                transform: 'translateX(130%) rotate(12deg)',
+            });
+        }
+        if((130*moveX) <= -70 && (130*moveX) < 0){
+            $("#cards").children().last().css({
+                transition: "transform 0.3s",
+                transform: 'translateX(-130%) rotate(-12deg)',
+            });
+        }
+        if((130*moveX) < 70 && (130*moveX) > -70){
+            $("#cards").children().last().css({
+                transition: "transform 0.3s",
+                transform: 'translateX(0%) rotate(0deg)',
+            });
+        }
+    }
+    setTimeout( function() {
+        $("#cards").children().last().css( { transition: "none" } ); $("#cards").children().last().css('transform', 'translateX(0%) rotate(0deg)'); }, 300 );
+});
+
+
+lastChild();
+
+////////// Botoes de ação ///////////
+function lastChild(){
+    $("#cards").children().last().css('filter', 'brightness(100%)');
+}
+
+$("#btn-rever").click(function() {
+    $("#cards").children().last().addClass("rever-action");
+    setTimeout(function(){$("#cards").children().last().removeClass("rever-action");}, 400);
+    
+});
+$("#btn-deslike").click(function() {
+    $("#cards").children().last().addClass("deslike-action");
+    setTimeout(function(){$("#cards").children().last().removeClass("deslike-action"); }, 400);
+    
+});
+$("#btn-like").click(function() {
+    $("#cards").children().last().addClass("like-action");
+    //setTimeout(function(){$("#cards").children().last().remove(); lastChild();}, 400);
+    setTimeout(function(){$("#cards").children().last().removeClass("like-action");}, 400);
+});
+$("#btn-superlike").click(function() {
+    $("#cards").children().last().addClass("superlike-action");
+    setTimeout(function(){$("#cards").children().last().removeClass("superlike-action");}, 400);
+});
+/////////////////////////////////

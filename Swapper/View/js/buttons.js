@@ -10,7 +10,6 @@ $("#filtro-btn-voltar").click(function() {
 // TESTEEEEE ////////////////////////////////////////
 
 $("#perfis-btn").click(function() {
-    console.log("oi")
     $("#perfis").removeClass("down-up");
     $("#perfis").addClass("up-down");
   });

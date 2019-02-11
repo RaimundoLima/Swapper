@@ -555,12 +555,14 @@ h4 {
 
 .cards {
     position: absolute;
+    border: 1px #bbbbbb solid;
     background-color: #f0f0f0;
     height: 77%;
     width: 90%;
     margin: 5%;
     margin-top: 3%;
     border-radius: 20px;
+    filter: brightness(90%)
 }
 
 .cards .card-imgs {
@@ -1183,18 +1185,6 @@ h4 {
 .dis-able {
     animation: dis-able 0.3s ease-out forwards;
 }
-/**/
-
-
-@keyframes btn-rever-hover {
-    0% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(0.8);
-    }
-}
 
 /*animações*/
 
@@ -1311,4 +1301,61 @@ input[type=file] {
 .hide {
     display: none;
     float: left;
+}
+
+/* Animações de rever, like, deslike e super like */
+
+.rever-action {
+    animation: rever-action 0.3s ease-out forwards;
+}
+
+@keyframes rever-action {
+    0% {
+        transform: translateX(-130%) rotate(-12deg);
+    }
+    100% {
+        transform: translateX(0%) rotate(0deg);
+    }
+}
+
+.like-action {
+    animation: like-action 0.3s ease-out forwards;
+}
+
+@keyframes like-action {
+    0% {
+        transform: translateX(0%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(130%) rotate(12deg);
+    }
+}
+
+.deslike-action {
+    animation: deslike-action 0.3s ease-out forwards;
+}
+
+@keyframes deslike-action {
+    0% {
+        transform: translateX(0%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(-130%) rotate(-12deg);
+    }
+}
+
+.superlike-action {
+    animation: superlike-action 0.3s ease-out forwards;
+}
+
+@keyframes superlike-action {
+    0% {
+        transform: scale(1) translateY(0%);
+    }
+
+    100% {
+        transform: scale(0.01) translateY(-300%);
+    }
 }
