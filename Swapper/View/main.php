@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include("header.php"); ?>
-
 <body>
 
     <div class="row swiper-container main-container">
@@ -155,11 +154,11 @@
             </div>
             <div class="btns">
                 <div class="col s5 tx-r">
-                    <a id="rejeitarFoto" class=""><i class="material-icons">close</i></a>
+                    <a id="rejeitarFoto" class="btn-generic"><i class="material-icons">close</i></a>
                 </div>
                 <div class="col s2"></div>
                 <div class="col s5 tx-l">
-                    <a id="confirmarFoto" class=""><i class="material-icons">check</i></a>
+                    <a id="confirmarFoto" class="btn-generic"><i class="material-icons">check</i></a>
                 </div>
             </div>
         </div>
@@ -669,6 +668,18 @@
     </div>
     <!-- ///////////////////////// -->
     <!-- Abas acessadas pelo Mensagens -->
+    <div id="conversa" class="chat out-tab">
+
+
+        <form action="" id="enviarMensagem" >
+            <div class="row">
+                <div class="col s10"><input class="writeMsg mg-0" placeholder="Digite sua mensagem..." id="" type="text" class="validate"></div>
+                <div class="col s2"><button type="submit"  value="" name="submit" class="btn-generic sendMsg"><i class="material-icons">send</i></button></div>
+            </div>
+        
+
+        </form>
+    </div>
     <!-- ///////////////////////// -->
 </body>
 <?php include("footer.php"); ?>
