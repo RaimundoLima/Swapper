@@ -1,3 +1,19 @@
+navigator.geolocation.getCurrentPosition(Location);
+function Location(pos) {
+    var coordenadas = pos.coords;
+    var Position = { coords: {Latitude: coordenadas.latitude, Longitude: coordenadas.longitude, H:coordenadas.heading} };
+    console.log(Position);
+    //console.log("Latitude:" + Position.coords.Latitude + "Longitude:" + Position.coords.Longitude);
+}
+
+// Formula da distancia entre duas distancias Math.round(6371*Math.acos(Math.cos(degrees_to_radians(90-Latitude_1))*Math.cos(degrees_to_radians(90-Latitude_2))+Math.sin(degrees_to_radians(90-Latitude_1))*Math.sin(degrees_to_radians(90-Latitude_2))*Math.cos(degrees_to_radians(Longitude_1-Longitude_2)))*1)
+
+function degrees_to_radians(degrees)
+{
+  var pi = Math.PI;
+  return degrees * (pi/180);
+}
+
 var buscaFiltro=0;
 var buscaRoupas=0
 
@@ -191,10 +207,10 @@ function gerarRoupas(data){
     $("#produtos-user-preloader").css('display', 'none');
     $("#produtos-user").css('display', 'block');
     $(".addProduto_btn").css('display', 'inline-block');
-    for(var i=1;i<=Object.keys(roupas).length;i++){
-        resizeImg($("#produto-img-ref-"+roupas[i]["id"]),$("#produto-img"+roupas[i]["id"]));
+    for(var i=Object.keys(roupas).length;i>=1;i--){
+        resizeImg($("#produto-img-ref"+i),$("#produto-img"+i));
+        console.log("oi")
     }
-    
 }
 function visualizarProduto(idProduto){
     $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
@@ -376,6 +392,7 @@ function resizeImg(ref, img){
     }else img.css("height","100%");
 }
 
+
 //resetar formulario
 function resetAddForm(){
     $("#previewUpload").attr('src','');
@@ -441,7 +458,6 @@ $("#cards").on('touchmove', function(event) {
     $("#cards").children().last().css('transform', 'translateX('+130*((event.changedTouches[event.changedTouches.length-1].pageX-X)/T)+'%) rotate('+12*((event.changedTouches[event.changedTouches.length-1].pageX-X)/T)+'deg) translateY('+(100*(event.changedTouches[event.changedTouches.length-1].pageY-Y)/S)+'%)');
     moveX = (event.changedTouches[event.changedTouches.length-1].pageX-X)/T;
     moveY = (100*(event.changedTouches[event.changedTouches.length-1].pageY-Y)/S);
-    console.log(moveY);
 });
 
 $("#cards").on('touchend', function(event) {    
@@ -471,7 +487,14 @@ $("#cards").on('touchend', function(event) {
         }
     }
     setTimeout( function() {
-        $("#cards").children().last().css( { transition: "none" } ); $("#cards").children().last().css('transform', 'translateX(0%) rotate(0deg)'); }, 300 );
+        $("#cards").children().last().css( { transition: "none" } ); $("#cards").children().last().css('transform', 'translateX(0%) rotate(0deg)'); 
+        moveY = 0;
+        moveX = 0;
+        T = 0;
+        S = 0;
+        X = 0;
+        Y = 0;
+    }, 300 );
 });
 
 

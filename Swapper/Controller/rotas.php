@@ -293,4 +293,22 @@ function emailRecuperarSenha(){
        $headers .= "Content-type: text/html; charset=utf-8\r\n";   
    echo(mail($to, $subject, $body,$headers));
 }
+
+//buscar coordenadas
+//TESTE
+//$Latitude_1=39.977120098439634;
+//$Longitude_1=-7.580566406250001;
+//$Latitude_2=40.3130432088809;
+//$Longitude_2= -7.767333984375001;
+
+// Abaixo é a formula em PHP de calcular a distancia(TESTADA E COMPROVADA), tenho la no codigo do Main JS ela em JS
+//a formula ja retorna um valor sem ,
+//round(6371*acos(cos(deg2rad(90-$Latitude_1))*cos(deg2rad(90-$Latitude_2))+sin(deg2rad(90-$Latitude_1))*sin(deg2rad(90-$Latitude_2))*cos(deg2rad($Longitude_1-$Longitude_2)))*1)
+
+//Rai quando for fazer a pesquisa dos usuarios perto vamos limitar a pesquisa p n tornar ela pesada
+//vamos fazer ela por "quadrantes"
+//basta tu colocar na busca do SQL ou oq tu for fazer que a lista de usuarios q deve ser pesquisada deve ser entre
+// round(Latitude_do_usuario_logado+2) >= Latitude && round(Latitude_do_usuario_logado-2) <= Latitude
+// round(Longitude_do_usuario_logado+2) >= Latitude && round(Longitude_do_usuario_logado-2) <= Latitude
+// Assim a gente limita em buscar dentro de um quadrante.
 ?>
