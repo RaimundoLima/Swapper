@@ -36,6 +36,10 @@ $("#adicionar-produtoForm").submit(function(e){
     e.preventDefault();
     inputRequired();
 })
+$("#editar-produtoForm").submit(function(e){
+    e.preventDefault();
+    inputRequiredEdit();
+})
 $("#confirmarFoto").click(function(){
     atualizarPerfil();
     $("#confirmarFotoPerfil").removeClass("show-tab");
@@ -89,6 +93,39 @@ function inserirRoupas(){
         $("#remover2").css('display', 'none');
         $("#adicionar-produto").removeClass("left-right-ltab");
         $("#adicionar-produto").addClass("right-left-ltab");
+    })
+}
+function atualizarRoupasEnviar(){
+    var data = new FormData();
+    jQuery.each(jQuery('#fileToUpload3')[0].files, function(i, file) {
+        data.append('img1', file);
+    });
+    jQuery.each(jQuery('#fileToUpload4')[0].files, function(i, file) {
+        data.append('img2', file);
+    });
+    jQuery.each(jQuery('#fileToUpload5')[0].files, function(i, file) {
+        data.append('img3', file);
+    });
+    data.append("id",$("#idProdutoEditar").val())
+    data.append("nome",$("#editarNome").val());
+    data.append("descricao",$("#editarDescricao").val());
+    data.append("sexo",$("#editarSexo").val());
+    data.append("categoria",$("#editarCategoria").val());
+    data.append("tipo",$("#editarTipo").val());
+    data.append("estado",$("#editarEstado").val());
+    $.ajax({
+        url: '/atualizarRoupasEnviar',
+        contentType: false,
+        processData: false,
+        async: false ,
+        type: 'post',
+        data:data
+    }).done(function(){
+        resetAddForm();
+        $("#remover3").css('display', 'none');
+        $("#remover4").css('display', 'none');
+        $("#editar-produto").removeClass("left-right-ltab");
+        $("#editar-produto").addClass("right-left-ltab");
     })
 }
 function atualizarFiltro(){
@@ -147,7 +184,7 @@ function gerarRoupas(data){
     roupas=JSON.parse(data)
     for(var i=Object.keys(roupas).length;i>=1;i--){
     //for(var i=1;i<=Object.keys(roupas).length;i++){
-       html+='<div id="produto'+i+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+i+'" class="produto_imagem"><img id="produto-img'+i+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div id="editarProduto_btn'+i+'" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
+       html+='<div id="produto-'+roupas[i]["id"]+'" class="produto"><div class="row"><div onclick="visualizarProduto('+roupas[i]["id"]+')" class="col s4 visualizar-produto"><div id="produto-img-ref-'+roupas[i]["id"]+'" class="produto_imagem"><img id="produto-img'+i+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div onclick="editarProduto('+roupas[i]["id"]+')" id="editarProduto_btn" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
     }
     $("#produtos").html(html);
     
@@ -155,9 +192,75 @@ function gerarRoupas(data){
     $("#produtos-user").css('display', 'block');
     $(".addProduto_btn").css('display', 'inline-block');
     for(var i=1;i<=Object.keys(roupas).length;i++){
-        resizeImg($("#produto-img-ref"+i),$("#produto-img"+i));
+        resizeImg($("#produto-img-ref-"+roupas[i]["id"]),$("#produto-img"+roupas[i]["id"]));
     }
     
+}
+function visualizarProduto(idProduto){
+    $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
+    $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
+     $.ajax({
+        url: '/buscarRoupasPorId?'+idProduto
+     }).done(function(data){
+        var roupa=JSON.parse(data)
+        var imgs=''
+        if(roupa["foto1"] !=""){
+            imgs+=' <div id="produto-view-img1" class="swiper-slide"><img id="produto-imagem1" src="data:image/jpeg;base64,'+roupa["foto1"]+'" alt=""></div>'
+        }
+        if(roupa["foto2"] !=""){
+            imgs+=' <div id="produto-view-img2" class="swiper-slide"><img id="produto-imagem2" src="data:image/jpeg;base64,'+roupa["foto2"]+'" alt=""></div>'
+        }
+        if(roupa["foto3"] !=""){
+            imgs+=' <div id="produto-view-img3" class="swiper-slide"><img id="produto-imagem3" src="data:image/jpeg;base64,'+roupa["foto3"]+'" alt=""></div>'
+        }
+        $("#visualizarImagens").html(imgs)
+        resizeImg($("#produto-view-img1"),$("#produto-imagem1"));
+        resizeImg($("#produto-view-img2"),$("#produto-imagem2"));
+        resizeImg($("#produto-view-img3"),$("#produto-imagem3"));
+        $("#visualizaProdutoDono").text(roupa["usuario_id"])
+        $("#visualizaProdutoNome").text(roupa["nome"])
+        $("#visualizaProdutoDescricao").text(roupa["descricao"])
+        var html=""
+        var sexo=(roupa["sexo"]==1) ? "MASCULINA" : "FEMININA"
+        var categoria=(roupa["categoria"]==1) ? "INFANTIL" : "ADULTO"
+        var tipo="";
+        if(roupa["tipo"]==1){
+            tipo="ROUPA"
+        } 
+        else if(roupa["tipo"]==2){
+            tipo="ACESSÓRIO"
+        }else{
+            tipo="CALÇADO"
+        } 
+        var estado=(roupa["estado"]==1) ? "NOVA" : "USADA"
+        html='<span class="tag">'+sexo+'</span><span class="tag">'+categoria+'</span><span class="tag">'+tipo+'</span><span class="tag">'+estado+'</span>'
+        $("#visualizarProdutoTags").html(html)
+     })
+}
+function editarProduto(idProduto){
+    $("#editar-produto").removeClass("right-left-ltab");
+    $("#editar-produto").addClass("left-right-ltab");
+     $.ajax({
+        url: '/atualizarRoupas?'+idProduto,
+        type: 'post'}).done(function(data){
+            var produto=(JSON.parse(data));
+            $("#idProdutoEditar").val(idProduto)
+            $("#previewUpload3").attr("src","data:image/jpeg;base64,"+produto["foto1"])
+            $("#previewUpload4").attr("src","data:image/jpeg;base64,"+produto["foto2"])
+            $("#previewUpload5").attr("src","data:image/jpeg;base64,"+produto["foto3"])
+            $("#fileToUpload3").val(produto["foto1"])
+            $("#fileToUpload4").val(produto["foto2"])
+            $("#fileToUpload5").val(produto["foto3"])
+            resizeImg($("#img-preview3"),$("#previewUpload3"))
+            resizeImg($("#img-preview4"),$("#previewUpload4"))
+            resizeImg($("#img-preview5"),$("#previewUpload5"))
+            $("#editarNome").val(produto["nome"])
+            $("#editarDescricao").val(produto["descricao"])
+            $("#editarSexo").val(produto["sexo"]).formSelect()
+            $("#editarTipo").val(produto["sexo"]).formSelect()
+            $("#editarCategoria").val(produto["sexo"]).formSelect();
+            $("#editarEstado").val(produto["sexo"]).formSelect();
+        })
 }
 //Desabilitar e habilitar botoes de ação
 function botoesAcaoPrincipal(estado){
@@ -295,6 +398,19 @@ function inputRequired(){
         if($("#descricao").val() == "") M.toast({html: 'Descrição necessária!'}) 
     }else{
         inserirRoupas();
+        buscaRoupas=0;
+        buscarRoupas();
+    }
+}
+function inputRequiredEdit(){
+    console.log("function \n")
+    if(document.getElementById("fileToUpload3").value == "" || $("#editarNome").val() == "" || $("#editarDescricao").val() == ""){
+        if(document.getElementById("fileToUpload3").value == "") M.toast({html: 'Foto necessária!'})
+        if($("#editarNome").val() == "") M.toast({html: 'Nome necessário!'}) 
+        if($("#editarDescricao").val() == "") M.toast({html: 'Descrição necessária!'}) 
+    }else{
+        console.log("else")
+        atualizarRoupasEnviar();
         buscaRoupas=0;
         buscarRoupas();
     }

@@ -2,11 +2,11 @@
 include("Model/Crud/Model.php");
 function getPagina()
 {   
-    session_set_cookie_params(2592000);
+    session_set_cookie_params(25920000);
     session_start();
  	//error_reporting(0);
 	$url = $_SERVER['REQUEST_URI'];
-    //$var=explode("?",$url)[1];
+    $var=explode("?",$url)[1];
 	$url = strtolower(explode("?",$url)[0]);
     //var_dump($url);
     //$_SESSION["sou um teste pra não dar pau"]="não me deleta";
@@ -102,9 +102,68 @@ function getPagina()
                 $roupas=listarRoupa($_SESSION['usuario']['id']);
                 echo json_encode($roupas);
             break;
+            case '/buscarroupasporid':
+            $roupa=buscarRoupa($var,$_SESSION["usuario"]["id"]);
+                if(!empty($roupa)){
+                    $roupa["usuario_id"]=$_SESSION["usuario"]["nome"];
+                    echo json_encode($roupa);
+                }else{
+                    //roupa não é do usuario
+                }
+            break;
             case '/atualizarroupas':
-                $roupa=buscarRoupa($var);
+                $roupa=buscarRoupa($var,$_SESSION["usuario"]["id"]);
                 echo json_encode($roupa);
+            break;
+            case '/atualizarroupasenviar':
+                $roupa;
+                //var_dump($_FILES);
+                $img1="";
+                $img2="";
+                $img3="";
+                for($i=1;$i<=3;$i++){
+                    if(!empty($_FILES["img".$i])){
+                        if($_FILES["img".$i]["size"] <= 2500000){
+                            if($_FILES["img".$i]["type"]=="image/jpg" || $_FILES["img".$i]["type"]=="image/png"|| $_FILES["img".$i]["type"]=="image/jpeg"){
+                                if($img1==""){
+                                    $img1=mb_convert_encoding(file_get_contents($_FILES["img".$i]["tmp_name"]),"base64","UTF-8");
+                                }else if($img2==""){
+                                    $img2=mb_convert_encoding(file_get_contents($_FILES["img".$i]["tmp_name"]),"base64","UTF-8");
+                                }else if($img3==""){
+                                    $img3=mb_convert_encoding(file_get_contents($_FILES["img".$i]["tmp_name"]),"base64","UTF-8");
+                                }
+                            }
+                        }
+                    }
+                }
+                $roupa["nome"]=trim($_POST["nome"]);
+                $roupa["descricao"]=trim($_POST["descricao"]);
+                if(count($roupa["nome"])<=30 && count($roupa["descricao"])<=200 && 
+                    !is_null(($roupa["nome"]))<=30 && !is_null($roupa["descricao"])<=200){
+                    $roupa["sexo"]= $_POST["sexo"] == "1" ? 1: 2;
+                    $roupa["categoria"]= $_POST["categoria"] == "1" ? 1: 2;
+                    if($_POST["tipo"]=="1"){
+                        $roupa["tipo"]=1;
+                    }else{
+                        if($_POST["tipo"]=="2"){
+                            $roupa["tipo"]=2; 
+                        }else{
+                            $roupa["tipo"]=3;
+                        }
+                    }
+                    $roupa["estado"]= $_POST["estado"] == "1" ? 1: 2;
+                    $roupa["usuario"]=$_SESSION["usuario"]["id"];
+                    if(!empty($img1)){
+                        $roupa["foto1"]=$img1;
+                        $roupa["foto2"]=$img2;
+                        $roupa["foto3"]=$img3;
+                        if(!empty(buscarRoupa($_POST["id"],$_SESSION["usuario"]["id"]))){
+                            atualizarRoupa($roupa,$_POST["id"]);
+                        }
+                    }
+                }else{
+                    //error
+                }
             break;
 
             case '/atualizarfiltro':
@@ -156,7 +215,7 @@ function getPagina()
                     }
                 if($img!=""){
                     $usuario["foto"]=$img;
-                    atualizarUsuario($usuario,$_SESSION["usuario"]["id"]);
+                    atualizarUsuarioFoto($usuario,$_SESSION["usuario"]["id"]);
                     $_SESSION["usuario"]=buscarUsuario($_SESSION["usuario"]["id"]);
                     echo $img;
                 }

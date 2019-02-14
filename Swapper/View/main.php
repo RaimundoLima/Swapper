@@ -273,10 +273,11 @@
     </form>
     
     <form id="editar-produtoForm" action="" method="post" enctype="multipart/form-data">
-        <div id="editar-produto" class="produto-tab out-tab">
+        <div id="editar-produto" style="" class="produto-tab out-tab">
             <div class="titulo_tab fixed">
                 <a id="editar-produto-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
                 <h4 class="pd-r0">Editar Produto</h4>
+                <input hidden id="idProdutoEditar">
                 <button type="submit" value="Upload Image" name="submit" class="btn-check"><i class="material-icons">check</i></button>
             </div>
             <div class="row">
@@ -316,29 +317,29 @@
                 </div>
                 <div>
                     <div class="input-field col s12">
-                        <input id="first_name" type="text" class="validate">
-                        <label for="first_name">Nome do Produto</label>
+                        <input id="editarNome" type="text" class="validate">
+                        <label for="editarNome">Nome do Produto</label>
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Descrição</label>
+                        <textarea id="editarDescricao" class="materialize-textarea"></textarea>
+                        <label for="editarDescricao">Descrição</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
+                        <select id="editarSexo">
                             <option value="1">Masculino</option>
                             <option value="2">Feminino</option>
                         </select>
                         <label>Sexo</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
+                        <select id="editarCategoria">
                             <option value="1">Infantil</option>
                             <option value="2">Adulto</option>
                         </select>
                         <label>Categoria</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
+                        <select id="editarTipo">
                             <option value="1">Roupas</option>
                             <option value="2">Acessórios</option>
                             <option value="3">Calçados</option>
@@ -346,7 +347,7 @@
                         <label>Tipo</label>
                     </div>
                     <div class="input-field col s6">
-                        <select>
+                        <select id="editarEstado">
                             <option value="1">Usado</option>
                             <option value="2">Novo</option>
                         </select>
@@ -357,12 +358,12 @@
         </div>
     </form>
 
-    <div id="visualizar-produtoUsuario" class="visualizar-produtoUsuario-tab view-tab">
+    <div id="visualizar-produtoUsuario" style="" class="visualizar-produtoUsuario-tab view-tab">
         <div class="titulo_tab">
             <a id="visualizar-produtoUsuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
         </div>
         <div class="produto-imagens">
-            <div class="swiper-wrapper">
+            <div id="visualizarImagens" class="swiper-wrapper">
                 <div id="produto-view-img1" class="swiper-slide"><img id="produto-imagem1" src="View/img/camiseta.jpg" alt=""></div>
                 <div id="produto-view-img2" class="swiper-slide"><img id="produto-imagem2" src="View/img/camiseta.jpg" alt=""></div>
                 <div id="produto-view-img3" class="swiper-slide"><img id="produto-imagem3" src="View/img/camiseta.jpg" alt=""></div>
@@ -370,26 +371,22 @@
             <div class="swiper-pagination"></div>
         </div>
         <div class="info mg-0 row">
-            <a id="" class="dono"><i class=" material-icons">person</i><span>Luis Henrique Jacinto</span></a>
+            <a id="" class="dono"><i class=" material-icons">person</i><span id="visualizaProdutoDono">Luis Henrique Jacinto</span></a>
             <div class="col s12">
-                <h4 class="nome-p">Camiseta Azul Manga Curta</h4>
+                <h4 id="visualizaProdutoNome" class="nome-p">Camiseta Azul Manga Curta</h4>
                 <div class="divisoria"></div>
             </div>
 
             <div class="tx-l col s12">
-                <span>Camiseta XXXXXX, tamanho M, cor Azul, produzida em poliester.</span>
+                <span id="visualizaProdutoDescricao">Camiseta XXXXXX, tamanho M, cor Azul, produzida em poliester.</span>
                 <div class="divisoria"></div>
             </div>
 
-            <div class="tx-l col s12">
-                <span>TAGS:</span>
+            <div id="visualizarProdutoTags" class="tx-l col s12">
+                <span >TAGS:</span>
                 <span class="tag">MASCULINA</span>
-                <span class="tag">FEMININA</span>
                 <span class="tag">INFANTIL</span>
-                <span class="tag">ADULTA</span>
                 <span class="tag">ROUPA</span>
-                <span class="tag">ACESSÓRIO</span>
-                <span class="tag">CALÇADO</span>
                 <span class="tag">USADA</span>
                 <span class="tag">NOVA</span>
                 <div class="divisoria"></div>
@@ -465,14 +462,41 @@
                     <i class="material-icons">star_half</i>
                 </div>
                 <div class="credibilidade-atual tx-l pd-l0 col s8">
-                    <span>NIVEL PRATA</span>
+                    <?php 
+                        $credibilidade=$_SESSION["usuario"]["credibilidade"];
+                        $credibilidadeNome="";
+                        $credibilidadeLimite="";
+                        $credibilidadePorcentagem="";
+                        if($credibilidade<20){
+                            $credibilidadeNome="BRONZE";
+                            $credibilidadePorcentagem=($credibilidade/20)*100;
+                            $credibilidadeLimite=20;   
+                        }else if($credibilidade<100){
+                            $credibilidadeNome="PRATA";
+                            $credibilidadePorcentagem=($credibilidade-20/80)*100;
+                            $credibilidadeLimite=100;
+                        }else if($credibilidade<160){
+                            $credibilidadeNome="OURO";
+                            $credibilidadePorcentagem=($credibilidade-100/60)*100;
+                            $credibilidadeLimite=160;
+                        }else if($credibilidade<300){
+                            $credibilidadeNome="PLATINA";
+                            $credibilidadePorcentagem=($credibilidade-160/140)*100;
+                            $credibilidadeLimite=300;
+                        }else if($credibilidade<1000){
+                            $credibilidadeNome="DIAMANTE";
+                            $credibilidadePorcentagem=($credibilidade-300/700)*100;
+                            $credibilidadeLimite=1000;
+                        }
+                    ?>
+                    <span><?php echo("NIVEL ".$credibilidadeNome);?></span>
                     <br>
-                    <span>200/1000XP</span>
+                    <span><?php echo($credibilidade."/".$credibilidadeLimite."XP");?></span>
                 </div>
                 <div class="col s1"></div>
                 <div class="col pd-0 s10">
                     <div class="barraDeXP">
-                        <div class="xp-atual"></div>
+                        <div class="xp-atual" style="width:<?php echo($credibilidadePorcentagem.'%');?>"></div>
                     </div>
                 </div>
                 <div class="col s1"></div>

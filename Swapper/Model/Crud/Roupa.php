@@ -1,8 +1,8 @@
 <?php
 include_once('Setup.php');
 
-function buscarRoupa($id){
-    return R::load("roupa",$id);
+function buscarRoupa($id,$usuario){
+    return R::findOne("roupa","id=? AND usuario_id=?",[$id,$usuario]);
 
 }
 function inserirRoupa($roupa){
@@ -31,6 +31,7 @@ function atualizarRoupa($roupa,$id){
     $roupaT["foto2"]=$roupa["foto2"];
     $roupaT["foto3"]=$roupa["foto3"];
     $roupaT["sexo"]=$roupa["sexo"];
+    return R::store($roupaT);
 
 }
 function deletarRoupa($id){

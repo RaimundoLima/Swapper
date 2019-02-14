@@ -23,11 +23,13 @@ function inserirUsuario($usuario){
     $usuarioT['localizacao']=$usuario['localizacao'];
     $usuarioT['bio']=$usuario['bio'];
     $usuarioT['foto']=$usuario['foto'];
+
+    $usuarioT['credibilidade']=0;
     
     $config['usuario']=R::store($usuarioT);
     return inserirConfig($config);
 }
-function atualizarUsuario($usuario,$id){
+function atualizarUsuarioFoto($usuario,$id){
     $usuarioT=R::load('usuario',$id);
     $usuarioT['foto']=$usuario['foto'];
     return R::store($usuarioT);
