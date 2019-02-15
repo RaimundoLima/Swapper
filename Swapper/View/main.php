@@ -161,6 +161,20 @@
         </div>
     </div>
 
+    <div id="confirmarDeslogar">
+        <div class="row tx-c">
+            <div class="btns">
+                <div class="col s12 title">Deslogar</div>
+                <div class="col s6 tx-r">
+                    <a id="rejeitarLogout" class="btn-generic">Não</a>
+                </div>
+                <div class="col s6 tx-l">
+                    <a id="confirmarLogout" href="/deslogar" class="btn-generic">Sim</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="menu-burguer" class="out-tab">
         <div class="main">
             <div class="titulo_tab fixed">
@@ -174,7 +188,7 @@
                 </label>
             </div>
             <a id="" class="burguer-option">Verificar conta</a>
-            <a href="/deslogar" class="burguer-option">Deslogar</a>
+            <a id="deslogarBtn" class="burguer-option">Deslogar</a>
         </div>
         <div id="menu-burguer-side" class="side"></div>
     </div>
@@ -693,8 +707,6 @@
                 <div class="col s10"><input class="writeMsg mg-0" placeholder="Digite sua mensagem..." id="" type="text" class="validate"></div>
                 <div class="col s2"><button type="submit"  value="" name="submit" class="btn-generic sendMsg"><i class="material-icons">send</i></button></div>
             </div>
-        
-
         </form>
     </div>
     <!-- ///////////////////////// -->

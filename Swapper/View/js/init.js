@@ -72,15 +72,10 @@ $(document).ready(function(){
 
 });
 
-
 function redimensionar(){
-    $(".tabs-content").css('height', ($(window).height()*0.90)+'px');
-    $(".perfil_tab").css('height', ($(window).height()*0.90)+'px');
-    $(".combinacoes_tab").css('height', ($(window).height()*0.90)+'px');
     $(".produto-imagens").css('width', $(window).width()+'px');
     $(".produto-imagens").css('height', $(window).width()+'px');
 }
-
 
 function checkSwitchs(){
     checkSwitchs_Sexo();

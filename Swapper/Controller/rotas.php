@@ -318,7 +318,7 @@ function emailRecuperarSenha(){
 //Rai quando for fazer a pesquisa dos usuarios perto vamos limitar a pesquisa p n tornar ela pesada
 //vamos fazer ela por "quadrantes"
 //basta tu colocar na busca do SQL ou oq tu for fazer que a lista de usuarios q deve ser pesquisada deve ser entre
-// Latitude_do_usuario_logado+1.5 >= Latitude && Latitude_do_usuario_logado-1.5 <= Latitude
-// Longitude_do_usuario_logado+2 >= Latitude && Longitude_do_usuario_logado-2 <= Latitude
-// Assim a gente limita em buscar dentro de um quadrante.
+// Latitude_do_usuario_logado-1.5 >= Latitude && Latitude_do_usuario_logado-1.5 <= Latitude
+// Longitude_do_usuario_logado-2 >= Lontitude && Longitude_do_usuario_logado-2 <= Lontitude
+// Assim a gente limita em buscar dentro de um raio de 167Km norte e sul e 170Km leste oeste
 ?>

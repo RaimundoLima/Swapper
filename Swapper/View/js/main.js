@@ -88,7 +88,7 @@ function degrees_to_radians(degrees)
 }
 
 var buscaFiltro=0;
-var buscaRoupas=0
+var buscaRoupas=0;
 
 $("#filtro-btn").click(function() {
     buscarFiltro();
@@ -135,6 +135,15 @@ $("#confirmarFoto").click(function(){
     $("#confirmarFotoPerfil").addClass("un-show-tab");
     setTimeout(function(){$("#fotoPerfilPreview").attr('src', ''); $("#confirmarFotoPerfil").css('display', 'none');}, 300);
 })
+
+$("#deslogarBtn").click(function(){
+    $("#confirmarDeslogar").css({
+        transition: "transform 0.2s",
+        transform: 'translateY(0%)',
+        display: 'inline-block',
+    });
+})
+
 function atualizarPerfil(){
     var data = new FormData();
     jQuery.each(jQuery('#fotoPerfilUpload')[0].files, function(i, file) {
