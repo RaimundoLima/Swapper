@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<?php include("header.php"); ?>
 <body>
 
     <div class="row swiper-container main-container">
@@ -61,13 +58,13 @@
                         </a>
                         
                         <div id="cards">
-                            <div class="cards swiper-no-swiping">
+                             <!--<div class="cards swiper-no-swiping">
 
                                 <div class="card-imgs tx-c card-imagens swiper-no-swiping">
                                     <div class="swiper-wrapper">
-                                        <div id="card-view-img1" class="swiper-slide"><img id="card-imagem1" src="View/img/camiseta.jpg" alt=""></div>
-                                        <div id="card-view-img2" class="swiper-slide"><img id="card-imagem2" src="View/img/camiseta.jpg" alt=""></div>
-                                        <div id="card-view-img3" class="swiper-slide"><img id="card-imagem3" src="View/img/camiseta.jpg" alt=""></div>
+                                        <div id="card-view-img1" class="swiper-slide r"><img id="card-imagem1" class="i" src="View/img/camiseta.jpg" alt=""></div>
+                                        <div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/camiseta.jpg" alt=""></div>
+                                        <div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/camiseta.jpg" alt=""></div>
                                     </div>
                                     <div class="swiper-button-prev"></div>
                                     <div class="swiper-button-next"></div>
@@ -80,14 +77,14 @@
 
                                 </div>
                                 <div class="dados swiper-no-swiping">
-                                    <img id="perfis-btn" src="/View/img/random.jpg" alt="">
+                                    <img id="perfis-btn" src="/View/img/rai.jpg" alt="">
                                     <span>
                                         <i class="meritos-perfil material-icons">star_half</i>
                                         <i class="meritos-perfil material-icons">check_circle</i>
                                     </span>
                                 </div>
                             </div>
-
+                        -->
                         </div>
                         <div class="action-btns bt-8">
                             <button id="btn-rever" class="btn-p swiper-no-swiping">
@@ -230,12 +227,10 @@
                 </div>
                 <div>
                     <div class="input-field col s12">
-                        <input id="nomeProduto" type="text" class="validate">
-                        <label for="nomeProduto">Nome do Produto</label>
+                        <input id="nomeProduto" placeholder="Nome do Produto" type="text" class="validate">
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="descricao" class="materialize-textarea"></textarea>
-                        <label for="descricao">Descrição</label>
+                        <textarea id="descricao" placeholder="Descrição" class="materialize-textarea"></textarea>
                     </div>
                     <div class="input-field col s6">
                         <select id="sexo">
@@ -297,9 +292,9 @@
                     </div>
                     <div class="img-p">
                         <div>
-                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload4" id="fileToUpload4" disabled>
+                            <input type="file" accept=".jpg,.png,.jpeg" name="fileToUpload4" id="fileToUpload4">
                             <label for="fileToUpload4">
-                                <div id="img-preview4" class="label-disabled">
+                                <div id="img-preview4" class="">
                                     <img id="previewUpload4" src="" alt="">
                                 </div>
                             </label>
@@ -316,12 +311,10 @@
                 </div>
                 <div>
                     <div class="input-field col s12">
-                        <input id="editarNome" type="text" class="validate">
-                        <label for="editarNome">Nome do Produto</label>
+                        <input id="editarNome" type="text" placeholder="Nome do Produto" class="validate">
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="editarDescricao" class="materialize-textarea"></textarea>
-                        <label for="editarDescricao">Descrição</label>
+                        <textarea id="editarDescricao" placeholder="Descrição" class="materialize-textarea"></textarea>
                     </div>
                     <div class="input-field col s6">
                         <select id="editarSexo">
@@ -706,6 +699,3 @@
     </div>
     <!-- ///////////////////////// -->
 </body>
-<?php include("footer.php"); ?>
-
-</html>

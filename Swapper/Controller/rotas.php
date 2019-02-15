@@ -196,13 +196,23 @@ function getPagina()
                 include('View/footer.php');
             break;
             case '/main':
-                //$listaProdutos=new produtosDao()->listaProdutos();
-                //$listaChat=new chatDao()->listaChat();
-                //$msgMaisRecenteDeCadaChat=new mensagemDao(listaChat)
                 include('View/header.php');
                 include('View/main.php');
                 include('View/footer.php');
-                
+            break;
+            case '/atualizarpos':
+                $usuario["latitude"]=$_POST["latitude"];
+                $usuario["longitude"]=$_POST["longitude"];
+                atualizarUsuarioPos($usuario,$_SESSION['usuario']['id']);
+                $data=[];
+                $listusers=buscarUsuarioLocalizacao($_SESSION['usuario']['id']);
+                for($i=0;$i<count($listusers);$i++){
+                    $data[$i]['usuario']['id']=$listusers[$i]['id'];
+                    $data[$i]['usuario']['nome']=$listusers[$i]['nome'];
+                    $data[$i]['usuario']['foto']=$listusers[$i]['foto'];
+                    $data[$i]['usuario']['distancia']= round(6371*acos(cos(deg2rad(90-$_SESSION['usuario']["latitude"]))*cos(deg2rad(90-$listusers[$i]["latitude"]))+sin(deg2rad(90-$_SESSION['usuario']["latitude"]))*sin(deg2rad(90-$listusers[$i]["latitude"]))*cos(deg2rad($_SESSION['usuario']["longitude"]-$listusers[$i]["longitude"]))));
+                }
+                echo json_encode($data);
             break;
             case '/atualizarperfil':
                 $img="";
@@ -308,7 +318,7 @@ function emailRecuperarSenha(){
 //Rai quando for fazer a pesquisa dos usuarios perto vamos limitar a pesquisa p n tornar ela pesada
 //vamos fazer ela por "quadrantes"
 //basta tu colocar na busca do SQL ou oq tu for fazer que a lista de usuarios q deve ser pesquisada deve ser entre
-// round(Latitude_do_usuario_logado+2) >= Latitude && round(Latitude_do_usuario_logado-2) <= Latitude
-// round(Longitude_do_usuario_logado+2) >= Latitude && round(Longitude_do_usuario_logado-2) <= Latitude
+// Latitude_do_usuario_logado+1.5 >= Latitude && Latitude_do_usuario_logado-1.5 <= Latitude
+// Longitude_do_usuario_logado+2 >= Latitude && Longitude_do_usuario_logado-2 <= Latitude
 // Assim a gente limita em buscar dentro de um quadrante.
 ?>

@@ -1,9 +1,82 @@
-navigator.geolocation.getCurrentPosition(Location);
+navigator.geolocation.getCurrentPosition(Location,function(){console.log("error")},{timeout:10000});
 function Location(pos) {
+    console.log("entrou função\n")
     var coordenadas = pos.coords;
     var Position = { coords: {Latitude: coordenadas.latitude, Longitude: coordenadas.longitude, H:coordenadas.heading} };
-    console.log(Position);
+    $.ajax({
+        url: "/atualizarPos",
+        type: "post",
+        data:{
+            'latitude':pos.coords.latitude,
+            'longitude':pos.coords.longitude
+        }
+                            /* <!--<div class="cards swiper-no-swiping">
+
+                                <div class="card-imgs tx-c swiper-no-swiping">
+                                    <div class="swiper-wrapper">
+                                        <div id="card-view-img1" class="swiper-slide r"><img id="card-imagem1" class="i" src="View/img/camiseta.jpg" alt=""></div>
+                                        <div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/camiseta.jpg" alt=""></div>
+                                        <div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/camiseta.jpg" alt=""></div>
+                                    </div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+
+                                </div>
+
+                                <div class="card-dados row swiper-no-swiping">
+                                    <div class="col s3"></div>
+                                    <div class="col s9"><span class="card-dadosNome">Jonh Connor<span>-7KM</span></span></div>
+
+                                </div>
+                                <div class="dados swiper-no-swiping">
+                                    <img id="perfis-btn" src="/View/img/rai.jpg" alt="">
+                                    <span>
+                                        <i class="meritos-perfil material-icons">star_half</i>
+                                        <i class="meritos-perfil material-icons">check_circle</i>
+                                    </span>
+                                </div>
+                            </div>   */   
+    }).done(function(data){
+        //console.log('éoq')
+        gerarCards(data)
+
+    })
+
     //console.log("Latitude:" + Position.coords.Latitude + "Longitude:" + Position.coords.Longitude);
+}
+function gerarCards(data){
+    dataCard=JSON.parse(data)
+    var html=""
+    for(var i=0;i<Object.keys(dataCard).length;i++){
+    console.log('éoq')
+    html+='<div class="cards swiper-no-swiping">'
+                                +'<div class="card-imgs tx-c swiper-no-swiping">'
+                                +    '<div class="swiper-wrapper">'
+                                +        '<div id="card-view-img1" class="swiper-slide r"><img id="card-imagem1" class="i" src="View/img/camiseta.jpg" alt=""></div>'
+                                +        '<div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/camiseta.jpg" alt=""></div>'
+                                +        '<div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/camiseta.jpg" alt=""></div>'
+                                +    '</div>'
+                                +    '<div class="swiper-button-prev"></div>'
+                                +    '<div class="swiper-button-next"></div>'
+                                +'</div>'
+                                +'<div class="card-dados row swiper-no-swiping">'
+                                +    '<div class="col s3"></div>'
+                                +    '<div class="col s9"><span id="'+dataCard[0].usuario.id+'"></span><span class="card-dadosNome">'+dataCard[0].usuario.nome+'<span>-'+dataCard[0].usuario.distancia+'KM</span></span></div>'
+                                +'</div>'
+                                +'<div class="dados swiper-no-swiping">'
+                                +    '<img id="perfis-btn" src="data:image/jpeg;base64,'+dataCard[0].usuario.foto+'" alt="">'
+                                +    '<span>'
+                                +        '<i class="meritos-perfil material-icons">star_half</i>'
+                                +        '<i class="meritos-perfil material-icons">check_circle</i>'
+                                +    '</span>'
+                                +'</div>'
+                            +'</div> ';
+    }
+    console.log(dataCard);
+    $("#cards").html(html);
+    resizeImg($(".r"),$(".i"));
+    
+    cardImageSwipe();
 }
 
 // Formula da distancia entre duas distancias Math.round(6371*Math.acos(Math.cos(degrees_to_radians(90-Latitude_1))*Math.cos(degrees_to_radians(90-Latitude_2))+Math.sin(degrees_to_radians(90-Latitude_1))*Math.sin(degrees_to_radians(90-Latitude_2))*Math.cos(degrees_to_radians(Longitude_1-Longitude_2)))*1)
@@ -200,7 +273,7 @@ function gerarRoupas(data){
     roupas=JSON.parse(data)
     for(var i=Object.keys(roupas).length;i>=1;i--){
     //for(var i=1;i<=Object.keys(roupas).length;i++){
-       html+='<div id="produto-'+roupas[i]["id"]+'" class="produto"><div class="row"><div onclick="visualizarProduto('+roupas[i]["id"]+')" class="col s4 visualizar-produto"><div id="produto-img-ref-'+roupas[i]["id"]+'" class="produto_imagem"><img id="produto-img'+i+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div onclick="editarProduto('+roupas[i]["id"]+')" id="editarProduto_btn" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
+       html+='<div id="produto-'+roupas[i]["id"]+'" class="produto"><div class="row"><div onclick="visualizarProduto('+roupas[i]["id"]+')" class="col s4 visualizar-produto"><div id="produto-img-ref'+roupas[i]["id"]+'" class="produto_imagem"><img id="produto-img'+roupas[i]["id"]+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div onclick="editarProduto('+roupas[i]["id"]+')" id="editarProduto_btn" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
     }
     $("#produtos").html(html);
     
@@ -208,8 +281,7 @@ function gerarRoupas(data){
     $("#produtos-user").css('display', 'block');
     $(".addProduto_btn").css('display', 'inline-block');
     for(var i=Object.keys(roupas).length;i>=1;i--){
-        resizeImg($("#produto-img-ref"+i),$("#produto-img"+i));
-        console.log("oi")
+        resizeImg($("#produto-img-ref"+roupas[i]["id"]),$("#produto-img"+roupas[i]["id"]));
     }
 }
 function visualizarProduto(idProduto){
@@ -249,7 +321,7 @@ function visualizarProduto(idProduto){
             tipo="CALÇADO"
         } 
         var estado=(roupa["estado"]==1) ? "NOVA" : "USADA"
-        html='<span class="tag">'+sexo+'</span><span class="tag">'+categoria+'</span><span class="tag">'+tipo+'</span><span class="tag">'+estado+'</span>'
+        html='<span>TAGS:</span><span class="tag">'+sexo+'</span><span class="tag">'+categoria+'</span><span class="tag">'+tipo+'</span><span class="tag">'+estado+'</span>'
         $("#visualizarProdutoTags").html(html)
      })
 }
@@ -263,10 +335,14 @@ function editarProduto(idProduto){
             $("#idProdutoEditar").val(idProduto)
             $("#previewUpload3").attr("src","data:image/jpeg;base64,"+produto["foto1"])
             $("#previewUpload4").attr("src","data:image/jpeg;base64,"+produto["foto2"])
-            $("#previewUpload5").attr("src","data:image/jpeg;base64,"+produto["foto3"])
-            $("#fileToUpload3").val(produto["foto1"])
-            $("#fileToUpload4").val(produto["foto2"])
-            $("#fileToUpload5").val(produto["foto3"])
+            if(produto["foto3"]!=""){
+                $("#fileToUpload5").attr("disabled",false);
+                $("#img-preview5").removeClass("label-disabled")
+                $("#previewUpload5").attr("src","data:image/jpeg;base64,"+produto["foto3"])
+            }
+            //$("#fileToUpload3").val(produto["foto1"])
+            //$("#fileToUpload4").val(produto["foto2"])
+            //$("#fileToUpload5").val(produto["foto3"])
             resizeImg($("#img-preview3"),$("#previewUpload3"))
             resizeImg($("#img-preview4"),$("#previewUpload4"))
             resizeImg($("#img-preview5"),$("#previewUpload5"))
@@ -295,6 +371,7 @@ function botoesAcaoSecundario(estado){
 // Input preview e UX
 function readURL(input) {
     var size = input.files[0].size;
+    inp = input.files;
     if(size < 1048576) {       
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -433,15 +510,22 @@ function inputRequiredEdit(){
     }
 }
 
-//teste
+function cardImageSwipe(){
+    $("#cards").children().last().find('div')[0].className += " card-imagens";
+    card_img = new Swiper ('.card-imagens', {
+        initialSlide: 0,
+        loop: false,
+        direction: 'horizontal',
+        centeredSlides: true,
+        observer: true,
+        observeParents: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+    });
+}
 
-resizeImg($("#produto-view-img1"),$("#produto-imagem1"));
-resizeImg($("#produto-view-img2"),$("#produto-imagem2"));
-resizeImg($("#produto-view-img3"),$("#produto-imagem3"));
-
-resizeImg($("#card-view-img1"),$("#card-imagem1"));
-resizeImg($("#card-view-img2"),$("#card-imagem2"));
-resizeImg($("#card-view-img3"),$("#card-imagem3"));
 
 
 /// SWIPEABLE CARDS
@@ -461,54 +545,52 @@ $("#cards").on('touchmove', function(event) {
 });
 
 $("#cards").on('touchend', function(event) {    
+    //console.log("oi");
     if(moveY <= -65){
         $("#cards").children().last().css({
             transition: "transform 0.3s",
             transform: 'scale(0.01) translateY(-500%)',
         });
+        setTimeout(function(){$("#cards").children().last().remove()},300);
     }else{
         if((130*moveX) >= 70 && (130*moveX) > 0){
             $("#cards").children().last().css({
                 transition: "transform 0.3s",
                 transform: 'translateX(130%) rotate(12deg)',
             });
+            setTimeout(function(){$("#cards").children().last().remove()},300);
         }
         if((130*moveX) <= -70 && (130*moveX) < 0){
             $("#cards").children().last().css({
                 transition: "transform 0.3s",
                 transform: 'translateX(-130%) rotate(-12deg)',
             });
+            setTimeout(function(){$("#cards").children().last().remove()},300);
         }
         if((130*moveX) < 70 && (130*moveX) > -70){
             $("#cards").children().last().css({
                 transition: "transform 0.3s",
                 transform: 'translateX(0%) rotate(0deg)',
             });
+            setTimeout(function(){$("#cards").children().last().css( { transition: "none" } );},300);
         }
     }
-    setTimeout( function() {
-        $("#cards").children().last().css( { transition: "none" } ); $("#cards").children().last().css('transform', 'translateX(0%) rotate(0deg)'); 
-        moveY = 0;
+       //$("#cards").children().last().remove();
+        //$("#cards").children().last().css( { transition: "none" } ); //$("#cards").children().last().css('transform', 'translateX(0%) rotate(0deg)'); moveY = 0;
         moveX = 0;
         T = 0;
         S = 0;
         X = 0;
         Y = 0;
-    }, 300 );
 });
 
 
-lastChild();
 
 ////////// Botoes de ação ///////////
-function lastChild(){
-    $("#cards").children().last().css('filter', 'brightness(100%)');
-}
 
 $("#btn-rever").click(function() {
     $("#cards").children().last().addClass("rever-action");
     setTimeout(function(){$("#cards").children().last().removeClass("rever-action");}, 400);
-    
 });
 $("#btn-deslike").click(function() {
     $("#cards").children().last().addClass("deslike-action");

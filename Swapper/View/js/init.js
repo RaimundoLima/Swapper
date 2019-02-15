@@ -35,7 +35,7 @@ $(document).ready(function(){
             $('#mensagens-nav').addClass('swiper-pagination-bullet-active');
         }
     });
-
+    /*
     card_img = new Swiper ('.card-imagens', {
         initialSlide: 0,
         loop: false,
@@ -48,7 +48,7 @@ $(document).ready(function(){
             prevEl: '.swiper-button-prev',
           },
     });
-
+    */
     produto = new Swiper ('.produto-imagens', {
         initialSlide: 0,
         loop: false,

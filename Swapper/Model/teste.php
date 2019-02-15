@@ -6,31 +6,16 @@ include('Crud/Model.php');
 $usuario1=
 [
     'sexo'=>"M",
-    "email"=>'luis@gmail.com',
+    "email"=>'rr@gmail.com',
     "senha"=>sha1('123'),
     "celular"=>7,//
-    "nome"=>'Luis',
+    "nome"=>'Luis Henrique Jacinto',
     "nascimento"=>'01/01/1936',
-    "localizacao"=>'-g344535382787-w01212133435353',
-    "bio"=>'Um cara mais ou menos foda,mas é mais pro fodido',
     "foto"=>'img1.jpg'//dps eu testo colocando uma foto
 ];
 
 echo inserirUsuario($usuario1)." id do usuario1<br>";
 
-$usuario2=
-[
-    "sexo"=>'M',
-    "email"=>'rai@gmail.com',
-    "senha"=>sha1('123'),
-    "celular"=>'05399887766551',//
-    "nome"=>'Rai',
-    "nascimento"=>'01/01/1933',
-    "localizacao"=>'-g344535382787-w01212133435353',
-    "bio"=>'Ele tem um sonho',
-    "foto"=>'img2.png'
-];
-echo inserirUsuario($usuario2)." id do usuario2<br>";
 /*
  /////////////////////////////////
 $roupaDoUsuario1=
