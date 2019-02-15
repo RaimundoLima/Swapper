@@ -53,18 +53,18 @@ function gerarCards(data){
                                 +'<div class="card-imgs tx-c swiper-no-swiping">'
                                 +    '<div class="swiper-wrapper">'
                                 +        '<div id="card-view-img1" class="swiper-slide r"><img id="card-imagem1" class="i" src="View/img/camiseta.jpg" alt=""></div>'
-                                +        '<div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/camiseta.jpg" alt=""></div>'
-                                +        '<div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/camiseta.jpg" alt=""></div>'
+                                +        '<div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/luis.jpg" alt=""></div>'
+                                +        '<div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/rai.jpg" alt=""></div>'
                                 +    '</div>'
-                                +    '<div class="swiper-button-prev"></div>'
-                                +    '<div class="swiper-button-next"></div>'
+                                +    '<div class=""></div>'
+                                +    '<div class=""></div>'
                                 +'</div>'
                                 +'<div class="card-dados row swiper-no-swiping">'
                                 +    '<div class="col s3"></div>'
-                                +    '<div class="col s9"><span id="'+dataCard[0].usuario.id+'"></span><span class="card-dadosNome">'+dataCard[0].usuario.nome+'<span>-'+dataCard[0].usuario.distancia+'KM</span></span></div>'
+                                +    '<div class="col s9"><span id="'+dataCard[i].usuario.id+'"></span><span class="card-dadosNome">'+dataCard[i].usuario.nome+'<span>-'+dataCard[i].usuario.distancia+'KM</span></span></div>'
                                 +'</div>'
                                 +'<div class="dados swiper-no-swiping">'
-                                +    '<img id="perfis-btn" src="data:image/jpeg;base64,'+dataCard[0].usuario.foto+'" alt="">'
+                                +    '<img id="perfis-btn" src="data:image/jpeg;base64,'+dataCard[i].usuario.foto+'" alt="">'
                                 +    '<span>'
                                 +        '<i class="meritos-perfil material-icons">star_half</i>'
                                 +        '<i class="meritos-perfil material-icons">check_circle</i>'
@@ -512,6 +512,8 @@ function inputRequiredEdit(){
 
 function cardImageSwipe(){
     $("#cards").children().last().find('div')[0].className += " card-imagens";
+    $("#cards").children().last().find('div')[5].className += " swiper-button-prev";
+    $("#cards").children().last().find('div')[6].className += " swiper-button-next";
     card_img = new Swiper ('.card-imagens', {
         initialSlide: 0,
         loop: false,
@@ -551,21 +553,21 @@ $("#cards").on('touchend', function(event) {
             transition: "transform 0.3s",
             transform: 'scale(0.01) translateY(-500%)',
         });
-        setTimeout(function(){$("#cards").children().last().remove()},300);
+        setTimeout(function(){$("#cards").children().last().remove(); cardImageSwipe();},300);
     }else{
         if((130*moveX) >= 70 && (130*moveX) > 0){
             $("#cards").children().last().css({
                 transition: "transform 0.3s",
                 transform: 'translateX(130%) rotate(12deg)',
             });
-            setTimeout(function(){$("#cards").children().last().remove()},300);
+            setTimeout(function(){$("#cards").children().last().remove(); cardImageSwipe();},300);
         }
         if((130*moveX) <= -70 && (130*moveX) < 0){
             $("#cards").children().last().css({
                 transition: "transform 0.3s",
                 transform: 'translateX(-130%) rotate(-12deg)',
             });
-            setTimeout(function(){$("#cards").children().last().remove()},300);
+            setTimeout(function(){$("#cards").children().last().remove(); cardImageSwipe();},300);
         }
         if((130*moveX) < 70 && (130*moveX) > -70){
             $("#cards").children().last().css({

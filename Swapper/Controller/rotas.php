@@ -203,14 +203,14 @@ function getPagina()
             case '/atualizarpos':
                 $usuario["latitude"]=$_POST["latitude"];
                 $usuario["longitude"]=$_POST["longitude"];
-                atualizarUsuarioPos($usuario,$_SESSION['usuario']['id']);
+                //atualizarUsuarioPos($usuario,$_SESSION['usuario']['id']);
                 $data=[];
                 $listusers=buscarUsuarioLocalizacao($_SESSION['usuario']['id']);
                 for($i=0;$i<count($listusers);$i++){
                     $data[$i]['usuario']['id']=$listusers[$i]['id'];
                     $data[$i]['usuario']['nome']=$listusers[$i]['nome'];
                     $data[$i]['usuario']['foto']=$listusers[$i]['foto'];
-                    $data[$i]['usuario']['distancia']= round(6371*acos(cos(deg2rad(90-$_SESSION['usuario']["latitude"]))*cos(deg2rad(90-$listusers[$i]["latitude"]))+sin(deg2rad(90-$_SESSION['usuario']["latitude"]))*sin(deg2rad(90-$listusers[$i]["latitude"]))*cos(deg2rad($_SESSION['usuario']["longitude"]-$listusers[$i]["longitude"]))));
+                    $data[$i]['usuario']['distancia']= ceil(6371*acos(cos(deg2rad(90-$_SESSION['usuario']["latitude"]))*cos(deg2rad(90-$listusers[$i]["latitude"]))+sin(deg2rad(90-$_SESSION['usuario']["latitude"]))*sin(deg2rad(90-$listusers[$i]["latitude"]))*cos(deg2rad($_SESSION['usuario']["longitude"]-$listusers[$i]["longitude"]))));
                 }
                 echo json_encode($data);
             break;
