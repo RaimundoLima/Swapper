@@ -10,32 +10,6 @@ function Location(pos) {
             'latitude':pos.coords.latitude,
             'longitude':pos.coords.longitude
         }
-                            /* <!--<div class="cards swiper-no-swiping">
-
-                                <div class="card-imgs tx-c swiper-no-swiping">
-                                    <div class="swiper-wrapper">
-                                        <div id="card-view-img1" class="swiper-slide r"><img id="card-imagem1" class="i" src="View/img/camiseta.jpg" alt=""></div>
-                                        <div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/camiseta.jpg" alt=""></div>
-                                        <div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/camiseta.jpg" alt=""></div>
-                                    </div>
-                                    <div class="swiper-button-prev"></div>
-                                    <div class="swiper-button-next"></div>
-
-                                </div>
-
-                                <div class="card-dados row swiper-no-swiping">
-                                    <div class="col s3"></div>
-                                    <div class="col s9"><span class="card-dadosNome">Jonh Connor<span>-7KM</span></span></div>
-
-                                </div>
-                                <div class="dados swiper-no-swiping">
-                                    <img id="perfis-btn" src="/View/img/rai.jpg" alt="">
-                                    <span>
-                                        <i class="meritos-perfil material-icons">star_half</i>
-                                        <i class="meritos-perfil material-icons">check_circle</i>
-                                    </span>
-                                </div>
-                            </div>   */   
     }).done(function(data){
         //console.log('éoq')
         gerarCards(data)
@@ -48,29 +22,29 @@ function gerarCards(data){
     dataCard=JSON.parse(data)
     var html=""
     for(var i=0;i<Object.keys(dataCard).length;i++){
-    console.log('éoq')
-    html+='<div class="cards swiper-no-swiping">'
-                                +'<div class="card-imgs tx-c swiper-no-swiping">'
-                                +    '<div class="swiper-wrapper">'
-                                +        '<div id="card-view-img1" class="swiper-slide r"><img id="card-imagem1" class="i" src="View/img/camiseta.jpg" alt=""></div>'
-                                +        '<div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/luis.jpg" alt=""></div>'
-                                +        '<div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/rai.jpg" alt=""></div>'
-                                +    '</div>'
-                                +    '<div class=""></div>'
-                                +    '<div class=""></div>'
-                                +'</div>'
-                                +'<div class="card-dados row swiper-no-swiping">'
-                                +    '<div class="col s3"></div>'
-                                +    '<div class="col s9"><span id="'+dataCard[i].usuario.id+'"></span><span class="card-dadosNome">'+dataCard[i].usuario.nome+'<span>-'+dataCard[i].usuario.distancia+'KM</span></span></div>'
-                                +'</div>'
-                                +'<div class="dados swiper-no-swiping">'
-                                +    '<img id="perfis-btn" src="data:image/jpeg;base64,'+dataCard[i].usuario.foto+'" alt="">'
-                                +    '<span>'
-                                +        '<i class="meritos-perfil material-icons">star_half</i>'
-                                +        '<i class="meritos-perfil material-icons">check_circle</i>'
-                                +    '</span>'
-                                +'</div>'
-                            +'</div> ';
+        console.log('éoq')
+        html+='<div class="cards swiper-no-swiping">'
+                                    +'<div class="card-imgs tx-c swiper-no-swiping">'
+                                    +    '<div class="swiper-wrapper">'
+                                    +        '<div id="card-view-img1" class="swiper-slide r"><img id="card-imagem1" class="i" src="View/img/camiseta.jpg" alt=""></div>'
+                                    +        '<div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/luis.jpg" alt=""></div>'
+                                    +        '<div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/rai.jpg" alt=""></div>'
+                                    +    '</div>'
+                                    +    '<div class=""></div>'
+                                    +    '<div class=""></div>'
+                                    +'</div>'
+                                    +'<div class="card-dados row swiper-no-swiping">'
+                                    +    '<div class="col s3"></div>'
+                                    +    '<div class="col s9" ><span id=usuario-"'+dataCard[i].usuario.id+'"></span><span class="card-dadosNome">'+dataCard[i].usuario.nome+'<span>-'+dataCard[i].usuario.distancia+'KM</span></span></div>'
+                                    +'</div>'
+                                    +'<div class="dados swiper-no-swiping">'
+                                    +    '<img onclick="buscarPerfil('+dataCard[i].usuario.id+')" id="perfis-btn" src="data:image/jpeg;base64,'+dataCard[i].usuario.foto+'" alt="">'
+                                    +    '<span>'
+                                    +        '<i class="meritos-perfil material-icons">star_half</i>'
+                                    +        '<i class="meritos-perfil material-icons">check_circle</i>'
+                                    +    '</span>'
+                                    +'</div>'
+                                +'</div> ';
     }
     console.log(dataCard);
     $("#cards").html(html);
@@ -89,6 +63,18 @@ function degrees_to_radians(degrees)
 
 var buscaFiltro=0;
 var buscaRoupas=0;
+var alteraImagem1=0
+var alteraImagem2=0
+var alteraImagem3=0
+
+//$("#fileToUpload3").click(function(){
+//    alteraImagem1=1
+//})
+
+//$("fileToUpload4").click(function(){
+//    alteraImagem2=1
+//})
+
 
 $("#filtro-btn").click(function() {
     buscarFiltro();
@@ -137,12 +123,31 @@ $("#confirmarFoto").click(function(){
 })
 
 $("#deslogarBtn").click(function(){
-    $("#confirmarDeslogar").css({
-        transition: "transform 0.2s",
-        transform: 'translateY(0%)',
-        display: 'inline-block',
-    });
+    $("#confirmarDeslogar").css("display", "inline-block");
+    $("#confirmarDeslogar").removeClass("un-show-tab");
+    $("#confirmarDeslogar").addClass("show-tab");
 })
+
+$("#rejeitarLogout").click(function(){
+    $("#confirmarDeslogar").removeClass("show-tab");
+    $("#confirmarDeslogar").addClass("un-show-tab");
+    setTimeout(function(){ $("#confirmarDeslogar").css('display', 'none');}, 300);
+})
+
+$("#deletarBtn").click(function(){
+    $("#deletarProduto").css("display", "inline-block");
+    $("#deletarProduto").removeClass("un-show-tab");
+    $("#deletarProduto").addClass("show-tab");
+})
+
+
+
+$("#rejeitarDeletar").click(function(){
+    $("#deletarProduto").removeClass("show-tab");
+    $("#deletarProduto").addClass("un-show-tab");
+    setTimeout(function(){ $("#deletarProduto").css('display', 'none');}, 300);
+})
+
 
 function atualizarPerfil(){
     var data = new FormData();
@@ -195,6 +200,17 @@ function inserirRoupas(){
 }
 function atualizarRoupasEnviar(){
     var data = new FormData();
+
+    if(document.getElementById("fileToUpload3").value != "") alteraImagem1=1; 
+
+    if(document.getElementById("fileToUpload4").value == "" &&  $("#previewUpload4").attr("src") == "") alteraImagem2 = 2; 
+
+    if(document.getElementById("fileToUpload4").value != "") alteraImagem2 = 1;
+
+    if(document.getElementById("fileToUpload5").value == "" &&  $("#previewUpload5").attr("src") == "") alteraImagem3 = 2; 
+    
+    if(document.getElementById("fileToUpload5").value != "") alteraImagem3 = 1;
+
     jQuery.each(jQuery('#fileToUpload3')[0].files, function(i, file) {
         data.append('img1', file);
     });
@@ -211,6 +227,9 @@ function atualizarRoupasEnviar(){
     data.append("categoria",$("#editarCategoria").val());
     data.append("tipo",$("#editarTipo").val());
     data.append("estado",$("#editarEstado").val());
+    data.append("alteraImagem1",alteraImagem1)
+    data.append("alteraImagem2",alteraImagem2)
+    data.append("alteraImagem3",alteraImagem3)
     $.ajax({
         url: '/atualizarRoupasEnviar',
         contentType: false,
@@ -219,11 +238,14 @@ function atualizarRoupasEnviar(){
         type: 'post',
         data:data
     }).done(function(){
-        resetAddForm();
+        resetEditForm();
         $("#remover3").css('display', 'none');
         $("#remover4").css('display', 'none');
         $("#editar-produto").removeClass("left-right-ltab");
         $("#editar-produto").addClass("right-left-ltab");
+        alteraImagem1=0;
+        alteraImagem2=0;
+        alteraImagem3=0;
     })
 }
 function atualizarFiltro(){
@@ -280,19 +302,108 @@ function buscarRoupas(){
 function gerarRoupas(data){
     var html=""
     roupas=JSON.parse(data)
-    for(var i=Object.keys(roupas).length;i>=1;i--){
+    for(var i=Object.keys(roupas).length-1;i>=0;i--){
     //for(var i=1;i<=Object.keys(roupas).length;i++){
-       html+='<div id="produto-'+roupas[i]["id"]+'" class="produto"><div class="row"><div onclick="visualizarProduto('+roupas[i]["id"]+')" class="col s4 visualizar-produto"><div id="produto-img-ref'+roupas[i]["id"]+'" class="produto_imagem"><img id="produto-img'+roupas[i]["id"]+'" class="" src="data:image/jpeg;base64,'+roupas[i]["foto1"]+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+roupas[i]["nome"]+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div onclick="editarProduto('+roupas[i]["id"]+')" id="editarProduto_btn" class="btn-generic col s2"><a class="editar-produto-btn"><i class="material-icons">create</i></a></div></div></div>'
+       html+='<div id="produto-'+roupas[i].id+'" class="produto"><div class="row">'
+       +'<div onclick="visualizarProduto('+roupas[i].id+')" class="col s4 visualizar-produto">'
+       +'<div id="produto-img-ref'+roupas[i].id+'" class="r1 produto_imagem">'
+       +'<img id="produto-img'+roupas[i].id+'" class="i1" src="data:image/jpeg;base64,'+roupas[i].foto1+'">'
+       +'</div></div><div onclick="visualizarProduto('+roupas[i].id+')" class="produto_info col s6 visualizar-produto">'
+       +'<span class="nome_produto">'+roupas[i].nome+'</span>'
+       +'<br>'
+       +'<i class="material-icons icons">remove_red_eye</i>'
+       +'<span>0</span><i class="material-icons icons">favorite</i>'
+       +'<span>0</span></div>'
+       +'<div onclick="editarProduto('+roupas[i].id+')" id="editarProduto_btn" class="btn-generic col s2">'
+       +'<a class="editar-produto-btn"><i class="material-icons">create</i>'
+       +'</a></div></div></div>'
     }
-    $("#produtos").html(html);
-    
+    $("#produtos").html(html);    
     $("#produtos-user-preloader").css('display', 'none');
     $("#produtos-user").css('display', 'block');
     $(".addProduto_btn").css('display', 'inline-block');
-    for(var i=Object.keys(roupas).length;i>=1;i--){
-        resizeImg($("#produto-img-ref"+roupas[i]["id"]),$("#produto-img"+roupas[i]["id"]));
-    }
+    resizeImg($(".r1"),$(".i1"));
 }
+function deletarProduto(idProduto){
+    //animações
+    $.ajax({
+        url: '/deletarproduto?'+idProduto
+    }).done(function(data){
+    })
+    buscaRoupas=0;
+    buscarRoupas();
+    $("#anBlock").css("display", "inline");
+    $("#deletarProduto").removeClass("show-tab");
+    $("#deletarProduto").addClass("un-show-tab");
+    setTimeout(function(){
+        $("#deletarProduto").css('display', 'none');
+        $("#editar-produto").removeClass("left-right-ltab");
+        $("#editar-produto").addClass("right-left-ltab");
+        $("#anBlock").css("display", "none");
+    }, 300);
+    M.toast({html: 'Produto deletado!'}) 
+}
+function buscarPerfil(idPerfil){
+    $("#perfis").removeClass("down-up");
+    $("#perfis").addClass("up-down");
+     $.ajax({
+        url: '/buscarPerfisPorId?'+idPerfil
+     }).done(function(data){
+        dados=JSON.parse(data)
+        $("#fotoUserAleatorio").attr("src","data:image/jpeg;base64,"+dados.usuario.foto)
+        $("#nomeUserAleatorio").text(dados.usuario.nome)
+        html=""
+        $("#produtosUserAleatorio").html(html)
+        for(var i=0;i<Object.keys(dados.roupa).length;i++){
+           html+='<div onclick="visualizarProduto2('+dados.roupa[i].id+','+dados.usuario.id+')" id="produto-'+dados.roupa[i].id+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+dados.roupa[i].id+'" class="r2 produto_imagem"><img id="produto-img'+dados.roupa[i].id+'" class="i2" src="data:image/jpeg;base64,'+dados.roupa[i].foto1+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+dados.roupa[i].nome+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div></div></div></div>'
+        }
+        $("#produtosUserAleatorio").html(html);
+        resizeImg($(".r2"),$(".i2"));
+     })
+
+}
+function visualizarProduto2(idProduto,idUsuario){
+    $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
+    $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
+     $.ajax({
+        url: '/buscarRoupasPorId?'+idProduto+','+idUsuario
+     }).done(function(data){
+        var roupa=JSON.parse(data)
+        var imgs=''
+        if(roupa["foto1"] !=""){
+            imgs+=' <div id="produto-view-img1" class="swiper-slide"><img id="produto-imagem1" src="data:image/jpeg;base64,'+roupa["foto1"]+'" alt=""></div>'
+        }
+        if(roupa["foto2"] !=""){
+            imgs+=' <div id="produto-view-img2" class="swiper-slide"><img id="produto-imagem2" src="data:image/jpeg;base64,'+roupa["foto2"]+'" alt=""></div>'
+        }
+        if(roupa["foto3"] !=""){
+            imgs+=' <div id="produto-view-img3" class="swiper-slide"><img id="produto-imagem3" src="data:image/jpeg;base64,'+roupa["foto3"]+'" alt=""></div>'
+        }
+        $("#visualizarImagens").html(imgs)
+        resizeImg($("#produto-view-img1"),$("#produto-imagem1"));
+        resizeImg($("#produto-view-img2"),$("#produto-imagem2"));
+        resizeImg($("#produto-view-img3"),$("#produto-imagem3"));
+        $("#visualizaProdutoDono").text(roupa["usuario_id"])
+        $("#visualizaProdutoNome").text(roupa["nome"])
+        $("#visualizaProdutoDescricao").text(roupa["descricao"])
+        var html=""
+        var sexo=(roupa["sexo"]==1) ? "MASCULINA" : "FEMININA"
+        var categoria=(roupa["categoria"]==1) ? "INFANTIL" : "ADULTO"
+        var tipo="";
+        if(roupa["tipo"]==1){
+            tipo="ROUPA"
+        } 
+        else if(roupa["tipo"]==2){
+            tipo="ACESSÓRIO"
+        }else{
+            tipo="CALÇADO"
+        } 
+        var estado=(roupa["estado"]==1) ? "NOVA" : "USADA"
+        html='<span>TAGS:</span><span class="tag">'+sexo+'</span><span class="tag">'+categoria+'</span><span class="tag">'+tipo+'</span><span class="tag">'+estado+'</span>'
+        $("#visualizarProdutoTags").html(html)
+     })
+}
+
 function visualizarProduto(idProduto){
     $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
     $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
@@ -342,12 +453,21 @@ function editarProduto(idProduto){
         type: 'post'}).done(function(data){
             var produto=(JSON.parse(data));
             $("#idProdutoEditar").val(idProduto)
-            $("#previewUpload3").attr("src","data:image/jpeg;base64,"+produto["foto1"])
-            $("#previewUpload4").attr("src","data:image/jpeg;base64,"+produto["foto2"])
+            if(produto["foto1"]!= "") $("#previewUpload3").attr("src","data:image/jpeg;base64,"+produto["foto1"])
+            if(produto["foto2"]!= "") $("#previewUpload4").attr("src","data:image/jpeg;base64,"+produto["foto2"])
             if(produto["foto3"]!=""){
                 $("#fileToUpload5").attr("disabled",false);
                 $("#img-preview5").removeClass("label-disabled")
                 $("#previewUpload5").attr("src","data:image/jpeg;base64,"+produto["foto3"])
+            }
+            if($("#previewUpload4").attr("src") != ""){
+                $("#fileToUpload5").attr("disabled",false);
+                $("#img-preview5").removeClass("label-disabled")
+                $("#remover3").css('display', 'block');
+            }
+            if($("#previewUpload5").attr("src") != ""){
+                $("#remover3").css('display', 'none');
+                $("#remover4").css('display', 'block');
             }
             //$("#fileToUpload3").val(produto["foto1"])
             //$("#fileToUpload4").val(produto["foto2"])
@@ -361,6 +481,7 @@ function editarProduto(idProduto){
             $("#editarTipo").val(produto["sexo"]).formSelect()
             $("#editarCategoria").val(produto["sexo"]).formSelect();
             $("#editarEstado").val(produto["sexo"]).formSelect();
+            $("#confirmarDeletar").attr('onclick',"deletarProduto("+idProduto+")")
         })
 }
 //Desabilitar e habilitar botoes de ação
@@ -494,6 +615,21 @@ function resetAddForm(){
     document.getElementById("adicionar-produtoForm").reset();
 }
 
+function resetEditForm(){
+    $("#previewUpload3").attr('src','');
+    $("#previewUpload4").attr('src','');
+    $("#previewUpload5").attr('src', '');
+    $("#img-preview4").addClass('label-disabled');
+    $("#img-preview4").removeClass('able');
+    $("#img-preview5").addClass('label-disabled');
+    $("#img-preview5").removeClass('able');
+    document.getElementById("fileToUpload3").value = "";
+    document.getElementById("fileToUpload4").value = "";
+    document.getElementById("fileToUpload5").value = "";
+    document.getElementById("editar-produtoForm").reset();
+}
+
+
 function inputRequired(){
     if(document.getElementById("fileToUpload").value == "" || $("#nomeProduto").val() == "" || $("#descricao").val() == ""){
         if(document.getElementById("fileToUpload").value == "") M.toast({html: 'Foto necessária!'})
@@ -507,12 +643,10 @@ function inputRequired(){
 }
 function inputRequiredEdit(){
     console.log("function \n")
-    if(document.getElementById("fileToUpload3").value == "" || $("#editarNome").val() == "" || $("#editarDescricao").val() == ""){
-        if(document.getElementById("fileToUpload3").value == "") M.toast({html: 'Foto necessária!'})
+    if($("#editarNome").val() == "" || $("#editarDescricao").val() == ""){
         if($("#editarNome").val() == "") M.toast({html: 'Nome necessário!'}) 
         if($("#editarDescricao").val() == "") M.toast({html: 'Descrição necessária!'}) 
     }else{
-        console.log("else")
         atualizarRoupasEnviar();
         buscaRoupas=0;
         buscarRoupas();

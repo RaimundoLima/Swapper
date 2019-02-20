@@ -34,13 +34,20 @@ function atualizarRoupa($roupa,$id){
     return R::store($roupaT);
 
 }
-function deletarRoupa($id){
-    $roupa=R::load("roupa",$id);
-    R::trash($roupa);
-
+function deletarRoupa($id,$idUsuario){
+    $roupa=R::findOne("roupa","id=? AND usuario_id=?",[$id,$idUsuario]);
+    return R::trash($roupa);
 }
 function listarRoupa($idUsuario){
-    return R::findAll("roupa","usuario_id=".$idUsuario);
+    $list=R::findAll("roupa","usuario_id=?",[$idUsuario]);
+    $aux = [];
+    $count = 0;
+    foreach($list as $lista){ 
+        $aux[$count] = $lista;
+        $count++;
+    }
+    return $aux;
+    
 }
 
 ?>

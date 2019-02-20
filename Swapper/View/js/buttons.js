@@ -7,8 +7,6 @@ $("#filtro-btn-voltar").click(function() {
     $("#filtro").addClass("down-up");
 });
 
-// TESTEEEEE ////////////////////////////////////////
-
 $("#perfis-btn").click(function() {
     $("#perfis").removeClass("down-up");
     $("#perfis").addClass("up-down");
@@ -17,8 +15,6 @@ $("#perfis-btn-voltar").click(function() {
     $("#perfis").removeClass("up-down");
     $("#perfis").addClass("down-up");
 });
-
-////////////////////////////////////////////////////
 
 $("#credibilidade-usuario-btn").click(function() {
     $("#credibilidade-usuario").removeClass("right-left-ltab");
@@ -59,6 +55,7 @@ $("#editarProduto_btn").click(function() {
     $("#editar-produto").removeClass("right-left-ltab");
     $("#editar-produto").addClass("left-right-ltab");
 });
+
 $("#editar-produto-btn-voltar").click(function() {
     $("#editar-produto").removeClass("left-right-ltab");
     $("#editar-produto").addClass("right-left-ltab");

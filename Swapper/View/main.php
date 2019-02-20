@@ -143,25 +143,27 @@
         </div>
     </div>
 
-    <!-- Abas de confirmação // Menu -->
-    <div id="confirmarFotoPerfil">
+    <!-- Abas de confirmação // Menu// Div de animação -->
+    <div id="anBlock"></div>
+
+    <div id="confirmarFotoPerfil" class="confirmar">
         <div class="row tx-c">
             <div class="col s12">
                 <div class="pic-preview"><img id="fotoPerfilPreview" src="" alt=""></div>
             </div>
             <div class="btns">
-                <div class="col s5 tx-r">
-                    <a id="rejeitarFoto" class="btn-generic"><i class="material-icons">close</i></a>
+                 <div class="col s12 title1 mg-0">Alterar foto de perfil</div>
+                <div class="col s6 tx-r">
+                    <a id="rejeitarFoto" class="btn-generic">Não</a>
                 </div>
-                <div class="col s2"></div>
-                <div class="col s5 tx-l">
-                    <a id="confirmarFoto" class="btn-generic"><i class="material-icons">check</i></a>
+                <div class="col s6 tx-l">
+                    <a id="confirmarFoto" class="btn-generic">Sim</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="confirmarDeslogar">
+    <div id="confirmarDeslogar" class="confirmar">
         <div class="row tx-c">
             <div class="btns">
                 <div class="col s12 title">Deslogar</div>
@@ -170,6 +172,20 @@
                 </div>
                 <div class="col s6 tx-l">
                     <a id="confirmarLogout" href="/deslogar" class="btn-generic">Sim</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="deletarProduto" class="confirmar">
+        <div class="row tx-c">
+            <div class="btns">
+                <div class="col s12 title">Deletar produto</div>
+                <div class="col s6 tx-r">
+                    <a id="rejeitarDeletar" class="btn-generic">Não</a>
+                </div>
+                <div class="col s6 tx-l">
+                    <a id="confirmarDeletar" class="btn-generic">Sim</a>
                 </div>
             </div>
         </div>
@@ -360,6 +376,7 @@
                         <label>Estado</label>
                     </div>
                 </div>
+                <a id="deletarBtn" class="btn-delete btn-generic"><i class="material-icons">delete</i></a>
             </div>
         </div>
     </form>
@@ -633,7 +650,7 @@
         </div>
     </div>
 
-    <div id="perfis" class="produtos-usuario-tab out-tab">
+    <div id="perfis" style="" class="produtos-usuario-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="perfis-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
             <h4 class="">Perfis aleatorios</h4>
@@ -643,12 +660,12 @@
             <div class="perfil_dados col s12">
                 <div class="col s3 pd-r0">
                     <div class="pic">
-                        <img src="/View/img/random.jpg" alt="">
+                        <img id="fotoUserAleatorio"  alt="">
                     </div>
                 </div>
                 <div class="pd-r0 tx-l col s8">
                     <h5 class="nome">
-                        <div class="nome_tx"><span>John Connor</span></div>
+                        <div class="nome_tx"><span id="nomeUserAleatorio"></span></div>
                     </h5>
                     <i class="material-icons meritos-perfil">star_half</i><i class="material-icons meritos-perfil">check_circle</i>
                 </div>
@@ -663,8 +680,7 @@
                     <div class="divisoria"></div>
                 </div>
 
-                <div class="produtos">
-
+                <div id="produtosUserAleatorio" class="produtos">
                     <div id="produto" class="produto">
                         <div class="row">
                             <div class="col s4 visualizar-produto">

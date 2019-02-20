@@ -377,6 +377,21 @@ h4 {
     color: #e66465
 }
 
+
+.btn-delete {
+    display: inline-block;
+    height: 55px;
+    width: 55px;
+    background-color: #e66465;
+    border-radius: 100%;
+    color: white;
+}
+
+.btn-delete > i{
+    line-height: 55px;
+}
+
+
 .produto_imagem {
     margin-left: auto;
     margin-right: auto;
@@ -532,7 +547,17 @@ h4 {
     height: 100%;
 }
 
+#anBlock{
+    z-index: 21;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display:none;
+}
+
 .action-btns {
+    z-index: 40;
     position: absolute;
     left: 0;
     display: inline-block;
@@ -781,7 +806,7 @@ h4 {
     height: 55px;
     width: 55px;
     text-align: center;
-    line-height: 55px;
+    line-height: 57px;
     position: sticky;
     bottom: 2%;
     right: 5%;
@@ -992,11 +1017,7 @@ h4 {
     text-align: center;
 }
 
-#confirmarFotoPerfil .s12 {
-    margin-top: 40%;
-}
-
-#confirmarDeslogar {
+.confirmar {
     background: rgba(0, 0, 0, 0.7);
     z-index: 15;
     position: absolute;
@@ -1008,7 +1029,7 @@ h4 {
     transform: translateY(100%);
 }
 
-#confirmarDeslogar .title{
+.confirmar .title{
     font-weight: 500;
     font-size: 1.4em;
     color: #f0f0f0;
@@ -1016,7 +1037,15 @@ h4 {
     margin-bottom: 0.5em;
 }
 
-#confirmarDeslogar .btns>div>a {
+.confirmar .title1{
+    font-weight: 500;
+    font-size: 1.4em;
+    color: #f0f0f0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.confirmar .btns>div>a {
     color: #e66465;
     display: inline-block;
     font-weight: 600;
@@ -1030,6 +1059,8 @@ h4 {
     border: 2px #f0f0f0 solid;
 }
 
+
+
 #fotoPerfilPreview {
     border-radius: 50%;
     object-fit: cover;
@@ -1039,32 +1070,13 @@ h4 {
 }
 
 .pic-preview {
+    margin-top: 40%;
     border-radius: 50%;
     height: 190px;
     width: 190px;
     margin-right: auto;
     margin-left: auto;
     background-color: white;
-}
-
-#confirmarFotoPerfil .btns>div>a {
-    color: #e66465;
-    display: inline-block;
-    border-radius: 100%;
-    height: 55px;
-    width: 55px;
-    text-align: center;
-    line-height: 55px;
-    bottom: 2%;
-    right: 5%;
-    border: 2px #f0f0f0 solid;
-    margin-top: 30%;
-}
-
-#confirmarFotoPerfil .btns>div>a>i {
-    font-size: 2.8em !important;
-    vertical-align: middle;
-    margin-bottom: 0.1em;
 }
 
 .removerImagem {

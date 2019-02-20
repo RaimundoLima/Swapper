@@ -94,18 +94,49 @@ function getPagina()
                     //error
                 }
             break;
+            case '/buscarperfisporid':
+            //falta verificação
+            $user=buscarUsuario($var);
+            $data['usuario']['id']=$user['id'];
+            $data['usuario']['foto']=$user['foto'];
+            $data['usuario']['nome']=$user['nome'];
+            $list=listarRoupa($var);
+            //echo json_parse($list);
+            for($i=0;$i<count($list);$i++){
+                $data['roupa'][$i]['id']=$list[$i]['id'];
+                $data['roupa'][$i]['foto1']=$list[$i]['foto1'];
+                $data['roupa'][$i]['nome']=$list[$i]['nome'];
+            }
+            echo json_encode($data);
+            break;
             case '/buscarfiltro':
                 $filtro=buscarConfig($_SESSION['usuario']['id']);
                 echo $filtro;
             break;
             case '/buscarroupas':
                 $roupas=listarRoupa($_SESSION['usuario']['id']);
-                echo json_encode($roupas);
+                $aux = [];
+                $count = 0;
+                //echo json_encode($roupas);
+                foreach($roupas as $roupa) {
+                    $aux[$count]=$roupa;
+                    $count++;
+                }
+                echo json_encode($aux);
+            break;
+            case '/deletarproduto':
+                echo deletarRoupa($var,$_SESSION['usuario']['id']);
             break;
             case '/buscarroupasporid':
-            $roupa=buscarRoupa($var,$_SESSION["usuario"]["id"]);
+            $var=explode(",",$var);
+            if(count($var)!=1){
+                $roupa=buscarRoupa($var[0],$var[1]);
+                $roupa["usuario_id"]=buscarUsuario($var[1])["nome"];
+            }else{
+                $roupa=buscarRoupa($var[0],$_SESSION["usuario"]["id"]);
+                $roupa["usuario_id"]=$_SESSION["usuario"]["nome"];
+            }
                 if(!empty($roupa)){
-                    $roupa["usuario_id"]=$_SESSION["usuario"]["nome"];
                     echo json_encode($roupa);
                 }else{
                     //roupa não é do usuario
@@ -153,6 +184,23 @@ function getPagina()
                     }
                     $roupa["estado"]= $_POST["estado"] == "1" ? 1: 2;
                     $roupa["usuario"]=$_SESSION["usuario"]["id"];
+                    $aux=buscarRoupa($_POST['id'],$_SESSION['usuario']['id']);
+                    if($_POST['alteraImagem1']==0){
+                        $img1=$aux['foto1'];
+                    }
+                    if($_POST['alteraImagem2']==0){
+                        $img2=$aux['foto2'];
+                    }
+                    if($_POST['alteraImagem2']==2){
+                        $img2="";
+                    }
+                    if($_POST['alteraImagem3']==0){
+                        $img3=$aux['foto3'];
+                    }
+                    if($_POST['alteraImagem3']==2){
+                        $img3="";
+                    }
+
                     if(!empty($img1)){
                         $roupa["foto1"]=$img1;
                         $roupa["foto2"]=$img2;
