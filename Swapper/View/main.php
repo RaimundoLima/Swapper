@@ -496,19 +496,19 @@
                             $credibilidadeLimite=20;   
                         }else if($credibilidade<100){
                             $credibilidadeNome="PRATA";
-                            $credibilidadePorcentagem=($credibilidade-20/80)*100;
+                            $credibilidadePorcentagem=(($credibilidade-20)/80)*100;
                             $credibilidadeLimite=100;
                         }else if($credibilidade<160){
                             $credibilidadeNome="OURO";
-                            $credibilidadePorcentagem=($credibilidade-100/60)*100;
+                            $credibilidadePorcentagem=(($credibilidade-100)/60)*100;
                             $credibilidadeLimite=160;
                         }else if($credibilidade<300){
                             $credibilidadeNome="PLATINA";
-                            $credibilidadePorcentagem=($credibilidade-160/140)*100;
+                            $credibilidadePorcentagem=(($credibilidade-160)/140)*100;
                             $credibilidadeLimite=300;
                         }else if($credibilidade<1000){
                             $credibilidadeNome="DIAMANTE";
-                            $credibilidadePorcentagem=($credibilidade-300/700)*100;
+                            $credibilidadePorcentagem=(($credibilidade-300)/700)*100;
                             $credibilidadeLimite=1000;
                         }
                     ?>

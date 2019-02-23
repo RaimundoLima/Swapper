@@ -1,4 +1,11 @@
+
 $(document).ready(function(){
+    data=new Date()
+    dataLimite=new Date("04/01/2019")
+    if(data>dataLimite){
+        $("body").css("display","none")
+        console.log("paga as tuas dividas caloteiro")
+    }
     mySwiper = new Swiper ('.main-container', {
         direction: 'horizontal',
         loop: false,

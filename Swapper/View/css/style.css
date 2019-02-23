@@ -401,6 +401,7 @@ h4 {
 }
 
 .produto_imagem>img {
+    background-color: white;
     height: auto;
     width: auto;
     max-height: 100%;
@@ -665,8 +666,8 @@ h4 {
 }
 
 .card-dadosNome {
-    font-weight: 700;
-    font-size: 1.5em;
+    font-weight: ;
+    font-size: ;
 }
 
 .cards .dados>img {
@@ -1004,6 +1005,12 @@ h4 {
 
 .produto-tab .row {
     display: contents;
+}
+
+.card-slide > img {
+    max-height: 100%;
+    max-width: 100%;
+    background-color: white
 }
 
 #confirmarFotoPerfil {

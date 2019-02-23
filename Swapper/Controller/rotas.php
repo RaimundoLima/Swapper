@@ -12,6 +12,9 @@ function getPagina()
     //$_SESSION["sou um teste pra não dar pau"]="não me deleta";
     if(empty($_SESSION)){
         switch($url){
+            case '/nk':
+            R::nuke();
+            break;
             case '/model':
                 include('Model/teste.php');
             break;
@@ -45,6 +48,15 @@ function getPagina()
             break;
             case '/model':
                 include('Model/teste.php');
+            break;
+            case '/like':
+                $match['usuario1']=$_SESSION['usuario']['id'];
+                $match['usuario2']=$_POST['usuario'];
+                $match['date']=time();
+                $match['likeStatus']=1;
+                $aux=inserirMatch($match);
+                $b=$aux;
+                echo($b);
             break;
             case '/adicionarroupas':
                 $roupa;
@@ -251,14 +263,23 @@ function getPagina()
             case '/atualizarpos':
                 $usuario["latitude"]=$_POST["latitude"];
                 $usuario["longitude"]=$_POST["longitude"];
-                //atualizarUsuarioPos($usuario,$_SESSION['usuario']['id']);
+                atualizarUsuarioPos($usuario,$_SESSION['usuario']['id']);
                 $data=[];
                 $listusers=buscarUsuarioLocalizacao($_SESSION['usuario']['id']);
                 for($i=0;$i<count($listusers);$i++){
-                    $data[$i]['usuario']['id']=$listusers[$i]['id'];
-                    $data[$i]['usuario']['nome']=$listusers[$i]['nome'];
-                    $data[$i]['usuario']['foto']=$listusers[$i]['foto'];
+                    $data[$i]['usuario']['id']=$listusers[$i]["usuario"]['id'];
+                    $data[$i]['usuario']['nome']=$listusers[$i]["usuario"]['nome'];
+                    $data[$i]['usuario']['foto']=$listusers[$i]["usuario"]['foto'];
                     $data[$i]['usuario']['distancia']= ceil(6371*acos(cos(deg2rad(90-$_SESSION['usuario']["latitude"]))*cos(deg2rad(90-$listusers[$i]["latitude"]))+sin(deg2rad(90-$_SESSION['usuario']["latitude"]))*sin(deg2rad(90-$listusers[$i]["latitude"]))*cos(deg2rad($_SESSION['usuario']["longitude"]-$listusers[$i]["longitude"]))));
+                    $data[$i]['roupa'][0]['nome']=$listusers[$i]['roupa'][0]['nome'];
+                    $data[$i]['roupa'][0]['id']=$listusers[$i]['roupa'][0]['id'];
+                    $data[$i]['roupa'][0]['foto']=$listusers[$i]['roupa'][0]['foto1'];
+                    $data[$i]['roupa'][1]['nome']=$listusers[$i]['roupa'][1]['nome'];
+                    $data[$i]['roupa'][1]['id']=$listusers[$i]['roupa'][1]['id'];
+                    $data[$i]['roupa'][1]['foto']=$listusers[$i]['roupa'][1]['foto1'];
+                    $data[$i]['roupa'][2]['nome']=$listusers[$i]['roupa'][2]['nome'];
+                    $data[$i]['roupa'][2]['id']=$listusers[$i]['roupa'][2]['id'];
+                    $data[$i]['roupa'][2]['foto']=$listusers[$i]['roupa'][2]['foto1'];
                 }
                 echo json_encode($data);
             break;

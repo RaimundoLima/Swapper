@@ -19,23 +19,27 @@ function Location(pos) {
     //console.log("Latitude:" + Position.coords.Latitude + "Longitude:" + Position.coords.Longitude);
 }
 function gerarCards(data){
+    //console.log(data)
     dataCard=JSON.parse(data)
     var html=""
+    var htmlRoupas=""
     for(var i=0;i<Object.keys(dataCard).length;i++){
-        console.log('éoq')
-        html+='<div class="cards swiper-no-swiping">'
+        htmlRoupas=""
+        for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
+            htmlRoupas+='<div id="" class="swiper-slide card-slide refCard'+dataCard[i].roupa[j].id+'"><img id="" class="imgCard'+dataCard[i].roupa[j].id+'" src="data:imagem/jpeg;base64,'+dataCard[i].roupa[j].foto+'" alt=""></div>'
+        }  
+        html+='<div id="'+dataCard[i].usuario.id+'" class="cards swiper-no-swiping">'
                                     +'<div class="card-imgs tx-c swiper-no-swiping">'
                                     +    '<div class="swiper-wrapper">'
-                                    +        '<div id="card-view-img1" class="swiper-slide r"><img id="card-imagem1" class="i" src="View/img/camiseta.jpg" alt=""></div>'
-                                    +        '<div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/luis.jpg" alt=""></div>'
-                                    +        '<div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/rai.jpg" alt=""></div>'
+                                    +  htmlRoupas
                                     +    '</div>'
                                     +    '<div class=""></div>'
                                     +    '<div class=""></div>'
                                     +'</div>'
                                     +'<div class="card-dados row swiper-no-swiping">'
                                     +    '<div class="col s3"></div>'
-                                    +    '<div class="col s9" ><span id=usuario-"'+dataCard[i].usuario.id+'"></span><span class="card-dadosNome">'+dataCard[i].usuario.nome+'<span>-'+dataCard[i].usuario.distancia+'KM</span></span></div>'
+                                    +    '<div class="col s6 pd-r0" ><span id=usuario-"'+dataCard[i].usuario.id+'"></span><span class="card-dadosNome">'+dataCard[i].usuario.nome+'</span></div>'
+                                    +    '<div class="col s3"><span>-'+dataCard[i].usuario.distancia+'KM</span></div>'
                                     +'</div>'
                                     +'<div class="dados swiper-no-swiping">'
                                     +    '<img onclick="buscarPerfil('+dataCard[i].usuario.id+')" id="perfis-btn" src="data:image/jpeg;base64,'+dataCard[i].usuario.foto+'" alt="">'
@@ -48,8 +52,12 @@ function gerarCards(data){
     }
     console.log(dataCard);
     $("#cards").html(html);
-    resizeImg($(".r"),$(".i"));
-    
+    //resizeImg($(".r"),$(".i"));
+    for(var i=0;i<Object.keys(dataCard).length;i++){
+        for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
+            resizeImg($(".refCard"+dataCard[i].roupa[j].id),$(".imgCard"+dataCard[i].roupa[j].id));
+        } 
+    }
     cardImageSwipe();
 }
 
@@ -306,8 +314,8 @@ function gerarRoupas(data){
     //for(var i=1;i<=Object.keys(roupas).length;i++){
        html+='<div id="produto-'+roupas[i].id+'" class="produto"><div class="row">'
        +'<div onclick="visualizarProduto('+roupas[i].id+')" class="col s4 visualizar-produto">'
-       +'<div id="produto-img-ref'+roupas[i].id+'" class="r1 produto_imagem">'
-       +'<img id="produto-img'+roupas[i].id+'" class="i1" src="data:image/jpeg;base64,'+roupas[i].foto1+'">'
+       +'<div id="produto-img-ref'+roupas[i].id+'" class="refPerfil'+roupas[i].id+' produto_imagem">'
+       +'<img id="produto-img'+roupas[i].id+'" class="imgPerfil'+roupas[i].id+'" src="data:image/jpeg;base64,'+roupas[i].foto1+'">'
        +'</div></div><div onclick="visualizarProduto('+roupas[i].id+')" class="produto_info col s6 visualizar-produto">'
        +'<span class="nome_produto">'+roupas[i].nome+'</span>'
        +'<br>'
@@ -322,7 +330,9 @@ function gerarRoupas(data){
     $("#produtos-user-preloader").css('display', 'none');
     $("#produtos-user").css('display', 'block');
     $(".addProduto_btn").css('display', 'inline-block');
-    resizeImg($(".r1"),$(".i1"));
+    for(var i=Object.keys(roupas).length-1;i>=0;i--){
+        resizeImg($(".refPerfil"+roupas[i].id),$(".imgPerfil"+roupas[i].id));
+    }
 }
 function deletarProduto(idProduto){
     //animações
@@ -355,10 +365,12 @@ function buscarPerfil(idPerfil){
         html=""
         $("#produtosUserAleatorio").html(html)
         for(var i=0;i<Object.keys(dados.roupa).length;i++){
-           html+='<div onclick="visualizarProduto2('+dados.roupa[i].id+','+dados.usuario.id+')" id="produto-'+dados.roupa[i].id+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+dados.roupa[i].id+'" class="r2 produto_imagem"><img id="produto-img'+dados.roupa[i].id+'" class="i2" src="data:image/jpeg;base64,'+dados.roupa[i].foto1+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+dados.roupa[i].nome+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div></div></div></div>'
+           html+='<div onclick="visualizarProduto2('+dados.roupa[i].id+','+dados.usuario.id+')" id="produto-'+dados.roupa[i].id+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+dados.roupa[i].id+'" class="refPerfilUsers'+dados.roupa[i].id+' produto_imagem"><img id="produto-img'+dados.roupa[i].id+'" class="imgPerfilUsers'+dados.roupa[i].id+'" src="data:image/jpeg;base64,'+dados.roupa[i].foto1+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+dados.roupa[i].nome+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div></div></div></div>'
         }
         $("#produtosUserAleatorio").html(html);
-        resizeImg($(".r2"),$(".i2"));
+        for(var i=0;i<Object.keys(dados.roupa).length;i++){
+            resizeImg($(".refPerfilUsers"+dados.roupa[i].id),$(".imgPerfilUsers"+dados.roupa[i].id));
+        }
      })
 
 }
@@ -654,21 +666,23 @@ function inputRequiredEdit(){
 }
 
 function cardImageSwipe(){
-    $("#cards").children().last().find('div')[0].className += " card-imagens";
-    $("#cards").children().last().find('div')[5].className += " swiper-button-prev";
-    $("#cards").children().last().find('div')[6].className += " swiper-button-next";
-    card_img = new Swiper ('.card-imagens', {
-        initialSlide: 0,
-        loop: false,
-        direction: 'horizontal',
-        centeredSlides: true,
-        observer: true,
-        observeParents: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-    });
+    if($("#cards").children().length != 0){
+        $("#cards").children().last().find('div')[0].className += " card-imagens";
+        $("#cards").children().last().find('div')[5].className += " swiper-button-prev";
+        $("#cards").children().last().find('div')[6].className += " swiper-button-next";
+        card_img = new Swiper ('.card-imagens', {
+            initialSlide: 0,
+            loop: false,
+            direction: 'horizontal',
+            centeredSlides: true,
+            observer: true,
+            observeParents: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              },
+        });
+    }
 }
 
 
@@ -698,7 +712,8 @@ $("#cards").on('touchend', function(event) {
         });
         setTimeout(function(){$("#cards").children().last().remove(); cardImageSwipe();},300);
     }else{
-        if((130*moveX) >= 70 && (130*moveX) > 0){
+        if((130*moveX) >= 70 && (130*moveX) > 0){//like
+            like()
             $("#cards").children().last().css({
                 transition: "transform 0.3s",
                 transform: 'translateX(130%) rotate(12deg)',
@@ -729,26 +744,77 @@ $("#cards").on('touchend', function(event) {
         Y = 0;
 });
 
+function like(){
 
+    $.ajax({
+        url: "/like",
+        type: "post",
+        data:{
+            'usuario':$("#cards").children().last().attr("id")
+        }
+    }).done(function(data){
+        console.log(data)
+    })
+
+}
 
 ////////// Botoes de ação ///////////
 
 $("#btn-rever").click(function() {
     $("#cards").children().last().addClass("rever-action");
     setTimeout(function(){$("#cards").children().last().removeClass("rever-action");}, 400);
+    //teste
+    setTimeout(function(){$("#cards").children().last().remove();}, 800);
 });
 $("#btn-deslike").click(function() {
     $("#cards").children().last().addClass("deslike-action");
     setTimeout(function(){$("#cards").children().last().removeClass("deslike-action"); }, 400);
-    
+    //teste
+    setTimeout(function(){$("#cards").children().last().remove();}, 800);    
 });
 $("#btn-like").click(function() {
+    like()
     $("#cards").children().last().addClass("like-action");
-    //setTimeout(function(){$("#cards").children().last().remove(); lastChild();}, 400);
     setTimeout(function(){$("#cards").children().last().removeClass("like-action");}, 400);
 });
 $("#btn-superlike").click(function() {
     $("#cards").children().last().addClass("superlike-action");
     setTimeout(function(){$("#cards").children().last().removeClass("superlike-action");}, 400);
+    //teste
+    setTimeout(function(){$("#cards").children().last().remove();}, 800);    
 });
+
+///// Botoes de ação do perfil de user/////
+$("#btn-deslike2").click(function() {
+    $("#anBlock").css("display", "inline");
+    $("#perfis").removeClass("up-down");
+    $("#perfis").addClass("down-up");
+    setTimeout(function(){$("#cards").children().last().addClass("deslike-action");}, 400);
+    $("#anBlock").css("display", "none");
+    //teste
+    setTimeout(function(){$("#cards").children().last().remove();}, 800);
+});
+$("#btn-like2").click(function() {
+    $("#anBlock").css("display", "inline");
+    $("#perfis").removeClass("up-down");
+    $("#perfis").addClass("down-up");
+    setTimeout(function(){$("#cards").children().last().addClass("like-action");}, 400);
+    $("#anBlock").css("display", "none");
+        //teste
+    setTimeout(function(){$("#cards").children().last().remove();}, 800);
+});
+$("#btn-superlike2").click(function() {
+    $("#anBlock").css("display", "inline-block");
+    $("#perfis").removeClass("up-down");
+    $("#perfis").addClass("down-up");
+    setTimeout(function(){$("#cards").children().last().addClass("superlike-action");}, 400);
+    $("#anBlock").css("display", "none");
+    //teste
+    setTimeout(function(){$("#cards").children().last().remove();}, 800);
+});
+
 /////////////////////////////////
+        /*$("#deletarProduto").css('display', 'none');
+        $("#editar-produto").removeClass("left-right-ltab");
+        $("#editar-produto").addClass("right-left-ltab");
+        $("#anBlock").css("display", "none");*/
