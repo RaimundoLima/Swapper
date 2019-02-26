@@ -57,6 +57,12 @@
                             <i class="font18em material-icons">settings</i>
                         </a>
                         
+                        <div id=cards-preloader>
+                            <i class="loader1 material-icons">location_on</i>
+                            <div class="loader2"></div>
+                            <div class="loader3"></div>
+                        </div>
+
                         <div id="cards">
                              <!--<div class="cards swiper-no-swiping">
 

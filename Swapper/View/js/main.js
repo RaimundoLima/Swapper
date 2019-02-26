@@ -26,7 +26,9 @@ function gerarCards(data){
     for(var i=0;i<Object.keys(dataCard).length;i++){
         htmlRoupas=""
         for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
-            htmlRoupas+='<div id="" class="swiper-slide card-slide refCard'+dataCard[i].roupa[j].id+'"><img id="" class="imgCard'+dataCard[i].roupa[j].id+'" src="data:imagem/jpeg;base64,'+dataCard[i].roupa[j].foto+'" alt=""></div>'
+            htmlRoupas+='<div id="'+j+'" class="swiper-slide card-slide refCard'+dataCard[i].roupa[j].id+'">'
+                        + '<img id="" class="imgCard'+dataCard[i].roupa[j].id+'" src="data:imagem/jpeg;base64,'+dataCard[i].roupa[j].foto+'" alt="">'
+                        +'</div>'
         }  
         html+='<div id="'+dataCard[i].usuario.id+'" class="cards swiper-no-swiping">'
                                     +'<div class="card-imgs tx-c swiper-no-swiping">'
@@ -39,7 +41,7 @@ function gerarCards(data){
                                     +'<div class="card-dados row swiper-no-swiping">'
                                     +    '<div class="col s3"></div>'
                                     +    '<div class="col s6 pd-r0" ><span id=usuario-"'+dataCard[i].usuario.id+'"></span><span class="card-dadosNome">'+dataCard[i].usuario.nome+'</span></div>'
-                                    +    '<div class="col s3"><span>-'+dataCard[i].usuario.distancia+'KM</span></div>'
+                                    +    '<div class="col s3"><span>'+dataCard[i].usuario.distancia+'KM</span></div>'
                                     +'</div>'
                                     +'<div class="dados swiper-no-swiping">'
                                     +    '<img onclick="buscarPerfil('+dataCard[i].usuario.id+')" id="perfis-btn" src="data:image/jpeg;base64,'+dataCard[i].usuario.foto+'" alt="">'
@@ -53,12 +55,14 @@ function gerarCards(data){
     console.log(dataCard);
     $("#cards").html(html);
     //resizeImg($(".r"),$(".i"));
+    var y = 0;
     for(var i=0;i<Object.keys(dataCard).length;i++){
         for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
             resizeImg($(".refCard"+dataCard[i].roupa[j].id),$(".imgCard"+dataCard[i].roupa[j].id));
-        } 
+            y = j;
+        }
     }
-    cardImageSwipe();
+    cardImageSwipe(y);
 }
 
 // Formula da distancia entre duas distancias Math.round(6371*Math.acos(Math.cos(degrees_to_radians(90-Latitude_1))*Math.cos(degrees_to_radians(90-Latitude_2))+Math.sin(degrees_to_radians(90-Latitude_1))*Math.sin(degrees_to_radians(90-Latitude_2))*Math.cos(degrees_to_radians(Longitude_1-Longitude_2)))*1)
@@ -71,6 +75,7 @@ function degrees_to_radians(degrees)
 
 var buscaFiltro=0;
 var buscaRoupas=0;
+var buscaChats=0;
 var alteraImagem1=0
 var alteraImagem2=0
 var alteraImagem3=0
@@ -297,6 +302,76 @@ function buscarFiltro(){
         buscaFiltro=1;
     }
 }
+    mySwiper = new Swiper ('.main-container', {
+        direction: 'horizontal',
+        loop: false,
+        speed: 500,
+        initialSlide: 1,
+        noSwipingClass: 'swiper-no-swiping',
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            bulletElement: 'span',
+            clickable: true,
+            renderBullet: function (index, className) {
+                var tabs = ['account_circle','explore','chat'];
+                var nav = ['perfil-nav','descobrir-nav','mensagens-nav'];
+                return '<span id="'+nav[index]+'" class="tab col s4 ' + className + '">'+ 
+                '<i class="medium material-icons icons">'+tabs[index]+'</i>'+'</span>';
+            }
+          },
+    });
+    mySwiper.on('slideChangeTransitionStart', function () {
+        if($('#perfil').hasClass('swiper-slide-active') == true){
+            $('#perfil-nav').addClass('swiper-pagination-bullet-active');
+            $('#descobrir-nav').removeClass('swiper-pagination-bullet-active');
+            $('#mensagens-nav').removeClass('swiper-pagination-bullet-active');
+        }
+        if($('#descobrir').hasClass('swiper-slide-active') == true){
+            $('#perfil-nav').removeClass('swiper-pagination-bullet-active');
+            $('#descobrir-nav').addClass('swiper-pagination-bullet-active');
+            $('#mensagens-nav').removeClass('swiper-pagination-bullet-active');
+        }
+        if($('#mensagens').hasClass('swiper-slide-active') == true){
+            $('#perfil-nav').removeClass('swiper-pagination-bullet-active');
+            $('#descobrir-nav').removeClass('swiper-pagination-bullet-active');
+            $('#mensagens-nav').addClass('swiper-pagination-bullet-active');
+            buscarChats()
+        }
+    });
+function buscarChats(){
+    
+    if(!buscaChats){
+        $.ajax({
+            url: '/buscarChats'
+        }).done(function(data){
+            dataChat=JSON.parse(data)
+            console.log(dataChat);
+            html=''
+            for(var i=0;i<Object.keys(dataChat).length;i++){
+                html+='<div class="combinacoes_msg_card">'
+                                +' <div class="row">'
+                                +'    <div class="col s3">'
+                                +'        <div class="pic_msgs"><img src="data:image/jpeg;base64,'+dataChat[i].fotoUsuario+'" alt=""></div>'
+                                +'    </div>'
+                                +'    <div class="dados_msgs col s8">'
+                                +'        <span class="nome_msg">'+dataChat[i].nomeUsuario+'</span>'
+                                +'        <br>'
+                                +'        <span class="ultima_msg">'+dataChat[i].conteudoMensagem+'</span>'
+                                +'        <span class="hora_msg">'+dataChat[i].horarioMensagem+'</span>'
+                                +'    </div>'
+                                +'    <div class="col s1">'
+                                +'        <div class="msg_nãolida"></div>'
+                                +'    </div>'
+                                +'</div>'
+                            +'</div>'
+            }
+            $('#msgs').html(html)
+        })
+
+        buscaChats=1
+    }
+}
 function buscarRoupas(){
     if(!buscaRoupas){
         $.ajax({
@@ -374,6 +449,8 @@ function buscarPerfil(idPerfil){
      })
 
 }
+  
+
 function visualizarProduto2(idProduto,idUsuario){
     $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
     $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
@@ -665,11 +742,25 @@ function inputRequiredEdit(){
     }
 }
 
-function cardImageSwipe(){
+function cardImageSwipe(img){
     if($("#cards").children().length != 0){
-        $("#cards").children().last().find('div')[0].className += " card-imagens";
-        $("#cards").children().last().find('div')[5].className += " swiper-button-prev";
-        $("#cards").children().last().find('div')[6].className += " swiper-button-next";
+        switch(img){
+            case 0:
+                $("#cards").children().last().find('div')[0].className += " card-imagens";
+                $("#cards").children().last().find('div')[3].className += " swiper-button-prev";
+                $("#cards").children().last().find('div')[4].className += " swiper-button-next";
+            break;
+            case 1:
+                $("#cards").children().last().find('div')[0].className += " card-imagens";
+                $("#cards").children().last().find('div')[4].className += " swiper-button-prev";
+                $("#cards").children().last().find('div')[5].className += " swiper-button-next";
+            break;
+            case 2:
+                $("#cards").children().last().find('div')[0].className += " card-imagens";
+                $("#cards").children().last().find('div')[5].className += " swiper-button-prev";
+                $("#cards").children().last().find('div')[6].className += " swiper-button-next";
+            break;
+        }
         card_img = new Swiper ('.card-imagens', {
             initialSlide: 0,
             loop: false,
@@ -706,6 +797,8 @@ $("#cards").on('touchmove', function(event) {
 $("#cards").on('touchend', function(event) {    
     //console.log("oi");
     if(moveY <= -65){
+        //console.log("SUPER lIKE ?");
+        like(2)
         $("#cards").children().last().css({
             transition: "transform 0.3s",
             transform: 'scale(0.01) translateY(-500%)',
@@ -713,7 +806,7 @@ $("#cards").on('touchend', function(event) {
         setTimeout(function(){$("#cards").children().last().remove(); cardImageSwipe();},300);
     }else{
         if((130*moveX) >= 70 && (130*moveX) > 0){//like
-            like()
+            like(1)
             $("#cards").children().last().css({
                 transition: "transform 0.3s",
                 transform: 'translateX(130%) rotate(12deg)',
@@ -721,6 +814,8 @@ $("#cards").on('touchend', function(event) {
             setTimeout(function(){$("#cards").children().last().remove(); cardImageSwipe();},300);
         }
         if((130*moveX) <= -70 && (130*moveX) < 0){
+        //console.log("DISlIKE ?");
+        like(0)
             $("#cards").children().last().css({
                 transition: "transform 0.3s",
                 transform: 'translateX(-130%) rotate(-12deg)',
@@ -744,10 +839,9 @@ $("#cards").on('touchend', function(event) {
         Y = 0;
 });
 
-function like(){
-
+function like(status){
     $.ajax({
-        url: "/like",
+        url: "/like?"+status,
         type: "post",
         data:{
             'usuario':$("#cards").children().last().attr("id")

@@ -11,13 +11,24 @@ function inserirMensagem($mensagem){
     $mensagemT["conteudo"]=$mensagem["conteudo"];
     $mensagemT["visualizado"]=0;
     $mensagemT["chat"]=R::load("chat",$mensagem["chat"]);
-    $mensagemT["usuario"]=R::load("usuario",$mensagem["usuario"]);
+    if($mensagem["usuario"]==''){
+    	$mensagemT["usuario"]=null;
+    }else{
+    	$mensagemT["usuario"]=R::load("usuario",$mensagem["usuario"]);
+	}
     echo R::store($mensagemT);
 
 }
 
 function listarMensagem($idChat){
-    return R::findAll("mensagem","chat_id=".$idChat);//fazer variações
+    $mensagens=R::findAll("mensagem","chat_id=? ORDER BY id DESC",[$idChat]);//fazer variações
+    $count=0;
+    $msgs=[];
+    foreach ($mensagens as $mensagem) {
+    	$msgs[$count]=R::findOne('mensagem',"id=?",[$mensagem["id"]]);
+    	$count++;
+    }
+    return $msgs;
 }
 
 ?>

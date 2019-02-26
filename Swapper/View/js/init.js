@@ -6,42 +6,7 @@ $(document).ready(function(){
         $("body").css("display","none")
         console.log("paga as tuas dividas caloteiro")
     }
-    mySwiper = new Swiper ('.main-container', {
-        direction: 'horizontal',
-        loop: false,
-        speed: 500,
-        initialSlide: 1,
-        noSwipingClass: 'swiper-no-swiping',
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'bullets',
-            bulletElement: 'span',
-            clickable: true,
-            renderBullet: function (index, className) {
-                var tabs = ['account_circle','explore','chat'];
-                var nav = ['perfil-nav','descobrir-nav','mensagens-nav'];
-                return '<span id="'+nav[index]+'" class="tab col s4 ' + className + '">'+ 
-                '<i class="medium material-icons icons">'+tabs[index]+'</i>'+'</span>';
-            }
-          },
-    });
-    mySwiper.on('slideChangeTransitionStart', function () {
-        if($('#perfil').hasClass('swiper-slide-active') == true){
-            $('#perfil-nav').addClass('swiper-pagination-bullet-active');
-            $('#descobrir-nav').removeClass('swiper-pagination-bullet-active');
-            $('#mensagens-nav').removeClass('swiper-pagination-bullet-active');
-        }
-        if($('#descobrir').hasClass('swiper-slide-active') == true){
-            $('#perfil-nav').removeClass('swiper-pagination-bullet-active');
-            $('#descobrir-nav').addClass('swiper-pagination-bullet-active');
-            $('#mensagens-nav').removeClass('swiper-pagination-bullet-active');
-        }
-        if($('#mensagens').hasClass('swiper-slide-active') == true){
-            $('#perfil-nav').removeClass('swiper-pagination-bullet-active');
-            $('#descobrir-nav').removeClass('swiper-pagination-bullet-active');
-            $('#mensagens-nav').addClass('swiper-pagination-bullet-active');
-        }
-    });
+
     /*
     card_img = new Swiper ('.card-imagens', {
         initialSlide: 0,
@@ -83,6 +48,12 @@ function redimensionar(){
     $(".produto-imagens").css('width', $(window).width()+'px');
     $(".produto-imagens").css('height', $(window).width()+'px');
 }
+
+setTimeout(function(){
+    $(".loader1").addClass("loader1-an");
+    $(".loader2").addClass("loader2-an");
+    $(".loader3").addClass("loader3-an");
+},1000)
 
 function checkSwitchs(){
     checkSwitchs_Sexo();

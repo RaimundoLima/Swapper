@@ -49,14 +49,41 @@ function getPagina()
             case '/model':
                 include('Model/teste.php');
             break;
+            case '/buscarchats':
+            //error_log(print_r("printe".$_SESSION['usuario']['id'],true));
+            $data=[];
+            $listaChats=listarChat($_SESSION['usuario']['id']);
+            //error_log(print_r(count($listaChats),true));
+            for($i=0;$i<count($listaChats);$i++){
+                $user2=buscarUsuario(buscarMatchUsuario2($listaChats[$i],$_SESSION['usuario']['id']));
+                $data[$i]['nomeUsuario']=$user2['nome'];
+                $data[$i]['fotoUsuario']=$user2['foto'];
+                $mensagem=listarMensagem($listaChats[$i]['id'])[0];
+                error_log(print_r($mensagem,true));
+                $data[$i]['conteudoMensagem']=$mensagem['conteudo'];
+                $data[$i]['horarioMensagem']=$mensagem['horario'];
+                $data[$i]['visualizacaoMensagem']=$mensagem['visualizacao'];
+                //$data[$i]['nomeUsuario']=$user2['nome'];
+                //$data[$i]['nomeUsuario']=$user2['nome'];
+            }
+            echo json_encode($data);
+            break;
             case '/like':
                 $match['usuario1']=$_SESSION['usuario']['id'];
                 $match['usuario2']=$_POST['usuario'];
                 $match['date']=time();
-                $match['likeStatus']=1;
-                $aux=inserirMatch($match);
-                $b=$aux;
-                echo($b);
+                $match['like_status']=$var;
+                if($var==1 || $var==0){
+                    //error_log(print_r($match['like_status'],true));
+                    $aux=inserirMatch($match);
+                }else if($var==2){
+                    $user=buscarUsuario($_SESSION['usuario']['id']);
+                    if($user['superLike']<time()+(24 * 60 * 60 * 1000)){
+                        atualizarUsuarioSuperLike(time()+(24 * 60 * 60 * 1000),$_SESSION['usuario']['id']);
+                        $aux=inserirMatch($match);
+                    }
+                }
+                echo($aux);
             break;
             case '/adicionarroupas':
                 $roupa;
@@ -270,16 +297,29 @@ function getPagina()
                     $data[$i]['usuario']['id']=$listusers[$i]["usuario"]['id'];
                     $data[$i]['usuario']['nome']=$listusers[$i]["usuario"]['nome'];
                     $data[$i]['usuario']['foto']=$listusers[$i]["usuario"]['foto'];
-                    $data[$i]['usuario']['distancia']= ceil(6371*acos(cos(deg2rad(90-$_SESSION['usuario']["latitude"]))*cos(deg2rad(90-$listusers[$i]["latitude"]))+sin(deg2rad(90-$_SESSION['usuario']["latitude"]))*sin(deg2rad(90-$listusers[$i]["latitude"]))*cos(deg2rad($_SESSION['usuario']["longitude"]-$listusers[$i]["longitude"]))));
+
+                    //error_log(print_r($data[$i]['usuario']['latitude'],true));
+
+                    //ceil(6371*acos(sin(deg2rad(90-$usuario["latitude"]))*sin(deg2rad(90-$lista["latitude"]))+cos(deg2rad(90-$usuario["latitude"]))*cos(deg2rad(90-$lista["latitude"]))*cos(deg2rad($usuario["longitude"]-$lista["longitude"]))))
+                    if(ceil(6371*acos(sin(deg2rad(90-$_SESSION['usuario']["latitude"]))*sin(deg2rad(90-$listusers[$i]["usuario"]["latitude"]))+cos(deg2rad(90-$_SESSION['usuario']["latitude"]))*cos(deg2rad(90-$listusers[$i]["usuario"]["latitude"]))*cos(deg2rad($_SESSION['usuario']["longitude"]-$listusers[$i]["usuario"]["longitude"]))))<=1){
+                        $data[$i]['usuario']['distancia']=1;
+                    }else{ 
+                    $data[$i]['usuario']['distancia']= ceil(6371*acos(sin(deg2rad(90-$_SESSION['usuario']["latitude"]))*sin(deg2rad(90-$listusers[$i]["usuario"]["latitude"]))+cos(deg2rad(90-$_SESSION['usuario']["latitude"]))*cos(deg2rad(90-$listusers[$i]["usuario"]["latitude"]))*cos(deg2rad($_SESSION['usuario']["longitude"]-$listusers[$i]["usuario"]["longitude"]))));
+                    }
                     $data[$i]['roupa'][0]['nome']=$listusers[$i]['roupa'][0]['nome'];
                     $data[$i]['roupa'][0]['id']=$listusers[$i]['roupa'][0]['id'];
                     $data[$i]['roupa'][0]['foto']=$listusers[$i]['roupa'][0]['foto1'];
+                    if(!empty($data[$i]['roupa'][2]['id'])){
                     $data[$i]['roupa'][1]['nome']=$listusers[$i]['roupa'][1]['nome'];
                     $data[$i]['roupa'][1]['id']=$listusers[$i]['roupa'][1]['id'];
                     $data[$i]['roupa'][1]['foto']=$listusers[$i]['roupa'][1]['foto1'];
+                    }
+                    if(!empty($data[$i]['roupa'][2]['id'])){
                     $data[$i]['roupa'][2]['nome']=$listusers[$i]['roupa'][2]['nome'];
                     $data[$i]['roupa'][2]['id']=$listusers[$i]['roupa'][2]['id'];
                     $data[$i]['roupa'][2]['foto']=$listusers[$i]['roupa'][2]['foto1'];
+                    }
+                    //error_log(print_r(!empty($data[$i]['roupa'][2]['id']),true));
                 }
                 echo json_encode($data);
             break;

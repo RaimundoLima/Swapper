@@ -2,7 +2,7 @@
 include_once('Setup.php');
 
 function buscarUsuario($id){
-    return R::load('usuario',$id);
+    return R::findOne('usuario','id=?',[$id]);
 }
 function buscarUsuarioLocalizacao($id){
     $usuario=buscarUsuario($id);
@@ -11,11 +11,15 @@ function buscarUsuarioLocalizacao($id){
     $listaDeUsuarios = [];
     $count = 0;
     foreach($list as $lista){ 
-        if($filtro["distancia"] >= round(6371*acos(cos(deg2rad(90-$usuario["latitude"]))*cos(deg2rad(90-$lista["latitude"]))+sin(deg2rad(90-$usuario["latitude"]))*sin(deg2rad(90-$lista["latitude"]))*cos(deg2rad($usuario["longitude"]-$lista["longitude"]))))){//distancia
+        $teste=ceil(6371*acos(sin(deg2rad(90-$usuario["latitude"]))*sin(deg2rad(90-$lista["latitude"]))+cos(deg2rad(90-$usuario["latitude"]))*cos(deg2rad(90-$lista["latitude"]))*cos(deg2rad($usuario["longitude"]-$lista["longitude"]))));
+        if($filtro["distancia"] >= ceil(6371*acos(sin(deg2rad(90-$usuario["latitude"]))*sin(deg2rad(90-$lista["latitude"]))+cos(deg2rad(90-$usuario["latitude"]))*cos(deg2rad(90-$lista["latitude"]))*cos(deg2rad($usuario["longitude"]-$lista["longitude"]))))){//distancia
+            //error_log(print_r($teste,true));
+
             $match['usuario1']=$usuario['id'];
             $match['usuario2']=$lista['id'];
             $auxMatch=buscarMatchUsuarios($match);
-            if(empty($auxMatch) || ($auxMatch['likeStatus']!=3 && ($auxMatch['likeStatus']!=0 || ($auxMatch['date']+1500000000)>time()) && $auxMatch['ultimoUsuarioASerLikado_id']==$id)){//match
+            if(empty($auxMatch) || ($auxMatch['likeStatus']!=3 && ($auxMatch['likeStatus']!=0 || ($auxMatch['date']+(24*60*60*1000)*15)<time()) && $auxMatch['ultimoUsuarioASerLikado_id']==$id)){//match
+            
                 $roupas=listarRoupa($lista['id']);
                 $roupasSelecionadas=[];
                 $sql="";
@@ -59,6 +63,7 @@ function buscarUsuarioLocalizacao($id){
                     }
                     $roupafiltrada=R::findOne('roupa',$sql,[$roupa['sexo'],$roupa['categoria'],$roupa['estado']]);
                     if(empty($roupasSelecionadas[0])){
+                        
                         $roupasSelecionadas[0]=$roupafiltrada;
                     }else if(empty($roupasSelecionadas[1])){
                         $roupasSelecionadas[1]=$roupafiltrada;
@@ -115,13 +120,18 @@ function inserirUsuario($usuario){
     $usuarioT['nascimento']=$usuario['nascimento'];
     $usuarioT['latitude']=$usuario['latitude'];
     $usuarioT['longitude']=$usuario['longitude'];
-    $usuarioT['bio']=$usuario['bio'];
+    $usuarioT['superLike']=0;
     $usuarioT['foto']=$usuario['foto'];
 
     $usuarioT['credibilidade']=0;
     
     $config['usuario']=R::store($usuarioT);
     return inserirConfig($config);
+}
+function atualizarUsuarioSuperLike($superLike,$id){
+    $usuarioT=R::load('usuario',$id);
+    $usuarioT['superLike']=$superLike;
+    return R::store($usuarioT);
 }
 function atualizarUsuarioFoto($usuario,$id){
     $usuarioT=R::load('usuario',$id);
