@@ -1,6 +1,5 @@
 navigator.geolocation.getCurrentPosition(Location,function(){console.log("error")},{timeout:10000});
 function Location(pos) {
-    console.log("entrou função\n")
     var coordenadas = pos.coords;
     var Position = { coords: {Latitude: coordenadas.latitude, Longitude: coordenadas.longitude, H:coordenadas.heading} };
     $.ajax({
@@ -38,7 +37,7 @@ function gerarCards(data){
                                     +'<div class="card-dados row swiper-no-swiping">'
                                     +    '<div class="col s3"></div>'
                                     +    '<div class="col s6 pd-r0" ><span id=usuario-"'+dataCard[i].usuario.id+'"></span><span class="card-dadosNome">'+dataCard[i].usuario.nome+'</span></div>'
-                                    +    '<div class="col s3"><span>'+dataCard[i].usuario.distancia+'KM</span></div>'
+                                    +    '<div class="col s3"><span class="tx-r">'+dataCard[i].usuario.distancia+'KM</span></div>'
                                     +'</div>'
                                     +'<div class="dados swiper-no-swiping">'
                                     +    '<img onclick="buscarPerfil('+dataCard[i].usuario.id+')" id="perfis-btn" src="data:image/jpeg;base64,'+dataCard[i].usuario.foto+'" alt="">'
@@ -49,17 +48,24 @@ function gerarCards(data){
                                     +'</div>'
                                 +'</div> ';
     }
-    console.log(dataCard);
+    //console.log(dataCard);
+    //console.log("entrou função\n")
     $("#cards").html(html);
-    if(html != "") $("#cards-preloader").css('display','none');
-    var y = 0;
-    for(var i=0;i<Object.keys(dataCard).length;i++){
-        for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
-            resizeImg($(".refCard"+dataCard[i].roupa[j].id),$(".imgCard"+dataCard[i].roupa[j].id));
-            y = j;
+    
+    if($("#cards").html() == ""){
+      $("#cards-preloader").css('display','inline-block'); 
+      M.toast({html: 'Nenhum usuario encontrado'});
+    }else{
+        $("#cards-preloader").css('display','none'); 
+        var y = 0;
+        for(var i=0;i<Object.keys(dataCard).length;i++){
+            for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
+                resizeImg($(".refCard"+dataCard[i].roupa[j].id),$(".imgCard"+dataCard[i].roupa[j].id));
+                y = j;
+            }
         }
+        cardImageSwipe(y);
     }
-    cardImageSwipe(y);
 }
 
 // Formula da distancia entre duas distancias Math.round(6371*Math.acos(Math.cos(degrees_to_radians(90-Latitude_1))*Math.cos(degrees_to_radians(90-Latitude_2))+Math.sin(degrees_to_radians(90-Latitude_1))*Math.sin(degrees_to_radians(90-Latitude_2))*Math.cos(degrees_to_radians(Longitude_1-Longitude_2)))*1)
@@ -346,6 +352,7 @@ function buscarChats(){
                                 +'        <span class="nome_msg">'+dataChat[i].nomeUsuario+'</span>'
                                 +'        <br>'
                                 +'        <span class="ultima_msg">'+dataChat[i].conteudoMensagem+'</span>'
+                                +'        <br>'
                                 +'        <span class="hora_msg">'+dataChat[i].horarioMensagem+'</span>'
                                 +'    </div>'
                                 +'    <div class="col s1">'
@@ -719,7 +726,7 @@ function inputRequired(){
     }
 }
 function inputRequiredEdit(){
-    console.log("function \n")
+    //console.log("function \n")
     if($("#editarNome").val() == "" || $("#editarDescricao").val() == ""){
         if($("#editarNome").val() == "") M.toast({html: 'Nome necessário!'}) 
         if($("#editarDescricao").val() == "") M.toast({html: 'Descrição necessária!'}) 

@@ -168,6 +168,15 @@
         </div>
     </div>
 
+    <div class="match-confirmed">
+        <div class="match-preview">
+            <div class=""><img id="" src="" alt=""></div>
+        </div>
+        <div class="match-status">
+            <a class=""><i class=" material-icons">favorite</i></a>
+        </div>
+    </div>
+
     <div id="menu-burguer" class="out-tab">
         <div class="main">
             <div class="titulo_tab fixed">
