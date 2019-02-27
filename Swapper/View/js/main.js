@@ -11,18 +11,15 @@ function Location(pos) {
             'longitude':pos.coords.longitude
         }
     }).done(function(data){
-        //console.log('éoq')
         gerarCards(data)
-
     })
-
-    //console.log("Latitude:" + Position.coords.Latitude + "Longitude:" + Position.coords.Longitude);
 }
 function gerarCards(data){
-    //console.log(data)
     dataCard=JSON.parse(data)
     var html=""
     var htmlRoupas=""
+    $("#cards-preloader").css('display','inline-block');
+    $("#cards").html("");
     for(var i=0;i<Object.keys(dataCard).length;i++){
         htmlRoupas=""
         for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
@@ -54,7 +51,7 @@ function gerarCards(data){
     }
     console.log(dataCard);
     $("#cards").html(html);
-    //resizeImg($(".r"),$(".i"));
+    if(html != "") $("#cards-preloader").css('display','none');
     var y = 0;
     for(var i=0;i<Object.keys(dataCard).length;i++){
         for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
@@ -79,15 +76,6 @@ var buscaChats=0;
 var alteraImagem1=0
 var alteraImagem2=0
 var alteraImagem3=0
-
-//$("#fileToUpload3").click(function(){
-//    alteraImagem1=1
-//})
-
-//$("fileToUpload4").click(function(){
-//    alteraImagem2=1
-//})
-
 
 $("#filtro-btn").click(function() {
     buscarFiltro();
@@ -744,23 +732,9 @@ function inputRequiredEdit(){
 
 function cardImageSwipe(img){
     if($("#cards").children().length != 0){
-        switch(img){
-            case 0:
-                $("#cards").children().last().find('div')[0].className += " card-imagens";
-                $("#cards").children().last().find('div')[3].className += " swiper-button-prev";
-                $("#cards").children().last().find('div')[4].className += " swiper-button-next";
-            break;
-            case 1:
-                $("#cards").children().last().find('div')[0].className += " card-imagens";
-                $("#cards").children().last().find('div')[4].className += " swiper-button-prev";
-                $("#cards").children().last().find('div')[5].className += " swiper-button-next";
-            break;
-            case 2:
-                $("#cards").children().last().find('div')[0].className += " card-imagens";
-                $("#cards").children().last().find('div')[5].className += " swiper-button-prev";
-                $("#cards").children().last().find('div')[6].className += " swiper-button-next";
-            break;
-        }
+        $("#cards").children().last().find('div')[0].className += " card-imagens";
+        $("#cards").children().last().find('div')[3+img].className += " swiper-button-prev";
+        $("#cards").children().last().find('div')[4+img].className += " swiper-button-next";
         card_img = new Swiper ('.card-imagens', {
             initialSlide: 0,
             loop: false,

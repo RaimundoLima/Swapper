@@ -57,40 +57,11 @@
                             <i class="font18em material-icons">settings</i>
                         </a>
                         
-                        <div id=cards-preloader>
-                            <i class="loader1 material-icons">location_on</i>
-                            <div class="loader2"></div>
-                            <div class="loader3"></div>
+                        <div id="cards-preloader">
+                            <div class="lds-ripple"><div></div><div></div></div>
                         </div>
-
+                        
                         <div id="cards">
-                             <!--<div class="cards swiper-no-swiping">
-
-                                <div class="card-imgs tx-c card-imagens swiper-no-swiping">
-                                    <div class="swiper-wrapper">
-                                        <div id="card-view-img1" class="swiper-slide r"><img id="card-imagem1" class="i" src="View/img/camiseta.jpg" alt=""></div>
-                                        <div id="card-view-img2" class="swiper-slide r"><img id="card-imagem2" class="i" src="View/img/camiseta.jpg" alt=""></div>
-                                        <div id="card-view-img3" class="swiper-slide r"><img id="card-imagem3" class="i" src="View/img/camiseta.jpg" alt=""></div>
-                                    </div>
-                                    <div class="swiper-button-prev"></div>
-                                    <div class="swiper-button-next"></div>
-
-                                </div>
-
-                                <div class="card-dados row swiper-no-swiping">
-                                    <div class="col s3"></div>
-                                    <div class="col s9"><span class="card-dadosNome">Jonh Connor<span>-7KM</span></span></div>
-
-                                </div>
-                                <div class="dados swiper-no-swiping">
-                                    <img id="perfis-btn" src="/View/img/rai.jpg" alt="">
-                                    <span>
-                                        <i class="meritos-perfil material-icons">star_half</i>
-                                        <i class="meritos-perfil material-icons">check_circle</i>
-                                    </span>
-                                </div>
-                            </div>
-                        -->
                         </div>
                         <div class="action-btns bt-8">
                             <button id="btn-rever" class="btn-p swiper-no-swiping">
@@ -119,7 +90,7 @@
 
                         <h4 class="titulo_tab fixed">Combinações</h4>
                         <div id="msgs">
-
+                            <!--
                             <div class="combinacoes_msg_card">
                                 <div class="row">
                                     <div class="col s3">
@@ -137,7 +108,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            -->
                         </div>
 
                     </div>
@@ -393,21 +364,21 @@
         </div>
         <div class="produto-imagens">
             <div id="visualizarImagens" class="swiper-wrapper">
-                <div id="produto-view-img1" class="swiper-slide"><img id="produto-imagem1" src="View/img/camiseta.jpg" alt=""></div>
-                <div id="produto-view-img2" class="swiper-slide"><img id="produto-imagem2" src="View/img/camiseta.jpg" alt=""></div>
-                <div id="produto-view-img3" class="swiper-slide"><img id="produto-imagem3" src="View/img/camiseta.jpg" alt=""></div>
+                <div id="produto-view-img1" class="swiper-slide"><img id="produto-imagem1" src="" alt=""></div>
+                <div id="produto-view-img2" class="swiper-slide"><img id="produto-imagem2" src="" alt=""></div>
+                <div id="produto-view-img3" class="swiper-slide"><img id="produto-imagem3" src="" alt=""></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
         <div class="info mg-0 row">
-            <a id="" class="dono"><i class=" material-icons">person</i><span id="visualizaProdutoDono">Luis Henrique Jacinto</span></a>
+            <a id="" class="dono"><i class=" material-icons">person</i><span id="visualizaProdutoDono"></span></a>
             <div class="col s12">
-                <h4 id="visualizaProdutoNome" class="nome-p">Camiseta Azul Manga Curta</h4>
+                <h4 id="visualizaProdutoNome" class="nome-p"></h4>
                 <div class="divisoria"></div>
             </div>
 
             <div class="tx-l col s12">
-                <span id="visualizaProdutoDescricao">Camiseta XXXXXX, tamanho M, cor Azul, produzida em poliester.</span>
+                <span id="visualizaProdutoDescricao"></span>
                 <div class="divisoria"></div>
             </div>
 
@@ -449,28 +420,6 @@
             </div>
 
             <div id="produtos" class="produtos">
-                <!--
-                <div id="produto" class="produto">
-                    <div class="row">
-                        <div class="col s4 visualizar-produto">
-                            <div class="produto_imagem">
-                                <img class="" src="/View/img/camiseta.jpg">
-                            </div>
-                        </div>
-                        <div class="produto_info col s6 visualizar-produto">
-                            <span class="nome_produto">Camisa Azul Manga Curta</span>
-                            <br>
-                            <i class="material-icons icons">remove_red_eye</i>
-                            <span>0</span>
-                            <i class="material-icons icons">favorite</i>
-                            <span>0</span>
-                        </div>
-                        <div id="editarProduto_btn" class="btn-generic col s2">
-                            <a class="editar-produto-btn"><i class="material-icons">create</i></a>
-                        </div>
-                    </div>
-                </div>
-            -->
             </div>
 
         </div>

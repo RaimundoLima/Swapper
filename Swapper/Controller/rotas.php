@@ -4,7 +4,7 @@ function getPagina()
 {   
     session_set_cookie_params(25920000);
     session_start();
- 	//error_reporting(0);
+ 	error_reporting(0);
 	$url = $_SERVER['REQUEST_URI'];
     $var=explode("?",$url)[1];
 	$url = strtolower(explode("?",$url)[0]);
