@@ -56,8 +56,8 @@ $(".visualizar-produto").click(function() {
     $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
 });
 $("#visualizar-produtoUsuario-btn-voltar").click(function() {
-    $(".visualizar-produtoUsuario-tab").removeClass("left-right-ltab");
-    $(".visualizar-produtoUsuario-tab").addClass("right-left-ltab");
+    $(".visualizar-produtoUsuario-tab").removeClass("up-down");
+    $(".visualizar-produtoUsuario-tab").addClass("down-up");
 });
 
 $("#editarProduto_btn").click(function() {
@@ -96,6 +96,10 @@ $("#chat-btn-voltar").click(function() {
     $("#conversa").addClass("left-right-rtab");
     setTimeout(function(){
         $("#conversa").css('display','none');
+        $("#fotoChat").attr('src', '');
+        $("#fotoChat").attr('onclick', '');
+        $("#nomeChat").html('');
+        $("#mensagens-chat").empty();
     },300)
 });
 

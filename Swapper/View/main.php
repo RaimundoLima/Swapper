@@ -582,6 +582,14 @@
         </form>
     </div>
 
+    <div id="troca" class="troca-tab">
+        <div id="produtos-troca" class="col s12 produtos-troca">
+        </div>
+        <div>
+            <a>Propor</a>
+        </div>
+    </div>
+
     <div class="row swiper-container main-container">
         <div class="swiper-wrapper">
             <div id="perfil" class="col s12 swiper-slide">

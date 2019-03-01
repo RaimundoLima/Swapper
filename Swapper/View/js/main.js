@@ -489,8 +489,8 @@ function buscarPerfil(idPerfil){
 
 function visualizarProduto2(idProduto,idUsuario){
     history.pushState( "produto-usuario", null, "" ); atual = window.history.state;
-    $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
-    $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
+    $(".visualizar-produtoUsuario-tab").removeClass("down-up");
+    $(".visualizar-produtoUsuario-tab").addClass("up-down");
      $.ajax({
         url: '/buscarRoupasPorId?'+idProduto+','+idUsuario
      }).done(function(data){
@@ -532,8 +532,8 @@ function visualizarProduto2(idProduto,idUsuario){
 
 function visualizarProduto(idProduto){
     history.pushState( "produto", null, "" ); atual = window.history.state; 
-    $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
-    $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
+    $(".visualizar-produtoUsuario-tab").removeClass("down-up");
+    $(".visualizar-produtoUsuario-tab").addClass("up-down");
      $.ajax({
         url: '/buscarRoupasPorId?'+idProduto
      }).done(function(data){
