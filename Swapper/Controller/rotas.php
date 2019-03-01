@@ -49,6 +49,36 @@ function getPagina()
             case '/model':
                 include('Model/teste.php');
             break;
+            case '/buscarmensagens':
+            //conferir dados
+                $daods=[];
+                $msgs=listarMensagem($var);
+                for($i=0;$i<count($msgs);$i++) {
+                    if($msgs[$i]['usuario']==null){
+                        $msgs[$i]['usuario']=0;
+                    }else if($msgs[$i]['usuario']==$_SESSION['usuario']['id']){
+                        $msgs[$i]['usuario']=1;
+                    }else{
+                        $msgs[$i]['usuario']=2;
+                    }
+                }
+                $dados['msgs']=$msgs;
+                $chat=buscarChat($var);
+                $match=buscarMatch($chat);
+
+                if($match['usuario1_id']==$_SESSION['usuario']['id']){
+                    $usuario=buscarUsuario($match['usuario2_id']);
+                    //error_log(print_r($usuario['nome']." if 1",true));
+                    $dados['usuario']['foto']=$usuario['foto'];
+                    $dados['usuario']['nome']=$usuario['nome'];
+                }else{
+                    $usuario=buscarUsuario($match['usuario1_id']);
+                    $dados['usuario']['foto']=$usuario['foto'];
+                    $dados['usuario']['nome']=$usuario['nome'];
+                }
+
+                echo json_encode($dados);
+            break;
             case '/buscarchats':
             //error_log(print_r("printe".$_SESSION['usuario']['id'],true));
             $data=[];
@@ -59,27 +89,26 @@ function getPagina()
                 $data[$i]['nomeUsuario']=$user2['nome'];
                 $data[$i]['fotoUsuario']=$user2['foto'];
                 $mensagem=listarMensagem($listaChats[$i]['id'])[0];
-                error_log(print_r($mensagem,true));
+                //error_log(print_r($mensagem,true));
                 $data[$i]['conteudoMensagem']=$mensagem['conteudo'];
                 $data[$i]['horarioMensagem']=$mensagem['horario'];
                 $data[$i]['visualizacaoMensagem']=$mensagem['visualizacao'];
-                //$data[$i]['nomeUsuario']=$user2['nome'];
-                //$data[$i]['nomeUsuario']=$user2['nome'];
+                $data[$i]['idChat']=$listaChats[$i]['id'];
             }
             echo json_encode($data);
             break;
             case '/like':
                 $match['usuario1']=$_SESSION['usuario']['id'];
                 $match['usuario2']=$_POST['usuario'];
-                $match['date']=time();
+                $match['date']=ceil(microtime(true)*1000);
                 $match['like_status']=$var;
                 if($var==1 || $var==0){
                     //error_log(print_r($match['like_status'],true));
                     $aux=inserirMatch($match);
                 }else if($var==2){
                     $user=buscarUsuario($_SESSION['usuario']['id']);
-                    if($user['superLike']<time()+(24 * 60 * 60 * 1000)){
-                        atualizarUsuarioSuperLike(time()+(24 * 60 * 60 * 1000),$_SESSION['usuario']['id']);
+                    if($user['superLike']<ceil(microtime(true)*1000)+(24 * 60 * 60 * 1000)){
+                        atualizarUsuarioSuperLike(ceil(microtime(true)*1000)+(24 * 60 * 60 * 1000),$_SESSION['usuario']['id']);
                         $aux=inserirMatch($match);
                     }
                 }
@@ -341,9 +370,19 @@ function getPagina()
             break;
             case '/enviamsg':
                 $texto=trim($_POST['text']);
+                $mensagem=[];
+                //verificar dados
+                $idChat=$_POST['idChat'];
                 if($texto!="" && $texto!=" "){
+                    $mensagem["horario"]=ceil(microtime(true)*1000);//ceil(microtime(true)*1000)."";
+
+                    error_log(print_r($mensagem["horario"],true));
+                    $mensagem["conteudo"]=$texto;
+                    $mensagem["chat"]=$idChat;
+                    $mensagem["usuario"]=$_SESSION['usuario']['id'];
+                    inserirMensagem($mensagem);
                     //criar msg
-                    //time();
+                    //ceil(microtime(true)*1000);
                     //salvar no bd
                     echo 'Msg enviada';
                 }else{

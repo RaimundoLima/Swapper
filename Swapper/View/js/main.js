@@ -54,7 +54,7 @@ function gerarCards(data){
     
     if($("#cards").html() == ""){
       $("#cards-preloader").css('display','inline-block'); 
-      M.toast({html: 'Nenhum usuario encontrado'});
+      //M.toast({html: 'Nenhum usuario encontrado'});
     }else{
         $("#cards-preloader").css('display','none'); 
         var y = 0;
@@ -333,17 +333,40 @@ function buscarFiltro(){
             buscarChats()
         }
     });
+$('#enviarMensagem').submit(function (e) {
+    e.preventDefault();
+    if ($('#estado').text() == 'Enviando') {
+        return (false);
+    }
+    $('#estado').text('Enviando');
+    $.ajax({
+        url: '/enviaMsg',
+        type: 'post',
+        data: {
+            'text': $("#text").val(),
+            'idChat':$("#idChat").text()
+        }
+    }).done(function (data) {
+        //alert(data)
+        console.log(data)
+        if (data != "") {
+            $('#text').val('');
+        }
+        $('#estado').text('Parado');
+    });
+});
 function buscarChats(){
-    
     if(!buscaChats){
         $.ajax({
             url: '/buscarChats'
         }).done(function(data){
             dataChat=JSON.parse(data)
             console.log(dataChat);
+
             html=''
             for(var i=0;i<Object.keys(dataChat).length;i++){
-                html+='<div class="combinacoes_msg_card">'
+                var horario=time_format(new Date(dataChat[i].horarioMensagem*1))
+                html+='<div class="combinacoes_msg_card" onclick="buscarMensagens('+dataChat[i].idChat+')">'
                                 +' <div class="row">'
                                 +'    <div class="col s3">'
                                 +'        <div class="pic_msgs"><img src="data:image/jpeg;base64,'+dataChat[i].fotoUsuario+'" alt=""></div>'
@@ -353,7 +376,7 @@ function buscarChats(){
                                 +'        <br>'
                                 +'        <span class="ultima_msg">'+dataChat[i].conteudoMensagem+'</span>'
                                 +'        <br>'
-                                +'        <span class="hora_msg">'+dataChat[i].horarioMensagem+'</span>'
+                                +'        <span class="hora_msg">'+horario+'</span>'
                                 +'    </div>'
                                 +'    <div class="col s1">'
                                 +'        <div class="msg_nãolida"></div>'
@@ -363,7 +386,6 @@ function buscarChats(){
             }
             $('#msgs').html(html)
         })
-
         buscaChats=1
     }
 }
@@ -389,9 +411,8 @@ function gerarRoupas(data){
        +'</div></div><div onclick="visualizarProduto('+roupas[i].id+')" class="produto_info col s6 visualizar-produto">'
        +'<span class="nome_produto">'+roupas[i].nome+'</span>'
        +'<br>'
-       +'<i class="material-icons icons">remove_red_eye</i>'
-       +'<span>0</span><i class="material-icons icons">favorite</i>'
-       +'<span>0</span></div>'
+       +'<span>0</span><i class="material-icons icons">remove_red_eye</i>'
+       +'</div>'
        +'<div onclick="editarProduto('+roupas[i].id+')" id="editarProduto_btn" class="btn-generic col s2">'
        +'<a class="editar-produto-btn"><i class="material-icons">create</i>'
        +'</a></div></div></div>'
@@ -423,6 +444,58 @@ function deletarProduto(idProduto){
     }, 300);
     M.toast({html: 'Produto deletado!'}) 
 }
+function time_format(d) {
+    hours = format_two_digits(d.getHours());
+    minutes = format_two_digits(d.getMinutes());
+    return hours + ":" + minutes
+}
+function format_two_digits(n) {
+    return n < 10 ? '0' + n : n;
+}
+function buscarMensagens(idChat){
+    $("#conversa").css('display','inline-block');
+    $("#conversa").removeClass("left-right-rtab");
+    $("#conversa").addClass("right-left-rtab");
+    var html=''
+
+    $.ajax({
+        url: '/buscarMensagens?'+idChat
+    }).done(function(data){
+        msgs=JSON.parse(data);
+        for(var i=Object.keys(msgs['msgs']).length-1;i>=0;i--){
+            var horario=time_format(new Date(msgs['msgs'][i]['horario']*1))
+            if(msgs['msgs'][i].usuario==0){
+                html+='<div id="" class="msgSystem tx-c">'
+                        +'<span style="display:none;" id="idChat">'+idChat+'</span>'
+                        + msgs['msgs'][i]['conteudo']
+                        +'</div>'
+            }else if(msgs['msgs'][i].usuario==1){
+                html+='<div class="msgSent tx-r">'
+                    +'     <div>'
+                    +'        <div class="cont tx-l" ><span>'+msgs['msgs'][i]['conteudo']+'</span></div>'
+                    +'        <i class="vizu material-icons">done</i>'
+                    +'        <span  class="hora">'+horario+'</span>'
+                    +'        </div>'
+                    +'    </div>'
+
+            }else{
+                html+='<div class="msgReceive tx-l">'
+                    +'     <div>'
+                    +'        <div class="cont tx-l" ><span>'+msgs['msgs'][i]['conteudo']+'</span></div>'
+                    +'        <i class="vizu material-icons">done</i>'
+                    +'        <span  class="hora">'+horario+'</span>'
+                    +'        </div>'
+                    +'    </div>'
+
+            }
+        }
+        $("#fotoChat").attr('src',"data:image/jpeg;base64,"+msgs['usuario']['foto'])
+        $("#nomeChat").text(msgs['usuario']['nome'])
+        $("#mensagens-chat").html(html)
+    })
+    $("#mensagens-chat").scrollTop($("#mensagens-chat").height());
+}
+
 function buscarPerfil(idPerfil){
     $("#perfis").removeClass("down-up");
     $("#perfis").addClass("up-down");
@@ -821,16 +894,17 @@ $("#cards").on('touchend', function(event) {
 });
 
 function like(status){
-    $.ajax({
-        url: "/like?"+status,
-        type: "post",
-        data:{
-            'usuario':$("#cards").children().last().attr("id")
-        }
-    }).done(function(data){
-        console.log(data)
-    })
-
+    if($("#cards").html() != ""){
+         $.ajax({
+            url: "/like?"+status,
+            type: "post",
+            data:{
+                'usuario':$("#cards").children().last().attr("id")
+            }
+        }).done(function(data){
+            console.log(data)
+        }) 
+    }
 }
 
 ////////// Botoes de ação ///////////
@@ -842,17 +916,19 @@ $("#btn-rever").click(function() {
     setTimeout(function(){$("#cards").children().last().remove();}, 800);
 });
 $("#btn-deslike").click(function() {
+    like(0);
     $("#cards").children().last().addClass("deslike-action");
     setTimeout(function(){$("#cards").children().last().removeClass("deslike-action"); }, 400);
     //teste
     setTimeout(function(){$("#cards").children().last().remove();}, 800);    
 });
 $("#btn-like").click(function() {
-    like()
+    like(1);
     $("#cards").children().last().addClass("like-action");
     setTimeout(function(){$("#cards").children().last().removeClass("like-action");}, 400);
 });
 $("#btn-superlike").click(function() {
+    like(2);
     $("#cards").children().last().addClass("superlike-action");
     setTimeout(function(){$("#cards").children().last().removeClass("superlike-action");}, 400);
     //teste

@@ -18,7 +18,7 @@ function buscarUsuarioLocalizacao($id){
             $match['usuario1']=$usuario['id'];
             $match['usuario2']=$lista['id'];
             $auxMatch=buscarMatchUsuarios($match);
-            if(empty($auxMatch) || ($auxMatch['likeStatus']!=3 && ($auxMatch['likeStatus']!=0 || ($auxMatch['date']+(24*60*60*1000)*15)<time()) && $auxMatch['ultimoUsuarioASerLikado_id']==$id)){//match
+            if(empty($auxMatch) || ($auxMatch['likeStatus']!=3 && ($auxMatch['likeStatus']!=0 || ($auxMatch['date']+(24*60*60*1000)*15)<ceil(microtime(true)*1000)) && $auxMatch['ultimoUsuarioASerLikado_id']==$id)){//match
             
                 $roupas=listarRoupa($lista['id']);
                 $roupasSelecionadas=[];
@@ -120,7 +120,7 @@ function inserirUsuario($usuario){
     $usuarioT['nascimento']=$usuario['nascimento'];
     $usuarioT['latitude']=$usuario['latitude'];
     $usuarioT['longitude']=$usuario['longitude'];
-    $usuarioT['superLike']=0;
+    $usuarioT['superLike']='';
     $usuarioT['foto']=$usuario['foto'];
 
     $usuarioT['credibilidade']=0;

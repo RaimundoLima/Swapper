@@ -75,7 +75,7 @@ function atualizaChat() {
             type: 'post',
             dataType: 'html',
             data: {
-                "date":mili.valueOf()
+                "date":mili.getTime()
             }
         }).done(function (data) {
             $('#chat').html(data)//$('#chat').html($('#chat').html+data)

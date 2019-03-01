@@ -75,6 +75,16 @@ $("#menu-burguer-side").click(function() {
     $("#menu-burguer").removeClass("left-right-ltab");
     $("#menu-burguer").addClass("right-left-ltab");
 });
+
+$("#chat-btn-voltar").click(function() {
+    $("#conversa").removeClass("right-left-rtab");
+    $("#conversa").addClass("left-right-rtab");
+    setTimeout(function(){
+        $("#conversa").css('display','none');
+    },300)
+});
+
+
 /*
 $("#filtro-btn").click(function() {
     $("#filtro").removeClass("right-left-ltab");

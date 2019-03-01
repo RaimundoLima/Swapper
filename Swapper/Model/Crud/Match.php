@@ -28,12 +28,13 @@ function inserirMatch($match){
         $matchT["usuario2"]=R::load('usuario',$match["usuario2"]);
         $matchT["like_status"]=$match['like_status'];
         $matchT["ultimo_usuario_a_ser_likado"]=R::load('usuario',$match["usuario2"]);
-        $matchT["date"]=$match["date"];
+        $matchT["date"]=$match["date"]+'';
         return R::store($matchT);
     }else if($matchT['usuario1_id']!=$match["usuario1"]){
         if(($matchT['like_status']==1 || $matchT['like_status']==2) && ($match['like_status']==1 || $match['like_status']==2) ){
             $matchT['like_status']=3;
             $matchT["ultimo_usuario_a_ser_likado"]=R::load('usuario',$match["usuario1"]);
+            $matchT['date']=$matchT['date'].'';
             $chat=[
                 'match'=>R::store($matchT)
             ];
@@ -42,7 +43,7 @@ function inserirMatch($match){
             return $matchT;
         }else if($match['like_status']==0){
             $matchT["like_status"]=$match['like_status'];
-            $matchT["date"]=$match["date"];
+            $matchT["date"]=$match["date"]*1;
             $matchT["ultimo_usuario_a_ser_likado"]=R::load('usuario',$match["usuario1"]);
             return R::store($matchT);
         }

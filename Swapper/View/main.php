@@ -1,125 +1,4 @@
 <body>
-
-    <div class="row swiper-container main-container">
-        <div class="swiper-wrapper">
-            <div id="perfil" class="col s12 swiper-slide">
-                <div class="row">
-                    <div class="perfil_tab col s12 out-tab">
-                        <div class="titulo_tab  pd-0">
-                            <a id="burguerBtn" class=""><i class=" material-icons">dehaze</i></a>
-                            <h4 class="pd-r0">Perfil</h4>
-                        </div>
-                        <div class="perfil_dados col s12">
-                            <div class="row mg-0">
-                                <div class="col s3 pd-r0">
-                                    <div class="pic">
-                                        <img id="fotoPerfil" <?php echo "src='data:image/jpeg;base64,".$_SESSION["usuario"]["foto"]."'";?> alt="">
-                                    </div>
-                                </div>
-                                <div class="pd-r0 tx-l col s7 pd-l14">
-                                    <h5 class="nome">
-                                        <div class="nome_tx"><span><?php echo $_SESSION["usuario"]["nome"];?></span></div>
-                                    </h5>
-                                    <i class="material-icons meritos-perfil">star_half</i><i class="material-icons meritos-perfil">check_circle</i>
-                                </div>
-
-                            </div>
-                            <div class="row" id="borda_perfil">
-                                <div class="col s12 borda_perfil">
-                                </div>
-                            </div>
-
-                            <div class="row perfil-btns">
-                                <div class="col s6">
-                                    <a id="credibilidade-usuario-btn" class="btn-generic"><i class="material-icons">star_half</i></a>
-                                    <br>
-                                    <span>Credibilidade</span>
-                                </div>
-                                <div class="col s6">
-                                    <a id="produtos-usuario-btn" class="produtos-usuario-btn btn-generic"><i class="material-icons">shopping_basket</i></a>
-                                    <br>
-                                    <span>Produtos</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="descobrir" class="col s12 swiper-slide">
-                <div class="row">
-                    <div class="descobrir_tab col s12">
-
-                        <h4 class="titulo_tab">Descobrir</h4>
-
-                        <a id="filtro-btn" class="btn-generic set_btn">
-                            <i class="font18em material-icons">settings</i>
-                        </a>
-                        
-                        <div id="cards-preloader">
-                            <div class="lds-ripple"><div></div><div></div></div>
-                        </div>
-                        
-                        <div id="cards">
-                        </div>
-                        <div class="action-btns bt-8">
-                            <button id="btn-rever" class="btn-p swiper-no-swiping">
-                                <i class="btn-rever material-icons">replay</i>
-                            </button>
-                            <button id="btn-deslike" class="btn-g swiper-no-swiping">
-                                <i class="btn-deslike material-icons">close</i>
-                            </button>
-                            <button id="btn-like" class="btn-g swiper-no-swiping">
-                                <i class="btn-like material-icons">favorite</i>
-                            </button>
-                            <button id="btn-superlike" class="btn-p swiper-no-swiping">
-                                <i class="btn-superlike material-icons">grade</i>
-                            </button>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="mensagens" class="col s12 swiper-slide">
-
-                <div class="row">
-                    <div class="combinacoes_tab col s12">
-
-                        <h4 class="titulo_tab fixed">Combinações</h4>
-                        <div id="msgs">
-                            <!--
-                            <div class="combinacoes_msg_card">
-                                <div class="row">
-                                    <div class="col s3">
-                                        <div class="pic_msgs"><img src="/View/img/rai.jpg" alt=""></div>
-                                    </div>
-                                    <div class="dados_msgs col s8">
-                                        <span class="nome_msg">Raimundo Nonato</span>
-
-                                        <br>
-                                        <span class="ultima_msg">Para para paradise, uhhhhh uhhhh uhh aaaaaa</span>
-                                        <span class="hora_msg">18:54 - 7Km</span>
-                                    </div>
-                                    <div class="col s1">
-                                        <div class="msg_nãolida"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            -->
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col s12 tabs swiper-pagination swiper-no-swiping">
-        </div>
-    </div>
-
     <!-- Abas de confirmação // Menu// Div de animação -->
     <div id="anBlock"></div>
 
@@ -440,42 +319,49 @@
     <div id="credibilidade-usuario" class="produtos-usuario-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="credibilidade-usuario-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
-            <h4 class="">Crediblidade</h4>
+            <h4 class="">Credibilidade</h4>
         </div>
         <br>
         <div class="row">
             <div class=" dados-credibilidade pd-l0 pd-r0 col s12">
-                <div class="col s4">
-                    <i class="material-icons">star_half</i>
-                </div>
-                <div class="credibilidade-atual tx-l pd-l0 col s8">
                     <?php 
                         $credibilidade=$_SESSION["usuario"]["credibilidade"];
                         $credibilidadeNome="";
                         $credibilidadeLimite="";
                         $credibilidadePorcentagem="";
+                        $credibilidadeLv="";
                         if($credibilidade<20){
                             $credibilidadeNome="BRONZE";
                             $credibilidadePorcentagem=($credibilidade/20)*100;
-                            $credibilidadeLimite=20;   
+                            $credibilidadeLimite=20;
+                            $credibilidadeLv="cred-B";
                         }else if($credibilidade<100){
                             $credibilidadeNome="PRATA";
                             $credibilidadePorcentagem=(($credibilidade-20)/80)*100;
                             $credibilidadeLimite=100;
+                            $credibilidadeLv="cred-P";
                         }else if($credibilidade<160){
                             $credibilidadeNome="OURO";
                             $credibilidadePorcentagem=(($credibilidade-100)/60)*100;
                             $credibilidadeLimite=160;
+                            $credibilidadeLv="cred-O";
                         }else if($credibilidade<300){
                             $credibilidadeNome="PLATINA";
                             $credibilidadePorcentagem=(($credibilidade-160)/140)*100;
                             $credibilidadeLimite=300;
+                            $credibilidadeLv="cred-PL";
                         }else if($credibilidade<1000){
                             $credibilidadeNome="DIAMANTE";
                             $credibilidadePorcentagem=(($credibilidade-300)/700)*100;
                             $credibilidadeLimite=1000;
+                            $credibilidadeLv="cred-D";
                         }
                     ?>
+                <div class="col s4">
+                    <i id="credLv" class=<?php echo('"'.$credibilidadeLv);?> material-icons">star_half</i>
+                </div>
+                <div class="credibilidade-atual tx-l pd-l0 col s8">
+
                     <span><?php echo("NIVEL ".$credibilidadeNome);?></span>
                     <br>
                     <span><?php echo($credibilidade."/".$credibilidadeLimite."XP");?></span>
@@ -680,14 +566,141 @@
     <!-- ///////////////////////// -->
     <!-- Abas acessadas pelo Mensagens -->
     <div id="conversa" class="chat out-tab">
-
-
+        <div class="titulo_chat">
+            <a id="chat-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
+            <img id="fotoChat" class="chat-user-pic" src="">
+            <h4 id="nomeChat" class="mg-0"></h4>
+        </div>
+        <div id=mensagens-chat>
+        </div>
         <form action="" id="enviarMensagem" >
             <div class="row">
-                <div class="col s10"><input class="writeMsg mg-0" placeholder="Digite sua mensagem..." id="" type="text" class="validate"></div>
+                <span hidden="true" id="estado">parado</span>
+                <div class="col s10"><input class="writeMsg mg-0" placeholder="Digite sua mensagem..." type="text" id="text" class="validate"></div>
                 <div class="col s2"><button type="submit"  value="" name="submit" class="btn-generic sendMsg"><i class="material-icons">send</i></button></div>
             </div>
         </form>
     </div>
+
+    <div class="row swiper-container main-container">
+        <div class="swiper-wrapper">
+            <div id="perfil" class="col s12 swiper-slide">
+                <div class="row">
+                    <div class="perfil_tab col s12 out-tab">
+                        <div class="titulo_tab  pd-0">
+                            <a id="burguerBtn" class=""><i class=" material-icons">dehaze</i></a>
+                            <h4 class="pd-r0">Perfil</h4>
+                        </div>
+                        <div class="perfil_dados col s12">
+                            <div class="row mg-0">
+                                <div class="col s3 pd-r0">
+                                    <div class="pic">
+                                        <img id="fotoPerfil" <?php echo "src='data:image/jpeg;base64,".$_SESSION["usuario"]["foto"]."'";?> alt="">
+                                    </div>
+                                </div>
+                                <div class="pd-r0 tx-l col s7 pd-l14">
+                                    <h5 class="nome">
+                                        <div class="nome_tx"><span><?php echo $_SESSION["usuario"]["nome"];?></span></div>
+                                    </h5>
+                                    <i class=<?php echo('"'.$credibilidadeLv);?> material-icons meritos-perfil">star_half</i><i class="material-icons meritos-perfil">check_circle</i>
+                                </div>
+
+                            </div>
+                            <div class="row" id="borda_perfil">
+                                <div class="col s12 borda_perfil">
+                                </div>
+                            </div>
+
+                            <div class="row perfil-btns">
+                                <div class="col s6">
+                                    <a id="credibilidade-usuario-btn" class="btn-generic"><i class="material-icons">star_half</i></a>
+                                    <br>
+                                    <span>Credibilidade</span>
+                                </div>
+                                <div class="col s6">
+                                    <a id="produtos-usuario-btn" class="produtos-usuario-btn btn-generic"><i class="material-icons">shopping_basket</i></a>
+                                    <br>
+                                    <span>Produtos</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="descobrir" class="col s12 swiper-slide">
+                <div class="row">
+                    <div class="descobrir_tab col s12">
+
+                        <h4 class="titulo_tab">Descobrir</h4>
+
+                        <a id="filtro-btn" class="btn-generic set_btn">
+                            <i class="font18em material-icons">settings</i>
+                        </a>
+                        
+                        <div id="cards-preloader">
+                            <div class="lds-ripple"><div></div><div></div></div>
+                        </div>
+                        
+                        <div id="cards">
+                        </div>
+                        <div class="action-btns bt-8">
+                            <button id="btn-rever" class="btn-p swiper-no-swiping">
+                                <i class="btn-rever material-icons">replay</i>
+                            </button>
+                            <button id="btn-deslike" class="btn-g swiper-no-swiping">
+                                <i class="btn-deslike material-icons">close</i>
+                            </button>
+                            <button id="btn-like" class="btn-g swiper-no-swiping">
+                                <i class="btn-like material-icons">favorite</i>
+                            </button>
+                            <button id="btn-superlike" class="btn-p swiper-no-swiping">
+                                <i class="btn-superlike material-icons">grade</i>
+                            </button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="mensagens" class="col s12 swiper-slide">
+
+                <div class="row">
+                    <div class="combinacoes_tab col s12">
+
+                        <h4 class="titulo_tab fixed">Combinações</h4>
+                        <div id="msgs">
+                            <!--
+                            <div class="combinacoes_msg_card">
+                                <div class="row">
+                                    <div class="col s3">
+                                        <div class="pic_msgs"><img src="/View/img/rai.jpg" alt=""></div>
+                                    </div>
+                                    <div class="dados_msgs col s8">
+                                        <span class="nome_msg">Raimundo Nonato</span>
+
+                                        <br>
+                                        <span class="ultima_msg">Para para paradise, uhhhhh uhhhh uhh aaaaaa</span>
+                                        <span class="hora_msg">18:54 - 7Km</span>
+                                    </div>
+                                    <div class="col s1">
+                                        <div class="msg_nãolida"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            -->
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col s12 tabs swiper-pagination swiper-no-swiping">
+        </div>
+    </div>
+
     <!-- ///////////////////////// -->
 </body>

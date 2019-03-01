@@ -7,14 +7,15 @@ function buscarMensagem($id){
 }
 function inserirMensagem($mensagem){
     $mensagemT=R::dispense("mensagem");
-    $mensagemT["horario"]=$mensagem["horario"];
+    
+    $mensagemT["horario"]=$mensagem["horario"].' ';
     $mensagemT["conteudo"]=$mensagem["conteudo"];
     $mensagemT["visualizado"]=0;
     $mensagemT["chat"]=R::load("chat",$mensagem["chat"]);
     if($mensagem["usuario"]==''){
     	$mensagemT["usuario"]=null;
     }else{
-    	$mensagemT["usuario"]=R::load("usuario",$mensagem["usuario"]);
+    	$mensagemT["usuario"]=$mensagem["usuario"];
 	}
     echo R::store($mensagemT);
 

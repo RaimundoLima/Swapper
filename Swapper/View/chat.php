@@ -6,7 +6,7 @@
     <form id="mensagem">
         <input name="text" id="text" type="text">
         <input type="submit">
-        <span id="estado">parado</span>
+        <span hidden="true" id="estado">parado</span>
     </form>
     </div>
 </div>
