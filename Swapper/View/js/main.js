@@ -127,15 +127,18 @@ $("#confirmarFoto").click(function(){
     $("#confirmarFotoPerfil").removeClass("show-tab");
     $("#confirmarFotoPerfil").addClass("un-show-tab");
     setTimeout(function(){$("#fotoPerfilPreview").attr('src', ''); $("#confirmarFotoPerfil").css('display', 'none');}, 300);
+    history.pushState( "burguer", null, "" ); atual = window.history.state;
 })
 
 $("#deslogarBtn").click(function(){
+    history.pushState( "logout", null, "" ); atual = window.history.state;
     $("#confirmarDeslogar").css("display", "inline-block");
     $("#confirmarDeslogar").removeClass("un-show-tab");
     $("#confirmarDeslogar").addClass("show-tab");
 })
 
 $("#rejeitarLogout").click(function(){
+    history.pushState( "burguer", null, "" ); atual = window.history.state;
     $("#confirmarDeslogar").removeClass("show-tab");
     $("#confirmarDeslogar").addClass("un-show-tab");
     setTimeout(function(){ $("#confirmarDeslogar").css('display', 'none');}, 300);
@@ -296,43 +299,6 @@ function buscarFiltro(){
         buscaFiltro=1;
     }
 }
-    mySwiper = new Swiper ('.main-container', {
-        direction: 'horizontal',
-        loop: false,
-        speed: 500,
-        initialSlide: 1,
-        noSwipingClass: 'swiper-no-swiping',
-        pagination: {
-            el: '.swiper-pagination',
-            type: 'bullets',
-            bulletElement: 'span',
-            clickable: true,
-            renderBullet: function (index, className) {
-                var tabs = ['account_circle','explore','chat'];
-                var nav = ['perfil-nav','descobrir-nav','mensagens-nav'];
-                return '<span id="'+nav[index]+'" class="tab col s4 ' + className + '">'+ 
-                '<i class="medium material-icons icons">'+tabs[index]+'</i>'+'</span>';
-            }
-          },
-    });
-    mySwiper.on('slideChangeTransitionStart', function () {
-        if($('#perfil').hasClass('swiper-slide-active') == true){
-            $('#perfil-nav').addClass('swiper-pagination-bullet-active');
-            $('#descobrir-nav').removeClass('swiper-pagination-bullet-active');
-            $('#mensagens-nav').removeClass('swiper-pagination-bullet-active');
-        }
-        if($('#descobrir').hasClass('swiper-slide-active') == true){
-            $('#perfil-nav').removeClass('swiper-pagination-bullet-active');
-            $('#descobrir-nav').addClass('swiper-pagination-bullet-active');
-            $('#mensagens-nav').removeClass('swiper-pagination-bullet-active');
-        }
-        if($('#mensagens').hasClass('swiper-slide-active') == true){
-            $('#perfil-nav').removeClass('swiper-pagination-bullet-active');
-            $('#descobrir-nav').removeClass('swiper-pagination-bullet-active');
-            $('#mensagens-nav').addClass('swiper-pagination-bullet-active');
-            buscarChats()
-        }
-    });
 $('#enviarMensagem').submit(function (e) {
     e.preventDefault();
     if ($('#estado').text() == 'Enviando') {
@@ -453,6 +419,7 @@ function format_two_digits(n) {
     return n < 10 ? '0' + n : n;
 }
 function buscarMensagens(idChat){
+    history.pushState( "conversa", null, "" ); atual = window.history.state;
     $("#conversa").css('display','inline-block');
     $("#conversa").removeClass("left-right-rtab");
     $("#conversa").addClass("right-left-rtab");
@@ -497,6 +464,7 @@ function buscarMensagens(idChat){
 }
 
 function buscarPerfil(idPerfil){
+    history.pushState( "usuario", null, "" ); atual = window.history.state;
     $("#perfis").removeClass("down-up");
     $("#perfis").addClass("up-down");
      $.ajax({
@@ -520,6 +488,7 @@ function buscarPerfil(idPerfil){
   
 
 function visualizarProduto2(idProduto,idUsuario){
+    history.pushState( "produto-usuario", null, "" ); atual = window.history.state;
     $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
     $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
      $.ajax({
@@ -562,6 +531,7 @@ function visualizarProduto2(idProduto,idUsuario){
 }
 
 function visualizarProduto(idProduto){
+    history.pushState( "produto", null, "" ); atual = window.history.state; 
     $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
     $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
      $.ajax({
@@ -603,6 +573,8 @@ function visualizarProduto(idProduto){
      })
 }
 function editarProduto(idProduto){
+    history.pushState( "edit-produto", null, "" );
+    atual = window.history.state;
     $("#editar-produto").removeClass("right-left-ltab");
     $("#editar-produto").addClass("left-right-ltab");
      $.ajax({
@@ -664,6 +636,7 @@ function readURL(input) {
             var reader = new FileReader();
             //INPUT FOTO DE PERFIL
             if(input.id == "fotoPerfilUpload"){
+                history.pushState( "foto-perfil", null, "" ); atual = window.history.state;
                 reader.onload = function (e) {
                     $("#confirmarFotoPerfil").removeClass("un-show-tab");
                     $("#confirmarFotoPerfil").addClass("show-tab");

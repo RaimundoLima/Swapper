@@ -1,8 +1,10 @@
 $("#filtro-btn").click(function() {
+    history.pushState( "filtro", null, "" ); atual = window.history.state;
     $("#filtro").removeClass("down-up");
     $("#filtro").addClass("up-down");
   });
 $("#filtro-btn-voltar").click(function() {
+    history.pushState( "descobrir", null, "" );
     $("#filtro").removeClass("up-down");
     $("#filtro").addClass("down-up");
 });
@@ -12,33 +14,40 @@ $("#perfis-btn").click(function() {
     $("#perfis").addClass("up-down");
   });
 $("#perfis-btn-voltar").click(function() {
+    history.pushState( "descobrir", null, "" ); atual = window.history.state;
     $("#perfis").removeClass("up-down");
     $("#perfis").addClass("down-up");
 });
 
 $("#credibilidade-usuario-btn").click(function() {
+    history.pushState( "credibilidade", null, "" ); atual = window.history.state;
     $("#credibilidade-usuario").removeClass("right-left-ltab");
     $("#credibilidade-usuario").addClass("left-right-ltab");
 });
 $("#credibilidade-usuario-btn-voltar").click(function() {
+    history.pushState( "perfil", null, "" );
     $("#credibilidade-usuario").removeClass("left-right-ltab");
     $("#credibilidade-usuario").addClass("right-left-ltab");
 });
 
 $("#produtos-usuario-btn").click(function() {
+    history.pushState( "produtos", null, "" ); atual = window.history.state;
     $("#produtos-usuario").removeClass("right-left-ltab");
     $("#produtos-usuario").addClass("left-right-ltab");
 });
 $("#produtos-usuario-btn-voltar").click(function() {
+    history.pushState( "perfil", null, "" );
     $("#produtos-usuario").removeClass("left-right-ltab");
     $("#produtos-usuario").addClass("right-left-ltab");
 });
 
 $("#addProduto_btn").click(function() {
+    history.pushState( "add-produto", null, "" ); atual = window.history.state;
     $("#adicionar-produto").removeClass("right-left-ltab");
     $("#adicionar-produto").addClass("left-right-ltab");
 });
 $("#adicionar-produto-btn-voltar").click(function() {
+    history.pushState( "produtos", null, "" ); atual = window.history.state;
     $("#adicionar-produto").removeClass("left-right-ltab");
     $("#adicionar-produto").addClass("right-left-ltab");
 });
@@ -52,31 +61,37 @@ $("#visualizar-produtoUsuario-btn-voltar").click(function() {
 });
 
 $("#editarProduto_btn").click(function() {
+    history.pushState( "edit-produto", null, "" ); atual = window.history.state;
     $("#editar-produto").removeClass("right-left-ltab");
     $("#editar-produto").addClass("left-right-ltab");
 });
 
 $("#editar-produto-btn-voltar").click(function() {
+    history.pushState( "produtos", null, "" );
     $("#editar-produto").removeClass("left-right-ltab");
     $("#editar-produto").addClass("right-left-ltab");
 });
 
 $("#burguerBtn").click(function() {
+    history.pushState( "burguer", null, "" ); atual = window.history.state;
     $("#menu-burguer").removeClass("right-left-ltab");
     $("#menu-burguer").css('display', 'flex');
     $("#menu-burguer").addClass("left-right-ltab");
 });   
 $("#burguerBtn-voltar").click(function() {
+    history.pushState( "perfil", null, "" ); atual = window.history.state;
     $("#menu-burguer").removeClass("left-right-ltab");
     $("#menu-burguer").addClass("right-left-ltab");
 });
 
 $("#menu-burguer-side").click(function() {
+    history.pushState( "perfil", null, "" ); atual = window.history.state;
     $("#menu-burguer").removeClass("left-right-ltab");
     $("#menu-burguer").addClass("right-left-ltab");
 });
 
 $("#chat-btn-voltar").click(function() {
+    history.pushState( "mensagens", null, "" ); atual = window.history.state;
     $("#conversa").removeClass("right-left-rtab");
     $("#conversa").addClass("left-right-rtab");
     setTimeout(function(){
@@ -84,28 +99,9 @@ $("#chat-btn-voltar").click(function() {
     },300)
 });
 
-
-/*
-$("#filtro-btn").click(function() {
-    $("#filtro").removeClass("right-left-ltab");
-    $("#filtro").addClass("left-right-ltab");
-});
-$("#filtro-btn-voltar").click(function() {
-    $("#filtro").removeClass("left-right-ltab");
-    $("#filtro").addClass("right-left-ltab");
-});
-
-$("#filtro-btn").click(function() {
-    $("#filtro").removeClass("left-right-rtab");
-    $("#filtro").addClass("right-left-rtab");
-});
-$("#filtro-btn-voltar").click(function() {
-    $("#filtro").removeClass("right-left-rtab");
-    $("#filtro").addClass("left-right-rtab");
-});*/
-
 $("#rejeitarFoto").click(function() {
     if($("#confirmarFotoPerfil").hasClass("show-tab") == true){
+        history.pushState( "burguer", null, "" ); atual = window.history.state;
         $("#confirmarFotoPerfil").removeClass("show-tab");
         $("#confirmarFotoPerfil").addClass("un-show-tab");
         setTimeout(function(){$("#fotoPerfilPreview").attr('src', ''); $("#confirmarFotoPerfil").css('display', 'none');}, 300);
@@ -123,7 +119,6 @@ $("#remover1").click(function() {
     $("#fileToUpload2").prop('disabled', true);
 });
 
-/////////////////////////// teste //////////////////////////////////
 $("#remover2").click(function() {
     document.getElementById("fileToUpload2").value = "";
     $("#previewUpload2").attr('src','');
@@ -141,7 +136,6 @@ $("#remover3").click(function() {
     $("#img-preview5").addClass('dis-able');
     $("#fileToUpload5").prop('disabled', true);
 });
-
 
 $("#remover4").click(function() {
     document.getElementById("fileToUpload5").value = "";
