@@ -6,10 +6,10 @@ include('Crud/Model.php');
 $usuario1=
 [
     'sexo'=>"M",
-    "email"=>'rr@gmail.com',
+    "email"=>'joker@gmail.com',
     "senha"=>sha1('123'),
     "celular"=>7,//
-    "nome"=>'rr',
+    "nome"=>'joker',
     "nascimento"=>'01/01/1936',
     "foto"=>'img1.jpg'//dps eu testo colocando uma foto
 ];

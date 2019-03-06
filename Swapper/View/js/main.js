@@ -63,8 +63,8 @@ function gerarCards(data){
                 resizeImg($(".refCard"+dataCard[i].roupa[j].id),$(".imgCard"+dataCard[i].roupa[j].id));
                 y = j;
             }
+            cardImageSwipe(y);
         }
-        cardImageSwipe(y);
     }
 }
 
@@ -328,7 +328,6 @@ function buscarChats(){
         }).done(function(data){
             dataChat=JSON.parse(data)
             console.log(dataChat);
-
             html=''
             for(var i=0;i<Object.keys(dataChat).length;i++){
                 var horario=time_format(new Date(dataChat[i].horarioMensagem*1))
@@ -428,7 +427,8 @@ function buscarMensagens(idChat){
     $.ajax({
         url: '/buscarMensagens?'+idChat
     }).done(function(data){
-        msgs=JSON.parse(data);
+        var msgs=JSON.parse(data);
+        ultimoHorario=(msgs['msgs'][0]['horario']*1)
         for(var i=Object.keys(msgs['msgs']).length-1;i>=0;i--){
             var horario=time_format(new Date(msgs['msgs'][i]['horario']*1))
             if(msgs['msgs'][i].usuario==0){
@@ -459,8 +459,74 @@ function buscarMensagens(idChat){
         $("#fotoChat").attr('src',"data:image/jpeg;base64,"+msgs['usuario']['foto'])
         $("#nomeChat").text(msgs['usuario']['nome'])
         $("#mensagens-chat").html(html)
+        $("#mensagens-chat").scrollTop($("#mensagens-chat").height()+10000);
+        intervalo = setInterval(function () {
+        if ($('#estado').text() == 'Enviando') {
+            return (false);
+        }
+        $('#estado').text('Enviando');
+        $.ajax({
+            url: '/chatUpdate?'+idChat,
+            type: 'post',
+            dataType: 'html',
+            data: {
+                "date":ultimoHorario
+            }
+        }).done(function (data) {
+            msgsNovas=JSON.parse(data)
+            console.log("eh us guri")
+            html=""
+            $('#estado').text('parado');
+            if(msgsNovas!=""){
+                for(var i=Object.keys(msgsNovas).length-1;i>=0;i--){
+                    var horario=time_format(new Date(msgsNovas[i]['horario']*1))
+                    if(msgsNovas[i].usuario==0){
+                        html+='<div id="" class="msgSystem tx-c">'
+                                +'<span style="display:none;" id="idChat">'+idChat+'</span>'
+                                + msgsNovas[i]['conteudo']
+                                +'</div>'
+                    }else if(msgsNovas[i].usuario==1){
+                        html+='<div class="msgSent tx-r">'
+                            +'     <div>'
+                            +'        <div class="cont tx-l" ><span>'+msgsNovas[i]['conteudo']+'</span></div>'
+                            +'        <i class="vizu material-icons">done</i>'
+                            +'        <span  class="hora">'+horario+'</span>'
+                            +'        </div>'
+                            +'    </div>'
+
+                    }else{
+                        html+='<div class="msgReceive tx-l">'
+                            +'     <div>'
+                            +'        <div class="cont tx-l" ><span>'+msgsNovas[i]['conteudo']+'</span></div>'
+                            +'        <i class="vizu material-icons">done</i>'
+                            +'        <span  class="hora">'+horario+'</span>'
+                            +'        </div>'
+                            +'    </div>'
+
+                    }
+                }
+                $("#mensagens-chat").html($("#mensagens-chat").html()+html)
+                if($("#mensagens-chat").scrollTop() >= $("#mensagens-chat").prop('scrollHeight')-$("#mensagens-chat").height()-200){
+                    $("#mensagens-chat").scrollTop($("#mensagens-chat").prop('scrollHeight'));
+                }else{
+                    $("#mensagens-chat").css({
+                        transition: "all 0.6s",
+                        "box-shadow": "0px 2px 0px 0px rgb(238, 110, 115)"
+                    });
+                    setTimeout(function(){
+                        $("#mensagens-chat").css({
+                            transition: "all 0.6s",
+                            "box-shadow": "0px 0px 0px 0px #f0f0f0"
+                        });
+                    },600)
+                }
+                ultimoHorario=msgsNovas[0]['horario']*1
+                console.log(JSON.parse(data));
+            }
+        });
+    }, 1700)
     })
-    $("#mensagens-chat").scrollTop($("#mensagens-chat").height());
+    
 }
 
 function buscarPerfil(idPerfil){

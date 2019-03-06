@@ -570,11 +570,12 @@
             <a id="chat-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
             <img id="fotoChat" class="chat-user-pic" src="">
             <h4 id="nomeChat" class="mg-0"></h4>
+            <a id="swapBtn" class=""><i class=" material-icons">swap_horiz</i></a>
         </div>
         <div id=mensagens-chat>
         </div>
-        <form action="" id="enviarMensagem" >
-            <div class="row">
+        <form action="" id="enviarMensagem" class="">
+            <div class="row mg-0">
                 <span hidden="true" id="estado">parado</span>
                 <div class="col s10"><input class="writeMsg mg-0" placeholder="Digite sua mensagem..." type="text" id="text" class="validate"></div>
                 <div class="col s2"><button type="submit"  value="" name="submit" class="btn-generic sendMsg"><i class="material-icons">send</i></button></div>

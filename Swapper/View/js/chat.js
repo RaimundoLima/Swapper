@@ -81,7 +81,7 @@ function atualizaChat() {
             $('#chat').html(data)//$('#chat').html($('#chat').html+data)
             $('#estado').text('parado');
         });
-    }, 1000);
+    }, 3000);
 }
 
 function paraChat() {

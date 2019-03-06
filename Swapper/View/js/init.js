@@ -179,7 +179,7 @@ var anterior = "";
     |    |                       |
     burguer <--- Perfil ---- Descobrir ---- Mensagens
                   |   |          |              |
-        Credibilidade |       Usuario       Conversa ----> troca
+        Credibilidade |       Usuario       Conversa ----> troca(nao feito)
                       |          |              |
                 Produtos    produto-usuario  Usuario(2)(nao feito)
                 |   |  |                        |

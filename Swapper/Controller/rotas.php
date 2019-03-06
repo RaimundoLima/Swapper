@@ -85,7 +85,7 @@ function getPagina()
             $listaChats=listarChat($_SESSION['usuario']['id']);
             //error_log(print_r(count($listaChats),true));
             for($i=0;$i<count($listaChats);$i++){
-                $user2=buscarUsuario(buscarMatchUsuario2($listaChats[$i],$_SESSION['usuario']['id']));
+                $user2=buscarUsuario(buscarMatchUsuario2(($listaChats)[$i],$_SESSION['usuario']['id']));
                 $data[$i]['nomeUsuario']=$user2['nome'];
                 $data[$i]['fotoUsuario']=$user2['foto'];
                 $mensagem=listarMensagem($listaChats[$i]['id'])[0];
@@ -376,7 +376,7 @@ function getPagina()
                 if($texto!="" && $texto!=" "){
                     $mensagem["horario"]=ceil(microtime(true)*1000);//ceil(microtime(true)*1000)."";
 
-                    error_log(print_r($mensagem["horario"],true));
+                    //error_log(print_r($mensagem["horario"],true));
                     $mensagem["conteudo"]=$texto;
                     $mensagem["chat"]=$idChat;
                     $mensagem["usuario"]=$_SESSION['usuario']['id'];
@@ -390,10 +390,23 @@ function getPagina()
                 }
             break;
             case '/chatupdate':
+                error_log(print_r($_POST['date'],true));
+                $msgs=listarMensagemData($var,$_POST["date"]);
+                for($i=0;$i<count($msgs);$i++) {
+                    if($msgs[$i]['usuario']==null){
+                        $msgs[$i]['usuario']=0;
+                    }else if($msgs[$i]['usuario']==$_SESSION['usuario']['id']){
+                        $msgs[$i]['usuario']=1;
+                    }else{
+                        $msgs[$i]['usuario']=2;
+                    }
+                }
+                echo(json_encode($msgs));
+                //error_log(print_r($msgs,true));
                 //$listaMsg=mensagemDAO->listaMsgsPerMillisecondsDoUsuario($_POST["date"],$_SESSION["id"])
                 //if(count($listaMsg)>0){}
                 //array_reverse($listaMsg);
-                $html = "";
+                /*$html = "";
                 for ($i=0;$i<count($listaMsg);$i++) {
                     $class="mensagem";
                     $invisivel="true";
@@ -419,7 +432,7 @@ function getPagina()
                 <div align='right'><span class='mensagem1'>EU SOU UMA MENSAGEM</span></div>
                 <div align='left'><span class='mensagem2'>EU SOU UMA MENSAGEM</span></div>
                 <div align='right'><span class='mensagem1'>EU não SOU UMA MENSAGEM, 
-                sou um fuucking teste motherfucker</span></div>";//teste
+                sou um fuucking teste motherfucker</span></div>";//teste*/
             break;
             default :
 			var_dump($url);

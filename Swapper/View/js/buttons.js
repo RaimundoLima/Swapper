@@ -100,6 +100,7 @@ $("#chat-btn-voltar").click(function() {
         $("#fotoChat").attr('onclick', '');
         $("#nomeChat").html('');
         $("#mensagens-chat").empty();
+        $("#text").val('');
     },300)
 });
 

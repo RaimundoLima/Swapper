@@ -120,7 +120,7 @@ function inserirUsuario($usuario){
     $usuarioT['nascimento']=$usuario['nascimento'];
     $usuarioT['latitude']=$usuario['latitude'];
     $usuarioT['longitude']=$usuario['longitude'];
-    $usuarioT['superLike']='';
+    $usuarioT['superLike']=0;
     $usuarioT['foto']=$usuario['foto'];
 
     $usuarioT['credibilidade']=0;
