@@ -64,11 +64,12 @@ function getPagina()
                 }
                 $dados['msgs']=$msgs;
                 $chat=buscarChat($var);
-                $match=buscarMatch($chat);
+                $match=buscarMatch($chat['match_id']);
+
 
                 if($match['usuario1_id']==$_SESSION['usuario']['id']){
                     $usuario=buscarUsuario($match['usuario2_id']);
-                    //error_log(print_r($usuario['nome']." if 1",true));
+                    
                     $dados['usuario']['foto']=$usuario['foto'];
                     $dados['usuario']['nome']=$usuario['nome'];
                 }else{
@@ -390,7 +391,7 @@ function getPagina()
                 }
             break;
             case '/chatupdate':
-                error_log(print_r($_POST['date'],true));
+                //error_log(print_r($_POST['date'],true));
                 $msgs=listarMensagemData($var,$_POST["date"]);
                 for($i=0;$i<count($msgs);$i++) {
                     if($msgs[$i]['usuario']==null){

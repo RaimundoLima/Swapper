@@ -32,13 +32,13 @@ function listarMensagem($idChat){
     return $msgs;
 }
 function listarMensagemData($idChat,$date){
-    $mensagens=R::findAll("mensagem","chat_id=? ORDER BY id DESC",[$idChat]);//fazer variações
+    $mensagens=R::findAll("mensagem","chat_id=? ORDER BY id ",[$idChat]);//fazer variações
     $count=0;
     $msgs=[];
     foreach ($mensagens as $mensagem) {
         //error_log(print_r((int)(R::findOne('mensagem',"id=?",[$mensagem["id"]])['horario']*1)>(int)($date),true));
         if((int)(R::findOne('mensagem',"id=?",[$mensagem["id"]])['horario']*1)>(int)($date)){
-            error_log(print_r("ta rodando",true));
+            //error_log(print_r("ta rodando",true));
             $msgs[$count]=R::findOne('mensagem',"id=?",[$mensagem["id"]]);
             $count++;
         }
