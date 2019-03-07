@@ -91,6 +91,22 @@ $("#menu-burguer-side").click(function() {
 });
 
 $("#chat-btn-voltar").click(function() {
+    if(atual == "troca"){
+        $("#anBlock").css("display", "inline");
+        $("#troca").removeClass("right-left-rtab");
+        $("#troca").addClass("left-right-rtab");
+        setTimeout(function(){
+            $("#troca").css('display','none');
+            $(".produtoLista").removeClass("listaActive");
+            desfazerChat();
+            $("#anBlock").css("display", "none");
+        },300)
+    }else{
+        desfazerChat();
+    }
+});
+
+function desfazerChat(){
     history.pushState( "mensagens", null, "" ); atual = window.history.state;
     $("#conversa").removeClass("right-left-rtab");
     $("#conversa").addClass("left-right-rtab");
@@ -102,6 +118,30 @@ $("#chat-btn-voltar").click(function() {
         $("#mensagens-chat").empty();
         $("#text").val('');
     },300)
+}
+
+$("#mensagens-chat").click(function(){
+    if(atual == "troca"){
+        $("#swapBtn").click();
+    }
+});
+
+
+$("#swapBtn").click(function(){
+    if(atual == "conversa"){
+        history.pushState( "troca", null, "" ); atual = window.history.state;
+        $("#troca").css('display','inline-block');
+        $("#troca").removeClass("left-right-rtab");
+        $("#troca").addClass("right-left-rtab");
+    }else if(atual == "troca"){
+        history.pushState( "conversa", null, "" ); atual = window.history.state;
+        $("#troca").removeClass("right-left-rtab");
+        $("#troca").addClass("left-right-rtab");
+        setTimeout(function(){
+            $("#troca").css('display','none');
+            $(".produtoLista").removeClass("listaActive");
+        },300)
+    }
 });
 
 $("#rejeitarFoto").click(function() {
@@ -147,4 +187,13 @@ $("#remover4").click(function() {
     $("#previewUpload5").attr('src','');
     $("#remover4").css('display', 'none');
     $("#remover3").css('display', 'block');
+});
+
+
+$(".produtoLista").click(function(){
+    if($(this).hasClass("listaActive")){
+        $(this).removeClass("listaActive");
+    }else{
+        $(this).addClass("listaActive");
+    }
 });

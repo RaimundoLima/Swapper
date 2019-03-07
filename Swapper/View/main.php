@@ -570,9 +570,28 @@
             <a id="chat-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
             <img id="fotoChat" class="chat-user-pic" src="">
             <h4 id="nomeChat" class="mg-0"></h4>
-            <a id="swapBtn" class=""><i class=" material-icons">swap_horiz</i></a>
+            <a id="swapBtn" class="btn-generic"><i class=" material-icons">swap_horiz</i></a>
         </div>
         <div id=mensagens-chat>
+
+
+            <div class="msgSwap Swap1 tx-c row">
+                <div class="col s12">
+                    <div class="cont tx-c" ><span>Troca iniciada, ----- deseja os seguintes produtos</span></div>
+                    <div id="produtosTroca">
+                        <span>Produtos</span>
+                        <span>Produtos</span>
+                        <span>Produtos</span>
+                    </div>
+                </div>
+                <div class="btns">
+                    <div class="col s6 btn-generic"><a>Cancelar Troca</a></div>
+                    <div class="col s6 btn-generic"><a>Continuar Troca</a></div>
+                </div>
+            </div>
+
+
+            
         </div>
         <form action="" id="enviarMensagem" class="">
             <div class="row mg-0">
@@ -585,9 +604,13 @@
 
     <div id="troca" class="troca-tab">
         <div id="produtos-troca" class="col s12 produtos-troca">
+            <div class="produtoLista tx-c">Produto</div>
+            <div class="produtoLista tx-c">Produto</div>
+            <div class="produtoLista tx-c">Produto</div>
+
         </div>
-        <div>
-            <a>Propor</a>
+        <div class="confirmarTroca tx-c">
+            <a class="btn-generic">Propor</a>
         </div>
     </div>
 
@@ -681,25 +704,6 @@
 
                         <h4 class="titulo_tab fixed">Combinações</h4>
                         <div id="msgs">
-                            <!--
-                            <div class="combinacoes_msg_card">
-                                <div class="row">
-                                    <div class="col s3">
-                                        <div class="pic_msgs"><img src="/View/img/rai.jpg" alt=""></div>
-                                    </div>
-                                    <div class="dados_msgs col s8">
-                                        <span class="nome_msg">Raimundo Nonato</span>
-
-                                        <br>
-                                        <span class="ultima_msg">Para para paradise, uhhhhh uhhhh uhh aaaaaa</span>
-                                        <span class="hora_msg">18:54 - 7Km</span>
-                                    </div>
-                                    <div class="col s1">
-                                        <div class="msg_nãolida"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            -->
                         </div>
 
                     </div>
@@ -710,6 +714,4 @@
         <div class="col s12 tabs swiper-pagination swiper-no-swiping">
         </div>
     </div>
-
-    <!-- ///////////////////////// -->
 </body>

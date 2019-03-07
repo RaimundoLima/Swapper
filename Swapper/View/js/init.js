@@ -174,9 +174,9 @@ var anterior = "";
 /*Esquema
 
     Logout
-    |
-    |   foto-Perfil           Filtro
-    |    |                       |
+    |                       Filtro
+    |   foto-Perfil          |      Match
+    |    |                   |       |   
     burguer <--- Perfil ---- Descobrir ---- Mensagens
                   |   |          |              |
         Credibilidade |       Usuario       Conversa ----> troca(nao feito)
@@ -267,8 +267,13 @@ $(window).on( "popstate", function(event){
             $("#visualizar-produtoUsuario-btn-voltar").click();
             history.pushState( "usuario", null, "" ); atual = window.history.state;
         break;
+        case 'match':
+        break;
         case 'conversa':
             $("#chat-btn-voltar").click();
+        break;
+        case 'troca':
+            $("#swapBtn").click();
         break;
     }
     atual = window.history.state;

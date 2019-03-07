@@ -504,6 +504,15 @@ function buscarMensagens(idChat){
                             +'    </div>'
 
                     }
+                    /*
+                    <div class="msgSent tx-r">
+                             <div>
+                        <div class="cont tx-l" ><span></span></div>
+                                    <i class="vizu material-icons">done</i>
+                                   <span  class="hora"></span>
+                                    </div>
+                                </div>
+                    */
                 }
                 $("#mensagens-chat").html($("#mensagens-chat").html()+html)
                 if($("#mensagens-chat").scrollTop() >= $("#mensagens-chat").prop('scrollHeight')-$("#mensagens-chat").height()-200){
