@@ -9,14 +9,18 @@ $("#filtro-btn-voltar").click(function() {
     $("#filtro").addClass("down-up");
 });
 
-$("#perfis-btn").click(function() {
-    $("#perfis").removeClass("down-up");
-    $("#perfis").addClass("up-down");
-  });
 $("#perfis-btn-voltar").click(function() {
-    history.pushState( "descobrir", null, "" ); atual = window.history.state;
-    $("#perfis").removeClass("up-down");
-    $("#perfis").addClass("down-up");
+    if (atual == 'usuario2'){
+        history.pushState( "conversa", null, "" ); atual = window.history.state;
+        $("#perfis").removeClass("right-left-rtab");
+        $("#perfis").addClass("left-right-rtab");
+        $(".produtos").empty();
+    }else if(atual == "usuario"){
+        history.pushState( "descobrir", null, "" ); atual = window.history.state;
+        $("#perfis").removeClass("up-down");
+        $("#perfis").addClass("down-up");
+        $(".produtos").empty();
+    }
 });
 
 $("#credibilidade-usuario-btn").click(function() {
@@ -55,9 +59,25 @@ $(".visualizar-produto").click(function() {
     $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
     $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
 });
+
 $("#visualizar-produtoUsuario-btn-voltar").click(function() {
-    $(".visualizar-produtoUsuario-tab").removeClass("up-down");
-    $(".visualizar-produtoUsuario-tab").addClass("down-up");
+    switch(atual){
+        case 'produto':
+            history.pushState( "produtos", null, "" ); atual = window.history.state;
+            $(".visualizar-produtoUsuario-tab").removeClass("left-right-ltab");
+            $(".visualizar-produtoUsuario-tab").addClass("right-left-ltab");
+        break;
+        case 'produto-usuario':
+            history.pushState( "usuario", null, "" ); atual = window.history.state;
+            $(".visualizar-produtoUsuario-tab").removeClass("up-down");
+            $(".visualizar-produtoUsuario-tab").addClass("down-up");
+        break;
+        case 'produto-usuario2':
+            history.pushState( "usuario2", null, "" ); atual = window.history.state;
+            $(".visualizar-produtoUsuario-tab").removeClass("right-left-rtab");
+            $(".visualizar-produtoUsuario-tab").addClass("left-right-rtab");
+        break;
+    }
 });
 
 $("#editarProduto_btn").click(function() {

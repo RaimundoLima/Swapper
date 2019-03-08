@@ -614,6 +614,23 @@
         </div>
     </div>
 
+
+    <div id="swap-tab" style="display:none" class="swap-tab">
+        <div class="checkSwap checkSwap1 tx-r">
+                <i class="material-icons">check</i>
+        </div>
+        <div class="checkSwap checkSwap2 tx-r">
+                <i class="material-icons">check</i>
+        </div>
+        <div class="userP">
+        </div>
+        <div class="myP">
+        </div>
+        <div id="btns">
+            
+        </div>
+    </div>
+
     <div class="row swiper-container main-container">
         <div class="swiper-wrapper">
             <div id="perfil" class="col s12 swiper-slide">

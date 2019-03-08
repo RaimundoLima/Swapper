@@ -93,6 +93,62 @@ h4 {
     height: 80%
 }
 
+.swap-tab{
+    background-color: white;
+    width: 100%;
+    position: fixed;
+    top: 64px;
+    height: 50%;
+    z-index: 11;
+    outline: 2px #f6b2b5 solid;
+    display: ;
+}
+
+.userP{
+    background-color: #bbbbbb;
+    border-top: 2px #f6b2b5 solid;
+    border-bottom: 2px #f6b2b5 solid;
+    height: 35%;
+    background-color: #e5e5e5;
+    overflow-y: scroll;
+    margin-top: 3%;
+}
+
+.myP{
+    background-color: #bbbbbb;
+    border-top: 2px #f6b2b5 solid;
+    border-bottom: 2px #f6b2b5 solid;
+    height: 35%;
+    background-color: #e5e5e5;
+    overflow-y: scroll;
+    margin-top: 5%;
+}
+
+.checkSigns{
+    position: absolute;
+    top: 3%;
+    right: 0;
+}
+
+
+.checkSwap1{
+    position: absolute;
+    top: 3%;
+    right: 3px;
+}
+
+.checkSwap2{
+    position: absolute;
+    top: 44%;
+    right: 3px;
+}
+
+.checkSwap{
+}
+.checkSwap > i{
+    font-size: 2em;
+}
+
 .troca-tab{
     background-color: white;
     width: 100%;
@@ -1063,8 +1119,8 @@ h4 {
 }
 
 .produtos-usuario-tab {
-    z-index: 11;
-    position: absolute;
+    z-index: 12;
+    position: fixed;
     top: 0;
     width: 100%;
     min-height: 100%;
@@ -1185,8 +1241,8 @@ h4 {
 }
 
 .visualizar-produtoUsuario-tab {
-    z-index: 12;
-    position: absolute;
+    z-index: 13;
+    position: fixed;
     top: 0;
     width: 100%;
     height: 100%;

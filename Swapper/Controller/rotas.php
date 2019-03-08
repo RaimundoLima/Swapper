@@ -65,17 +65,16 @@ function getPagina()
                 $dados['msgs']=$msgs;
                 $chat=buscarChat($var);
                 $match=buscarMatch($chat['match_id']);
-
-
                 if($match['usuario1_id']==$_SESSION['usuario']['id']){
                     $usuario=buscarUsuario($match['usuario2_id']);
-                    
                     $dados['usuario']['foto']=$usuario['foto'];
                     $dados['usuario']['nome']=$usuario['nome'];
+                    $dados['usuario']['id']=$usuario['id'];
                 }else{
                     $usuario=buscarUsuario($match['usuario1_id']);
                     $dados['usuario']['foto']=$usuario['foto'];
                     $dados['usuario']['nome']=$usuario['nome'];
+                    $dados['usuario']['id']=$usuario['id'];
                 }
 
                 echo json_encode($dados);
@@ -96,7 +95,23 @@ function getPagina()
                 $data[$i]['visualizacaoMensagem']=$mensagem['visualizacao'];
                 $data[$i]['idChat']=$listaChats[$i]['id'];
             }
-            echo json_encode($data);
+            $aux=[];
+            for($i=0;$i<count($data);$i++){
+                $menorNumero=9999999999999;
+                for($j=0;$j<count($data);$j++){
+                    $x=0;
+                    for ($k=0; $k<count($aux); $k++) { 
+                        if($data[$j] == $aux[$k]){
+                            $x = 1;
+                        }
+                    }
+                    if($menorNumero>$data[$j]['horarioMensagem']*1 && $x == 0){
+                        $aux[$i]=$data[$j];
+                        $menorNumero=$data[$j]['horarioMensagem']*1;
+                    }
+                }
+            }
+            echo json_encode(array_reverse($aux));
             break;
             case '/like':
                 $match['usuario1']=$_SESSION['usuario']['id'];

@@ -191,7 +191,7 @@ var anterior = "";
 
 */
 $(window).on( "popstate", function(event){ 
-    //console.log(atual);
+    console.log(atual);
     switch(atual){
         case 'perfil':
             switch(anterior){
@@ -243,7 +243,6 @@ $(window).on( "popstate", function(event){
         break;
         case 'produto':
             $("#visualizar-produtoUsuario-btn-voltar").click();
-            history.pushState( "produtos", null, "" ); atual = window.history.state;
         break;
         case 'add-produto':
             $("#adicionar-produto-btn-voltar").click();
@@ -265,9 +264,12 @@ $(window).on( "popstate", function(event){
         break;
         case 'produto-usuario':
             $("#visualizar-produtoUsuario-btn-voltar").click();
-            history.pushState( "usuario", null, "" ); atual = window.history.state;
         break;
-        case 'match':
+        case 'produto-usuario2':
+            $("#visualizar-produtoUsuario-btn-voltar").click();
+        break;
+        case 'usuario2':
+            $("#perfis-btn-voltar").click();
         break;
         case 'conversa':
             $("#chat-btn-voltar").click();

@@ -299,6 +299,11 @@ function buscarFiltro(){
         buscaFiltro=1;
     }
 }
+$("#chat-btn-voltar").on('click',function(){
+    clearInterval(chatAtivo)
+    buscaChats=0
+    buscarChats()
+})
 $('#enviarMensagem').submit(function (e) {
     e.preventDefault();
     if ($('#estado').text() == 'Enviando') {
@@ -319,7 +324,76 @@ $('#enviarMensagem').submit(function (e) {
             $('#text').val('');
         }
         $('#estado').text('Parado');
-    });
+    })
+        idChat=$("#idChat").text()
+        console.log(idChat)
+            $.ajax({
+            url: '/chatUpdate?'+idChat,
+            type: 'post',
+            dataType: 'html',
+            data: {
+                "date":ultimoHorario
+            }
+        }).done(function (data) {
+            msgsNovas=JSON.parse(data)
+            console.log("eh us guri")
+            html='<span style="display:none;" id="idChat">'+idChat+'</span>'
+            $('#estado').text('parado');
+            if(msgsNovas!=""){
+                for(var i=Object.keys(msgsNovas).length-1;i>=0;i--){
+                    var horario=time_format(new Date(msgsNovas[i]['horario']*1))
+                    if(msgsNovas[i].usuario==0){
+                        html+='<div id="" class="msgSystem tx-c">'
+                                + msgsNovas[i]['conteudo']
+                                +'</div>'
+                    }else if(msgsNovas[i].usuario==1){
+                        html+='<div class="msgSent tx-r">'
+                            +'     <div>'
+                            +'        <div class="cont tx-l" ><span>'+msgsNovas[i]['conteudo']+'</span></div>'
+                            +'        <i class="vizu material-icons">done</i>'
+                            +'        <span  class="hora">'+horario+'</span>'
+                            +'        </div>'
+                            +'    </div>'
+
+                    }else{
+                        html+='<div class="msgReceive tx-l">'
+                            +'     <div>'
+                            +'        <div class="cont tx-l" ><span>'+msgsNovas[i]['conteudo']+'</span></div>'
+                            +'        <i class="vizu material-icons">done</i>'
+                            +'        <span  class="hora">'+horario+'</span>'
+                            +'        </div>'
+                            +'    </div>'
+
+                    }
+                    /*
+                    <div class="msgSent tx-r">
+                             <div>
+                        <div class="cont tx-l" ><span></span></div>
+                                    <i class="vizu material-icons">done</i>
+                                   <span  class="hora"></span>
+                                    </div>
+                                </div>
+                    */
+                }
+                $("#mensagens-chat").html($("#mensagens-chat").html()+html)
+                if($("#mensagens-chat").scrollTop() >= $("#mensagens-chat").prop('scrollHeight')-$("#mensagens-chat").height()-200){
+                    $("#mensagens-chat").scrollTop($("#mensagens-chat").prop('scrollHeight'));
+                }else{
+                    $("#mensagens-chat").css({
+                        transition: "all 0.6s",
+                        "box-shadow": "0px 2px 0px 0px rgb(238, 110, 115)"
+                    });
+                    setTimeout(function(){
+                        $("#mensagens-chat").css({
+                            transition: "all 0.6s",
+                            "box-shadow": "0px 0px 0px 0px #f0f0f0"
+                        });
+                    },600)
+                }
+                ultimoHorario=msgsNovas[0]['horario']*1
+                console.log(JSON.parse(data));
+            }
+        });
 });
 function buscarChats(){
     if(!buscaChats){
@@ -422,7 +496,7 @@ function buscarMensagens(idChat){
     $("#conversa").css('display','inline-block');
     $("#conversa").removeClass("left-right-rtab");
     $("#conversa").addClass("right-left-rtab");
-    var html=''
+    var html='<span style="display:none;" id="idChat">'+idChat+'</span>'
 
     $.ajax({
         url: '/buscarMensagens?'+idChat
@@ -433,7 +507,6 @@ function buscarMensagens(idChat){
             var horario=time_format(new Date(msgs['msgs'][i]['horario']*1))
             if(msgs['msgs'][i].usuario==0){
                 html+='<div id="" class="msgSystem tx-c">'
-                        +'<span style="display:none;" id="idChat">'+idChat+'</span>'
                         + msgs['msgs'][i]['conteudo']
                         +'</div>'
             }else if(msgs['msgs'][i].usuario==1){
@@ -457,10 +530,11 @@ function buscarMensagens(idChat){
             }
         }
         $("#fotoChat").attr('src',"data:image/jpeg;base64,"+msgs['usuario']['foto'])
+        $("#fotoChat").attr('onclick',"buscarPerfil("+msgs['usuario']['id']+")")
         $("#nomeChat").text(msgs['usuario']['nome'])
         $("#mensagens-chat").html(html)
         $("#mensagens-chat").scrollTop($("#mensagens-chat").height()+10000);
-        intervalo = setInterval(function () {
+        chatAtivo = setInterval(function () {
         if ($('#estado').text() == 'Enviando') {
             return (false);
         }
@@ -475,14 +549,13 @@ function buscarMensagens(idChat){
         }).done(function (data) {
             msgsNovas=JSON.parse(data)
             console.log("eh us guri")
-            html=""
+            html='<span style="display:none;" id="idChat">'+idChat+'</span>'
             $('#estado').text('parado');
             if(msgsNovas!=""){
                 for(var i=Object.keys(msgsNovas).length-1;i>=0;i--){
                     var horario=time_format(new Date(msgsNovas[i]['horario']*1))
                     if(msgsNovas[i].usuario==0){
                         html+='<div id="" class="msgSystem tx-c">'
-                                +'<span style="display:none;" id="idChat">'+idChat+'</span>'
                                 + msgsNovas[i]['conteudo']
                                 +'</div>'
                     }else if(msgsNovas[i].usuario==1){
@@ -537,11 +610,28 @@ function buscarMensagens(idChat){
     })
     
 }
-
+$("#mensagens-chat").on('scroll',function(){
+    if($("#mensagens-chat").scrollTop()==0){
+        
+    }
+})
 function buscarPerfil(idPerfil){
-    history.pushState( "usuario", null, "" ); atual = window.history.state;
-    $("#perfis").removeClass("down-up");
-    $("#perfis").addClass("up-down");
+    if(atual == "conversa"){
+    console.log("sadas")
+
+        history.pushState( "usuario2", null, "" ); atual = window.history.state;
+        $("#perfis").removeClass("down-up");
+        $("#perfis").removeClass("left-right-rtab");
+        $("#perfis").addClass("right-left-rtab");
+        $(".bt-2").css('display','none');
+    }else{
+    console.log("sada222s")
+        history.pushState( "usuario", null, "" ); atual = window.history.state;
+        $("#perfis").removeClass("left-right-rtab");
+        $("#perfis").removeClass("down-up");
+        $("#perfis").addClass("up-down");
+    }
+    
      $.ajax({
         url: '/buscarPerfisPorId?'+idPerfil
      }).done(function(data){
@@ -560,12 +650,30 @@ function buscarPerfil(idPerfil){
      })
 
 }
-  
-
 function visualizarProduto2(idProduto,idUsuario){
-    history.pushState( "produto-usuario", null, "" ); atual = window.history.state;
-    $(".visualizar-produtoUsuario-tab").removeClass("down-up");
-    $(".visualizar-produtoUsuario-tab").addClass("up-down");
+    switch(atual){
+        case 'produtos':
+            history.pushState( "produto", null, "" ); atual = window.history.state;
+            $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
+            $(".visualizar-produtoUsuario-tab").removeClass("left-right-rtab");
+            $(".visualizar-produtoUsuario-tab").removeClass("down-up");
+            $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
+        break;
+        case 'usuario':
+            history.pushState( "produto-usuario", null, "" ); atual = window.history.state;
+            $(".visualizar-produtoUsuario-tab").removeClass("down-up");
+            $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
+            $(".visualizar-produtoUsuario-tab").removeClass("left-right-rtab");
+            $(".visualizar-produtoUsuario-tab").addClass("up-down");
+        break;
+        case 'usuario2':
+            history.pushState( "produto-usuario2", null, "" ); atual = window.history.state;
+            $(".visualizar-produtoUsuario-tab").removeClass("left-right-rtab");
+            $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
+            $(".visualizar-produtoUsuario-tab").removeClass("down-up");
+            $(".visualizar-produtoUsuario-tab").addClass("right-left-rtab");
+        break;
+    }
      $.ajax({
         url: '/buscarRoupasPorId?'+idProduto+','+idUsuario
      }).done(function(data){

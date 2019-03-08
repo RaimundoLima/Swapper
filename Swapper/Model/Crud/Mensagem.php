@@ -22,7 +22,7 @@ function inserirMensagem($mensagem){
 }
 
 function listarMensagem($idChat){
-    $mensagens=R::findAll("mensagem","chat_id=? ORDER BY id DESC",[$idChat]);//fazer variações
+    $mensagens=R::findAll("mensagem","chat_id=? ORDER BY id DESC LIMIT 15",[$idChat]);//fazer variações
     $count=0;
     $msgs=[];
     foreach ($mensagens as $mensagem) {
