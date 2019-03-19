@@ -6134,9 +6134,8 @@ select:focus {
     outline: 1px solid #c9f3ef
 }
 
-button:focus {
+button:hover {
     outline: none;
-    background-color: #2ab7a9
 }
 
 label {

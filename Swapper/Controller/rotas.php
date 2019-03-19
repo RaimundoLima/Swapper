@@ -49,6 +49,21 @@ function getPagina()
             case '/model':
                 include('Model/teste.php');
             break;
+            case '/buscarmensagensantigas':
+                $daods=[];
+                $msgs=listarMensagemAntigas($_POST['idChat'],$_POST['scroll']);
+                for($i=0;$i<count($msgs);$i++) {
+                    if($msgs[$i]['usuario']==null){
+                        $msgs[$i]['usuario']=0;
+                    }else if($msgs[$i]['usuario']==$_SESSION['usuario']['id']){
+                        $msgs[$i]['usuario']=1;
+                    }else{
+                        $msgs[$i]['usuario']=2;
+                    }
+                }
+                $dados['msgs']=$msgs;
+                echo json_encode($dados);
+            break;
             case '/buscarmensagens':
             //conferir dados
                 $daods=[];
@@ -76,24 +91,31 @@ function getPagina()
                     $dados['usuario']['nome']=$usuario['nome'];
                     $dados['usuario']['id']=$usuario['id'];
                 }
+                if($chat['usuario_like1']==2 || $chat['usuario_like2']==2){
+                    $dados['usuario']['likeStatus']=2;
+                }else{
+                    $dados['usuario']['likeStatus']=1;
+                }
 
                 echo json_encode($dados);
             break;
             case '/buscarchats':
-            //error_log(print_r("printe".$_SESSION['usuario']['id'],true));
             $data=[];
             $listaChats=listarChat($_SESSION['usuario']['id']);
-            //error_log(print_r(count($listaChats),true));
             for($i=0;$i<count($listaChats);$i++){
                 $user2=buscarUsuario(buscarMatchUsuario2(($listaChats)[$i],$_SESSION['usuario']['id']));
                 $data[$i]['nomeUsuario']=$user2['nome'];
                 $data[$i]['fotoUsuario']=$user2['foto'];
                 $mensagem=listarMensagem($listaChats[$i]['id'])[0];
-                //error_log(print_r($mensagem,true));
                 $data[$i]['conteudoMensagem']=$mensagem['conteudo'];
                 $data[$i]['horarioMensagem']=$mensagem['horario'];
                 $data[$i]['visualizacaoMensagem']=$mensagem['visualizacao'];
                 $data[$i]['idChat']=$listaChats[$i]['id'];
+                if($listaChats[$i]['usuario_like1'] == 2 || $listaChats[$i]['usuario_like2'] == 2){
+                    $data[$i]['likeStatus']=2;
+                }else{
+                    $data[$i]['likeStatus']=1;
+                }
             }
             $aux=[];
             for($i=0;$i<count($data);$i++){
@@ -128,7 +150,22 @@ function getPagina()
                         $aux=inserirMatch($match);
                     }
                 }
-                echo($aux);
+                if(!empty($aux)){
+                    $match=buscarMatch($aux);
+                    if($match['usuario1_id']==$_SESSION['usuario']['id']){
+                        $usuarioReferencia=$match['usuario2_id'];
+                        $likeStatus=buscarChatMatch($match['id'])['usuario_like2'];
+
+                    }else{
+                        $usuarioReferencia=$match['usuario1_id'];
+                        $likeStatus=buscarChatMatch($match['id'])['usuario_like1'];
+                    }
+                    $dados=[
+                        'likeStatus'=>$likeStatus,
+                        'usuarioFoto'=>buscarUsuario($usuarioReferencia)['foto']
+                    ];
+                    echo json_encode($dados);
+                }
             break;
             case '/adicionarroupas':
                 $roupa;
@@ -354,12 +391,12 @@ function getPagina()
                     $data[$i]['roupa'][0]['nome']=$listusers[$i]['roupa'][0]['nome'];
                     $data[$i]['roupa'][0]['id']=$listusers[$i]['roupa'][0]['id'];
                     $data[$i]['roupa'][0]['foto']=$listusers[$i]['roupa'][0]['foto1'];
-                    if(!empty($data[$i]['roupa'][2]['id'])){
+                    if(!empty($listusers[$i]['roupa'][1]['id'])){
                     $data[$i]['roupa'][1]['nome']=$listusers[$i]['roupa'][1]['nome'];
                     $data[$i]['roupa'][1]['id']=$listusers[$i]['roupa'][1]['id'];
                     $data[$i]['roupa'][1]['foto']=$listusers[$i]['roupa'][1]['foto1'];
                     }
-                    if(!empty($data[$i]['roupa'][2]['id'])){
+                    if(!empty($listusers[$i]['roupa'][2]['id'])){
                     $data[$i]['roupa'][2]['nome']=$listusers[$i]['roupa'][2]['nome'];
                     $data[$i]['roupa'][2]['id']=$listusers[$i]['roupa'][2]['id'];
                     $data[$i]['roupa'][2]['foto']=$listusers[$i]['roupa'][2]['foto1'];
@@ -481,21 +518,4 @@ function emailRecuperarSenha(){
    echo(mail($to, $subject, $body,$headers));
 }
 
-//buscar coordenadas
-//TESTE
-//$Latitude_1=39.977120098439634;
-//$Longitude_1=-7.580566406250001;
-//$Latitude_2=40.3130432088809;
-//$Longitude_2= -7.767333984375001;
-
-// Abaixo é a formula em PHP de calcular a distancia(TESTADA E COMPROVADA), tenho la no codigo do Main JS ela em JS
-//a formula ja retorna um valor sem ,
-//round(6371*acos(cos(deg2rad(90-$Latitude_1))*cos(deg2rad(90-$Latitude_2))+sin(deg2rad(90-$Latitude_1))*sin(deg2rad(90-$Latitude_2))*cos(deg2rad($Longitude_1-$Longitude_2)))*1)
-
-//Rai quando for fazer a pesquisa dos usuarios perto vamos limitar a pesquisa p n tornar ela pesada
-//vamos fazer ela por "quadrantes"
-//basta tu colocar na busca do SQL ou oq tu for fazer que a lista de usuarios q deve ser pesquisada deve ser entre
-// Latitude_do_usuario_logado-1.5 >= Latitude && Latitude_do_usuario_logado-1.5 <= Latitude
-// Longitude_do_usuario_logado-2 >= Lontitude && Longitude_do_usuario_logado-2 <= Lontitude
-// Assim a gente limita em buscar dentro de um raio de 167Km norte e sul e 170Km leste oeste
 ?>

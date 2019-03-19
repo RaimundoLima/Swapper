@@ -49,10 +49,10 @@
 
     <div class="match-confirmed">
         <div class="match-preview">
-            <div class=""><img id="" src="" alt=""></div>
+            <div class=""><img id="img-perfil-match" src="" alt=""></div>
         </div>
-        <div class="match-status">
-            <a class=""><i class=" material-icons">favorite</i></a>
+        <div id="match-status" class="match-status">
+           
         </div>
     </div>
 
@@ -122,10 +122,10 @@
                 </div>
                 <div>
                     <div class="input-field col s12">
-                        <input id="nomeProduto" placeholder="Nome do Produto" type="text" class="validate">
+                        <input autocomplete="off" id="nomeProduto" placeholder="Nome do Produto" type="text" class="validate">
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="descricao" placeholder="Descrição" class="materialize-textarea"></textarea>
+                        <textarea autocomplete="off" id="descricao" placeholder="Descrição" class="materialize-textarea"></textarea>
                     </div>
                     <div class="input-field col s6">
                         <select id="sexo">
@@ -206,10 +206,10 @@
                 </div>
                 <div>
                     <div class="input-field col s12">
-                        <input id="editarNome" type="text" placeholder="Nome do Produto" class="validate">
+                        <input autocomplete="off" id="editarNome" type="text" placeholder="Nome do Produto" class="validate">
                     </div>
                     <div class="input-field col s12">
-                        <textarea id="editarDescricao" placeholder="Descrição" class="materialize-textarea"></textarea>
+                        <textarea autocomplete="off" id="editarDescricao" placeholder="Descrição" class="materialize-textarea"></textarea>
                     </div>
                     <div class="input-field col s6">
                         <select id="editarSexo">
@@ -304,7 +304,6 @@
         <div id="produtos-user" class="div_produtos">
             <div class="no_produtos">
                 <span>Você não possui produtos!</span>
-                <div class="divisoria"></div>
             </div>
 
             <div id="produtos" class="produtos">
@@ -503,7 +502,6 @@
     <div id="perfis" style="" class="produtos-usuario-tab out-tab">
         <div class="titulo_tab fixed">
             <a id="perfis-btn-voltar" class=""><i class=" material-icons">chevron_left</i></a>
-            <h4 class="">Perfis aleatorios</h4>
         </div>
         <br>
         <div class="row">
@@ -525,11 +523,12 @@
                 </div>
             </div>
             <div class="perfis-produtos div_produtos col s12 pd-0">
+                <!--
                 <div class="no_produtos">
                     <span>Esse usuario não possui produtos!</span>
                     <div class="divisoria"></div>
                 </div>
-
+                -->
                 <div id="produtosUserAleatorio" class="produtos">
                     <div id="produto" class="produto">
                         <div class="row">
@@ -574,7 +573,7 @@
         </div>
         <div id=mensagens-chat>
 
-
+            <!--
             <div class="msgSwap Swap1 tx-c row">
                 <div class="col s12">
                     <div class="cont tx-c" ><span>Troca iniciada, ----- deseja os seguintes produtos</span></div>
@@ -590,13 +589,13 @@
                 </div>
             </div>
 
-
+            -->
             
         </div>
-        <form action="" id="enviarMensagem" class="">
+        <form autocomplete="off" action="" id="enviarMensagem" class="">
             <div class="row mg-0">
                 <span hidden="true" id="estado">parado</span>
-                <div class="col s10"><input class="writeMsg mg-0" placeholder="Digite sua mensagem..." type="text" id="text" class="validate"></div>
+                <div class="col s10"><input autocomplete="off" class="writeMsg mg-0" placeholder="Digite sua mensagem..." type="text" id="text" class="validate"></div>
                 <div class="col s2"><button type="submit"  value="" name="submit" class="btn-generic sendMsg"><i class="material-icons">send</i></button></div>
             </div>
         </form>

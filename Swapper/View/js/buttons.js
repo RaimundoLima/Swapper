@@ -4,7 +4,7 @@ $("#filtro-btn").click(function() {
     $("#filtro").addClass("up-down");
   });
 $("#filtro-btn-voltar").click(function() {
-    history.pushState( "descobrir", null, "" );
+    history.pushState( "descobrir", null, "" ); atual = window.history.state;
     $("#filtro").removeClass("up-down");
     $("#filtro").addClass("down-up");
 });
@@ -146,6 +146,13 @@ $("#mensagens-chat").click(function(){
     }
 });
 
+$(".match-confirmed").click(function(){
+    history.pushState( "descobrir", null, "" ); atual = window.history.state;
+    $(".match-confirmed").removeClass("show-tab");
+    $(".match-confirmed").addClass("un-show-tab");
+    setTimeout(function(){$(".match-confirmed").css("display", "none");},300)
+});
+
 
 $("#swapBtn").click(function(){
     if(atual == "conversa"){
@@ -217,3 +224,5 @@ $(".produtoLista").click(function(){
         $(this).addClass("listaActive");
     }
 });
+
+

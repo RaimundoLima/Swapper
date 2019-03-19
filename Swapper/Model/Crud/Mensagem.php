@@ -17,8 +17,7 @@ function inserirMensagem($mensagem){
     }else{
     	$mensagemT["usuario"]=$mensagem["usuario"];
 	}
-    echo R::store($mensagemT);
-
+    R::store($mensagemT);
 }
 
 function listarMensagem($idChat){
@@ -31,8 +30,18 @@ function listarMensagem($idChat){
     }
     return $msgs;
 }
+function listarMensagemAntigas($idChat,$scroll){
+    $mensagens=R::findAll("mensagem","chat_id=? ORDER BY id DESC OFFSET (15*?) LIMIT 15",[$idChat,$scroll]);
+    $count=0;
+    $msgs=[];
+    foreach ($mensagens as $mensagem) {
+        $msgs[$count]=R::findOne('mensagem',"id=?",[$mensagem["id"]]);
+        $count++;
+    }
+    return $msgs;
+}
 function listarMensagemData($idChat,$date){
-    $mensagens=R::findAll("mensagem","chat_id=? ORDER BY id ",[$idChat]);//fazer variações
+    $mensagens=R::findAll("mensagem","chat_id=? ORDER BY id ",[$idChat]);
     $count=0;
     $msgs=[];
     foreach ($mensagens as $mensagem) {

@@ -378,7 +378,7 @@ h4 {
     background-color: white;
     position: absolute;
     bottom: 0;
-    height: 8%;
+    height: 50px;
     width: 100%;
     border-top: 2px #f6b2b5 solid;
 }
@@ -388,7 +388,7 @@ h4 {
     border-bottom: 0 !important;
     border-radius: 20px !important;
     position: absolute;
-    top: 12% !important;
+    top: 5.5px !important;
     width: 75% !important;
     left: 3% !important;
     height: 70% !important;
@@ -399,13 +399,15 @@ h4 {
 .writeMsg::placeholder{
     color: #bbbbbb;
 }
+
 .sendMsg{
     background-color: #f0f0f0;
     color: rgb(194, 194, 194);
     display: inline-block;
     border-radius: 100%;
-    height: 50px;
-    width: 50px;
+    margin-top: 2px;
+    height: 44px;
+    width: 44px;
     text-align: center;
     line-height: 57%;
 }
@@ -1004,6 +1006,7 @@ h4 {
 
 
 .cards .dados>img {
+    background-color: white;
     position: absolute;
     height: 70px;
     width: 70px;
@@ -1078,6 +1081,7 @@ h4 {
     padding-top: 1.52rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-bottom: 0.6rem;
 }
 
 .out-tab .titulo_tab>button {
@@ -1326,7 +1330,7 @@ h4 {
 }
 
 .produto-tab {
-    z-index: 12;
+    z-index: 13;
     position: absolute;
     top: 0;
     width: 100%;
@@ -1412,13 +1416,26 @@ h4 {
     background: rgba(0, 0, 0, 0.5);
 }
 
-.match-status>a>i{
+.match-status>a>.favorite{
     background: linear-gradient(#f6b2b5, #e66465);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 66px;
     line-height: 90px;
+}
+
+.match-status>a>.grade{
+    background: linear-gradient(-90deg, #5ee665, #e7f8e8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 66px;
+    line-height: 90px;
+}
+
+.superLikeMatch{
+    border: 2px #5ee665 solid !important;
 }
 
 .confirmar {

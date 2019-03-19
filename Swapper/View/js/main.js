@@ -20,12 +20,13 @@ function gerarCards(data){
     $("#cards-preloader").css('display','inline-block');
     $("#cards").html("");
     for(var i=0;i<Object.keys(dataCard).length;i++){
-        htmlRoupas=""
+        htmlRoupas="";
         for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
             htmlRoupas+='<div id="'+j+'" class="swiper-slide card-slide refCard'+dataCard[i].roupa[j].id+'">'
                         + '<img id="" class="imgCard'+dataCard[i].roupa[j].id+'" src="data:imagem/jpeg;base64,'+dataCard[i].roupa[j].foto+'" alt="">'
                         +'</div>'
-        }  
+        }
+        //console.log(htmlRoupas);
         html+='<div id="'+dataCard[i].usuario.id+'" class="cards swiper-no-swiping">'
                                     +'<div class="card-imgs tx-c swiper-no-swiping">'
                                     +    '<div class="swiper-wrapper">'
@@ -62,9 +63,9 @@ function gerarCards(data){
             for(var j=0;j<Object.keys(dataCard[i].roupa).length;j++){
                 resizeImg($(".refCard"+dataCard[i].roupa[j].id),$(".imgCard"+dataCard[i].roupa[j].id));
                 y = j;
-            }
-            cardImageSwipe(y);
+            }  
         }
+        cardImageSwipe(y);
     }
 }
 
@@ -78,7 +79,7 @@ function degrees_to_radians(degrees)
 
 var buscaFiltro=0;
 var buscaRoupas=0;
-var buscaChats=0;
+//var buscaChats=0;
 var alteraImagem1=0
 var alteraImagem2=0
 var alteraImagem3=0
@@ -87,6 +88,7 @@ $("#filtro-btn").click(function() {
     buscarFiltro();
   });
 $("#filtro-btn-voltar").click(function() {
+    navigator.geolocation.getCurrentPosition(Location,function(){console.log("error")},{timeout:10000});
     atualizarFiltro();
 });
 
@@ -301,7 +303,7 @@ function buscarFiltro(){
 }
 $("#chat-btn-voltar").on('click',function(){
     clearInterval(chatAtivo)
-    buscaChats=0
+    //buscaChats=0
     buscarChats()
 })
 $('#enviarMensagem').submit(function (e) {
@@ -337,7 +339,7 @@ $('#enviarMensagem').submit(function (e) {
         }).done(function (data) {
             msgsNovas=JSON.parse(data)
             console.log("eh us guri")
-            html='<span style="display:none;" id="idChat">'+idChat+'</span>'
+            var html='<span style="display:none;" id="idChat">'+idChat+'</span>'
             $('#estado').text('parado');
             if(msgsNovas!=""){
                 for(var i=Object.keys(msgsNovas).length-1;i>=0;i--){
@@ -396,19 +398,24 @@ $('#enviarMensagem').submit(function (e) {
         });
 });
 function buscarChats(){
-    if(!buscaChats){
+    //if(!buscaChats){
         $.ajax({
             url: '/buscarChats'
         }).done(function(data){
             dataChat=JSON.parse(data)
-            console.log(dataChat);
-            html=''
+            //console.log(dataChat);
+            var html=''
             for(var i=0;i<Object.keys(dataChat).length;i++){
                 var horario=time_format(new Date(dataChat[i].horarioMensagem*1))
+                if(dataChat[i].likeStatus == 2){
+                    likeStat = "class='superLikeMatch'";
+                }else{
+                    likeStat = "";
+                }
                 html+='<div class="combinacoes_msg_card" onclick="buscarMensagens('+dataChat[i].idChat+')">'
                                 +' <div class="row">'
                                 +'    <div class="col s3">'
-                                +'        <div class="pic_msgs"><img src="data:image/jpeg;base64,'+dataChat[i].fotoUsuario+'" alt=""></div>'
+                                +'        <div class="pic_msgs"><img '+likeStat+' src="data:image/jpeg;base64,'+dataChat[i].fotoUsuario+'" alt=""></div>'
                                 +'    </div>'
                                 +'    <div class="dados_msgs col s8">'
                                 +'        <span class="nome_msg">'+dataChat[i].nomeUsuario+'</span>'
@@ -425,8 +432,8 @@ function buscarChats(){
             }
             $('#msgs').html(html)
         })
-        buscaChats=1
-    }
+       // buscaChats=1
+    //}
 }
 function buscarRoupas(){
     if(!buscaRoupas){
@@ -441,27 +448,40 @@ function buscarRoupas(){
 function gerarRoupas(data){
     var html=""
     roupas=JSON.parse(data)
-    for(var i=Object.keys(roupas).length-1;i>=0;i--){
-    //for(var i=1;i<=Object.keys(roupas).length;i++){
-       html+='<div id="produto-'+roupas[i].id+'" class="produto"><div class="row">'
-       +'<div onclick="visualizarProduto('+roupas[i].id+')" class="col s4 visualizar-produto">'
-       +'<div id="produto-img-ref'+roupas[i].id+'" class="refPerfil'+roupas[i].id+' produto_imagem">'
-       +'<img id="produto-img'+roupas[i].id+'" class="imgPerfil'+roupas[i].id+'" src="data:image/jpeg;base64,'+roupas[i].foto1+'">'
-       +'</div></div><div onclick="visualizarProduto('+roupas[i].id+')" class="produto_info col s6 visualizar-produto">'
-       +'<span class="nome_produto">'+roupas[i].nome+'</span>'
-       +'<br>'
-       +'<span>0</span><i class="material-icons icons">remove_red_eye</i>'
-       +'</div>'
-       +'<div onclick="editarProduto('+roupas[i].id+')" id="editarProduto_btn" class="btn-generic col s2">'
-       +'<a class="editar-produto-btn"><i class="material-icons">create</i>'
-       +'</a></div></div></div>'
-    }
-    $("#produtos").html(html);    
-    $("#produtos-user-preloader").css('display', 'none');
-    $("#produtos-user").css('display', 'block');
-    $(".addProduto_btn").css('display', 'inline-block');
-    for(var i=Object.keys(roupas).length-1;i>=0;i--){
-        resizeImg($(".refPerfil"+roupas[i].id),$(".imgPerfil"+roupas[i].id));
+    $(".no_produtos").css('display','none');
+    $("#produtos-user-preloader").css('display', 'inline');
+    $("#produtos").css('display', 'inline-block');
+    console.log(Object.keys(roupas).length-1 != 0);
+    if(Object.keys(roupas).length != 0){
+        $("no_produtos").css('display','none');
+        for(var i=Object.keys(roupas).length-1;i>=0;i--){
+        //for(var i=1;i<=Object.keys(roupas).length;i++){
+           html+='<div id="produto-'+roupas[i].id+'" class="produto"><div class="row">'
+           +'<div onclick="visualizarProduto('+roupas[i].id+')" class="col s4 visualizar-produto">'
+           +'<div id="produto-img-ref'+roupas[i].id+'" class="refPerfil'+roupas[i].id+' produto_imagem">'
+           +'<img id="produto-img'+roupas[i].id+'" class="imgPerfil'+roupas[i].id+'" src="data:image/jpeg;base64,'+roupas[i].foto1+'">'
+           +'</div></div><div onclick="visualizarProduto('+roupas[i].id+')" class="produto_info col s6 visualizar-produto">'
+           +'<span class="nome_produto">'+roupas[i].nome+'</span>'
+           +'<br>'
+           +'<span>0</span><i class="material-icons icons">remove_red_eye</i>'
+           +'</div>'
+           +'<div onclick="editarProduto('+roupas[i].id+')" id="editarProduto_btn" class="btn-generic col s2">'
+           +'<a class="editar-produto-btn"><i class="material-icons">create</i>'
+           +'</a></div></div></div>'
+        }
+        $("#produtos").html(html);    
+        $("#produtos-user-preloader").css('display', 'none');
+        $("#produtos-user").css('display', 'block');
+        $(".addProduto_btn").css('display', 'inline-block');
+        for(var i=Object.keys(roupas).length-1;i>=0;i--){
+            resizeImg($(".refPerfil"+roupas[i].id),$(".imgPerfil"+roupas[i].id));
+        }
+    }else{
+        $("#produtos-user-preloader").css('display', 'none');
+        $("#produtos-user").css('display', 'block');
+        $(".no_produtos").css('display','block');
+        $(".addProduto_btn").css('display', 'inline-block');
+        $("#produtos").css('display', 'none');
     }
 }
 function deletarProduto(idProduto){
@@ -529,6 +549,11 @@ function buscarMensagens(idChat){
 
             }
         }
+        if(msgs['usuario']['likeStatus'] == 2){
+           $("#fotoChat").addClass("superLikeMatch"); 
+        }else{
+            $("#fotoChat").removeClass("superLikeMatch"); 
+        }
         $("#fotoChat").attr('src',"data:image/jpeg;base64,"+msgs['usuario']['foto'])
         $("#fotoChat").attr('onclick',"buscarPerfil("+msgs['usuario']['id']+")")
         $("#nomeChat").text(msgs['usuario']['nome'])
@@ -547,9 +572,9 @@ function buscarMensagens(idChat){
                 "date":ultimoHorario
             }
         }).done(function (data) {
-            msgsNovas=JSON.parse(data)
+            var msgsNovas=JSON.parse(data)
             console.log("eh us guri")
-            html='<span style="display:none;" id="idChat">'+idChat+'</span>'
+            var html='<span style="display:none;" id="idChat">'+idChat+'</span>'
             $('#estado').text('parado');
             if(msgsNovas!=""){
                 for(var i=Object.keys(msgsNovas).length-1;i>=0;i--){
@@ -610,22 +635,62 @@ function buscarMensagens(idChat){
     })
     
 }
+scroll=0
 $("#mensagens-chat").on('scroll',function(){
     if($("#mensagens-chat").scrollTop()==0){
-        
+        scroll++
+        console.log('scrol '+scroll)
+        $.ajax({
+        url: '/buscarMensagensAntigas?',
+        type: "post",
+        data:{
+            'scroll':scroll,
+            'idChat':$("#idChat").text()
+        }
+     }).done(function(data){
+        var html=''
+        msgsNovas=JSON.parse(data)
+        console.log(msgsNovas)
+                for(var i=Object.keys(msgsNovas.msgs).length-1;i>=0;i--){
+                    var horario=time_format(new Date(msgsNovas.msgs[i]['horario']*1))
+                    if(msgsNovas.msgs[i].usuario==0){
+                        html+='<div id="" class="msgSystem tx-c">'
+                                + msgsNovas.msgs[i]['conteudo']
+                                +'</div>'
+                    }else if(msgsNovas.msgs[i].usuario==1){
+                        html+='<div class="msgSent tx-r">'
+                            +'     <div>'
+                            +'        <div class="cont tx-l" ><span>'+msgsNovas.msgs[i]['conteudo']+'</span></div>'
+                            +'        <i class="vizu material-icons">done</i>'
+                            +'        <span  class="hora">'+horario+'</span>'
+                            +'        </div>'
+                            +'    </div>'
+
+                    }else{
+                        html+='<div class="msgReceive tx-l">'
+                            +'     <div>'
+                            +'        <div class="cont tx-l" ><span>'+msgsNovas.msgs[i]['conteudo']+'</span></div>'
+                            +'        <i class="vizu material-icons">done</i>'
+                            +'        <span  class="hora">'+horario+'</span>'
+                            +'        </div>'
+                            +'    </div>'
+
+                    }
+                }
+            $("#mensagens-chat").html(html+$("#mensagens-chat").html())
+            if(Object.keys(msgsNovas.msgs).length>0)
+            $("#mensagens-chat").scrollTop($("#mensagens-chat").height())
+     })
     }
 })
 function buscarPerfil(idPerfil){
     if(atual == "conversa"){
-    console.log("sadas")
-
         history.pushState( "usuario2", null, "" ); atual = window.history.state;
         $("#perfis").removeClass("down-up");
         $("#perfis").removeClass("left-right-rtab");
         $("#perfis").addClass("right-left-rtab");
         $(".bt-2").css('display','none');
     }else{
-    console.log("sada222s")
         history.pushState( "usuario", null, "" ); atual = window.history.state;
         $("#perfis").removeClass("left-right-rtab");
         $("#perfis").removeClass("down-up");
@@ -638,7 +703,7 @@ function buscarPerfil(idPerfil){
         dados=JSON.parse(data)
         $("#fotoUserAleatorio").attr("src","data:image/jpeg;base64,"+dados.usuario.foto)
         $("#nomeUserAleatorio").text(dados.usuario.nome)
-        html=""
+        var html=""
         $("#produtosUserAleatorio").html(html)
         for(var i=0;i<Object.keys(dados.roupa).length;i++){
            html+='<div onclick="visualizarProduto2('+dados.roupa[i].id+','+dados.usuario.id+')" id="produto-'+dados.roupa[i].id+'" class="produto"><div class="row"><div class="col s4 visualizar-produto"><div id="produto-img-ref'+dados.roupa[i].id+'" class="refPerfilUsers'+dados.roupa[i].id+' produto_imagem"><img id="produto-img'+dados.roupa[i].id+'" class="imgPerfilUsers'+dados.roupa[i].id+'" src="data:image/jpeg;base64,'+dados.roupa[i].foto1+'"></div></div><div class="produto_info col s6 visualizar-produto"><span class="nome_produto">'+dados.roupa[i].nome+'</span><br><i class="material-icons icons">remove_red_eye</i><span>0</span><i class="material-icons icons">favorite</i><span>0</span></div><div></div></div></div>'
@@ -715,8 +780,8 @@ function visualizarProduto2(idProduto,idUsuario){
 
 function visualizarProduto(idProduto){
     history.pushState( "produto", null, "" ); atual = window.history.state; 
-    $(".visualizar-produtoUsuario-tab").removeClass("down-up");
-    $(".visualizar-produtoUsuario-tab").addClass("up-down");
+    $(".visualizar-produtoUsuario-tab").removeClass("right-left-ltab");
+    $(".visualizar-produtoUsuario-tab").addClass("left-right-ltab");
      $.ajax({
         url: '/buscarRoupasPorId?'+idProduto
      }).done(function(data){
@@ -731,6 +796,7 @@ function visualizarProduto(idProduto){
         if(roupa["foto3"] !=""){
             imgs+=' <div id="produto-view-img3" class="swiper-slide"><img id="produto-imagem3" src="data:image/jpeg;base64,'+roupa["foto3"]+'" alt=""></div>'
         }
+        $("#visualizarImagens").empty();
         $("#visualizarImagens").html(imgs)
         resizeImg($("#produto-view-img1"),$("#produto-imagem1"));
         resizeImg($("#produto-view-img2"),$("#produto-imagem2"));
@@ -752,6 +818,7 @@ function visualizarProduto(idProduto){
         } 
         var estado=(roupa["estado"]==1) ? "NOVA" : "USADA"
         html='<span>TAGS:</span><span class="tag">'+sexo+'</span><span class="tag">'+categoria+'</span><span class="tag">'+tipo+'</span><span class="tag">'+estado+'</span>'
+        $("#visualizarProdutoTags").empty();
         $("#visualizarProdutoTags").html(html)
      })
 }
@@ -955,7 +1022,6 @@ function inputRequired(){
     }
 }
 function inputRequiredEdit(){
-    //console.log("function \n")
     if($("#editarNome").val() == "" || $("#editarDescricao").val() == ""){
         if($("#editarNome").val() == "") M.toast({html: 'Nome necessário!'}) 
         if($("#editarDescricao").val() == "") M.toast({html: 'Descrição necessária!'}) 
@@ -1005,9 +1071,7 @@ $("#cards").on('touchmove', function(event) {
 });
 
 $("#cards").on('touchend', function(event) {    
-    //console.log("oi");
     if(moveY <= -65){
-        //console.log("SUPER lIKE ?");
         like(2)
         $("#cards").children().last().css({
             transition: "transform 0.3s",
@@ -1025,7 +1089,7 @@ $("#cards").on('touchend', function(event) {
         }
         if((130*moveX) <= -70 && (130*moveX) < 0){
         //console.log("DISlIKE ?");
-        like(0)
+            like(0)
             $("#cards").children().last().css({
                 transition: "transform 0.3s",
                 transform: 'translateX(-130%) rotate(-12deg)',
@@ -1040,13 +1104,11 @@ $("#cards").on('touchend', function(event) {
             setTimeout(function(){$("#cards").children().last().css( { transition: "none" } );},300);
         }
     }
-       //$("#cards").children().last().remove();
-        //$("#cards").children().last().css( { transition: "none" } ); //$("#cards").children().last().css('transform', 'translateX(0%) rotate(0deg)'); moveY = 0;
-        moveX = 0;
-        T = 0;
-        S = 0;
-        X = 0;
-        Y = 0;
+    moveX = 0;
+    T = 0;
+    S = 0;
+    X = 0;
+    Y = 0;
 });
 
 function like(status){
@@ -1058,70 +1120,78 @@ function like(status){
                 'usuario':$("#cards").children().last().attr("id")
             }
         }).done(function(data){
-            console.log(data)
+            dados=JSON.parse(data)
+            $('#img-perfil-match').attr('src', "data:imagem/jpeg;base64,"+dados.usuarioFoto);
+
+            if(dados.likeStatus == 1){
+                $('#match-status').html('<a class=""><i class="favorite material-icons">favorite</i></a>');
+            }else if(dados.likeStatus == 2){
+                 $('#match-status').html('<a class=""><i class="grade material-icons">favorite</i></a>');
+            }
+            $(".match-confirmed").removeClass("un-show-tab");
+            $(".match-confirmed").addClass("show-tab");
+
+            $(".match-confirmed").css("display", "inline-block");
+
+            history.pushState( "match", null, "" ); atual = window.history.state;
+
         }) 
     }
 }
 
 ////////// Botoes de ação ///////////
-
 $("#btn-rever").click(function() {
     $("#cards").children().last().addClass("rever-action");
     setTimeout(function(){$("#cards").children().last().removeClass("rever-action");}, 400);
-    //teste
     setTimeout(function(){$("#cards").children().last().remove();}, 800);
 });
 $("#btn-deslike").click(function() {
     like(0);
     $("#cards").children().last().addClass("deslike-action");
     setTimeout(function(){$("#cards").children().last().removeClass("deslike-action"); }, 400);
-    //teste
     setTimeout(function(){$("#cards").children().last().remove();}, 800);    
 });
 $("#btn-like").click(function() {
     like(1);
     $("#cards").children().last().addClass("like-action");
     setTimeout(function(){$("#cards").children().last().removeClass("like-action");}, 400);
+    setTimeout(function(){$("#cards").children().last().remove();}, 800);    
 });
 $("#btn-superlike").click(function() {
     like(2);
     $("#cards").children().last().addClass("superlike-action");
     setTimeout(function(){$("#cards").children().last().removeClass("superlike-action");}, 400);
-    //teste
     setTimeout(function(){$("#cards").children().last().remove();}, 800);    
 });
 
 ///// Botoes de ação do perfil de user/////
 $("#btn-deslike2").click(function() {
+    like(0);
     $("#anBlock").css("display", "inline");
     $("#perfis").removeClass("up-down");
     $("#perfis").addClass("down-up");
     setTimeout(function(){$("#cards").children().last().addClass("deslike-action");}, 400);
     $("#anBlock").css("display", "none");
-    //teste
     setTimeout(function(){$("#cards").children().last().remove();}, 800);
+    history.pushState( "descobrir", null, "" ); atual = window.history.state;
 });
 $("#btn-like2").click(function() {
+    like(1);
     $("#anBlock").css("display", "inline");
     $("#perfis").removeClass("up-down");
     $("#perfis").addClass("down-up");
     setTimeout(function(){$("#cards").children().last().addClass("like-action");}, 400);
     $("#anBlock").css("display", "none");
-        //teste
-    setTimeout(function(){$("#cards").children().last().remove();}, 800);
+    setTimeout(function(){$("#cards").children().last().remove();}, 800)
+    history.pushState( "descobrir", null, "" ); atual = window.history.state;
 });
 $("#btn-superlike2").click(function() {
+    like(2);
     $("#anBlock").css("display", "inline-block");
     $("#perfis").removeClass("up-down");
     $("#perfis").addClass("down-up");
     setTimeout(function(){$("#cards").children().last().addClass("superlike-action");}, 400);
     $("#anBlock").css("display", "none");
-    //teste
     setTimeout(function(){$("#cards").children().last().remove();}, 800);
+    history.pusState( "descobrir", null, "" ); atual = window.history.state;
 });
-
-/////////////////////////////////
-        /*$("#deletarProduto").css('display', 'none');
-        $("#editar-produto").removeClass("left-right-ltab");
-        $("#editar-produto").addClass("right-left-ltab");
-        $("#anBlock").css("display", "none");*/

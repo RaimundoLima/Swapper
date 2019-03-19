@@ -29,28 +29,37 @@ function inserirMatch($match){
         $matchT["like_status"]=$match['like_status'];
         $matchT["ultimo_usuario_a_ser_likado"]=R::load('usuario',$match["usuario2"]);
         $matchT["date"]=$match["date"];
-        return R::store($matchT);
+        R::store($matchT);
     }else if($matchT['usuario1_id']!=$match["usuario1"]){
         if(($matchT['like_status']==1 || $matchT['like_status']==2) && ($match['like_status']==1 || $match['like_status']==2) ){
+            $usuarioLike1=$matchT['like_status'];
+            $usuarioLike2=$match['like_status'];
             $matchT['like_status']=3;
             $matchT["ultimo_usuario_a_ser_likado"]=R::load('usuario',$match["usuario1"]);
             $matchT['date']=$matchT['date'];
+            $matchId=R::store($matchT);
             $chat=[
-                'match'=>R::store($matchT)
+                'match'=>$matchId,
+                'usuarioLike1'=>$usuarioLike1,
+                'usuarioLike2'=>$usuarioLike2
             ];
             //error_log(print_r($matchT,true));
             inserirChat($chat);
-            return $matchT;
+            return $matchId; 
         }else if($match['like_status']==0){
             $matchT["like_status"]=$match['like_status'];
             $matchT["date"]=$match["date"]*1;
             $matchT["ultimo_usuario_a_ser_likado"]=R::load('usuario',$match["usuario1"]);
-            return R::store($matchT);
+            R::store($matchT);
         }
     }
 }
 function listarMatch(){
     return R::findAll('match');//fazer variações   
+}
+function deletarMatch($id){
+    $roupa=R::findOne("match","id=?",[$id]);
+    return R::trash($roupa);
 }
 
 ?>

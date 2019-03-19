@@ -2,14 +2,15 @@
 include('Crud/Model.php');
 //usuarios
 
+//deletarMatch(8);
 
 $usuario1=
 [
-    'sexo'=>"M",
-    "email"=>'joker@gmail.com',
+    'sexo'=>"M",    
+    "email"=>'rai@gmail.com',
     "senha"=>sha1('123'),
     "celular"=>7,//
-    "nome"=>'joker',
+    "nome"=>'HELL',
     "nascimento"=>'01/01/1936',
     "foto"=>'img1.jpg'//dps eu testo colocando uma foto
 ];

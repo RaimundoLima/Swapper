@@ -53,7 +53,7 @@ $(document).ready(function(){
             $('#perfil-nav').removeClass('swiper-pagination-bullet-active');
             $('#descobrir-nav').removeClass('swiper-pagination-bullet-active');
             $('#mensagens-nav').addClass('swiper-pagination-bullet-active');
-            buscarChats()
+            buscarChats();
         }
     });
 
@@ -276,6 +276,9 @@ $(window).on( "popstate", function(event){
         break;
         case 'troca':
             $("#swapBtn").click();
+        break;
+        case 'match':
+            $(".match-confirmed").click();
         break;
     }
     atual = window.history.state;
