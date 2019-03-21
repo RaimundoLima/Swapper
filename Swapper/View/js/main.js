@@ -1,3 +1,19 @@
+$(document).ready(function(){
+    buscarChats()
+    notificar()
+})
+function notificar(){
+    notifica = setInterval(function(){
+        $.ajax({
+            url:"/mensagemnaovisualizada"
+        }).done(function(data){
+            console.log(data)
+            if(data==1){
+                buscarChats()
+            }        
+        })
+    },5000)
+}
 navigator.geolocation.getCurrentPosition(Location,function(){console.log("error")},{timeout:10000});
 function Location(pos) {
     var coordenadas = pos.coords;
@@ -303,7 +319,9 @@ function buscarFiltro(){
 }
 $("#chat-btn-voltar").on('click',function(){
     clearInterval(chatAtivo)
+    notificar()
     //buscaChats=0
+    scroll=0
     buscarChats()
 })
 $('#enviarMensagem').submit(function (e) {
@@ -405,6 +423,7 @@ function buscarChats(){
             dataChat=JSON.parse(data)
             //console.log(dataChat);
             var html=''
+            ultimoHorario=dataChat[0].horarioMensagem
             for(var i=0;i<Object.keys(dataChat).length;i++){
                 var horario=time_format(new Date(dataChat[i].horarioMensagem*1))
                 if(dataChat[i].likeStatus == 2){
@@ -412,6 +431,8 @@ function buscarChats(){
                 }else{
                     likeStat = "";
                 }
+                visualizacao=(dataChat[i].visualizacaoMensagem =='0' && dataChat[i].idUsuario==1)?'msg_nãolida':''
+                conteudoMensagem=(dataChat[i].idUsuario==0) ? "Você: "+dataChat[i].conteudoMensagem : dataChat[i].conteudoMensagem
                 html+='<div class="combinacoes_msg_card" onclick="buscarMensagens('+dataChat[i].idChat+')">'
                                 +' <div class="row">'
                                 +'    <div class="col s3">'
@@ -420,12 +441,12 @@ function buscarChats(){
                                 +'    <div class="dados_msgs col s8">'
                                 +'        <span class="nome_msg">'+dataChat[i].nomeUsuario+'</span>'
                                 +'        <br>'
-                                +'        <span class="ultima_msg">'+dataChat[i].conteudoMensagem+'</span>'
+                                +'        <span class="ultima_msg">'+conteudoMensagem+'</span>'
                                 +'        <br>'
                                 +'        <span class="hora_msg">'+horario+'</span>'
                                 +'    </div>'
                                 +'    <div class="col s1">'
-                                +'        <div class="msg_nãolida"></div>'
+                                +'        <div class="'+visualizacao+'"></div>'
                                 +'    </div>'
                                 +'</div>'
                             +'</div>'
@@ -559,6 +580,16 @@ function buscarMensagens(idChat){
         $("#nomeChat").text(msgs['usuario']['nome'])
         $("#mensagens-chat").html(html)
         $("#mensagens-chat").scrollTop($("#mensagens-chat").height()+10000);
+        //ajax para gerar a primeira visualização
+        $.ajax({
+            url: '/chatUpdate?'+idChat,
+            type: 'post',
+            dataType: 'html',
+            data: {
+                "date":ultimoHorario
+            }
+        })
+        clearInterval(notificar)
         chatAtivo = setInterval(function () {
         if ($('#estado').text() == 'Enviando') {
             return (false);
@@ -679,7 +710,7 @@ $("#mensagens-chat").on('scroll',function(){
                 }
             $("#mensagens-chat").html(html+$("#mensagens-chat").html())
             if(Object.keys(msgsNovas.msgs).length>0)
-            $("#mensagens-chat").scrollTop($("#mensagens-chat").height())
+            $("#mensagens-chat").scrollTop($("#mensagens-chat").height()*(Object.keys(msgsNovas.msgs).length/15))
      })
     }
 })

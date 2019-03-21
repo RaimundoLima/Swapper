@@ -5,6 +5,9 @@ function buscarMensagem($id){
     return R::load("mensagem",$id);
 
 }
+function visualizarMensagens($idChat,$idUsuario){
+    return R::exec("UPDATE mensagem SET visualizado=1 WHERE chat_id = ? AND usuario <> ? ",[$idChat,$idUsuario]);
+}
 function inserirMensagem($mensagem){
     $mensagemT=R::dispense("mensagem");
     
@@ -19,7 +22,15 @@ function inserirMensagem($mensagem){
 	}
     R::store($mensagemT);
 }
-
+function mensagemNaoVisualizada($idUsuario){
+    $chats=listarChat($idUsuario);
+    foreach ($chats as $chat) {
+        if(R::findOne('mensagem','chat_id=? AND visualizado=0 AND usuario!=?',[$chat['id'],$idUsuario])){
+            return 1;
+        }
+    }
+    return 0;
+}
 function listarMensagem($idChat){
     $mensagens=R::findAll("mensagem","chat_id=? ORDER BY id DESC LIMIT 15",[$idChat]);//fazer variações
     $count=0;

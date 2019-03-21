@@ -106,10 +106,16 @@ function getPagina()
                 $user2=buscarUsuario(buscarMatchUsuario2(($listaChats)[$i],$_SESSION['usuario']['id']));
                 $data[$i]['nomeUsuario']=$user2['nome'];
                 $data[$i]['fotoUsuario']=$user2['foto'];
+                //error_log(print_r(($_SESSION['usuario']['id'])."  ".$user2['id'],true));
                 $mensagem=listarMensagem($listaChats[$i]['id'])[0];
+                if($mensagem['usuario']==$_SESSION['usuario']['id']){
+                    $data[$i]['idUsuario']=0;
+                }else{
+                    $data[$i]['idUsuario']=1;
+                }
                 $data[$i]['conteudoMensagem']=$mensagem['conteudo'];
                 $data[$i]['horarioMensagem']=$mensagem['horario'];
-                $data[$i]['visualizacaoMensagem']=$mensagem['visualizacao'];
+                $data[$i]['visualizacaoMensagem']=$mensagem['visualizado'];
                 $data[$i]['idChat']=$listaChats[$i]['id'];
                 if($listaChats[$i]['usuario_like1'] == 2 || $listaChats[$i]['usuario_like2'] == 2){
                     $data[$i]['likeStatus']=2;
@@ -442,8 +448,12 @@ function getPagina()
                     echo "erro ao enviar msg";
                 }
             break;
+            case '/mensagemnaovisualizada':
+                echo (mensagemNaoVisualizada($_SESSION['usuario']['id']));
+            break;
             case '/chatupdate':
                 //error_log(print_r($_POST['date'],true));
+                visualizarMensagens($var,$_SESSION['usuario']['id']);
                 $msgs=listarMensagemData($var,$_POST["date"]);
                 for($i=0;$i<count($msgs);$i++) {
                     if($msgs[$i]['usuario']==null){
@@ -494,6 +504,21 @@ function getPagina()
         }
     }
    
+}
+function imageResize($img,$porcentagem,$newWidth,$newHeight){
+    $filename = $img;
+    // pegando as dimensoes reais da imagem, largura e altura
+    list($width, $height) = getimagesize($filename);
+    //setando a largura da miniatura
+    //setando a altura da miniatura
+    //gerando a a miniatura da imagem
+    $image_p = imagecreatetruecolor($new_width, $new_height);
+    $image = imagecreatefromjpeg($filename);
+    imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+    //o 3º argumento é a qualidade da imagem de 0 a 100
+    $imgResize= imagejpeg($image_p, null, $porcentagem);
+    imagedestroy($image_p);
+    return $imgResize;
 }
 function emailCadastro($usuario){
     $to = $usuario['email'];
