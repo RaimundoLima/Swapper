@@ -1,0 +1,17 @@
+html, body {
+    background-color: rgba(252, 230, 230, 0.493);
+    font-family: sans-serif;
+    overflow-y: hidden;
+}
+
+div#conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    color: #e66465;
+    font-weight: 700;
+    text-align: center;
+}
+
