@@ -51,7 +51,7 @@
                         } else {
                             $_SESSION['error-message'] = 'O email informado já está vinculado a uma conta.';
                             
-                            header('Location: https://'.$_SERVER['HTTP_HOST'].'/view/cadastro.php');
+                            header('Location: http://'.$_SERVER['HTTP_HOST'].'/view/cadastro.php');
                         }
                     } else {
                         $usuario = unserialize($_SESSION['usuario-incompleto']);
@@ -63,7 +63,7 @@
                     $usuario['id'] = inserirUsuario($usuario);
                     $_SESSION['usuario'] = serialize($usuario);
                     
-                    header('Location: https://'.$_SERVER['HTTP_HOST'].'/view/main.php#'.$usuario['id']);
+                    header('Location: http://'.$_SERVER['HTTP_HOST'].'/view/main.php#'.$usuario['id']);
                 break;
                 case '/logando':
                     $usuario=[
@@ -75,13 +75,13 @@
                         $_SESSION['usuario'] = serialize($usuario);
                         $USER_UNSERIALIZED = unserialize($_SESSION['usuario']);
                         
-                        $urlRedirect = 'https://'.$_SERVER['HTTP_HOST'].'/main';
+                        $urlRedirect = 'http://'.$_SERVER['HTTP_HOST'].'/main';
                         sleep(2);
                         header('Location: '.$urlRedirect);
                         exit;
                     }
                     
-                    header('Location: https://'.$_SERVER['HTTP_HOST'].'/view/logar.php');
+                    header('Location: http://'.$_SERVER['HTTP_HOST'].'/view/logar.php');
                 break;
                 case '/recuperarsenha':
                     $ds = DIRECTORY_SEPARATOR;
@@ -106,14 +106,14 @@
                         $sender = new EmailSender($usuario, $email);
                         $sender->enviarEmail();
 
-                        header('Location: https://'.$_SERVER['HTTP_HOST'].'/view/logar.php');
+                        header('Location: http://'.$_SERVER['HTTP_HOST'].'/view/logar.php');
                     } else {
                         $_SESSION['error-message'] = 'Desculpe, mas não encontramos nenhum usuário com este email.';
                     }
 
                 break;
                 default :
-                    header('Location: https://'.$_SERVER['HTTP_HOST'].'/view/logar.php');
+                    header('Location: http://'.$_SERVER['HTTP_HOST'].'/view/logar.php');
                 break;
             }
         } else {
@@ -132,13 +132,13 @@
                     $usuario = buscarUsuario($userId);
 
                     if ($var == $usuario['chavesecreta']) {
-                        header('Location: https://'.$_SERVER['HTTP_HOST'].'/view/redefinirsenha.php?'.$var);
+                        header('Location: http://'.$_SERVER['HTTP_HOST'].'/view/redefinirsenha.php?'.$var);
                     }
                 break;
                 case '/deslogar':
                     session_destroy();
 
-                    header('Location: https://'.$_SERVER['HTTP_HOST'].'/view/logar.php');
+                    header('Location: http://'.$_SERVER['HTTP_HOST'].'/view/logar.php');
                 break;
                 case '/like':
                     include_once('functions/usuario/like.php');
@@ -313,7 +313,7 @@
                     echo(json_encode($mensagens));
                 break;
                 default :
-                    header('Location: https://'.$_SERVER['HTTP_HOST'].'/view/main.php#'.$userId);
+                    header('Location: http://'.$_SERVER['HTTP_HOST'].'/view/main.php#'.$userId);
                 break;
             }
         }
