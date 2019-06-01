@@ -97,7 +97,7 @@ $("#burguerBtn").click(function() {
     $("#menu-burguer").removeClass("right-left-ltab");
     $("#menu-burguer").css('display', 'flex');
     $("#menu-burguer").addClass("left-right-ltab");
-});   
+});
 $("#burguerBtn-voltar").click(function() {
     history.pushState( "perfil", null, "" ); atual = window.history.state;
     $("#menu-burguer").removeClass("left-right-ltab");

@@ -1,25 +1,5 @@
-<?php
-    
-    use Ratchet\Server\IOServer;
-    use Ratchet\Http\HttpServer;
-    use Ratchet\WebSocket\WsServer;
-    use ChatApp\Chat;
-    require_once dirname(__DIR__).'/lib/vendor/autoload.php';
-    require_once dirname(__DIR__).'/public_html/chat/listenners/server.php';
-    
-    $server = IoServer::factory(
-         new HttpServer(
-            new WsServer(
-                new Chat()
-            )
-        ),
-        8090
-    );
-    $server->run();
-?>
-
 $(document).ready(function () {
-  const WS_CONN = new WebSocket('ws://bswapper.000webhostapp.com:8090/chat');
+  const WS_CONN = new WebSocket('ws://localhost:8090/chat');
 
     WS_CONN.onopen = function(e) {
         const userId = location.hash.split('#')[1];
