@@ -1,18 +1,16 @@
 <?php
 
-    include_once('model/crud/usuario.php');
-    include_once('model/distancia.php');
-    include_once('./../model/crud/redBean/rb-postgres.php');
+    $ds = DIRECTORY_SEPARATOR;
+    $baseDir = realpath(dirname(__FILE__).$ds.'..'.$ds.'..'.$ds.'..'.$ds.'..');
 
-    session_start();
+    include_once($baseDir.'/public_html/model/crud/usuario.php');
+    include_once($baseDir.'/public_html/model/distancia.php');
 
-    $USER_UNSERIALIZED = unserialize($_SESSION['usuario']);
-
-    function getUsuariosProximos() {
+    function getUsuariosProximos($userId, $lat, $long) {
         $data = [];
-        $usuarios = buscarUsuarioLocalizacao($USER_UNSERIALIZED['id']);
-        $latUsuarioLogado = $USER_UNSERIALIZED['latitude'];
-        $longUsuarioLogado = $USER_UNSERIALIZED['longitude'];
+        $usuarios = buscarUsuarioLocalizacao($userId);
+        $latUsuarioLogado = $lat;
+        $longUsuarioLogado = $long;
 
         foreach ($usuarios as $indice => $usuario) {
             $latOutroUsuario = $usuario['usuario']['latitude'];
@@ -25,10 +23,13 @@
             $data[$indice]['usuario']['foto'] = $usuario['usuario']['foto'];
             $data[$indice]['usuario']['distancia'] = ($distanciaEntreUsuarios <= 1) ? 1 : $distanciaEntreUsuarios;
 
-            foreach ($usuario['roupa'] as $indice => $roupa) {
-                $data[$indice]['roupa'][$indice]['id'] = $roupa['id'];
-                $data[$indice]['roupa'][$indice]['nome'] = $roupa['nome'];
-                $data[$indice]['roupa'][$indice]['foto'] = $roupa['foto'];
+            foreach ($usuario['roupa'] as $i => $roupa) {
+                $data[$indice]['roupa'][$i]['id'] = $roupa['id'];
+                $data[$indice]['roupa'][$i]['nome'] = $roupa['nome'];
+
+                for ($j = 0; $j < 3; $j++) {
+                    $data[$indice]['roupa'][$i]['foto'.$j] = $roupa['foto'.$j];
+                }
             }
         }
 

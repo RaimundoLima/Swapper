@@ -11,7 +11,7 @@
             $this->latitudeOutroUsuario = $latitudeOutroUsuario;
             $this->longitudeEntreUsuarios = $longitudeEntreUsuarios;
         }
-
+        
         public function getDistancia() {
             $produtoCosDistancia = $this->produtoCosDistancia();
             $produtoSinDistancia = $this->produtoSinDistancia();
@@ -20,7 +20,7 @@
         }
     
         private function produtoCosDistancia() {
-            return $this->cosDistancia($this->latitudeUsuarioLogado) * $this->cosDistancia($this->latitudeOutroUsuario) * $this->cosDistancia($this->distanciaEntreUsuarios);
+            return $this->cosDistancia(90 - $this->latitudeUsuarioLogado) * $this->cosDistancia(90 - $this->latitudeOutroUsuario) * $this->cosDistancia($this->longitudeEntreUsuarios);
         }
     
         private function produtoSinDistancia() {
@@ -28,7 +28,7 @@
         }
     
         private function cosDistancia($valor) {
-            return cos(deg2rad(90 - $valor));
+            return cos(deg2rad($valor));
         }
     
         private function sinDistancia($valor) {

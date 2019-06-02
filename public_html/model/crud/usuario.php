@@ -1,6 +1,9 @@
 <?php
 
     include_once('setup.php');
+    include_once('config.php');
+    include_once('match.php');
+    include_once('roupa.php');
 
     function buscarUsuario($id){
         return R::findOne('usuario', 'id=?', [$id]);
@@ -12,9 +15,10 @@
         $filtro = buscarConfig($id);
         $listaDeUsuarios = [];
         $count = 0;
-
+        
         foreach($list as $lista) {
             $distancia = ceil(6371*acos(sin(deg2rad(90-$usuario['latitude']))*sin(deg2rad(90-$lista['latitude']))+cos(deg2rad(90-$usuario['latitude']))*cos(deg2rad(90-$lista['latitude']))*cos(deg2rad($usuario['longitude']-$lista['longitude']))));
+            
             if($filtro['distancia'] >= $distancia) {
                 $match['usuario1'] = $usuario['id'];
                 $match['usuario2'] = $lista['id'];

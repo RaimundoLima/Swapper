@@ -161,17 +161,22 @@
                     echo json_encode($data);
                 break;
                 case '/atualizarpos':
-                    include_once('.model/crud/usuario.php');
+                    $ds = DIRECTORY_SEPARATOR;
+                    $baseDir = realpath(dirname(__FILE__) .$ds.'..');
+
+                    include_once($baseDir.'/model/crud/usuario.php');
                     include_once('functions/usuario/atualizarpos.php');
 
+                    $lat = $_POST['latitude'];
+                    $long = $_POST['longitude'];
+
                     $USER_UNSERIALIZED = unserialize($_SESSION['usuario']);
-                    $USER_UNSERIALIZED['latitude'] = $_POST['latitude'];
-                    $USER_UNSERIALIZED['longitude'] = $_POST['longitude'];
+                    $USER_UNSERIALIZED['latitude'] = $lat;
+                    $USER_UNSERIALIZED['longitude'] = $long;
                     $_SESSION['usuario'] = serialize($USER_UNSERIALIZED);
 
                     atualizarUsuarioPos($USER_UNSERIALIZED, $userId);
-
-                    $data = getUsuariosProximos();
+                    $data = getUsuariosProximos($userId, $lat, $long);
 
                     echo json_encode($data);
                 break;

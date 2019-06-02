@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  const WS_CONN = new WebSocket('ws://localhost:8090/chat');
+    buscarChats();
+    /*const WS_CONN = new WebSocket('ws://bswapper.000webhostapp.com:8090/chat');
 
     WS_CONN.onopen = function(e) {
         const userId = location.hash.split('#')[1];
@@ -41,6 +42,7 @@ $(document).ready(function () {
 
         ultimoHorario = MENSAGEM_JSON.horario * 1;
     }
+*/
 });
 
 const messageSender = function(MENSAGEM_JSON) {
@@ -109,9 +111,7 @@ function Location(pos) {
             'latitude': LATITUDE,
             'longitude': LONGITUDE
         }
-    }).done(function(data) {
-        gerarCards(data);
-    });
+    }).done(gerarCards);
 }
 
 function gerarCards(data) {
@@ -121,17 +121,26 @@ function gerarCards(data) {
 
     $('#cards-preloader').css('display','inline-block');
     $('#cards').html('');
-
+    
     for(const card of CARDS) {
         htmlRoupas = '';
 
         for(var j = 0; j < Object.keys(card.roupa).length; j++){
             const roupa = card.roupa[j];
             const usuario = card.usuario;
+            const roupaKeys = Object.keys(roupa);
+            const roupaMap = new Map(Object.entries(roupa));
+            const fotoRoupa = roupaMap.get(roupaKeys[2]);
 
-            htmlRoupas += `<div id="${j}" class="swiper-slide card-slide refCard${roupa.id}">
-                                <img class="imgCard${roupa.id}" src="./../../${roupa.foto}" alt="">
-                            </div>`;
+            
+            if (fotoRoupa !== null) {
+                htmlRoupas += `<div id="${j}" class="swiper-slide card-slide refCard${roupa.id}">`;
+                htmlRoupas += `<img class="imgCard${roupa.id}" src="./../${fotoRoupa}" alt="">`;
+            } else {
+                htmlRoupas += `<div style="display:none;">`;
+            }
+            
+            htmlRoupas += `</div>`;
 
             html += `<div id="${usuario.id}" class="cards swiper-no-swiping">
                         <div class="card-imgs tx-c swiper-no-swiping">
@@ -152,7 +161,7 @@ function gerarCards(data) {
                             </div>
                         </div>
                         <div class="dados swiper-no-swiping">
-                            <img onclick="buscarPerfil(${usuario.id})" id="perfis-btn" src="./../../${usuario.foto}" alt="">
+                            <img onclick="buscarPerfil(${usuario.id})" id="perfis-btn" src="./../${usuario.foto}" alt="">
                             <span>
                                 <i class="meritos-perfil material-icons"> star_half </i>
                                 <i class="meritos-perfil material-icons"> check_circle </i>
@@ -283,7 +292,7 @@ function atualizarPerfil(){
         type: 'post',
         data:data
     }).done(function(foto){
-        $('#fotoPerfil').attr('src', `./../../${foto}`);
+        $('#fotoPerfil').attr('src', `./../${foto}`);
         M.toast({html: 'Foto de perfil alterada'});
     });
 }
@@ -452,7 +461,7 @@ function buscarChats(){
                         <div class="row">
                             <div class="col s3">
                                 <div class="pic_msgs">
-                                    <img id="" class="${classImgUsuario}" src="./../../${chat.fotoUsuario}" alt="">
+                                    <img id="" class="${classImgUsuario}" src="./../${chat.fotoUsuario}" alt="">
                                 </div>
                             </div>
                             <div class="row">
@@ -500,7 +509,7 @@ function gerarRoupas(data){
                         <div class="row">
                             <div onclick="visualizarProduto(${roupas[i].id})" class="col s4 visualizar-poduto">
                                 <div id="produto-img-ref${roupas[i].id}" class="refPerfil${roupas[i].id} produto_imagem">
-                                    <img id="produto-img${roupas[i].id}" class="imgPerfil${roupas[i].id}" src="./../../${roupas[i].foto0}">
+                                    <img id="produto-img${roupas[i].id}" class="imgPerfil${roupas[i].id}" src="./../${roupas[i].foto0}">
                                 </div>
                             </div>
                             <div onclick="visualizarProduto(${roupas[i].id})" class="produto_info col s6 visualizar-produto">
@@ -582,7 +591,7 @@ function buscarMensagens(idChat){
             $('#fotoChat').removeClass('superLikeMatch');
         }
 
-        $("#fotoChat").attr('src', `./../../${MENSAGENS['usuario']['foto']}`);
+        $("#fotoChat").attr('src', `./../${MENSAGENS['usuario']['foto']}`);
         $("#fotoChat").attr('onclick',`buscarPerfil(${MENSAGENS['usuario']['id']})`);
         $("#nomeChat").text(MENSAGENS['usuario']['nome']);
         $("#mensagens-chat").html(html);
@@ -657,7 +666,7 @@ function buscarPerfil(idPerfil){
         url: '/buscarperfisporid?'+idPerfil
      }).done(function(data) {
         dados = JSON.parse(data);
-        $('#fotoUserAleatorio').attr('src','./../../'+dados.usuario.foto);
+        $('#fotoUserAleatorio').attr('src','./../'+dados.usuario.foto);
         $('#nomeUserAleatorio').text(dados.usuario.nome);
         var html = '';
         $('#produtosUserAleatorio').html(html);
@@ -670,7 +679,7 @@ function buscarPerfil(idPerfil){
                         <div class="row">
                             <div class="col s4 visualizar-produto">
                                 <div id="produto-img-ref${roupa.id}" class="refPerfilUsers${roupa.id} produto_imagem">
-                                    <img id="produto-img${roupa.id}" class="imgPerfilUsers${roupa.id}" src="./../../${roupa.foto1}">
+                                    <img id="produto-img${roupa.id}" class="imgPerfilUsers${roupa.id}" src="./../${roupa.foto1}">
                                 </div>
                             </div>
                             <div class="produto_info col s6 visualizar-produto">
@@ -727,7 +736,7 @@ function visualizarProduto2(idProduto, idUsuario) {
         for (var i = 0; i < 3; i++) {
             if (roupa[`foto${i}`] != '') {
                 imgs += `<div id="produto-view-img${i+1}" class="swiper-slide>
-                            <img id="produto-imagem${i+1}" src="./../../${roupa[`foto${i}`]}" alt="">
+                            <img id="produto-imagem${i+1}" src="./../${roupa[`foto${i}`]}" alt="">
                         </div>`;
             }
         }
@@ -775,7 +784,7 @@ function visualizarProduto(idProduto){
         for (var i = 0; i < 3; i++) {
             if (roupa[`foto${i}`] != '') {
                 imgs += `<div id="produto-view-img${i+1}" class="swiper-slide>
-                            <img id="produto-imagem${i+1}" src="./../../${roupa[`foto${i}`]}" alt="">
+                            <img id="produto-imagem${i+1}" src="./../${roupa[`foto${i}`]}" alt="">
                         </div>`;
             }
         }
@@ -822,12 +831,12 @@ function editarProduto(idProduto){
         type: 'post'}).done(function(data){
             var produto=(JSON.parse(data));
             $('#idProdutoEditar').val(idProduto)
-            if(produto['foto0']!= '') $('#previewUpload3').attr('src','./../../'+produto['foto0']);
-            if(produto['foto1']!= '') $('#previewUpload4').attr('src','./../../'+produto['foto1']);
+            if(produto['foto0']!= '') $('#previewUpload3').attr('src','./../'+produto['foto0']);
+            if(produto['foto1']!= '') $('#previewUpload4').attr('src','./../'+produto['foto1']);
             if(produto['foto2']!=''){
                 $('#fileToUpload5').attr('disabled',false);
                 $('#img-preview5').removeClass('label-disabled')
-                $('#previewUpload5').attr('src','./../../'+produto['foto3'])
+                $('#previewUpload5').attr('src','./../'+produto['foto3'])
             }
             if($('#previewUpload4').attr('src') != ''){
                 $('#fileToUpload5').attr('disabled',false);
@@ -1105,7 +1114,7 @@ function like(status){
             }
         }).done(function(data){
             dados=JSON.parse(data)
-            $('#img-perfil-match').attr('src', './../../'+dados.usuarioFoto);
+            $('#img-perfil-match').attr('src', './../'+dados.usuarioFoto);
 
             if(dados.likeStatus == 1){
                 $('#match-status').html('<a class=""><i class="favorite material-icons">favorite</i></a>');
